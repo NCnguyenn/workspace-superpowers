@@ -165,7 +165,7 @@ Body (keep short):
 
 Do **not** merge these into one giant `inspecting-artifacts`.
 
-- [ ] **Step 1: `reading-artifacts`** (generic input-reading)
+- [x] **Step 1: `reading-artifacts`** (generic input-reading)
 
 ```yaml
 name: reading-artifacts
@@ -174,7 +174,7 @@ description: Use when an existing artifact — document, PDF, deck, workbook, im
 
 Procedure: Open the real artifact and read the representation appropriate to its type: text, pages, sheets, cells, pixels, metadata, layers, or other available structure. Reading raw bytes alone does not constitute understanding the artifact. Do not interpret yet. Do not edit. Fallback: if the file cannot be opened, stop — never guess contents.
 
-- [ ] **Step 2: `analyzing-artifacts`**
+- [x] **Step 2: `analyzing-artifacts`**
 
 ```yaml
 name: analyzing-artifacts
@@ -183,9 +183,11 @@ description: Use when a file that has already been read must be understood — s
 
 Procedure: structure + content + layout → requested changes → preserve-list. Per-type inspection fields (spec §10) live in `references/artifact-inspection.md`, not in `SKILL.md`.
 
-- [ ] **Step 3: Run tests with `WS_ALLOW_PARTIAL=1`. Expected: PASS.**
+- [x] **Step 3: Run tests with `WS_ALLOW_PARTIAL=1`. Expected: PASS.**
 
-- [ ] **Step 4: Commit** `feat: add reading-artifacts and analyzing-artifacts`
+- [x] **Step 4: Commit** `feat: add reading-artifacts and analyzing-artifacts`
+
+**Verification (2026-09-13):** Both skills already shipped in `3738018`. Reviewed their reading/analysis separation and fallbacks; added the missing PSD/PSB smart-object inspection field to match spec §10. Re-read the updated reference. The partial suite passed with 2 tests, 0 failures, and 4 expected skips.
 
 ---
 
