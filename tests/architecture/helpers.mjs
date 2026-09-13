@@ -12,13 +12,18 @@ export const WAVE1_SKILLS = [
   'verifying-artifacts',
 ];
 
+/** Substrings forbidden anywhere under skills/. Plan list plus extra harness APIs. */
 export const HARNESS_LEAK = [
-  /\bagent\.prompt\.inject\b/,
-  /\bagent\.tool\.register\b/,
-  /\bmcp_[a-z][a-z0-9_]*/i,
-  /\bplugin_pi_[a-z0-9_]+/i,
-  /\bTodoWrite\b/,
+  'agent.prompt.inject',
+  'agent.tool.register',
+  'mcp_',
+  'plugin_pi_',
+  'TodoWrite',
 ];
+
+export function allowPartial() {
+  return process.env.WS_ALLOW_PARTIAL === '1';
+}
 
 export async function walk(relDir, acc = []) {
   const abs = path.join(ROOT, relDir);
@@ -51,10 +56,23 @@ export async function exists(rel) {
   }
 }
 
+export async function skillDirs() {
+  const abs = path.join(ROOT, 'skills');
+  let entries;
+  try {
+    entries = await readdir(abs, { withFileTypes: true });
+  } catch (err) {
+    if (err.code === 'ENOENT') return [];
+    throw err;
+  }
+  return entries.filter((e) => e.isDirectory()).map((e) => e.name).sort();
+}
+
 export function parseFrontmatter(text) {
-  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+  const normalized = text.replace(/^\uFEFF/, '');
+  const match = normalized.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   if (!match) return null;
-  const body = text.slice(match[0].length);
+  const body = normalized.slice(match[0].length);
   const fm = {};
   for (const line of match[1].split(/\r?\n/)) {
     const idx = line.indexOf(':');
@@ -65,5 +83,5 @@ export function parseFrontmatter(text) {
 }
 
 export async function skillFiles() {
-  return (await walk('skills')).filter((f) => f.endsWith('/SKILL.md'));
+  return (await walk('skills')).filter((f) => /\/SKILL\.md$/i.test(f));
 }

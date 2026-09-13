@@ -80,7 +80,7 @@ Obra also has `.pi/`, `.claude-plugin/`, `hooks/`. **Out of Wave 1.**
 
 **Produces:** `npm test` as the gate for Tasks 2–5.
 
-- [ ] **Step 1: `package.json`**
+- [x] **Step 1: `package.json`**
 
 ```json
 {
@@ -99,9 +99,9 @@ Obra also has `.pi/`, `.claude-plugin/`, `hooks/`. **Out of Wave 1.**
 
 The `"pi"` field is distribution/discovery metadata only. Skills must not read or depend on it.
 
-- [ ] **Step 2: `AGENTS.md`** — thin classifier (coding → Superpowers; Q&A → answer; workspace → `using-workspace-superpowers`; mixed → primary router). ≤ 80 lines. No format procedures.
+- [x] **Step 2: `AGENTS.md`** — thin classifier (coding → Superpowers; Q&A → answer; workspace → `using-workspace-superpowers`; mixed → primary router). ≤ 80 lines. No format procedures.
 
-- [ ] **Step 3: Tests**
+- [x] **Step 3: Tests**
 
 `wave1-catalog.test.mjs` asserts exactly these 5 directories exist, each with `SKILL.md`:
 
@@ -119,9 +119,9 @@ The `"pi"` field is distribution/discovery metadata only. Skills must not read o
 
 Until skills exist, run with `$env:WS_ALLOW_PARTIAL='1'` and skip catalog + routing-contract. After Task 4, both must pass without skip.
 
-- [ ] **Step 4: Run** `node --test tests/architecture/*.test.mjs` — catalog/routing skip expected; other tests pass on empty `skills/`.
+- [x] **Step 4: Run** `node --test tests/architecture/*.test.mjs` — catalog/routing skip expected; other tests pass on empty `skills/`.
 
-- [ ] **Step 5: Commit** `test: add wave-1 architecture and routing-contract tests`
+- [x] **Step 5: Commit** `test: add wave-1 architecture and routing-contract tests`
 
 ---
 
