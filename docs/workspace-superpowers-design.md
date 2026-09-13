@@ -377,7 +377,8 @@ details and must be re-verified against the running Pi version before packaging
 prompt
 → bootstrap classify
 → load workspace router
-→ inspect prompt / files / context
+→ inspect prompt / context
+→ existing files: reading-artifacts → analyzing-artifacts
 → classify task
 → select skills
 → check meaningful ambiguity
@@ -555,7 +556,7 @@ valid; neither may embed the other's procedure.
 
 ```
 Existing artifact:
-    read then analyze before modifying.
+    reading-artifacts → analyzing-artifacts before modifying.
 
 Complex work:
     plan before substantial execution.

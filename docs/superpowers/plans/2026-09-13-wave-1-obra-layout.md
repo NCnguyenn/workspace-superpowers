@@ -2,7 +2,7 @@
 
 > **For agentic workers:** Use superpowers:executing-plans (this wave is small; subagent-driven-development is optional). Track with checkboxes.
 
-**Status:** Wave 1 Architecture, Scope, Tests, Skill split, and Spec synchronization are APPROVED. Ready to implement.
+**Status:** COMPLETE (2026-09-13). Tasks 1–5 and the Wave 1 Done criteria have been verified. Behavioral / pressure tests remain in the next testing wave.
 
 **Goal:** Give the repo the same skill-pack shape as [obra/superpowers](https://github.com/obra/superpowers), then ship only the first working cluster: router + read + analyze + edit + verify, and update the design spec in the same wave to record the approved inspection split and keep specification and implementation synchronized.
 
@@ -243,20 +243,22 @@ Expected: ALL PASS (exactly 5 skills + routing-contract).
 
 Wave 1 is **not complete** until the spec matches the five shipped skills.
 
-- [ ] **Step 1: Update §21 (v1 skill set)** — replace lifecycle `inspecting-artifacts` with `reading-artifacts` and `analyzing-artifacts`. Keep the other v1 names unless they are explicitly out of this wave (do not invent the rest of the catalog here; only fix the inspect split and any Wave 1 name clashes).
-- [ ] **Step 2: Update every other mention of `inspecting-artifacts` that describes the *shipped* lifecycle** (at least §6.3, §7 lifecycle, §8.5, §23 DOCX/typo rows) so they route `reading-artifacts` → `analyzing-artifacts` instead of one inspect skill. Do not rewrite Parts 1–4 beyond that name/flow fix.
-- [ ] **Step 3: Run `npm test`. Expected: PASS.** Spec is docs; tests must still be green.
-- [ ] **Step 4: Commit** `docs: split inspecting-artifacts into reading-artifacts and analyzing-artifacts`
+- [x] **Step 1: Update §21 (v1 skill set)** — replace lifecycle `inspecting-artifacts` with `reading-artifacts` and `analyzing-artifacts`. Keep the other v1 names unless they are explicitly out of this wave (do not invent the rest of the catalog here; only fix the inspect split and any Wave 1 name clashes).
+- [x] **Step 2: Update every other mention of `inspecting-artifacts` that describes the *shipped* lifecycle** (at least §6.3, §7 lifecycle, §8.5, §23 DOCX/typo rows) so they route `reading-artifacts` → `analyzing-artifacts` instead of one inspect skill. Do not rewrite Parts 1–4 beyond that name/flow fix.
+- [x] **Step 3: Run `npm test`. Expected: PASS.** Spec is docs; tests must still be green.
+- [x] **Step 4: Commit** `docs: split inspecting-artifacts into reading-artifacts and analyzing-artifacts`
+
+**Verification (2026-09-13):** §6.3, §7.2, §21, and §23 already reflected the split in `3738018`. Made the exact skill sequence explicit in the §7 overview and §8.5 dependency. Re-read the affected sections; the only remaining `inspecting-artifacts` mention in the spec explains the historical replacement in §21, not a shipped skill. The intended catalog remains 24 skills, with exactly 5 shipped in Wave 1. The unchanged npm test script passed via the installed npm CLI with `WS_ALLOW_PARTIAL` unset: 6 tests, 0 failures, 0 skips. The target tree, skill names, portable contents, and 27-line `AGENTS.md` were also checked.
 
 ---
 
 ## Done when
 
-- Tree matches the target (obra `skills/<name>/SKILL.md`, `package.json` `pi.skills`).
-- 5 skills, all `Use when…`, no harness leaks.
-- Routing-contract tests green (router names all four; edit depends on read/analyze/verify; verify has the command≠artifact sentence).
-- `npm test` green without `WS_ALLOW_PARTIAL`.
-- `docs/workspace-superpowers-design.md` §21 (and inspect-lifecycle mentions) match the shipped skills.
+- [x] Tree matches the target (obra `skills/<name>/SKILL.md`, `package.json` `pi.skills`).
+- [x] 5 skills, all `Use when…`, no harness leaks.
+- [x] Routing-contract tests green (router names all four; edit depends on read/analyze/verify; verify has the command≠artifact sentence).
+- [x] `npm test` green without `WS_ALLOW_PARTIAL`.
+- [x] `docs/workspace-superpowers-design.md` §21 (and inspect-lifecycle mentions) match the shipped skills.
 
 ## Explicitly later (not this plan)
 
