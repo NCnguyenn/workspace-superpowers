@@ -254,4 +254,6 @@ Wave 1 is **not complete** until the spec matches the five shipped skills.
 
 ## Explicitly later (not this plan)
 
-PDF / slides / Excel / citations / Pi plugin zip / stub adapters / the remaining catalog. Next wave starts only after this one is green.
+PDF / slides / Excel / citations / Pi plugin zip / stub adapters / the remaining catalog.
+Behavioral / pressure tests are the next *testing* wave, not a Wave 1 retrofit.
+See [`roadmap.md`](./roadmap.md).

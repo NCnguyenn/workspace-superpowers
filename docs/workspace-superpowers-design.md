@@ -127,7 +127,10 @@ and before touching files.
 Process scales with the task; the verification gate never scales down. Interview
 only where a missing fact would change the deliverable. Plan internally even
 when no plan document is produced. Review and verify are mandatory for any
-substantial deliverable.
+substantial deliverable. This Adaptive Gate is intentional: the pack learns
+Superpowers' methodology, not a 1:1 clone of its "never skip a skill" red-flag
+table. A typo-fix must not trigger brainstorming, a long interview, or a plan
+document.
 
 ### 3.5 Evidence before assertion
 
@@ -1000,6 +1003,10 @@ same job, and the graph is unchanged.
 | **Mixed project (core case)** | reading-artifacts → analyzing-artifacts (12 PDFs + XLSX) → planning-work (multi-artifact) → researching-sources ∥ working-with-spreadsheets/analyzing-data → drafting-prose/writing-theses → citing-sources → formatting-layout → reviewing-work → verifying-artifacts → converting-artifacts (PDF) → working-with-presentations (defence deck) → verifying-artifacts (all) → packaging-deliverables |
 
 ## 24. Testing Strategy
+
+Test ladder: architecture → skill contract → behavioral/pressure → regression.
+Wave 1 ships the first two only. Pressure tests (fail without the skill, then
+pass with it) are a later wave — see `docs/superpowers/plans/roadmap.md`.
 
 ### 24.1 Skill discipline tests (RED–GREEN–REFACTOR)
 
