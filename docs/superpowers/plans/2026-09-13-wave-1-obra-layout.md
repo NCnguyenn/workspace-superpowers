@@ -130,7 +130,7 @@ Until skills exist, run with `$env:WS_ALLOW_PARTIAL='1'` and skip catalog + rout
 **Files:**
 - Create: `skills/using-workspace-superpowers/SKILL.md`
 
-- [ ] **Step 1: Write the skill**
+- [x] **Step 1: Write the skill**
 
 ```yaml
 name: using-workspace-superpowers
@@ -148,9 +148,11 @@ Body (keep short):
 
 **Fallback (locked):** if a named specialist is missing, use a valid lower-level capability that still completes the job safely; if none exists, stop and disclose the limitation. Do not halt solely because the specialist folder is absent.
 
-- [ ] **Step 2: Run skill-contract + layer-purity. Expected: PASS.**
+- [x] **Step 2: Run skill-contract + layer-purity. Expected: PASS.**
 
-- [ ] **Step 3: Commit** `feat: add using-workspace-superpowers router`
+- [x] **Step 3: Commit** `feat: add using-workspace-superpowers router`
+
+**Verification (2026-09-13):** The router already shipped in `3738018`; direct inspection and an independent review confirmed all Task 2 requirements, so no skill content changes were needed. The full strict suite passed with 6 tests, 0 failures, and 0 skips, including skill-contract and layer-purity. The npm launcher selected an unavailable user-prefix CLI in this session; invoking the installed CLI directly with `node D:/nodejs/node_modules/npm/bin/npm-cli.js test` ran the unchanged package test script successfully. This task's commit records completion and verification of the existing router.
 
 ---
 
