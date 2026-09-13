@@ -2,29 +2,51 @@
 
 | | |
 |---|---|
-| Status | Draft for user review |
+| Status | Draft for user review — product-form revision |
 | Date | 2026-09-13 |
+| Revised | Product form aligned with [obra/superpowers](https://github.com/obra/superpowers): installable skill-pack plugin; domain is workspace, not coding |
 | Package id | `workspace-superpowers` |
+| Pi plugin id | `workspace-superpowers` (confirm against the installed Pi manifest schema at packaging; Superpowers ships as `obra.superpowers`) |
 | Repo target | `github.com/<owner>/workspace-superpowers` (public) |
-| Reference sibling | `obra/superpowers` (coding framework) |
-| Approval state | Part 1 APPROVED · Part 2 APPROVED · Part 3 APPROVED WITH REVISIONS (incorporated) · Part 4 APPROVED |
+| Reference sibling | `obra/superpowers` — same product class (installable skill-pack plugin); different domain (workspace artifacts, not software engineering) |
+| Approval state | Parts 1–4 previously approved · this revision: product form only (pending user review) |
 
 This document is the source of truth for implementation. Where this spec and
 any chat summary disagree, this file wins. Where this spec and a harness's real
-plugin API disagree, the harness wins for the adapter layer and this file must
-be amended — the core never bends to a harness.
+plugin API disagree, the harness wins for the adapter / plugin-packaging layer
+and this file must be amended — the skill pack never bends to a harness.
 
 ---
 
 ## 1. Purpose
 
-Workspace Superpowers is a portable agentic framework for **knowledge and office
-work**: reading, inspecting, researching, writing, revising, analysing,
+Workspace Superpowers is the workspace-domain counterpart of
+[obra/superpowers](https://github.com/obra/superpowers). Superpowers is an
+installable **skill-pack plugin** for software engineering. This package is the
+**same product class** for **knowledge and office work**.
+
+### 1.1 Product form
+
+What ships is a **plugin the user installs** into a harness — the same
+consumption model as Superpowers:
+
+- **Pi Desktop (v1):** a skill-pack plugin with the same observed shape as
+  `obra.superpowers` — `manifest.json`, a trivial `main.js` (`onLoad` /
+  `onUnload` only), `contributes.skills`, `permissions: ["agent.prompt.inject"]`,
+  `activationEvents: ["onStartup"]`. No panel, no custom commands, no
+  workbench, no tools of its own, no network of its own.
+- **Other harnesses (Antigravity, Claude, Codex):** the same skill pack, wrapped
+  by that harness's adapter. Adding a harness does not fork the skills.
+- After install, the user never types `/skill` or names this package. Workspace
+  prompts auto-route via bootstrap injection.
+
+The **content** (the Superpowers analogue of the methodology) is workspace
+work: reading, inspecting, researching, writing, revising, analysing,
 formatting, transforming, converting, reviewing, verifying and packaging real
 artifacts (documents, PDFs, presentations, spreadsheets, images, design files).
 
-It is the workspace-domain counterpart of Superpowers, not a subset of it and
-not a "report writing plugin". It shares Superpowers' DNA:
+It is not a subset of Superpowers and not a "report-writing plugin". It shares
+Superpowers' DNA:
 
 - a thin always-on bootstrap that classifies and routes,
 - composable skills discovered automatically from `Use when…` descriptions,
@@ -32,7 +54,7 @@ not a "report writing plugin". It shares Superpowers' DNA:
 - role-based delegation to subagents,
 - review and artifact verification before any claim of completion.
 
-The framework must handle the trivial case ("fix this typo, keep the format")
+The plugin must handle the trivial case ("fix this typo, keep the format")
 and the compound case ("12 research PDFs + an XLSX dataset → thesis DOCX → PDF →
 defence deck") with the **same** architecture, differing only in the size of the
 skill graph the router builds.
@@ -41,14 +63,14 @@ skill graph the router builds.
 
 - **Not** a coding framework. Software engineering, debugging, refactoring and
   test work stay with Superpowers. Mixed tasks route to both, never merge them.
-- **Not** a UI plugin. No panel, no custom commands, no workbench. It is a skill
-  pack plus prompt templates plus adapter mapping files.
+- **Not** a UI plugin. No panel, no custom commands, no workbench, no tools of
+  its own. It **is** an installable skill-pack plugin in the Superpowers class.
 - **Not** a document generator library. It does not ship its own DOCX/PPTX/XLSX
   writer; it routes to whatever capability the harness exposes.
 - **Not** a citation manager. It plans, formats and verifies citations; it does
   not replace Zotero/EndNote and does not maintain a reference database.
 - **Not** a full catalog at v1. v1 proves the architecture with ~23 skills; the
-  catalog grows to 50–80 specialists afterwards without touching the core.
+  catalog grows to 50–80 specialists afterwards without touching the skill pack.
 - **Not** English-only and **not** Vietnamese-only. Language is resolved per
   task (§16).
 
@@ -81,13 +103,18 @@ Consequences that are enforced by tests (§24):
 
 ### 3.2 Portability first
 
-The core speaks only in the abstractions defined in §11 — `invoke_skill`,
+The skill pack speaks only in the abstractions defined in §11 — `invoke_skill`,
 `delegate`, `inspect_document`, `edit_document`, `render_document`,
 `inspect_pdf`, `extract_pdf_text`, `inspect_presentation`, `edit_presentation`,
 `inspect_spreadsheet`, `edit_spreadsheet`, `convert_artifact`,
 `export_artifact`, `verify_artifact`, `search_web`, `search_academic`. An adapter
 maps them. Porting to a new harness means adding one adapter directory, never
 forking the skill set.
+
+The product is still a plugin. Portability means one skill pack plus one adapter
+directory per harness — the same split Superpowers uses between upstream skills
+and a Pi wrapping — not "this is not a plugin".
+
 
 ### 3.3 Automatic skill invocation
 
@@ -132,22 +159,26 @@ number or year. Never report success for a capability that does not exist.
 
 ### 4.2 Out of scope
 
-Coding tasks (§2), UI, plugin-private persistence, network services, any
-capability the harness does not expose.
+Coding tasks (§2), UI panels and workbench chrome, plugin-private persistence,
+network services, any capability the harness does not expose. Packaging the
+skill pack as an installable plugin **is** in scope.
+
 
 ## 5. Terminology
 
 | Term | Meaning |
 |---|---|
+| **Plugin / skill pack** | The installable unit. Same product class as `obra/superpowers`: skills + bootstrap injection; no panel, no custom tools. On Pi this is a plugin package (`manifest.json`, `main.js`, `contributes.skills`). |
 | **Bootstrap** | Thin instruction injected by the harness at session/project level. Classifies the request and routes. Contains no workflow. |
 | **Router** | `using-workspace-superpowers`. Selects lifecycle and family skills for the current task. |
-| **Lifecycle skill** | Phase of every workspace task: scope, inspect, plan, review, verify, package. |
+| **Lifecycle skill** | Phase of every workspace task: scope, read, analyze, plan, review, verify, package. |
 | **Family skill** | Domain group that routes to specialists (e.g. `working-with-spreadsheets`). |
 | **Specialist skill** | Small composable procedure for one job (e.g. `auditing-formulas`). |
 | **Skill graph** | The ordered/parallel set of skills selected for one task, built at runtime. |
 | **Role** | Portable subagent persona (`researcher`, `drafter`, `reviewer-coherence`…). |
 | **Capability** | Abstract operation a skill needs (`edit_docx`, `render_presentation`). |
-| **Adapter** | Harness-specific mapping of abstraction → real tool, plus capability detection and fallback rules. |
+| **Adapter** | Harness-specific mapping of abstraction → real tool, plus capability detection, fallback rules, and plugin packaging files for that harness. |
+
 | **Artifact** | Any real file produced, read or modified by a task. |
 | **Deliverable contract** | The declared output set (paths, formats, editable vs rendered, assets) agreed before substantial execution. |
 | **Finding** | A review result with severity Critical / Important / Minor / Suggestion. |
@@ -225,9 +256,9 @@ family or specialist skill.
 
 ### 6.3 Lifecycle Skills
 
-`scoping-the-brief`, `inspecting-artifacts`, `planning-work`, `reviewing-work`,
+`scoping-the-brief`, `reading-artifacts`, `analyzing-artifacts`, `planning-work`, `reviewing-work`,
 `verifying-artifacts`, `packaging-deliverables`. Present in every substantial
-task; `inspecting-artifacts` is present in every task that touches an existing
+task; `reading-artifacts` then `analyzing-artifacts` are present in every task that touches an existing
 file.
 
 ### 6.4 Family Skills
@@ -321,19 +352,21 @@ specific server supports.
 
 ### 6.8 Harness Adapters
 
-`adapters/<harness>/` contains:
+`adapters/<harness>/` is how the skill pack becomes an installable plugin (or
+the harness's equivalent) on that harness. It contains:
 
 - `bootstrap.md` — the snippet to inject for that harness,
 - `tools.md` — abstraction → harness mechanism mapping,
 - `capabilities.md` — capability → concrete tool mapping **after detection**,
-- `install.md` — how to install on that harness,
+- `install.md` — how to install the plugin / skill pack on that harness,
 - packaging files where the harness requires them (e.g. Pi `manifest.json`,
   `main.js`).
 
-Adapter content is implementation mapping, not core contract. Names such as
+Adapter content is packaging and tool mapping, not core contract. Names such as
 `Task`, `agent.prompt.inject`, `manifest.json`, `main.js` are Pi implementation
 details and must be re-verified against the running Pi version before packaging
-(§18.1). If the real API differs, the adapter changes; the core does not.
+(§18.1). If the real API differs, the adapter changes; the skill pack does not.
+
 
 ## 7. Request Lifecycle
 
@@ -369,9 +402,9 @@ or a compound deliverable set.
 
 ### 7.2 Artifact Inspection
 
-Default for any existing file: inspect the original → understand structure,
-content and layout → identify the requested changes → record what must be
-preserved → edit → reopen/re-inspect → render if needed → verify → deliver.
+Default for any existing file: `reading-artifacts` → `analyzing-artifacts`
+(structure, content, layout, requested changes, preserve-list) → edit →
+reopen via `verifying-artifacts` → render if needed → deliver.
 
 Prohibited: edit → save → "done" without verification.
 
@@ -519,7 +552,7 @@ valid; neither may embed the other's procedure.
 
 ```
 Existing artifact:
-    inspect before modifying.
+    read then analyze before modifying.
 
 Complex work:
     plan before substantial execution.
@@ -777,6 +810,19 @@ Absolute rule: never fabricate a successful file operation.
 
 ## 18. Pi Adapter v1
 
+v1's primary deliverable is an **installable Pi Desktop plugin**, consumed the
+same way as Superpowers: the user installs it; skills appear in the catalog;
+workspace prompts auto-route; they never type `/skill`.
+
+The plugin is a **package** built from the portable skill pack, not a second
+source of truth (§18.3). Observed Superpowers-on-Pi shape to match:
+
+- `manifest.json` with `schemaVersion`, `id`, `name`, `version`, `description`,
+  `main`, `contributes.skills`, `permissions` (including `agent.prompt.inject`),
+  `engines.piDesktop`, `categories`, `activationEvents`
+- trivial `main.js` exporting `onLoad` / `onUnload` and registering no tools
+- skills as Markdown files listed in `contributes.skills`
+
 ### 18.1 Verification prerequisite
 
 Before packaging, confirm against the **installed** Pi Desktop version:
@@ -789,13 +835,10 @@ Before packaging, confirm against the **installed** Pi Desktop version:
   conversion, image handling),
 - whether packaging/validation tooling accepts the plugin.
 
-Evidence currently observed from installed Pi plugins: manifest with
-`schemaVersion`, `id`, `name`, `version`, `description`, `main`, `contributes.skills`,
-`permissions` (including prompt injection), `engines.piDesktop`, `categories`,
-`activationEvents`; a trivial `main.js` exporting load/unload hooks; skills as
-Markdown files under `skills/`. This is treated as **observed behaviour to be
-re-verified**, not as a contract. If it differs at implementation time, the
-adapter changes and this section is updated.
+Evidence currently observed from installed Pi plugins (including
+`obra.superpowers`) is treated as **observed behaviour to be re-verified**, not
+as a contract. If it differs at implementation time, the adapter changes and
+this section is updated.
 
 ### 18.2 Adapter contents
 
@@ -807,24 +850,27 @@ adapters/pi/
   capabilities.md     # capability → concrete Pi-reachable implementation + fidelity
   install.md          # installation and activation steps
   manifest.json       # packaging metadata (Pi implementation detail)
-  main.js             # lifecycle hooks (Pi implementation detail)
+  main.js             # lifecycle hooks only (Pi implementation detail)
 ```
 
 ### 18.3 Distribution
 
-The Pi plugin is a **package** built from the portable core, not a second source
-of truth. A build/package step copies or links `skills/`, `agents/`,
+The Pi plugin is a **package** built from the portable skill pack, not a second
+source of truth. A build/package step copies or links `skills/`, `agents/`,
 `workflows/`, `tool-routing/`, `references/`, `templates/` into the plugin
-layout and validates it. Editing the generated package instead of the core is a
-defect.
+layout and validates it. Editing the generated package instead of the skill pack
+is a defect. The published artifact is the installable plugin, analogous to how
+Superpowers is installed on Pi.
 
 ## 19. Future Harness Adapters
 
 `adapters/antigravity/`, `adapters/claude/`, `adapters/codex/` ship at v1 as
 stubs containing the required file set with `unverified` mappings. Adding a
-harness means: detect its skill mechanism, delegation mechanism, and document
-capabilities; fill the three mapping files; write `install.md`. No core file is
-modified. This is proven by test (§24.2).
+harness means: detect its skill / plugin mechanism, delegation mechanism, and
+document capabilities; fill the three mapping files; write `install.md` so the
+skill pack can be installed there the same way Superpowers is. No skill-pack
+file is modified. This is proven by test (§24.2).
+
 
 ## 20. Repository Structure
 
@@ -879,11 +925,15 @@ workspace-superpowers/
 
 ## 21. v1 Skill Set
 
-v1 exists to prove the architecture, not to fill the catalog. 23 skills:
+v1 exists to prove the architecture, not to fill the catalog. The approved
+inspection split replaces `inspecting-artifacts` with `reading-artifacts` and
+`analyzing-artifacts` (24 named skills in the intended catalog). Wave 1 ships
+the working cluster: `using-workspace-superpowers`, `reading-artifacts`,
+`analyzing-artifacts`, `editing-documents`, `verifying-artifacts`.
 
-**Core (7)**
-`using-workspace-superpowers`, `scoping-the-brief`, `inspecting-artifacts`,
-`planning-work`, `reviewing-work`, `verifying-artifacts`,
+**Core (8)**
+`using-workspace-superpowers`, `scoping-the-brief`, `reading-artifacts`,
+`analyzing-artifacts`, `planning-work`, `reviewing-work`, `verifying-artifacts`,
 `packaging-deliverables`
 
 **Research (2)**
@@ -940,14 +990,14 @@ same job, and the graph is unchanged.
 
 | Workflow | Skill graph |
 |---|---|
-| **DOCX format fix** | inspecting-artifacts → formatting-layout → verifying-artifacts → packaging-deliverables |
-| **Typo fix, keep format** | inspecting-artifacts → editing-documents → verifying-artifacts → packaging-deliverables (no interview, no planner) |
-| **PDF research** | inspecting-artifacts (PDFs) → researching-sources → citing-sources → drafting-prose/writing-literature-reviews → converting-artifacts → verifying-artifacts |
-| **Report → slides** | inspecting-artifacts (report) → planning-work (storyboard) → working-with-presentations → storyboarding-slides → reviewing-work (narrative, layout, visual) → converting-artifacts (PDF) → verifying-artifacts |
-| **Spreadsheet audit** | inspecting-artifacts → working-with-spreadsheets → auditing-formulas → reviewing-work (data, formulas, integrity) → verifying-artifacts |
-| **Image / PSD edit** | inspecting-artifacts → working-with-visuals → (layered capability? edit : limitation + fallback) → verifying-artifacts |
-| **Thesis** | inspecting-artifacts (rubric + draft) → scoping-the-brief (if gaps) → planning-work (architecture) → researching-sources ∥ drafting-prose/writing-theses → citing-sources → formatting-layout → reviewing-work (requirement, argument, coherence, academic prose, citation, format) → verifying-artifacts → converting-artifacts → packaging-deliverables |
-| **Mixed project (core case)** | inspecting-artifacts (12 PDFs + XLSX) → planning-work (multi-artifact) → researching-sources ∥ working-with-spreadsheets/analyzing-data → drafting-prose/writing-theses → citing-sources → formatting-layout → reviewing-work → verifying-artifacts → converting-artifacts (PDF) → working-with-presentations (defence deck) → verifying-artifacts (all) → packaging-deliverables |
+| **DOCX format fix** | reading-artifacts → analyzing-artifacts → formatting-layout → verifying-artifacts → packaging-deliverables |
+| **Typo fix, keep format** | reading-artifacts → analyzing-artifacts → editing-documents → verifying-artifacts → packaging-deliverables (no interview, no planner) |
+| **PDF research** | reading-artifacts → analyzing-artifacts (PDFs) → researching-sources → citing-sources → drafting-prose/writing-literature-reviews → converting-artifacts → verifying-artifacts |
+| **Report → slides** | reading-artifacts → analyzing-artifacts (report) → planning-work (storyboard) → working-with-presentations → storyboarding-slides → reviewing-work (narrative, layout, visual) → converting-artifacts (PDF) → verifying-artifacts |
+| **Spreadsheet audit** | reading-artifacts → analyzing-artifacts → working-with-spreadsheets → auditing-formulas → reviewing-work (data, formulas, integrity) → verifying-artifacts |
+| **Image / PSD edit** | reading-artifacts → analyzing-artifacts → working-with-visuals → (layered capability? edit : limitation + fallback) → verifying-artifacts |
+| **Thesis** | reading-artifacts → analyzing-artifacts (rubric + draft) → scoping-the-brief (if gaps) → planning-work (architecture) → researching-sources ∥ drafting-prose/writing-theses → citing-sources → formatting-layout → reviewing-work (requirement, argument, coherence, academic prose, citation, format) → verifying-artifacts → converting-artifacts → packaging-deliverables |
+| **Mixed project (core case)** | reading-artifacts → analyzing-artifacts (12 PDFs + XLSX) → planning-work (multi-artifact) → researching-sources ∥ working-with-spreadsheets/analyzing-data → drafting-prose/writing-theses → citing-sources → formatting-layout → reviewing-work → verifying-artifacts → converting-artifacts (PDF) → working-with-presentations (defence deck) → verifying-artifacts (all) → packaging-deliverables |
 
 ## 24. Testing Strategy
 
@@ -988,8 +1038,9 @@ review and verification, honest limitation reporting.
 ### 24.4 Packaging tests
 
 The Pi adapter package validates against the installed Pi Desktop version before
-release; the plugin loads, its skills appear in the catalog, and a workspace
-prompt auto-routes without any slash command.
+release; the plugin **installs** like Superpowers, its skills appear in the
+catalog, and a workspace prompt auto-routes without any slash command.
+
 
 ## 25. Acceptance Criteria
 
@@ -1009,6 +1060,8 @@ The system is **not** complete until every scenario below passes.
 | 10 | Adding `writing-systematic-reviews` | New skill directory + one trigger line. Bootstrap, router, other families, capability model and adapters unchanged; all architecture tests pass. |
 | 11 | Deliverable language differs from conversation language | Both honoured; artifact language resolved per §16 without assuming English. |
 | 12 | Any conversion or export step | Output verified as an artifact; command exit status alone never accepted as success. |
+| 13 | Install the Pi plugin | Plugin installs in the Superpowers shape; skills listed; no panel; bootstrap injects; a workspace prompt auto-routes. |
+
 
 ---
 
@@ -1016,7 +1069,7 @@ The system is **not** complete until every scenario below passes.
 
 ```
 Understand before doing.
-Inspect before editing.
+Read and analyze before editing.
 Plan before complex work.
 Use evidence before asserting.
 Use skills automatically.
@@ -1035,8 +1088,11 @@ Do not reduce Workspace Superpowers to academic writing.
 
 1. User review of this document; amend inline.
 2. Implementation plan (ordered, testable tasks) derived from §20–§25.
-3. Implementation: core skills → agents → workflows → capability model → Pi
-   adapter (after the §18.1 API verification) → packaging.
+3. Implementation: skill pack (core skills → agents → workflows → capability
+   model) → Pi plugin package in the Superpowers shape (`manifest.json`,
+   trivial `main.js`, `contributes.skills`, `agent.prompt.inject`) after the
+   §18.1 API verification → installable distribution.
 4. Workflow and skill tests per §24.
 5. GitHub publication: public repo, permissive licence, English README, install
-   instructions per adapter.
+   instructions per adapter (Pi first: install the plugin).
+
