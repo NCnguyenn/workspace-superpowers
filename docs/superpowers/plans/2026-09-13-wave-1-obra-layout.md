@@ -197,7 +197,7 @@ Procedure: structure + content + layout → requested changes → preserve-list.
 - Create: `skills/editing-documents/SKILL.md`
 - Create: `skills/verifying-artifacts/SKILL.md`
 
-- [ ] **Step 1: `editing-documents`**
+- [x] **Step 1: `editing-documents`**
 
 ```yaml
 name: editing-documents
@@ -212,7 +212,7 @@ Hard rules:
 - Then `verifying-artifacts`.
 - Fallback: if in-file edit is unavailable, emit a structured change list — never claim the file changed.
 
-- [ ] **Step 2: `verifying-artifacts`**
+- [x] **Step 2: `verifying-artifacts`**
 
 ```yaml
 name: verifying-artifacts
@@ -221,7 +221,7 @@ description: Use when any artifact has been created, edited, converted, or expor
 
 Hard rules: reopen the real file; the body **must** contain the exact sentence `Command success is not artifact success.`; if render/visual check is unavailable, say so.
 
-- [ ] **Step 3: Run full suite without skip**
+- [x] **Step 3: Run full suite without skip**
 
 ```powershell
 Remove-Item Env:WS_ALLOW_PARTIAL -ErrorAction SilentlyContinue
@@ -230,7 +230,9 @@ node --test tests/architecture/*.test.mjs
 
 Expected: ALL PASS (exactly 5 skills + routing-contract).
 
-- [ ] **Step 4: Commit** `feat: add editing-documents and verifying-artifacts`
+- [x] **Step 4: Commit** `feat: add editing-documents and verifying-artifacts`
+
+**Verification (2026-09-13):** Both skills already shipped in `3738018`; direct inspection and independent review confirmed every Task 4 hard rule and fallback, so no skill content changes were needed. The full suite passed with `WS_ALLOW_PARTIAL` unset: 6 tests, 0 failures, 0 skips. This task's commit records completion and verification of the existing skills.
 
 ---
 
