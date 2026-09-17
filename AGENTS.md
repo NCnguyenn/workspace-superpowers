@@ -6,23 +6,41 @@ Skills are capabilities, not slash-commands. Do not wait for
 
 ## Classification
 
-Classify every request before clarifying questions, planning, or touching
-files — including the first reply of a session:
+Classify every request before planning, modifying artifacts, or loading
+specialist skills — including the first reply of a session:
 
-1. **Coding** (software engineering, debugging, refactoring, automated tests)
-   → Superpowers (`using-superpowers`). Never handle that work here.
-2. **Simple Q&A** (definitions or conceptual explanations with no artifact work)
+1. **Coding**
+   Software engineering, source code, repositories, debugging, refactoring,
+   builds, databases as application infrastructure, and automated tests.
+   → load `using-superpowers` and follow it.
+   Do not execute the coding slice under Workspace Superpowers.
+
+2. **Simple Q&A**
+   Lightweight definitions, explanations, or conceptual questions requiring
+   no artifact workflow, structured research, or specialist capability.
    → answer directly.
-3. **Workspace** (documents, PDFs, presentations, spreadsheets, research,
-   citations, images, conversion, review, packaging of knowledge/office work)
-   → load `using-workspace-superpowers` and follow it.
-4. **Mixed** → pick the primary workflow, load that router first, and invoke
-   the other pack only when that slice of work begins. Do not merge the two.
 
-Any task that reads, produces, or modifies a file is artifact work, even when
-it is phrased as a question. When two classes plausibly apply and a file may
-be touched, classify as **Workspace**. Re-classify when the task changes
-mid-session.
+3. **Workspace**
+   Documents, PDFs, presentations, spreadsheets, research, citations,
+   visuals, conversion, review, and packaging of knowledge/office work.
+   → load `using-workspace-superpowers` and follow it.
+
+4. **Mixed**
+   Tasks containing meaningful Coding and Workspace slices.
+   → determine the primary workflow from the user's main outcome or final
+   deliverable, load that router first, and invoke the other router only when
+   its slice begins. Do not merge their workflows.
+
+Classification follows the nature of the operation, not merely the file type.
+
+Reading, producing, or modifying a non-code knowledge/office artifact is
+Workspace work even when phrased as a question. Source code, repositories,
+tests, build files, and software artifacts remain Coding.
+
+When Simple Q&A and Workspace both plausibly apply and artifact work may be
+required, prefer Workspace.
+
+Re-classify when the task changes mid-session.
 
 Never claim a skill was followed unless it was loaded.
 
