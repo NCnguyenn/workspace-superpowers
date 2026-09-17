@@ -12,8 +12,9 @@ Apply consistent typographic hierarchy, table styling, figure captions, table of
 * Preserves underlying metadata and formula relationships.
 
 ## Required Capabilities
-* `apply_styles(path, style_spec)`
-* `update_layout(path, layout_spec)`
+* `edit_document(file, change)`
+* `edit_presentation(file, ...)`
+* `edit_spreadsheet(file, ...)`
 
 ## Output Shape
 Formatting report:

@@ -13,8 +13,9 @@ Open and inspect the actual artifact representation (pages, sheets, cells, layer
 
 ## Required Capabilities
 * `read_file(path)`
-* `inspect_artifact(path)`
-* `parse_structure(path)`
+* `inspect_document(file)`, `inspect_pdf(file)`, `inspect_presentation(file)`, `inspect_spreadsheet(file)`
+* `inspect_image(file)`, `inspect_layered_image(file)`
+* `list_files(dir)`
 
 ## Output Shape
 Structured inventory:

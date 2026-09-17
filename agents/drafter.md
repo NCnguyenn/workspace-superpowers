@@ -8,12 +8,12 @@ Draft or revise the designated section or chapter prose strictly according to th
 
 ## Hard Limits
 * Does not self-declare overall task completion.
-* Does not invent facts, numbers, magnitude, direction, or causal links not grounded in the supplied context or evidence.
+* Does not invent facts, numbers, magnitude, direction, causal links, citations, or bibliographic metadata not grounded in the supplied context or evidence.
 * Does not modify sections outside its designated scope.
 
 ## Required Capabilities
-* `write_content(path, content)`
-* `edit_content(path, target, replacement)`
+* `write_file(path, content)`
+* `edit_document(file, change)`
 
 ## Output Shape
 Drafted content section:

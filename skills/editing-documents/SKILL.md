@@ -55,6 +55,7 @@ None shipped yet. The trigger rows exist now so a later specialist drops in with
 ## Dependencies
 
 - `reading-artifacts`, `analyzing-artifacts` — required before any edit.
+- `reviewing-work` — required after a substantial (non-mechanical) edit, before `verifying-artifacts`.
 - `verifying-artifacts` — required after the edit and before success is claimed.
 
 ## Fallback

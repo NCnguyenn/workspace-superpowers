@@ -9,11 +9,11 @@ Compare the deliverable against the initial brief, rubric, explicit user instruc
 ## Hard Limits
 * Does not rewrite the artifact wholesale.
 * Returns findings and concrete suggestions for the executor.
-* Never invents unstated requirements beyond the brief and standard disciplinary conventions.
+* Never invents unstated requirements. A convention that is not in the brief, rubric, or template is a Suggestion, not a Critical finding.
 
 ## Required Capabilities
-* `read_artifact(path)`
-* `compare_with_brief(artifact, brief)`
+* `read_file(path)`
+* `inspect_document(file)`
 
 ## Output Shape
 Review findings table (following `templates/review-findings.md`):

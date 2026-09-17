@@ -1,6 +1,6 @@
 ---
 name: packaging-deliverables
-description: Use when assembling, structuring, naming, and reporting the final set of verified artifacts for delivery to the user.
+description: Use when verified workspace artifacts are ready to be named, organized, and reported as the final delivery set.
 ---
 
 # Packaging Deliverables
@@ -45,7 +45,8 @@ Abstract capability names, resolved by the harness adapter. Never a tool name.
 
 - `read_file(path)` — to confirm deliverable existence and inspect verification status.
 - `write_file(path, content)` — to generate the final packaging report.
-- `organize_files(sources, target)` — optional file management capability.
+- `list_files(dir)` — to locate verified artifacts in their working locations.
+- `export_artifact(file, format)` / `convert_artifact(src, format)` — only when the contract still requires an export after verification of the source.
 
 ## Dependencies
 

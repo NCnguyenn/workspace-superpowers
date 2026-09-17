@@ -48,7 +48,7 @@ Abstract capability names, resolved by the harness adapter. Never a tool name.
 ## Dependencies
 
 - `reading-artifacts` — required background; verification is a re-read of the real file.
-- `editing-documents` — the producer skill in the current catalog; whatever it created or changed lands here before success is claimed.
+- Any skill or role that created or modified the artifact — whatever produced the file lands here before success is claimed. `editing-documents` is one producer, not the only one.
 
 ## Fallback
 

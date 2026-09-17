@@ -12,8 +12,9 @@ Cross-check every in-text citation against the reference list and vice versa. Ve
 * Flags unsupported claims as Critical or Important findings.
 
 ## Required Capabilities
-* `read_artifact(path)`
-* `verify_citations(text, references, style)`
+* `read_file(path)`
+* `inspect_document(file)`
+* `search_web(query)`, `search_academic(query)` — only to check that a cited source exists, never to invent one
 
 ## Output Shape
 Review findings table (following `templates/review-findings.md`):

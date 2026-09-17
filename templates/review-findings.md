@@ -26,4 +26,4 @@
 ---
 
 ## Execution Handoff
-Reviewers return findings and concrete fixes. Reviewers do NOT silently rewrite the deliverable wholesale. The executing role applies approved changes.
+Reviewers return findings and concrete fixes. Reviewers do NOT rewrite the deliverable. The executing role applies the fixes.

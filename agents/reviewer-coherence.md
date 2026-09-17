@@ -12,8 +12,8 @@ Evaluate the logical progression of ideas, argument soundness, topic sentences, 
 * Does not alter factual findings or evidence.
 
 ## Required Capabilities
-* `read_artifact(path)`
-* `analyze_narrative_flow(text)`
+* `read_file(path)`
+* `inspect_document(file)`
 
 ## Output Shape
 Review findings table (following `templates/review-findings.md`):

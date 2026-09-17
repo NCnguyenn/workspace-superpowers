@@ -12,9 +12,10 @@ Re-open and re-inspect the real artifact directly (or render preview where capab
 * Discloses missing rendering or visual testing capabilities explicitly.
 
 ## Required Capabilities
-* `reopen_artifact(path)`
-* `verify_structure(path, contract)`
-* `render_preview(path)` (optional/best-effort)
+* `verify_artifact(file)`
+* `read_file(path)`
+* `render_document(file)`, `render_presentation(file)`, `render_image(file)`
+* `recalculate_spreadsheet(file)`, `audit_spreadsheet(file)`
 
 ## Output Shape
 Verification matrix:

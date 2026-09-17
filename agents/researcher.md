@@ -12,9 +12,10 @@ Discover reliable sources, evaluate authority, recency, and relevance, extract v
 * If a source cannot be verified, explicitly reports it as unverified.
 
 ## Required Capabilities
-* `search_sources(query)`
-* `fetch_content(source)`
-* `evaluate_evidence(claim, source)`
+* `search_web(query)`
+* `search_academic(query)`
+* `read_file(path)`
+* `extract_pdf_text(file)`
 
 ## Output Shape
 Evidence cards:

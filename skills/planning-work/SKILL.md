@@ -1,6 +1,6 @@
 ---
 name: planning-work
-description: Use when organizing and structuring a multi-stage, multi-artifact, or complex document task before drafting or execution.
+description: Use when a workspace task is multi-stage, multi-artifact, or otherwise complex enough that execution without an outline or output contract would change the result.
 ---
 
 # Planning Work
@@ -25,6 +25,9 @@ Select the plan shape that matches the deliverable:
 | Thesis / Dissertation | Thesis architecture, chapter breakdown, and research plan | Comprehensive chapter plan |
 | Presentation / Deck | Narrative arc and slide storyboard | Slide storyboard |
 | Spreadsheet / Dataset | Data cleaning and formula architecture | Analysis plan |
+| Document formatting | Style, heading, and pagination plan | Format plan |
+| Design / image | Canvas, layer, and export plan | Design plan |
+| Conversion | Source → target mapping and verification points | Conversion plan |
 | Mixed Project | Multi-artifact dependencies and sequencing | Multi-artifact plan and contract (`templates/deliverable-contract.md`) |
 
 ## Procedure
@@ -47,7 +50,7 @@ Select the plan shape that matches the deliverable:
 Abstract capability names, resolved by the harness adapter. Never a tool name.
 
 - `write_file(path, content)` — to generate the outline and deliverable contract when required.
-- `delegate(role, context)` — optional; to dispatch execution or specialist roles if supported.
+- `delegate(role, context)` — optional; only for specialist *planning* roles. Do not dispatch the full execution graph from this skill; `reviewing-work` and `verifying-artifacts` remain later lifecycle stages.
 
 ## Dependencies
 

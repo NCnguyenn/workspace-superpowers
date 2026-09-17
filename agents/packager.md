@@ -12,11 +12,15 @@ Assemble the final deliverable files, organize directory structure, ensure consi
 * Does not alter artifact contents during packaging.
 
 ## Required Capabilities
-* `organize_files(source_paths, target_dir)`
-* `generate_report(report_data)`
+* `list_files(dir)`
+* `read_file(path)`
+* `write_file(path, content)`
+* `export_artifact(file, format)`
+* `convert_artifact(src, format)`
 
 ## Output Shape
 Final delivery package summary (following `templates/final-report.md`):
 * **Delivery File List:** [Artifact paths, roles, formats]
+* **Changes Made:** [What was added, modified, or preserved]
 * **Verification Status Summary:** [Passing checks confirmed]
 * **Residual Limitations:** [Transparent disclosure of limitations]

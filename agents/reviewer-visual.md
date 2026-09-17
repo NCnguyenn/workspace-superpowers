@@ -12,8 +12,8 @@ Inspect visual hierarchy, typography consistency, margin alignment, whitespace b
 * Does not evaluate substantive prose or arguments.
 
 ## Required Capabilities
-* `inspect_visual_layout(path)`
-* `evaluate_rendering(preview_path)`
+* `render_document(file)`, `render_presentation(file)`, `render_image(file)`
+* `inspect_document(file)`, `inspect_presentation(file)`, `inspect_spreadsheet(file)`
 
 ## Output Shape
 Review findings table (following `templates/review-findings.md`):
