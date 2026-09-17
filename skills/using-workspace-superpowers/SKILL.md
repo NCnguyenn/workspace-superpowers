@@ -49,7 +49,7 @@ Additional family and specialist skills are selected according to the task.
 Examples include:
 
 * Research & Evidence: `researching-sources`, `citing-sources` (invoke only upon explicit user request for external research, reference materials, or citations)
-* Documents & Media: `editing-documents`, `formatting-layout`, `working-with-pdf`, `presentations`, `spreadsheets`, `visuals`
+* Documents & Media: `editing-documents`, `formatting-layout`, `working-with-pdf`, `working-with-spreadsheets`, `auditing-formulas`, `working-with-presentations`, `storyboarding-slides`, `working-with-visuals`
 * Transform: `converting-artifacts`
 
 The catalog is extensible. These examples are not an exhaustive list.
@@ -63,25 +63,28 @@ This router never inlines specialist procedures.
    * Determine whether this is Workspace work, Coding work, Simple Q&A, or the workspace slice of a mixed request.
    * Coding slices belong to `using-superpowers`.
 
-2. **Locate Target Artifact(s)**
+2. **Select Lifecycle Skills**
 
-   * Use `list_files` only when necessary to identify the relevant artifacts.
-   * Do not read substantive artifact content inside this router.
+   * Compose the lifecycle stages appropriate to the task scope.
+   * Small tasks run lean; substantial tasks execute the full sequence.
 
-3. **Resolve Blocking Ambiguity**
+3. **Enforce Hard Dependencies**
 
-   * If missing information would materially change the requested outcome or make execution unsafe, invoke `scoping-the-brief`.
-   * Do not invoke scoping for mechanical, reversible, or already well-specified work.
-   * Do not ask for information already available from the request, artifacts, or established context.
+   * No file modification before `reading-artifacts` (and `analyzing-artifacts` for non-trivial modifications).
+   * No substantive prose drafting before `planning-work` when the brief is complex or multi-artifact.
+   * No completion claim before `verifying-artifacts` re-opens the real deliverable.
+   * No delivery packaging before verification has passed.
 
-4. **Route Content Reading**
+4. **Scope When Material Facts Are Missing**
 
-   * Existing artifact → invoke `reading-artifacts` before any content-dependent action.
+   * Invoke `scoping-the-brief` when requirements are genuinely ambiguous.
+   * Do not interview when the brief is already clear.
+   * When researching sources or citing references, invoke `researching-sources` and `citing-sources` only when the user explicitly requests literature research or citations. When citation style is not specified, default to Harvard Style.
 
-5. **Route Analysis When Needed**
+5. **Analyze Before Substantive Modification**
 
-   * If the task requires diagnosis, interpretation, comparison, judgment, critique, synthesis, or substantive revision → invoke `analyzing-artifacts`.
-   * Purely mechanical edits may proceed directly from reading to the relevant editing specialist.
+   * Invoke `analyzing-artifacts` after `reading-artifacts` whenever modifying, redesigning, or restructuring existing material.
+   * Simple mechanical edits may proceed directly from reading to the relevant editing specialist.
 
 6. **Plan Only When Complexity Warrants It**
 
@@ -130,6 +133,10 @@ Research deliverable:
 Document formatting / layout:
 
 `reading-artifacts → analyzing-artifacts → formatting-layout → reviewing-work (when substantial) → verifying-artifacts → packaging-deliverables`
+
+Report → Presentation deck:
+
+`reading-artifacts → analyzing-artifacts → planning-work → storyboarding-slides → working-with-presentations → reviewing-work → verifying-artifacts → packaging-deliverables`
 
 Artifact conversion / export:
 
