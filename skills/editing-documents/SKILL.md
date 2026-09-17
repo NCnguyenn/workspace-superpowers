@@ -22,6 +22,18 @@ Create-from-blank with no existing artifact. Read-only analysis. Verify-only. Sp
 3. The preserve-list from analyzing names only what must **not** change.
 4. Then `verifying-artifacts`.
 
+## Factual fidelity
+
+An instruction to edit or rewrite does not authorize inventing facts. For an
+underspecified edit, improve wording while preserving factual claims, numbers,
+direction and magnitude of changes, causes, and uncertainty. Change those only
+when the user supplies the replacement facts or supporting evidence.
+
+For example, a preliminary decline cannot become confirmed growth merely to make
+a paragraph sound better. If a necessary clarification cannot be obtained, keep
+the original facts and make only a meaning-preserving edit, or explain the
+unresolved requirement. An unavailable answer is not permission to guess.
+
 ## Required capabilities
 
 Abstract capability names, resolved by the harness adapter. Never a tool name.
@@ -56,3 +68,4 @@ If in-file edit is unavailable, emit a structured change list. Never claim the f
 - Claiming the file changed when only a change-list was produced.
 - Treating a create-from-blank deliverable as an edit.
 - Rewriting content when only layout or style was requested.
+- Changing facts or removing uncertainty during a wording-only or unspecified edit.

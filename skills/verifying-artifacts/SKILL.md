@@ -26,6 +26,10 @@ No artifact was produced or changed.
 
 Command success is not artifact success.
 
+A check on an earlier generation is stale after another write or conversion.
+Inspect the latest file before reporting. Do not regenerate a failed export
+unless a different converter exists; if you regenerate, verify the new file.
+
 If render or visual check is unavailable, say so. Never treat a command exit code as proof the artifact is correct.
 
 An export is verified separately from its source: check both.
