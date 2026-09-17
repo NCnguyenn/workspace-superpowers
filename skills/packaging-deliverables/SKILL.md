@@ -1,0 +1,63 @@
+---
+name: packaging-deliverables
+description: Use when assembling, structuring, naming, and reporting the final set of verified artifacts for delivery to the user.
+---
+
+# Packaging Deliverables
+
+Assemble, organize, and produce the final delivery report for verified workspace artifacts.
+
+## When to use
+
+Concluding any workspace task where artifacts were created, modified, converted, or reviewed, and final delivery is being made to the user.
+
+## When not to use
+
+Before verification is complete. `verifying-artifacts` must verify the final files before packaging begins. Intermediate drafts or scratch files must not be packaged as deliverables.
+
+## Mandatory reporting invariants
+
+The final delivery report (following `templates/final-report.md`) must explicitly state:
+
+1. **Artifact Paths:** Exact locations of all deliverable files, distinguishing source/editable artifacts from rendered/exported files and supporting data.
+2. **Changes Made:** Clear summary of what was added, modified, or preserved.
+3. **Checks Performed:** Exact verification checks that succeeded on the actual files.
+4. **Unsupported Checks & Limitations:** Transparent statement of any checks that could not be run (e.g. missing visual renderer, missing OCR engine) and any residual limitations.
+
+Never omit limitations. Never claim an unverified artifact was verified.
+
+## Procedure
+
+1. Verify that all artifacts declared in the deliverable contract have passed `verifying-artifacts`.
+2. Clean up temporary scratch scripts and intermediate cache files.
+3. Organize files into clear deliverable directories if requested (e.g. `output/`, `figures/`).
+4. Ensure standard, clear file naming and versioning.
+5. Generate the final delivery report covering:
+   - Summary of completed deliverables and paths.
+   - Substantive modifications versus preserved elements.
+   - Verified integrity checks.
+   - Transparent disclosure of residual limitations and unsupported checks.
+6. Present the final summary to the user.
+
+## Required capabilities
+
+Abstract capability names, resolved by the harness adapter. Never a tool name.
+
+- `read_file(path)` — to confirm deliverable existence and inspect verification status.
+- `write_file(path, content)` — to generate the final packaging report.
+- `organize_files(sources, target)` — optional file management capability.
+
+## Dependencies
+
+- Requires `verifying-artifacts` to have completed successfully for all delivered artifacts.
+
+## Fallback
+
+If directory restructuring or archiving tools are unavailable, deliver the verified artifacts in their current working locations, providing exact absolute paths in the final report.
+
+## Common mistakes
+
+* Packaging artifacts before `verifying-artifacts` has confirmed their integrity.
+* Concealing limitations or claiming visual verification when only command exit code 0 was observed.
+* Leaving scratch files and debugging scripts scattered in deliverable folders.
+* Failing to provide clear, actionable file paths to the user.
