@@ -48,7 +48,7 @@ Additional family and specialist skills are selected according to the task.
 
 Examples include:
 
-* Research & Evidence: `researching-sources`, `citing-sources`
+* Research & Evidence: `researching-sources`, `citing-sources` (invoke only upon explicit user request for external research, reference materials, or citations)
 * Documents & Media: `editing-documents`, `working-with-pdf`, `presentations`, `spreadsheets`, `visuals`
 * Transform: `formatting-layout`, `converting-artifacts`
 
@@ -147,4 +147,5 @@ Do not merge their procedures into a single workflow.
 * **Assuming a missing specialist requires total failure:** attempt a safe lower-level fallback first.
 * **Inlining specialist procedures:** Word, Excel, PDF, presentation, research, and visual procedures belong in their respective skills.
 * **Routing coding work into workspace workflows:** software engineering remains with `using-superpowers`.
+* **Invoking research or citations spontaneously:** invoke `researching-sources` and `citing-sources` only when the user explicitly requests literature research or citations.
 * **Treating the listed specialist examples as the complete catalog:** the router must remain extensible.
