@@ -19,13 +19,41 @@ No artifact was produced or changed.
 
 1. Reopen or re-read the actual file.
 2. Compare against the deliverable contract and the preserve-list.
-3. Record what was checked and what could not be checked.
-4. Only then report success.
+3. Run the format-specific checks for that type: `references/artifact-verification.md`.
+4. Render where a render capability exists; say so when it does not.
+5. Record what was checked and what could not be checked.
+6. Only then report success.
 
 Command success is not artifact success.
 
 If render or visual check is unavailable, say so. Never treat a command exit code as proof the artifact is correct.
 
+An export is verified separately from its source: check both.
+
+The report must state which artifacts exist at which paths, which checks passed, which checks were impossible — for a missing capability or an undefined criterion — and any residual limitation.
+
+## Required capabilities
+
+Abstract capability names, resolved by the harness adapter. Never a tool name.
+
+- `verify_artifact(file)` plus the typed inspection capability for that artifact.
+- `render_document(file)`, `render_presentation(file)`, `render_image(file)` where visual QA is possible.
+- `recalculate_spreadsheet(file)`, `audit_spreadsheet(file)` for workbooks.
+- `read_file(path)` for text-bearing artifacts only; a byte stream from a binary format is not a re-open.
+
+## Dependencies
+
+- `reading-artifacts` — required background; verification is a re-read of the real file.
+- `editing-documents` — the producer skill in the current catalog; whatever it created or changed lands here before success is claimed.
+
 ## Fallback
 
 If the file cannot be re-opened, do not claim success. Disclose the limitation.
+
+## Common mistakes
+
+- Treating exit code 0 as proof the artifact is correct.
+- Verifying the source but not the export, or the export but not the source.
+- Claiming a render or visual QA that was never performed.
+- Omitting artifact paths from the final report.
+- Reporting success when the file could not be re-opened.

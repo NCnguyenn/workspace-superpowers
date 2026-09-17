@@ -24,6 +24,18 @@ Software engineering, debugging, refactoring, or test work — those belong to S
 5. Coding → Superpowers, not here.
 6. Interview only if a missing fact would change the deliverable (typo-fix = no interview).
 
+## Required capabilities
+
+Abstract capability names, resolved by the harness adapter. Never a tool name.
+
+- `invoke_skill(name)` — load the matching specialist.
+- `delegate(role, context)` — optional, only where the harness exposes roles.
+- `list_files(dir)`, `read_file(path)` — only to identify which artifact the request is about. Opening and reading it belongs to `reading-artifacts`.
+
+## Dependencies
+
+None. This router is the entry point and is required background for every other workspace skill. It routes to `reading-artifacts`, `analyzing-artifacts`, `editing-documents`, and `verifying-artifacts`; it never inlines their procedures.
+
 ## Fallback
 
 If a named specialist is missing, use a valid lower-level capability that still completes the job safely. If none exists, stop and disclose the limitation. Do not halt solely because the specialist folder is absent.
@@ -34,3 +46,5 @@ If a named specialist is missing, use a valid lower-level capability that still 
 - Routing coding work here.
 - Skipping verification because a command exited 0.
 - Stopping only because a specialist directory is not present when a safe fallback still exists.
+- Embedding a specialist's procedure in this router instead of routing to it.
+- Reading the artifact here instead of routing to `reading-artifacts`.

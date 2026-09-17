@@ -12,6 +12,6 @@ What analysis should record per type. No tool names.
 | PNG / JPG / WEBP / TIFF | Dimensions, colour mode, visual content (pixels). Flattened unless layers exist |
 | SVG | Vector structure, text elements, viewBox, styling |
 | PSD / PSB | Canvas, layer tree, text layers, smart objects — only with layered capability |
-| Mixed set | Relationships between artifacts (report ↔ data ↔ deck ↔ figures) |
+| Mixed artifact set | Relationships between artifacts (report ↔ data ↔ deck ↔ figures) |
 
 Reading raw bytes is not a row in this table.

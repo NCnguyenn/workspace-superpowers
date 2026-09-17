@@ -16,3 +16,6 @@ dist/
 build/
 *.zip
 node_modules/
+# Local-only: keep on disk, do not publish
+tests/
+docs/superpowers/plans/
