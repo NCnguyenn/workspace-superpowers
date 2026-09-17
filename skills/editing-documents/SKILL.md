@@ -45,12 +45,13 @@ Typed edit capabilities for other families — spreadsheet, presentation, image,
 
 ## Specialists
 
-None shipped yet. The trigger rows exist now so a later specialist drops in without editing the router or the dependencies below.
+The trigger rows route to shipped specialists or reserve slots for future additions.
 
 | Trigger | Route to |
 |---|---|
 | Substantive content change to an existing text or document artifact | this skill |
-| Layout, style, TOC, captions or pagination only, content unchanged | `formatting-layout`, when it ships in the document family |
+| Layout, style, TOC, captions or pagination only, content unchanged | `formatting-layout` |
+| Export or format conversion across file types (e.g. DOCX → PDF) | `converting-artifacts` |
 
 ## Dependencies
 

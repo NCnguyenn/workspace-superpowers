@@ -49,8 +49,8 @@ Additional family and specialist skills are selected according to the task.
 Examples include:
 
 * Research & Evidence: `researching-sources`, `citing-sources` (invoke only upon explicit user request for external research, reference materials, or citations)
-* Documents & Media: `editing-documents`, `working-with-pdf`, `presentations`, `spreadsheets`, `visuals`
-* Transform: `formatting-layout`, `converting-artifacts`
+* Documents & Media: `editing-documents`, `formatting-layout`, `working-with-pdf`, `presentations`, `spreadsheets`, `visuals`
+* Transform: `converting-artifacts`
 
 The catalog is extensible. These examples are not an exhaustive list.
 
@@ -126,6 +126,14 @@ Ambiguous complex deliverable:
 Research deliverable:
 
 `scoping-the-brief when needed → researching-sources → citing-sources → relevant authoring specialist → reviewing-work → verifying-artifacts → packaging-deliverables`
+
+Document formatting / layout:
+
+`reading-artifacts → analyzing-artifacts → formatting-layout → reviewing-work (when substantial) → verifying-artifacts → packaging-deliverables`
+
+Artifact conversion / export:
+
+`reading-artifacts (source) → converting-artifacts → verifying-artifacts (output) → packaging-deliverables`
 
 
 Mixed coding/workspace task:
