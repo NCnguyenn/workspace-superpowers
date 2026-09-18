@@ -20,6 +20,10 @@ Single entry router for the workspace domain. Classify, compose, and route. Cont
    * Fall back to a lower-level safe capability when possible.
    * If no safe fallback exists, stop that unsupported slice and clearly report the capability limitation.
 
+## Deliverable Language
+
+Apply the [shared language policy](../../references/language-policy.md): authored deliverables default to English unless the user explicitly requests another language. Vietnamese conversation or input does not select Vietnamese output. Carry the resolved language into the brief and downstream specialists; a missing language instruction does not require an interview.
+
 ## Allowed Router Capabilities
 
 This router coordinates workflow only.

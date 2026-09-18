@@ -4,7 +4,7 @@
 * **Target Audience:** [Intended readers/stakeholders]
 * **Core Purpose:** [What this document achieves or explains]
 * **Tone & Register:** [e.g., academic, executive, formal, casual]
-* **Deliverable Language:** [Language of the artifact, resolved per the brief/rubric/source; not assumed from conversation language]
+* **Deliverable Language:** [English by default; another language only when explicitly requested by the user for this deliverable. Record the instruction if overridden; Vietnamese conversation/source material is not an override. See the [language policy](../references/language-policy.md).]
 
 ## 2. Deliverable Requirements
 * **Deliverable Format(s):** [e.g., DOCX, PDF, PPTX, XLSX]

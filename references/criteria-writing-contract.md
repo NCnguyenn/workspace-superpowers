@@ -2,6 +2,10 @@
 
 Shared rules for interpreting criteria, confirming scope, approving outlines, and handling evidence in report or thesis writing. This reference defines handoffs within the existing workspace lifecycle; it is not another router. Ownership defines consumer responsibilities, including drafting-prose when available. This reference does not install skills or change routing by itself.
 
+## Deliverable language
+
+Follow the [language policy](language-policy.md): authored analysis, outlines, reports, and generated/exported artifacts default to English. Use Vietnamese or another language only when explicitly requested by the user for the relevant output. Conversation or source language does not override this default. Record the resolved language in scope and carry it through drafting, labels, placeholders, review, and export.
+
 ## 1. Activation and stopping points
 
 Apply when the requested operation concerns understanding criteria, outlining, drafting, or substantively revising report/thesis content against explicit requirements. Criteria may be pasted in the conversation or supplied in a rubric, brief, or other artifact. Infer the operation from context; do not require users to name a skill or enter a mode value.
@@ -90,17 +94,17 @@ Apply when a criterion requires a project example, measured comparison, experime
 
 ### Standard neutral placeholder
 
-[Cần bổ sung kết quả đo CPU trước/sau trong cùng điều kiện thử nghiệm; chưa đủ căn cứ xác định mức thay đổi.]
+[Before/after CPU measurements under the same test conditions are required; the direction and magnitude of change are not yet established.]
 
-Do not substitute “CPU giảm X%”: that already assumes a decrease. Adapt the neutral form to other missing quantities without inventing an expected outcome.
+Do not substitute “CPU decreased by X%”: that already assumes a decrease. Adapt the neutral form to other missing quantities without inventing an expected outcome.
 
-For authorized hypothetical examples, use a local label such as **“Kịch bản minh họa giả định — không phải kết quả đo của dự án.”** Permission to write first, a request for an example from the actual project, or a waived outline gate is not permission to fabricate that example.
+For authorized hypothetical examples, use a local label such as **“Hypothetical illustration — not a measured project result.”** Permission to write first, a request for an example from the actual project, or a waived outline gate is not permission to fabricate that example.
 
 If real-world evidence is required by the criterion, an illustration does not satisfy it. Keep the report draft_incomplete while mandatory evidence/content is missing, and list what remains to be supplied. Do not describe it as completed merely because the prose reads smoothly.
 
 ## 6. Criteria, evidence, and visuals in the outline
 
-For each heading, identify criterion obligations, main points, planned evidence, and a visual/table decision. For every proposed visual/table, include name/type, purpose, intended position, source/data, preparer, and status. **“Không cần” / “Not needed”** is valid; never add decorative assets just to populate the template.
+For each heading, identify criterion obligations, main points, planned evidence, and a visual/table decision. For every proposed visual/table, include name/type, purpose, intended position, source/data, preparer, and status. **“Not needed”** is valid; never add decorative assets just to populate the template.
 
 - The preparer may be the user or executing role. State whether an asset is available, requested, to be created, or blocked by missing evidence.
 - Draw diagrams from confirmed architecture or a clearly labeled proposed/illustrative design. Charts asserting results need data. An invented screenshot is not proof that a function operates.

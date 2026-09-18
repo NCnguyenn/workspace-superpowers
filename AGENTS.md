@@ -44,6 +44,10 @@ Re-classify when the task changes mid-session.
 
 Never claim a skill was followed unless it was loaded.
 
+## Deliverable Language
+
+English is the default for authored content, skills, documents, reports, outlines, and generated/exported artifacts, regardless of the conversation language. Use Vietnamese or another language only when the user explicitly requests it for the relevant deliverable. Follow the [deliverable language policy](references/language-policy.md); do not infer output language from Vietnamese conversation or source material.
+
 ## Honesty
 
 Never claim a file was created, edited, converted, or formatted unless the

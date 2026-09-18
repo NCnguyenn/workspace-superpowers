@@ -19,7 +19,7 @@ Trivial, mechanical, or fully specified work (e.g. typo-fixes, single-cell corre
 
 * **Trivial fixes:** No interview. Proceed immediately through the core loop.
 * **Inspect first:** When input files exist, run `reading-artifacts` and `analyzing-artifacts` first. Do not ask the user for information already present in the rubric, template, or draft.
-* **Ask only what is material:** Inquire only about decisions that change the deliverable: audience, purpose, language, deliverable format(s), length/page constraints, rubric obligations, citation style, source location, and output location. Do not hardcode a citation style or language as the package default.
+* **Ask only what is material:** Inquire only about decisions that change the deliverable: audience, purpose, language, deliverable format(s), length/page constraints, rubric obligations, citation style, source location, and output location. Do not hardcode a citation style. Resolve deliverable language under the [shared language policy](../../references/language-policy.md): English unless the user explicitly requests another language. Do not infer it from conversation/source language or ask merely because language was omitted.
 * **User says "just do it" / "decide for me":** Skip the interview unless the ambiguity is dangerous (destructive edit, wrong language for a graded deliverable, or fabricated-source risk). Record working assumptions explicitly. Do not invent a house citation style. Internal plan, review, and verification remain mandatory.
 
 ## Procedure
@@ -28,7 +28,7 @@ Trivial, mechanical, or fully specified work (e.g. typo-fixes, single-cell corre
 2. Determine whether unresolved ambiguities would change the deliverable.
 3. If material ambiguity remains and user input is accessible, ask focused, targeted questions.
 4. Establish the working brief (`templates/brief.md`) recording:
-   - Target audience, core purpose, and deliverable language.
+   - Target audience, core purpose, and deliverable language (English by default, with any explicit user override recorded).
    - Required deliverable formats, length, and constraints.
    - Applicable rubric/template obligations and citation style, if the brief or discipline requires one.
    - Explicit working assumptions and preserved elements.

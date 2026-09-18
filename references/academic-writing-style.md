@@ -2,6 +2,10 @@
 
 This guide establishes standards for tone, synthesis, and evidence integration across academic and analytical deliverables.
 
+## Deliverable language
+
+Follow the [language policy](language-policy.md). Write academic and professional content in English by default, including examples, headings, captions, and exported artifacts. Use Vietnamese only on an explicit user request for Vietnamese; a Vietnamese conversation is not that request. Adapt the same evidence and style standards to another language only when explicitly requested.
+
 ## 1. Objective Register & Tone
 
 * **Evidence-driven statements:** Ground assertions in empirical findings, cited literature, or explicit data. Avoid unsubstantiated value judgments (e.g. replace "obviously superior" with "demonstrated a 14% higher throughput").

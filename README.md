@@ -8,4 +8,6 @@ Core lifecycle: **route → scope → read → analyze → plan → edit → rev
 
 The root `package.json` `"pi"` field is distribution/discovery metadata only. Skills are portable and must not depend on it.
 
+Deliverables and repository content default to English, even when the user communicates in Vietnamese. Use another language only on an explicit user request. See the [language policy](references/language-policy.md).
+
 See `docs/workspace-superpowers-design.md`.

@@ -71,8 +71,8 @@ skill graph the router builds.
   not replace Zotero/EndNote and does not maintain a reference database.
 - **Not** a full catalog at v1. v1 proves the architecture with ~23 skills; the
   catalog grows to 50–80 specialists afterwards without touching the skill pack.
-- **Not** English-only and **not** Vietnamese-only. Language is resolved per
-  task (§16).
+- English is the default deliverable and repository language. Explicit user
+  requests can select another language for a particular deliverable (§16).
 
 ## 3. Design Principles
 
@@ -782,17 +782,24 @@ hardcoded as the default.
 
 ## 16. Language Behaviour
 
-No default language. Resolution order:
+English is the default language for all authored content, skills, documentation,
+reports, outlines, and generated/exported artifacts. Follow the
+[shared language policy](../references/language-policy.md).
 
-1. Explicit user request.
-2. Deliverable requirement (rubric, template, journal, client specification).
-3. Source material or template language.
-4. Conversation language.
-5. If genuinely ambiguous **and** it materially affects the output → ask.
+1. Honor an explicit applicable user request for the deliverable language,
+   including an already established instruction for the same deliverable.
+2. Otherwise, use English. Do not infer another language from the conversation,
+   source material, or template. A Vietnamese request for a report without a
+   language instruction produces an English report.
+3. If a mandatory supplied requirement conflicts with the default and has not
+   been explicitly adopted by the user, clarify that specific conflict rather
+   than silently selecting another language.
 
-Skill and documentation language is English (public repo). Artifact language is
-resolved per the rules above. A user may converse in one language and require a
-deliverable in another; both are honoured independently.
+Conversational updates may follow the user's language. Deliverable prose,
+headings, captions, placeholders, and exports follow the resolved output language.
+Preserve quotations, identifiers, and explicitly protected source content;
+resolve any conflict with preservation-only instructions without silently
+translating. Omitted language alone is not a reason to interview the user.
 
 ## 17. Fallback & Missing Capabilities
 
@@ -1066,7 +1073,7 @@ The system is **not** complete until every scenario below passes.
 | 8 | Any workspace prompt, no slash command | The router loads automatically; the correct family and specialists are selected; skills are never claimed as followed without being loaded. |
 | 9 | A coding prompt in the same session | Routes to Superpowers, not to Workspace Superpowers. |
 | 10 | Adding `writing-systematic-reviews` | New skill directory + one trigger line. Bootstrap, router, other families, capability model and adapters unchanged; all architecture tests pass. |
-| 11 | Deliverable language differs from conversation language | Both honoured; artifact language resolved per §16 without assuming English. |
+| 11 | Deliverable language differs from conversation language | Conversation may remain Vietnamese; artifacts default to English unless the user explicitly requests another language (§16). |
 | 12 | Any conversion or export step | Output verified as an artifact; command exit status alone never accepted as success. |
 | 13 | Install the Pi plugin | Plugin installs in the Superpowers shape; skills listed; no panel; bootstrap injects; a workspace prompt auto-routes. |
 
@@ -1103,4 +1110,3 @@ Do not reduce Workspace Superpowers to academic writing.
 4. Workflow and skill tests per §24.
 5. GitHub publication: public repo, permissive licence, English README, install
    instructions per adapter (Pi first: install the plugin).
-

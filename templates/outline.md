@@ -51,13 +51,13 @@ Repeat these fields for each proposed heading, keeping the original purpose, poi
 * **Criterion Obligation(s):** [Criterion ID(s), exact obligation(s), and how this heading will address them]
 * **Main Points:** [Planned argument or explanation within the approved scope]
 * **Planned Evidence:** [Source/locator and what it supports; mark missing or illustrative material explicitly]
-* **Dự kiến Bảng / Hình ảnh:** [List each proposed asset below, or write Không cần / Not needed]
+* **Planned Tables / Figures:** [List each proposed asset below, or write Not needed]
 
 | Name / Type | Purpose | Intended position | Source / Data | Preparer | Status |
 |---|---|---|---|---|---|
 | [Figure/table name; diagram, screenshot, chart, or table] | [Criterion or point it explains/supports] | [Heading and placement relative to the argument] | [Confirmed source/data or specific missing input] | [User supplies / executing role creates] | [Available / requested / to create / blocked by missing evidence] |
 
-If no visual/table is needed, omit the asset rows and write **Không cần / Not needed**. If an asset belongs to a child heading, the parent may refer to it instead of requesting it twice. Do not add visuals solely to populate this field.
+If no visual/table is needed, omit the asset rows and write **Not needed**. If an asset belongs to a child heading, the parent may refer to it instead of requesting it twice. Do not add visuals solely to populate this field.
 
 For tables, describe intended columns, comparisons, or measures in Name / Type and Purpose. For figures, distinguish actual screenshots, diagrams from confirmed information, and explicitly authorized hypothetical illustrations. Charts of results require data; a generated screenshot is not operational evidence.
 
@@ -65,6 +65,6 @@ For tables, describe intended columns, comparisons, or measures in Name / Type a
 
 ### Small Criteria and Inline Outlines
 
-A short outline directly in chat is sufficient for a small criterion. Do not require a separate file or additional chapters. Preserve applicable criterion mapping, evidence/visual decision, version, and approval record even when inline. A visual decision may simply be “Không cần”.
+A short outline directly in chat is sufficient for a small criterion. Do not require a separate file or additional chapters. Preserve applicable criterion mapping, evidence/visual decision, version, and approval record even when inline. A visual decision may simply be “Not needed”.
 
 If the user allows writing before data is available, carry neutral missing-evidence markers into the draft; outline approval does not establish the truth of a planned result. Do not turn hypothetical examples into project measurements.
