@@ -1,0 +1,75 @@
+---
+name: drafting-prose
+description: Use when drafting or substantively composing new text, sections, or full document content from an approved outline, working brief, and evidence register.
+---
+
+# Drafting Prose
+
+Family skill for composing new report or thesis content after applicable scope and outline conditions are met. It selects a writing specialist. It does not replace the workspace lifecycle or invent approvals.
+
+Follow the [criteria-writing contract](../../references/criteria-writing-contract.md), the [language policy](../../references/language-policy.md), and the [academic writing style guide](../../references/academic-writing-style.md).
+
+## When to use
+
+New sections or full-document prose against criteria, a working brief, and an evidence register, when the authorized operation is draft or a substantive compose.
+
+## When not to use
+
+Analysis-only or outline-only requests. Typo, wording-only, or format-only edits of an existing artifact (`editing-documents`, `formatting-layout`). Spreadsheet, presentation, image, or conversion work.
+
+## Prerequisite check
+
+Drafting-prose consumes recorded decisions. It cannot create, waive, or infer user approval. Silence, elapsed time, or a reply to a different question is not approval. Authored content defaults to English unless an explicit language override is recorded.
+
+Before composing:
+
+1. Confirm `task_mode` is draft or an authorized substantive compose. Stop at analysis or outline if that was the request.
+2. Confirm `scope_status` is `confirmed` or `waived`. If the gate is required and still `pending` or missing, return the gap to `scoping-the-brief`.
+3. Confirm `outline_status` is `approved`, `waived`, or `not_required` under the contract. If `pending`, `not_started`, or `revision_requested`, return to `planning-work`.
+4. Inspect the evidence register and `blocking_gaps` for the target section. Follow the contract Missing Evidence Protocol. Do not invent measurements or project results.
+
+## Select a writing specialist
+
+Load one specialist for the section's job. Do not default to both on every paragraph.
+
+| Situation | Specialist |
+|---|---|
+| Technical, business, or operational report structure; problem, method, observed results, and evaluation | `writing-reports` |
+| Scholarly argument, thesis prose, hedging, and claim–evidence cadence | `writing-academic-prose` |
+| Project or thesis report that needs both structure and scholarly argument | both, assigned by section |
+
+Use `invoke_skill(name)` to load the specialist. Pass only the target section, applicable decisions and version, criteria mapping, evidence register, and unresolved gaps.
+
+## Procedure
+
+1. Run the prerequisite check. Stop and hand back if it fails.
+2. Select specialist(s) for the assigned section.
+3. Compose only authorized content. Use the contract's neutral placeholder when a permitted incomplete draft is allowed.
+4. Hand the draft to `reviewing-work`. Do not self-approve. Do not skip review on substantial prose.
+
+## Required capabilities
+
+Abstract capability names, resolved by the harness adapter. Never a tool name.
+
+- `read_file(path)` — brief, outline, evidence, and source artifacts.
+- `write_file(path, content)` / `edit_document(file, change)` — compose or insert authorized text.
+- `invoke_skill(name)` — load `writing-reports` or `writing-academic-prose`.
+- `delegate(role, context)` — optional executing or review roles; do not dispatch the full lifecycle.
+
+## Dependencies
+
+- Follows `scoping-the-brief` and `planning-work` when those gates apply.
+- Uses `writing-reports` and/or `writing-academic-prose`.
+- Precedes `reviewing-work`, then `verifying-artifacts` for file deliverables.
+
+## Fallback
+
+If a specialist cannot be loaded, apply its rules in the orchestrator using the same references. If file write is unavailable, return the drafted text in chat without claiming a file was created.
+
+## Common mistakes
+
+- Inferring scope or outline approval from silence.
+- Drafting analysis-only or outline-only requests.
+- Inventing benchmark numbers to fill a criterion.
+- Calling both specialists on every paragraph by default.
+- Skipping `reviewing-work` after substantial composition.
