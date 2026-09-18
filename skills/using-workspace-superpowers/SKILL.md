@@ -54,11 +54,27 @@ Examples include:
 
 * Research & Evidence: `researching-sources`, `citing-sources` (invoke only upon explicit user request for external research, reference materials, or citations)
 * Documents & Media: `editing-documents`, `formatting-layout`, `working-with-pdf`, `working-with-spreadsheets`, `auditing-formulas`, `working-with-presentations`, `storyboarding-slides`, `working-with-visuals`
+* Prose: `drafting-prose`, `writing-reports`, `writing-academic-prose`
 * Transform: `converting-artifacts`
 
 The catalog is extensible. These examples are not an exhaustive list.
 
 This router never inlines specialist procedures.
+
+## Criteria-based writing routes
+
+Use the [criteria-writing contract](../../references/criteria-writing-contract.md) for activation, state, and authorization. Infer `task_mode` from the requested operation, not the words “report” or “thesis”. For source files, invoke `reading-artifacts` and applicable `analyzing-artifacts` before scoping; chat criteria need no artificial file step.
+
+| task_mode | Route and stopping point |
+|---|---|
+| `analyze` | `scoping-the-brief` with `analyzing-artifacts` as needed → interpretation, scope, and evidence needs. Stop at analysis. |
+| `outline` | `scoping-the-brief` as needed → `planning-work` → criterion, evidence, and visual mapping. Stop at the outline and wait for feedback; outline approval alone does not authorize drafting. |
+| `draft` | `scoping-the-brief` / `planning-work` for unresolved contract prerequisites → `drafting-prose` selects writing specialist(s) → `reviewing-work`. Continue through applicable gates using recorded decisions. |
+| `revise` | `editing-documents` → `drafting-prose` for substantive report/thesis rewrites under the contract; it selects prose specialists. Typo or wording-only edits stay in `editing-documents`; format-only edits use `formatting-layout`, without writing approval gates. |
+
+Scoping owns scope confirmation; planning owns outline decisions. Drafting checks prerequisites without approving them. Reuse applicable decisions and explicit waivers; ask only about unresolved requirements or decisions. An explicit request to write after an outline can change the authorized operation under the contract.
+
+For chat-only outputs, review the requested content without claiming file verification or creation. For file deliverables, retain `verifying-artifacts` → `packaging-deliverables`. Spreadsheet, presentation, conversion, and other unrelated routes remain unchanged.
 
 ## Procedure
 
@@ -75,24 +91,25 @@ This router never inlines specialist procedures.
 3. **Enforce Hard Dependencies**
 
    * No file modification before `reading-artifacts` (and `analyzing-artifacts` for non-trivial modifications).
-   * No substantive prose drafting before `planning-work` when the brief is complex or multi-artifact.
-   * No completion claim before `verifying-artifacts` re-opens the real deliverable.
+   * Criteria-based prose follows the contract's applicable scope and outline prerequisites, including small sections. Other complex or multi-artifact prose needs `planning-work`.
+   * No file completion claim before `verifying-artifacts` re-opens the real deliverable.
    * No delivery packaging before verification has passed.
 
 4. **Scope When Material Facts Are Missing**
 
-   * Invoke `scoping-the-brief` when requirements are genuinely ambiguous.
-   * Do not interview when the brief is already clear.
+   * Invoke `scoping-the-brief` for material ambiguity, criteria analysis, or unresolved scope confirmation required by the criteria-writing contract.
+   * Do not interview when the brief is already clear. Clarification and required scope confirmation are separate; reuse confirmed decisions and explicit waivers.
    * When researching sources or citing references, invoke `researching-sources` and `citing-sources` only when the user explicitly requests literature research or citations. When citation style is not specified, default to Harvard Style.
 
 5. **Analyze Before Substantive Modification**
 
-   * Invoke `analyzing-artifacts` after `reading-artifacts` whenever modifying, redesigning, or restructuring existing material.
+   * Invoke `analyzing-artifacts` after `reading-artifacts` for substantive changes to existing files. For pasted text, the selected scoping or editing skill reads and interprets the supplied content directly.
    * Simple mechanical edits may proceed directly from reading to the relevant editing specialist.
 
-6. **Plan Only When Complexity Warrants It**
+6. **Plan Proportionally to the Task**
 
-   * Invoke `planning-work` for multi-stage, high-risk, multi-artifact, or otherwise complex work.
+   * Invoke `planning-work` for a requested outline, unresolved criteria-writing outline prerequisites, or multi-stage, high-risk, multi-artifact, or otherwise complex work.
+   * A small criterion can use a short outline in chat; no separate plan file is required.
    * Do not require a planning stage for trivial or mechanical tasks.
 
 7. **Compose Domain Specialists**
@@ -156,10 +173,10 @@ Do not merge their procedures into a single workflow.
 ## Common Mistakes to Avoid
 
 * **Reading artifact content in this router:** substantive reading belongs to `reading-artifacts`.
-* **Interviewing by default:** invoke `scoping-the-brief` only when ambiguity is materially blocking.
+* **Interviewing by default:** clarify only material gaps; required scope confirmation is a separate contract decision, reused when already recorded.
 * **Asking for information already available:** inspect existing context and artifacts first.
 * **Enforcing analysis on trivial fixes:** simple changes may use `reading-artifacts` → editing specialist → `verifying-artifacts`.
-* **Enforcing planning on trivial work:** planning is proportional to complexity.
+* **Enforcing planning on trivial work:** keep mechanical edits lean; a required criteria outline can be brief and inline.
 * **Skipping verification because a command exited 0:** command success does not prove layout, typography, formulas, citations, structure, or visual correctness.
 * **Skipping `reviewing-work` on a substantial deliverable:** verification of file integrity is not a substitute for requirement, coherence, citation, or visual review.
 * **Packaging before verification:** `packaging-deliverables` runs only after `verifying-artifacts` has confirmed the files being delivered.
