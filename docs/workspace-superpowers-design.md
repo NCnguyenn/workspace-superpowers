@@ -2,17 +2,18 @@
 
 | | |
 |---|---|
-| Status | Draft for user review — product-form revision |
+| Status | Living design specification — implemented criteria-writing extension; behavioral acceptance pending |
 | Date | 2026-09-13 |
-| Revised | Product form aligned with [obra/superpowers](https://github.com/obra/superpowers): installable skill-pack plugin; domain is workspace, not coding |
+| Revised | 2026-09-19: document implemented criteria-writing skills, contract, and review roles; retain future catalog and adapter proposals as targets |
 | Package id | `workspace-superpowers` |
 | Pi plugin id | `workspace-superpowers` (confirm against the installed Pi manifest schema at packaging; Superpowers ships as `obra.superpowers`) |
 | Repo target | `github.com/<owner>/workspace-superpowers` (public) |
 | Reference sibling | `obra/superpowers` — same product class (installable skill-pack plugin); different domain (workspace artifacts, not software engineering) |
-| Approval state | Parts 1–4 previously approved · this revision: product form only (pending user review) |
+| Approval state | Documentation prepared for user review; B01–B16 interactive acceptance remains PENDING; no release approval implied |
 
-This document is the source of truth for implementation. Where this spec and
-any chat summary disagree, this file wins. Where this spec and a harness's real
+This document records architecture and implementation status. Explicit user
+instructions and the applicable shared contracts take precedence over historical
+design proposals. Where this spec and a harness's real
 plugin API disagree, the harness wins for the adapter / plugin-packaging layer
 and this file must be amended — the skill pack never bends to a harness.
 
@@ -90,10 +91,11 @@ CAPABILITY       ≠ MCP/tool name     (abstract verb, resolved by adapter)
 ADAPTER          = harness mapping   (the ONLY place tool names may appear)
 ```
 
-Consequences that are enforced by tests (§24):
+Architecture requirements checked by tests and source review (§24):
 
-- Adding a specialist must not modify any router, the bootstrap, or another
-  family.
+- Adding a specialist normally requires only its owning family's trigger entry.
+  A new family or lifecycle contract may need explicit entry-router integration;
+  that integration must contain routing decisions, never specialist procedures.
 - No file under `skills/`, `agents/`, `workflows/`, `tool-routing/`,
   `references/`, `templates/` may name a Pi, Claude, Codex or Antigravity tool,
   an MCP server, or a harness permission string.
@@ -245,14 +247,16 @@ capability lists, tool or MCP names, examples of document workflows.
 `using-workspace-superpowers` is the single entry point for the workspace
 domain. It:
 
-- inspects the prompt and any attached/referenced artifacts,
+- classifies the prompt and locates candidate artifacts; delegates substantive
+  reading and interpretation to lifecycle or domain skills,
 - classifies the task against families A–O,
 - selects lifecycle skills in order (§7),
 - discovers family and specialist skills from catalog descriptions,
 - builds the skill graph, sized to the task,
 - decides delegation depth (§9.3),
 - enforces the hard dependencies (§8.5),
-- stops for user input only on materially ambiguous facts (§7.3).
+- stops for material ambiguity or an unresolved applicable criteria-writing
+  approval prerequisite (§6.9); existing decisions are reused.
 
 It contains no domain procedure. If it grows one, that content belongs in a
 family or specialist skill.
@@ -260,9 +264,10 @@ family or specialist skill.
 ### 6.3 Lifecycle Skills
 
 `scoping-the-brief`, `reading-artifacts`, `analyzing-artifacts`, `planning-work`, `reviewing-work`,
-`verifying-artifacts`, `packaging-deliverables`. Present in every substantial
-task; `reading-artifacts` then `analyzing-artifacts` are present in every task that touches an existing
-file.
+`verifying-artifacts`, `packaging-deliverables`. Select applicable stages by
+operation: analysis-only and outline-only requests stop at their requested output.
+Existing files are read before editing; substantive changes require analysis.
+Mechanical edits remain lightweight, and chat-only content does not require files.
 
 ### 6.4 Family Skills
 
@@ -278,8 +283,13 @@ reading two specialists.
 
 ### 6.5 Specialist Skills
 
-Concrete procedures, one job each, composable. Examples of the target catalog
-(not all shipped at v1):
+Concrete procedures, one job each, composable. The implemented prose family is
+[drafting-prose](../skills/drafting-prose/SKILL.md), with
+[writing-reports](../skills/writing-reports/SKILL.md) and
+[writing-academic-prose](../skills/writing-academic-prose/SKILL.md).
+The larger tree below is a target catalog, not an availability list; §21 lists
+all currently implemented skills. In particular, dedicated thesis-management,
+literature-review, and methodology skills below are not implemented.
 
 ```
 drafting-prose
@@ -371,6 +381,50 @@ details and must be re-verified against the running Pi version before packaging
 (§18.1). If the real API differs, the adapter changes; the skill pack does not.
 
 
+### 6.9 Implemented criteria-writing contract
+
+[criteria-writing-contract.md](../references/criteria-writing-contract.md) is
+the shared source for activation, semantic state, approval transitions, and
+missing evidence. It is not another router. Its consumers use the optional
+extensions in [brief.md](../templates/brief.md) and
+[outline.md](../templates/outline.md); unrelated office work omits them.
+
+| Owner | Responsibility |
+|---|---|
+| `using-workspace-superpowers` | Select the requested operation and applicable lifecycle/authoring skills |
+| `scoping-the-brief` | Extract criteria, establish included/excluded scope, identify evidence gaps, receive scope decisions |
+| `planning-work` | Map headings to obligations/evidence/visuals; manage outline versions, revisions, and approval records |
+| `drafting-prose` | Check recorded prerequisites and select report/academic specialists; never infer or create approval |
+| `reviewing-work` | Coordinate four content-review dimensions, return findings, and recheck affected fixes |
+
+```text
+analyze -> scope/interpret -> stop
+outline -> scope as needed -> planning -> pending outline; stop
+draft   -> resolve or reuse applicable scope/outline decisions -> drafting-prose
+            -> writing-reports and/or writing-academic-prose -> reviewing-work
+revise  -> editing-documents -> substantive prose: drafting-prose -> review
+            -> typo/wording/format: existing lightweight specialist route
+files   -> reopen final artifact -> package
+chat    -> reviewed content; no file claim
+```
+
+State includes `task_mode`, `criteria`, `scope`, `scope_status`, `outline_status`,
+`outline_version`, `approval_record`, `evidence_register`, `blocking_gaps`, and
+`delivery_status`. Preserve decisions within their recorded scope; silence is
+never approval. A waiver affects only the gate explicitly waived. Outline-only
+approval does not authorize drafting; approval within an existing draft request
+permits continuation without another interview.
+
+Every criteria heading records obligations, points, evidence, optional length,
+and a visual decision. Assets use name/type, purpose, position, source/data,
+preparer, and status; **Not needed** is valid. Small outlines may stay in chat.
+Missing evidence blocks dependent claims while independent authorized work may
+continue. An allowed early draft uses neutral placeholders and stays
+`draft_incomplete`; permitted hypothetical examples remain labeled at every
+use and cannot satisfy empirical criteria. Descriptions/code are not proof of
+measured performance. English remains the default under the
+[language policy](../references/language-policy.md).
+
 ## 7. Request Lifecycle
 
 ```
@@ -413,6 +467,10 @@ reopen via `verifying-artifacts` → render if needed → deliver.
 Prohibited: edit → save → "done" without verification.
 
 ### 7.3 Brief Scoping
+
+For criteria writing, clarification and scope confirmation are separate.
+Follow §6.9 even for a small section; reuse confirmed decisions and explicit
+waivers. Generic interview fallbacks do not approve pending scope or outlines.
 
 Interview only on facts that would change the deliverable: audience, purpose,
 language, required format(s), length or page/slide/sheet constraints, rubric or
@@ -464,7 +522,8 @@ compose specialist planning skills:
 | Conversion | conversion plan |
 | Mixed project | multi-artifact plan |
 
-Small tasks need only an internal mini-plan; no document is produced.
+Small tasks ordinarily need only an internal mini-plan. A requested or required
+criteria outline must be shown to the user, but need not become a separate file.
 
 ### 7.6 Skill Graph Construction
 
@@ -493,7 +552,8 @@ The orchestrator keeps coordination context and delegates bulk production. It
 does not hold a long draft in its own context when a drafter role is available.
 Execution proceeds without pausing for confirmation between steps; it stops only
 for a destructive or irreversible operation, an out-of-scope side effect, a
-dangerous ambiguity, or a plan so broken that every path forward is a guess.
+dangerous ambiguity, an unresolved applicable contract approval or evidence
+prerequisite, or a plan so broken that every path forward is a guess.
 
 ### 7.8 Review
 
@@ -598,6 +658,10 @@ capability → verify structure and declare that visual QA was not performed.
 
 ### 9.1 Role catalog
 
+This table includes target personas. Current role files are `inspector`,
+`researcher`, `drafter`, `formatter`, `verifier`, `packager`, and the five
+reviewers listed in §9.2. Other personas below are future roles, not shipped files.
+
 | Role | Job | Hard limits |
 |---|---|---|
 | `inspector` | Read structure, content, layout, template/rubric | Does not modify files |
@@ -614,10 +678,13 @@ capability → verify structure and declare that visual QA was not performed.
 
 ### 9.2 Review roles
 
-`reviewer-requirement`, `reviewer-coherence`, `reviewer-argument`,
-`reviewer-prose`, `reviewer-citation`, `reviewer-fact`, `reviewer-format`,
-`reviewer-layout`, `reviewer-visual`, `reviewer-spreadsheet`,
-`reviewer-artifact-integrity`.
+Implemented: `reviewer-requirement`, `reviewer-coherence`, `reviewer-citation`,
+[reviewer-prose](../agents/reviewer-prose.md), and `reviewer-visual`.
+
+Argument flow belongs to coherence; prose owns sentence/paragraph style.
+Separate argument, fact, format, layout, spreadsheet, and artifact-integrity
+reviewer files are future possibilities, not installed roles. Domain skills
+and final artifact verification cover applicable checks today.
 
 ### 9.3 Delegation depth
 
@@ -713,6 +780,21 @@ Core files never contain the result of step 2. Only `adapters/<harness>/capabili
 determines the applicable review dimensions, and invokes the matching review
 skills or roles. It never performs every review itself.
 
+Four independent content dimensions have explicit owners:
+
+| Dimension | Implemented role | Boundary |
+|---|---|---|
+| Requirement | `reviewer-requirement` | Criteria, applicable scope/outline, and coverage; unstated conventions are Suggestions |
+| Coherence | `reviewer-coherence` | Argument flow, logic, terminology, and cross-section consistency |
+| Citation/evidence | `reviewer-citation` | Academic and internal source support, including logs/benchmarks/code locators; bibliography may be N/A |
+| Prose | `reviewer-prose` | Paragraphs, lists, register, cadence, clichés, and redundant endings by style-guide Rule ID |
+
+The [style guide](../references/academic-writing-style.md) defines P/L/R/E/S/C/F,
+LANG/V, and I rules. Its four-to-five-sentence paragraph benchmark is not a
+quota. Reviewers never add facts to improve specificity or use AI-detector
+scores as acceptance evidence. They receive bounded context, not orchestrator
+session history; cross-dimension findings retain a primary owner.
+
 | Deliverable | Review dimensions |
 |---|---|
 | Thesis / dissertation | requirement, argument, coherence, academic prose, citation, formatting, artifact integrity |
@@ -736,6 +818,15 @@ Suggestion  → optional
 
 Reviewers return findings; the executor applies fixes. Reviewer output must not
 silently restructure the deliverable.
+
+Fabricated data, unsupported or contradicted empirical results, and violations
+of applicable scope/approval boundaries are Critical. Neutral placeholders in
+an authorized incomplete draft are not fabrication; mandatory evidence gaps
+still prevent final completion. Wording corrections do not reopen approval.
+Material argument/scope changes follow the affected-decision contract. The
+executor fixes affected passages and dependent claims, which are rechecked.
+All delivered files, including incomplete drafts, need final inspection;
+chat-only review makes no claim of file creation or verification.
 
 ## 14. Verification System
 
@@ -875,15 +966,21 @@ Superpowers is installed on Pi.
 
 ## 19. Future Harness Adapters
 
-`adapters/antigravity/`, `adapters/claude/`, `adapters/codex/` ship at v1 as
-stubs containing the required file set with `unverified` mappings. Adding a
+The `adapters/` directory is not currently implemented. The proposed
+`adapters/antigravity/`, `adapters/claude/`, and `adapters/codex/` directories
+would begin as stubs with `unverified` mappings. Adding a
 harness means: detect its skill / plugin mechanism, delegation mechanism, and
 document capabilities; fill the three mapping files; write `install.md` so the
 skill pack can be installed there the same way Superpowers is. No skill-pack
-file is modified. This is proven by test (§24.2).
+file should need modification. This remains a design requirement to validate
+when an adapter is implemented; current structural tests do not prove it.
 
 
 ## 20. Repository Structure
+
+The tree illustrates the target layout, not a guarantee that every entry ships.
+The criteria-writing skills, reviewer-prose, contract, and templates shown are
+implemented. `tests/` and `docs/superpowers/plans/` remain local-only and ignored.
 
 ```
 workspace-superpowers/
@@ -896,11 +993,15 @@ workspace-superpowers/
 ├── skills/
 │   ├── using-workspace-superpowers/SKILL.md
 │   ├── scoping-the-brief/SKILL.md
+│   ├── drafting-prose/SKILL.md
+│   ├── writing-reports/SKILL.md
+│   ├── writing-academic-prose/SKILL.md
 │   └── .../SKILL.md
 ├── agents/
 │   ├── inspector.md
 │   ├── researcher.md
 │   ├── drafter.md
+│   ├── reviewer-prose.md
 │   └── ...
 ├── workflows/
 │   ├── docx-edit.md
@@ -920,6 +1021,8 @@ workspace-superpowers/
 │   └── codex/                    # stub
 ├── references/
 │   ├── academic-writing-style.md
+│   ├── criteria-writing-contract.md
+│   ├── language-policy.md
 │   ├── citation-styles.md
 │   ├── document-format-notes.md
 │   └── verification-checklists.md
@@ -936,11 +1039,9 @@ workspace-superpowers/
 
 ## 21. v1 Skill Set
 
-v1 exists to prove the architecture, not to fill the catalog. The approved
-inspection split replaces `inspecting-artifacts` with `reading-artifacts` and
-`analyzing-artifacts` (24 named skills in the intended catalog). Wave 1 ships
-the working cluster: `using-workspace-superpowers`, `reading-artifacts`,
-`analyzing-artifacts`, `editing-documents`, `verifying-artifacts`.
+The current repository contains 22 implemented skills, listed below. The
+inspection split uses `reading-artifacts` and `analyzing-artifacts`.
+Target specialists outside this list are not current capabilities.
 
 **Core (8)**
 `using-workspace-superpowers`, `scoping-the-brief`, `reading-artifacts`,
@@ -950,9 +1051,11 @@ the working cluster: `using-workspace-superpowers`, `reading-artifacts`,
 **Research (2)**
 `researching-sources`, `citing-sources`
 
-**Prose (5)**
-`drafting-prose`, `writing-academic-prose`, `writing-reports`,
-`rewriting-prose`, `reviewing-coherence`
+**Prose (3)**
+`drafting-prose`, `writing-academic-prose`, `writing-reports`
+
+`rewriting-prose` and `reviewing-coherence` are not separate implemented skills;
+existing editing and review skills provide the applicable behavior.
 
 **Document (2)**
 `editing-documents`, `formatting-layout`
@@ -986,8 +1089,9 @@ Target catalog: ~50–80 specialists across the families in §6.5. Expansion rul
 
 Additions such as `writing-systematic-reviews`, `writing-methodology`,
 `building-pivots`, `ocr-ing-scanned-documents`, `designing-slide-layouts`,
-`editing-layered-images` follow this rule. This property is machine-tested
-(§24.2).
+`editing-layered-images` should follow this rule. Future additions require
+architecture tests and source review (§24.2); the current suite does not prove
+extension behavior for specialists that have not been implemented.
 
 ## 23. Example Workflows
 
@@ -1013,8 +1117,11 @@ same job, and the graph is unchanged.
 ## 24. Testing Strategy
 
 Test ladder: architecture → skill contract → behavioral/pressure → regression.
-Wave 1 ships the first two only. Pressure tests (fail without the skill, then
-pass with it) are a later wave — see `docs/superpowers/plans/roadmap.md`.
+As of 2026-09-19, criteria-writing content and local structural tests are
+implemented; the architecture suite passes 49/49 with no skips. The manual
+B01–B16 script exists locally, but all 16 behavioral cases remain PENDING.
+Earlier bounded dry-run reviews, mock runs, and self-tests do not establish
+dedicated multi-turn acceptance. This is not a claim of full product completion.
 
 ### 24.1 Skill discipline tests (RED–GREEN–REFACTOR)
 
@@ -1027,6 +1134,12 @@ tested with combined pressures — time, sunk cost, authority, fatigue — and m
 hold under all of them.
 
 ### 24.2 Architecture tests
+
+Current local checks cover the shipped catalog, frontmatter, declared
+capabilities, selected routing contracts, role sections, reference paths, and
+the scenario script's ID/field structure. The broader requirements below also
+need source review or future test coverage; a green suite does not prove every
+architecture property or live behavior.
 
 Automated checks over the repository:
 
@@ -1049,6 +1162,15 @@ End-to-end scenario runs against the acceptance criteria in §25, executed by a
 fresh agent given only the bootstrap plus the skill catalog, judged on: correct
 routing, absence of over-interviewing, correct skill-graph size, presence of
 review and verification, honest limitation reporting.
+
+For criteria writing, the local operator script is
+`tests/scenarios/manual/criteria-writing.md`. Keep B03–B05 and B02–B08 in their
+respective sessions; send follow-ups only after observed stops. Record model,
+environment, skill version, prompts, transcripts, and artifacts. PENDING means
+unattempted; attempted runs record PASS, FAIL, or BLOCKED with evidence. Neither
+structural string checks nor mock/self-test results may become behavioral PASS.
+These tests, transcripts, and implementation plans are local-only; fresh
+repository checkouts do not include them.
 
 ### 24.4 Packaging tests
 
