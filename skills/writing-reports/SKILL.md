@@ -7,6 +7,12 @@ description: Use when structuring, authoring, or evaluating technical, business,
 
 Specialist for technical, business, and operational reports. Map criteria onto headings that fit the assignment. Do not impose a fixed chapter template.
 
+For folder-based reports, consume the inspected `structure_map` and provenance
+under [project grounding](../../references/project-grounding.md). Use directory-based
+headings when requested and compatible with the applicable outline; otherwise
+map project content to its adopted headings. Never infer behavior for uninspected
+paths or create measurements through unauthorized tests/builds.
+
 Honor the current operation and handoff under the
 [workflow continuity contract](../../references/workflow-continuity.md).
 For the next criterion or section, follow the

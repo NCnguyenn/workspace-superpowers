@@ -7,6 +7,16 @@ description: Use when starting a workspace-primary document, research, office, o
 
 Single entry router for the workspace domain. Classify, compose, and route. Contains no format-specific procedure.
 
+For mathematics entering Word, route the assigned operation under the
+[native Equation contract](../../references/math-in-documents.md). For folder-based
+reports, pass the [project survey contract](../../references/project-grounding.md)
+to reading/analysis/planning and any bounded Coding handoff. The survey's explicit
+read-only limits override generic coding setup/test instructions. These contracts
+add no lifecycle or approval gates; unrelated tasks retain their existing routes.
+When project context must be persisted, hand the grounded context and its single
+designated path to `editing-documents` for creation/update, then verification.
+The router never writes that record itself.
+
 ## Ongoing requests and continuity
 
 Apply the [workflow continuity contract](../../references/workflow-continuity.md)
@@ -71,11 +81,30 @@ Examples include:
 * Research & Evidence: `researching-sources`, `citing-sources` (invoke only upon explicit user request for external research, reference materials, or citations)
 * Documents & Media: `editing-documents`, `formatting-layout`, `working-with-pdf`, `working-with-spreadsheets`, `auditing-formulas`, `working-with-presentations`, `storyboarding-slides`, `working-with-visuals`
 * Prose: `drafting-prose`, `writing-reports`, `writing-academic-prose`
+* Mathematics: `working-with-mathematics` for optional mathematical support; equation-only layout/conversion remains with document skills, spreadsheet audits with `auditing-formulas`.
 * Transform: `converting-artifacts`
 
 The catalog is extensible. These examples are not an exhaustive list.
 
 This router never inlines specialist procedures.
+
+## Mathematics activation
+
+Select from the requested operation, supplied content and retained context,
+without requiring the user to name a skill or explicitly say "mathematics".
+The word alone ("formula", "report", or "thesis") does not choose a route.
+Reassess when a follow-up introduces a derivation, equation or project source;
+preserve the active writing stage and earlier approvals.
+
+| Actual need | Selection |
+|---|---|
+| Define notation, calculate a result, justify a recurrence, explain a proof, check a discrete-math argument, or revise substantive mathematical content | Add `working-with-mathematics` to the current analysis, writing or review operation; for authored substantial mathematics, include mathematics review |
+| Write a report/thesis containing such content, even if the user asks only to continue the next section | The prose specialist keeps ownership; add mathematics support for the affected section based on its actual content |
+| Paste, create, edit or export equations into Word | Apply the native Equation contract on every path; add mathematics support if meaning, derivation or correctness must be established or changed |
+| Align/resize an existing equation or convert its representation without changing meaning | Document editing/layout/conversion plus native Equation verification; do not force a proof rewrite |
+| Diagnose spreadsheet cell formulas, references or dependencies | `working-with-spreadsheets` / `auditing-formulas`; add mathematics support only for an underlying mathematical claim beyond the cell audit |
+| Report grounded in a project that also contains mathematical reasoning | Compose project survey boundaries with the applicable prose/math/Word routes; neither mathematical checking nor a Coding handoff authorizes project commands |
+| Ordinary wording/typo repair or a simple conversational calculation | Keep the appropriate lightweight edit or Simple Q&A route; do not create an artifact workflow solely because a number appears |
 
 ## Criteria-based writing routes
 

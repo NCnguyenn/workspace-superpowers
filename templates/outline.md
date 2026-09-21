@@ -25,6 +25,12 @@
 ---
 
 ## Structural Integrity Notes
+
+For folder-based reports, add `structure_map` under
+[project grounding](../references/project-grounding.md): heading/criterion,
+project paths and roles, source locators/revision, coverage and limits. Use the
+existing approved headings unless a directory-based outline is requested and
+authorized. Missing access never becomes an invented tree or runtime result.
 * **Transitions:** [How sections link together logically]
 * **Visuals & Tables:** [Planned charts, figures, or callouts]
 * **Continuity Reference (when extending a document):** [Profile in the brief or conversation under the [document continuity contract](../references/document-continuity.md); target insertion point, prior argument, terms, and numbering to retain]

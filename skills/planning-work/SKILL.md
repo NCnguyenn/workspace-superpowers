@@ -40,6 +40,12 @@ Select the plan shape that matches the deliverable:
 | Design / image | Canvas, layer, and export plan | Design plan |
 | Conversion | Source → target mapping and verification points | Conversion plan |
 | Mixed Project | Multi-artifact dependencies and sequencing | Multi-artifact plan and contract (`templates/deliverable-contract.md`) |
+| Project-directory-mapped report | `structure_map` from inspected project paths/roles to applicable headings and evidence | Existing outline plus source coverage and limits; folder-based headings only when requested |
+
+For project reports, use [project grounding](../../references/project-grounding.md).
+Preserve an adopted rubric and existing approved outline; a folder is not
+automatically a chapter. Carry read-only survey permissions into any software
+handoff. Plan required evidence without authorizing new tests, builds or mutations.
 
 ## Criteria-based outline
 

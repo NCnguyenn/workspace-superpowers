@@ -49,6 +49,26 @@ that matter, with source locators and representative excerpts.
 * **Adjacent Excerpts / Coverage:** [Relevant preceding/following text and uninspected or inaccessible material]
 * **Requested Deviations:** [Explicit changes from existing conventions and their scope; retain the language decision above]
 
+## Math and Project Context (Optional)
+
+Use only when applicable; keep these fields in the same checkpoint/evidence
+register. The agent derives them from inspected sources, not a user questionnaire.
+
+- **Project source and survey authority:** [Path, existing description or both;
+  relevant slice; permitted observations and any explicitly authorized exceptions]
+- **Context file (`context_file`):** [Exact identity of the single derived Markdown
+  file; reuse across continuations under [project grounding](../references/project-grounding.md)]
+- **Structure mapping (`structure_map`):** [Heading/criterion ↔ paths/roles,
+  locators, source revisions, inspected coverage, conflicts and unread regions;
+  retain the current outline decision rather than copying its approval state]
+- **Math checks (`math_checks`):** [Per-check claim/step, assumptions, method,
+  input, result, evidence, revision and limits under [mathematical checks](../references/mathematics-checks.md)]
+- **Word fidelity (`word_math_checks`):** [Entry path, formula/source locators,
+  native/content/render/edit-save-reopen results, Word environment and target
+  revision under [Equation fidelity](../references/math-in-documents.md)]
+- **Limited handoff:** [User acceptance and exact affected limitations, if any;
+  never infer acceptance from urgency or an unavailable capability]
+
 ## Criteria-based Writing (Optional)
 
 Use this extension only for interpreting, outlining, drafting, or substantively revising report/thesis content against criteria. Omit it for unrelated office tasks and mechanical edits. Follow the [shared criteria-writing contract](../references/criteria-writing-contract.md); do not ask users to fill internal state fields or repeat recorded decisions.

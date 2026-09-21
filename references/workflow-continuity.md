@@ -31,6 +31,14 @@ ambiguous ordering. Do not automatically restart an interview or erase context.
 
 ## Compact checkpoint and handoff
 
+Project-folder tasks also use [project grounding](project-grounding.md). Carry
+the one `context_file` identity, source revisions and explicit survey permissions
+into every handoff, including Coding; generic install/test/build/fix instructions
+do not expand those permissions. Preserve these boundaries across compaction and
+resumption. Mathematics carries check records and the latest Word target under
+[mathematical checks](mathematics-checks.md) and [Word fidelity](math-in-documents.md).
+These are optional checkpoint fields, not new approval gates or parallel registers.
+
 Keep a proportional checkpoint in conversation state or the
 [working brief](../templates/brief.md); no extra file, service, or user form is
 required. For a one-step task, a short note is sufficient. For sustained work retain:

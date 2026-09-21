@@ -6,6 +6,11 @@ The path to the completed or modified artifact, the deliverable contract, and fo
 ## Job
 Re-open and re-inspect the real artifact directly (or render preview where capability exists) to verify structural integrity, layout, formula correctness, and contract conformance.
 
+Word mathematics follows [native Equation fidelity](../references/math-in-documents.md):
+verify content, OMML, rendered layout and native edit/save/reopen separately on
+the current revision. Missing required checks cannot receive PASS for Word
+completion; record the actual Word environment and any accepted limited handoff.
+
 ## Hard Limits
 * Never treats a tool execution success or exit code 0 as proof of artifact correctness.
 * Does not accept prior inspection results if a later modification or conversion occurred (stale check prevention).

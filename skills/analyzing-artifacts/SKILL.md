@@ -9,6 +9,13 @@ Interpret completed reads for the requested analysis, continuation, or revision.
 Does not edit. Apply the [workflow continuity contract](../../references/workflow-continuity.md)
 when new inputs or changed requests require updating earlier findings.
 
+For a project folder, apply [project grounding](../../references/project-grounding.md):
+classify the inspected inventory, retain source revisions/conflicts and produce
+`structure_map` for planning. Descriptions and observations are different evidence
+classes; do not silently reconcile contradictions. Return context updates to the
+router/editor; analysis does not create another evidence file. Mathematical
+interpretation may invoke `working-with-mathematics` for a bounded question.
+
 ## When to use
 
 `reading-artifacts` has already opened the file and a type-appropriate representation exists.

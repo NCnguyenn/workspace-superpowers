@@ -14,6 +14,12 @@ the still-relevant question pending. Reuse facts and decisions already establish
 
 ## When to use
 
+Folder-based reports use [project grounding](../../references/project-grounding.md).
+An accessible folder or existing detailed description is sufficient to begin
+inspection; do not require the user to restate the tree. Retain the one designated
+context-file identity and survey limits in the existing brief. This does not
+authorize project tests/builds or introduce an extra scope gate.
+
 Under-specified, complex, multi-stage, or graded tasks (e.g. assignments, research syntheses, client reports, presentations) where missing facts would materially alter the deliverable.
 
 Also use for requested criteria analysis or unresolved scope confirmation under the [criteria-writing contract](../../references/criteria-writing-contract.md), even when the supplied facts are clear.

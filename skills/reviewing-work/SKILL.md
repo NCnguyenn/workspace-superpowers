@@ -35,6 +35,7 @@ Trivial or mechanical fixes (e.g. typos, formatting tweaks) that require only `v
 | coherence | `reviewer-coherence` | Argument flow, chapter/section structure, terminology and notation consistency |
 | citation | `reviewer-citation` | Claim support, source traceability, and evidence limits for academic and internal sources |
 | prose | `reviewer-prose` | Paragraph and sentence style, lists, clichés, cadence; style-guide Rule IDs |
+| mathematics | `reviewer-mathematics` | Assumptions, derivation validity, numerical/symbolic evidence and limits under the [mathematics check contract](../../references/mathematics-checks.md) |
 | visual | `reviewer-visual` | Visual quality in inspected representations; final artifact integrity remains with `verifying-artifacts` |
 
 | Deliverable | Review dimensions |
@@ -50,6 +51,13 @@ Trivial or mechanical fixes (e.g. typos, formatting tweaks) that require only `v
 | Translation / rewrite | Fidelity to source, register, terminology consistency, target-language naturalness |
 
 Select citation/evidence review whenever factual or empirical claims need support, even with no bibliography. Use prose review for substantial rewritten text; choose other dimensions by content. Cross-dimension defects retain one primary owner and supporting findings; do not drop them between roles or count the same defect twice.
+
+Select mathematics review for substantive mathematical content or requested
+correctness checks, separate from its authoring pass. Do not activate it for
+unchanged mathematics during a purely presentational edit. For Word, review
+against the [Equation contract](../../references/math-in-documents.md); final
+native structure and edit/save/reopen evidence belongs to `verifying-artifacts`.
+Wrong assumptions, invalid proofs and fabricated computation evidence are Critical.
 
 ## Severity contract
 
@@ -94,7 +102,7 @@ Abstract capability names, resolved by the harness adapter. Never a tool name.
 - `read_file(path)` — for text-bearing artifacts and review checklists.
 - `inspect_document(file)` — inspect supported document content and structure.
 - `invoke_skill(name)` — load review, reading, or domain skills for other artifact representations.
-- `delegate(role, context)` — optional; to delegate to review roles (`reviewer-requirement`, `reviewer-coherence`, `reviewer-citation`, `reviewer-visual`, `reviewer-prose`).
+- `delegate(role, context)` — optional; to delegate to review roles (`reviewer-requirement`, `reviewer-coherence`, `reviewer-citation`, `reviewer-visual`, `reviewer-prose`, `reviewer-mathematics`).
 
 ## Dependencies
 

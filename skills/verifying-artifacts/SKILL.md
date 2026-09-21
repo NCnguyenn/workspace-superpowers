@@ -7,6 +7,11 @@ description: Use when any artifact has been created, edited, converted, or expor
 
 Re-open the real artifact before claiming success.
 
+For Word mathematics, enforce the [native Equation contract](../../references/math-in-documents.md).
+Record content, OMML structure, rendered appearance and native edit/save/reopen
+checks separately, with target revision and Word environment. Missing required
+Equation checks block Word completion even when generic opening/rendering passes.
+
 Apply the [workflow continuity contract](../../references/workflow-continuity.md)
 when resuming or receiving changed files. Verify the current target version;
 do not reuse a check invalidated by an intervening write, insertion, or export.

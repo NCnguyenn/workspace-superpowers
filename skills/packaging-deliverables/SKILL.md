@@ -7,6 +7,13 @@ description: Use when verified workspace artifacts are ready to be named, organi
 
 Assemble, organize, and produce the final delivery report for verified workspace artifacts.
 
+For Word mathematics, apply the [Equation completion boundary](../../references/math-in-documents.md):
+do not package an unverified native Equation requirement as complete. An explicitly
+accepted limited handoff retains its limitations. During project surveys, the
+[project write boundary](../../references/project-grounding.md) also governs packaging:
+no source-project cleanup, output copies or extra evidence files beyond the one
+designated context file without explicit permission for those writes.
+
 Apply the [workflow continuity contract](../../references/workflow-continuity.md)
 to the current requested output set. If the user changes the deliverable during
 packaging, route the affected work to its specialist and verification first.

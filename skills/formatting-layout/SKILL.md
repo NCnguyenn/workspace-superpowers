@@ -7,6 +7,12 @@ description: Use when applying or adjusting document formatting, layout, typogra
 
 Presentation, styling, typographic hierarchy, and page layout for text and document artifacts.
 
+For Word formulas apply the layout/preservation sections of the
+[native Equation contract](../../references/math-in-documents.md): retain native
+OMML, meaning, inline/display placement, numbering and references. Adjust spacing
+and line breaks without flattening or rewriting mathematics. Pass the final
+revision to Equation-aware verification; correct appearance alone is insufficient.
+
 Honor the current operation under the [workflow continuity contract](../../references/workflow-continuity.md).
 For inserted sections, carry forward the document's established heading, caption,
 numbering, and style conventions. Return newly requested content changes to the

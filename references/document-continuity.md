@@ -7,6 +7,14 @@ advance that argument, not become an unrelated miniature report.
 
 ## Inspect before continuing
 
+For folder-based reports retain the [project grounding record](project-grounding.md),
+including `context_file`, source provenance/revisions, coverage, conflicts and
+the heading-to-path mapping. For mathematics, preserve the existing notation,
+assumptions, derivation IDs and [check records](mathematics-checks.md). Continue
+from the latest adopted Word revision under [Equation fidelity](math-in-documents.md);
+do not regenerate from stale LaTeX over the user's edits. Recheck only the affected
+content and its dependencies, including layout after pagination changes.
+
 Use `reading-artifacts` for files and `analyzing-artifacts` for interpretation.
 For pasted text, inspect it directly. Establish the current document/version,
 requested insertion point, applicable criterion, and output form (chat proposal

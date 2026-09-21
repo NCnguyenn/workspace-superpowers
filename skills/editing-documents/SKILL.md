@@ -1,11 +1,17 @@
 ---
 name: editing-documents
-description: Use when editing existing text or document content, from typo or wording corrections to insertion, rewriting, restructuring, or full redesign.
+description: Use when editing existing text or document content, or when creating or updating the single derived context record for an authorized project survey.
 ---
 
 # Editing Documents
 
 Modify existing text or document content at the depth requested.
+
+Word mathematics follows the [native Equation contract](../../references/math-in-documents.md)
+for paste and in-file edits: preserve OMML and mathematical content, use the
+latest adopted Word source, and verify affected equations after edit/save/reopen.
+Substantive math changes use `working-with-mathematics` through the existing
+authoring route. Formatting-only work must not change a proof or expression.
 
 Apply the [workflow continuity contract](../../references/workflow-continuity.md)
 to changed requests and new artifacts. For insertion, continuation, or substantive
@@ -18,9 +24,18 @@ authorized scope. A chat suggestion does not modify the source file.
 
 Typo or wording corrections, insertion, deletion, rewriting, restructuring, or full redesign of an existing document. The preserve-list does not decide whether this skill loads.
 
+Also create or update the one designated `context_file` under the
+[project grounding contract](../../references/project-grounding.md). Consume
+inspected content, provenance and conflicts from reading/analysis; preserve the
+recorded file identity. First creation is a narrow exception to the existing-file
+rule below: confirm the selected path is unused and never overwrite an original
+project document. Re-read an existing context record before updating it, label
+notes derived, and verify the actual file afterward. This persistence operation
+does not require a new report outline or authorize any other project write.
+
 ## When not to use
 
-Create-from-blank with no existing artifact. Read-only analysis. Verify-only. Spreadsheets, presentations, images and PDFs belong to their own artifact families.
+Create-from-blank deliverables other than the designated project context record. Read-only analysis with no authorized persistence. Verify-only. Spreadsheets, presentations, images and PDFs belong to their own artifact families.
 
 ## Procedure
 
@@ -78,6 +93,6 @@ If in-file edit is unavailable, emit a structured change list. Never claim the f
 - Editing before reading, or making substantive changes without analysis.
 - Changing something on the preserve-list.
 - Claiming the file changed when only a change-list was produced.
-- Treating a create-from-blank deliverable as an edit.
+- Treating an unrelated create-from-blank deliverable as an edit.
 - Rewriting content when only layout or style was requested.
 - Changing facts or removing uncertainty during a wording-only or unspecified edit.

@@ -22,6 +22,10 @@ Audit claim–evidence support using the [criteria-writing contract](../referenc
 If a required source is inaccessible, identify what remains unverified. Return requests for additional source retrieval or artifact inspection to the orchestrator under the existing authorization rules. Do not claim that an inaccessible source is fabricated merely because it could not be checked.
 
 ## Hard Limits
+* Apply [project grounding](../references/project-grounding.md) to folder evidence:
+  retain source/runtime versions and conflicts, treat the one context file as
+  derived, and do not run tests/builds or mutate app/DB data to fill gaps without
+  explicit permission. Review source claims only within inspected coverage.
 * Zero tolerance for fabricated citations, nonexistent DOIs, invented author names, or invented numbers/data.
 * Does not rewrite the substantive arguments.
 * Flags unsupported empirical claims as Critical.

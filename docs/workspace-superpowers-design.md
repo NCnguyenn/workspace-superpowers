@@ -5,6 +5,7 @@
 | Status | Living design specification — implemented criteria-writing extension; behavioral acceptance pending |
 | Date | 2026-09-13 |
 | Revised | 2026-09-19: document implemented criteria-writing skills, contract, and review roles; retain future catalog and adapter proposals as targets |
+| Constraint extension | 2026-09-20: native Word mathematics and inspect-only project grounding; execution coverage is reported separately from portable contracts |
 | Package id | `workspace-superpowers` |
 | Pi plugin id | `workspace-superpowers` (confirm against the installed Pi manifest schema at packaging; Superpowers ships as `obra.superpowers`) |
 | Repo target | `github.com/<owner>/workspace-superpowers` (public) |
@@ -142,6 +143,12 @@ number or year. Never report success for a capability that does not exist.
 
 ## 4. Scope
 
+The [approved math/project constraints](math-and-project-constraints.md) extend
+this design. Current procedures live in [Word mathematics](../references/math-in-documents.md),
+[mathematical checking](../references/mathematics-checks.md) and
+[project grounding](../references/project-grounding.md). These are specialist
+contracts inside the existing lifecycle, not a new authoring workflow.
+
 ### 4.1 In scope (mandatory coverage)
 
 | Id | Family | Representative work |
@@ -161,6 +168,8 @@ number or year. Never report success for a capability that does not exist.
 | M | Review / QA | requirement, rubric, content, argument, coherence, academic, prose, grammar, citation, source, fact, format, layout, visual, spreadsheet/data, formula, artifact-integrity review, final verification |
 | N | Packaging / deliverables | create real files, naming, folder structure, editable vs rendered versions, supporting assets, references, figures, final export, versioning, deliver paths, report residual limitations |
 | O | Mixed workspace tasks | multi-artifact workflows (core use case, not an exception) |
+| P | Mathematics in reports | assumptions, notation, justified derivations and separately evidenced calculations/reasoning review; native editable Word equations on paste, authoring, editing and export |
+| Q | Project-grounded reports | inspected folder inventory and heading/source mapping; one derived context file and read-only software/nonsoftware handoffs; no project tests/builds/mutations without explicit authorization |
 
 ### 4.2 Out of scope
 
@@ -766,6 +775,7 @@ search_academic(query)        convert_artifact(src, format)
 read_reference_documentation() verify_artifact(file)
 
 list_files(dir)               read_file(path) / write_file(path, content)
+evaluate_math(request)
 ```
 
 Rules:
@@ -773,6 +783,25 @@ Rules:
 - Skills declare the capabilities they need; they never name a tool.
 - A capability may be absent. Absence is a first-class state (§17).
 - Capability contracts are stable across harnesses; implementations are not.
+
+Math extension contracts:
+
+- `evaluate_math(request)`: expression/operation, domains, assumptions, inputs,
+  precision and comparison request → actual executed input, runtime version,
+  result, diagnostics, evidence and limits. Availability is operation-specific.
+  No arbitrary input-code execution, project database access or implicit test
+  authorization. See [mathematical checks](../references/mathematics-checks.md).
+- `inspect_document(file)`: for Word math, report formula locations/content,
+  native Equation structures versus raster/plain-text substitutes, and coverage.
+- `edit_document(file, change)` / `convert_artifact(src, format)`: advertise
+  Equation preservation/creation separately from plain paragraph support.
+- `verify_artifact(file)` / `render_document(file)`: keep semantic comparison,
+  OMML structure, visual inspection and native edit/save/reopen evidence separate,
+  recording the final revision and actual Word environment. A missing mandatory
+  math check prevents Word completion. Counts or a successful export do not pass.
+
+These contracts do not assert that an implementation is reachable. Concrete
+availability and commands belong to the host adapter's detected capability record.
 
 ## 12. Tool Routing
 
@@ -982,8 +1011,9 @@ Superpowers is installed on Pi.
 
 ## 19. Future Harness Adapters
 
-The `adapters/` directory is not currently implemented. The proposed
-`adapters/antigravity/`, `adapters/claude/`, and `adapters/codex/` directories
+`adapters/codex/` now contains bounded local capability probes and their detection
+record; it is not a complete host integration or a Pi plugin. Other proposed
+`adapters/antigravity/` and `adapters/claude/` directories
 would begin as stubs with `unverified` mappings. Adding a
 harness means: detect its skill / plugin mechanism, delegation mechanism, and
 document capabilities; fill the three mapping files; write `install.md` so the
@@ -1058,7 +1088,7 @@ workspace-superpowers/
 
 ## 21. v1 Skill Set
 
-The current repository contains 22 implemented skills, listed below. The
+The current repository contains 23 implemented skills, listed below. The
 inspection split uses `reading-artifacts` and `analyzing-artifacts`.
 Target specialists outside this list are not current capabilities.
 
@@ -1072,6 +1102,13 @@ Target specialists outside this list are not current capabilities.
 
 **Prose (3)**
 `drafting-prose`, `writing-academic-prose`, `writing-reports`
+
+**Mathematics (1)**
+`working-with-mathematics` supplies optional mathematical support for a writing
+specialist or bounded analysis/review. `reviewer-mathematics` owns a separate
+correctness review; Word representation stays with artifact verification.
+Project survey is integrated into existing reading/analysis/planning skills,
+not a separate skill duplicating evidence state.
 
 `rewriting-prose` and `reviewing-coherence` are not separate implemented skills;
 existing editing and review skills provide the applicable behavior.

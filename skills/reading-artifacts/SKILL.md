@@ -7,6 +7,12 @@ description: Use when an existing artifact — document, PDF, deck, workbook, im
 
 Generic input-reading for any existing file. Does not interpret. Does not edit.
 
+For Word mathematics, include the representation and formula locators required
+by the [Equation contract](../../references/math-in-documents.md). For a project
+folder or its description, follow the acquisition and read-only boundaries in
+[project grounding](../../references/project-grounding.md); return observed paths,
+versions and coverage to analysis. This reading skill does not write the context file.
+
 Apply the [workflow continuity contract](../../references/workflow-continuity.md)
 when files arrive at any stage. Reading is an input step that returns to the
 requested operation; it does not restart the task or authorize editing.

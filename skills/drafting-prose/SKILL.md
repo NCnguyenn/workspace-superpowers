@@ -37,7 +37,14 @@ Before composing:
 
 ## Select a writing specialist
 
-Load one specialist for the section's job. Do not default to both on every paragraph.
+Load one writing specialist for the section's job. Do not default to both on every paragraph.
+Add optional mathematics support through `working-with-mathematics` only when
+the section needs mathematical interpretation, derivation or checking. It returns
+assumptions, notation, numbered steps and check evidence; the writing specialist
+integrates them without independently rewriting the formulas. Follow the
+[mathematics handoff](../../references/mathematics-checks.md) and, for Word output,
+the [native Equation contract](../../references/math-in-documents.md). Pure Equation
+formatting does not require a new proof or a new outline decision.
 
 | Situation | Specialist |
 |---|---|

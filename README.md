@@ -14,7 +14,7 @@ See the [design specification](docs/workspace-superpowers-design.md).
 
 ## Skill catalog
 
-The current package contains 22 skills. Availability of actual artifact operations depends on the host's capabilities.
+The current package contains 23 skills. Availability of actual artifact operations depends on the host's capabilities.
 
 | Group | Implemented skills |
 |---|---|
@@ -24,6 +24,7 @@ The current package contains 22 skills. Availability of actual artifact operatio
 | Spreadsheets | `working-with-spreadsheets`, `auditing-formulas` |
 | Presentations and visuals | `working-with-presentations`, `storyboarding-slides`, `working-with-visuals` |
 | Prose | `drafting-prose`, `writing-reports`, `writing-academic-prose` |
+| Mathematics | `working-with-mathematics` (optional support, independent computation where detected, separate reasoning review) |
 
 The prose family adds three complementary skills:
 
@@ -77,8 +78,39 @@ fallback only when citations are required and no convention is specified.
 | [reviewer-coherence](agents/reviewer-coherence.md) | Argument flow, section structure, terminology, and logical consistency |
 | [reviewer-citation](agents/reviewer-citation.md) | Academic and internal evidence, including logs and benchmarks; bibliography may be N/A |
 | [reviewer-prose](agents/reviewer-prose.md) | Paragraphs, lists, register, cadence, and redundant phrasing under the [style-guide Rule IDs](references/academic-writing-style.md) |
+| [reviewer-mathematics](agents/reviewer-mathematics.md) | Assumptions, notation, derivations, proofs and the limits of computational checks |
 
 Reviewers return findings; the author applies corrections and affected content is rechecked. Fabricated data, unsupported empirical results, and violations of applicable scope/approval boundaries are Critical. Wording corrections within authorized scope do not restart approval. Visual review is selected when applicable. Files, including permitted incomplete drafts, must be reopened after their final edit/export; chat-only delivery makes no file-verification claim.
+
+## Word mathematics and project folders
+
+The [approved constraints](docs/math-and-project-constraints.md) are integrated
+through shared references rather than a separate lifecycle:
+
+The router selects mathematics from the actual request and retained section
+content. Users need not name a skill: deriving a recurrence, explaining a proof
+or continuing a mathematical thesis section adds the mathematics specialist.
+Equation alignment stays with document layout; cell-formula audits stay with
+spreadsheet skills. See the [activation table](skills/using-workspace-superpowers/SKILL.md#mathematics-activation).
+
+- [Word mathematics](references/math-in-documents.md): paste, author, edit and
+  export preserve native editable Equation. Mathematical content, OMML structure,
+  appearance and edit/save/reopen are separate checks. Missing required checks
+  block Word completion; limited alternatives require explicit acceptance.
+- [Mathematical checks](references/mathematics-checks.md): assumptions, notation,
+  numbered steps and per-check evidence; samples are not universal proof.
+- [Project grounding](references/project-grounding.md): inspect the relevant
+  folder slice and map it to the report; reuse one derived context Markdown file.
+  App/database observation does not authorize code/config/schema/Git/data edits,
+  tests, evidence builds or migrations. Nonsoftware projects stay in Workspace.
+
+The [local capability record](adapters/codex/capabilities.md) reports actual host
+coverage. It is not a guarantee for other Word versions or Pi installations.
+Acceptance cases are in [the math/project campaign](tests/scenarios/manual/math-project-constraints.md).
+Structural tests, response-level trials and actual Word runtime tests are
+different evidence classes; do not infer one from another.
+The [upgrade report](docs/math-project-upgrade-report.md) records implemented
+behavior, test evidence and the unresolved native Word runtime limitation.
 
 ## Validation status
 

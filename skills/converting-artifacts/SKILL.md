@@ -7,6 +7,13 @@ description: Use when converting, exporting, or transforming an artifact from on
 
 Transform, export, and convert artifacts across file formats while preserving structural fidelity and verifying the output.
 
+Every conversion into Word with mathematics follows the
+[native Equation contract](../../references/math-in-documents.md). Detect math-capable
+conversion first, compare source content with target OMML and verify native
+editing after save/reopen. Loss of Equation structure fails fidelity. The generic
+fallback below does not authorize images or raw LaTeX in place of Word Equation;
+such a limited handoff requires explicit acceptance and is not Word completion.
+
 Apply the [workflow continuity contract](../../references/workflow-continuity.md).
 Resolve the current source revision and requested output set before export.
 Preserve the selected content and language; conversion is not authorization to
