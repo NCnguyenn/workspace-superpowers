@@ -48,7 +48,7 @@ this handoff; it does not inspect substantive file content itself.
 
 ## Deliverable Language
 
-Apply the [shared language policy](../../references/language-policy.md): authored deliverables default to English unless the user explicitly requests another language. Vietnamese conversation or input does not select Vietnamese output. Carry the resolved language into the brief and downstream specialists; a missing language instruction does not require an interview.
+Apply the [shared language policy](../../references/language-policy.md): authored deliverables default to English unless the user explicitly requests another language. Vietnamese conversation or input does not select Vietnamese output. Skipping gates, choosing a layout, or writing immediately is not an explicit language request. Carry the resolved language into the brief and downstream specialists; a missing language instruction does not require an interview.
 
 ## Allowed Router Capabilities
 

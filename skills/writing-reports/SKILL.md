@@ -47,7 +47,7 @@ A planned benchmark is not an observed result. A README is not a passing test. A
 
 ## Criteria mapping and visuals
 
-For each heading, state the criterion obligation, the evidence used, and the visual decision. Every table or figure needs a name or type, purpose, position, source, preparer, and status. **Not needed** is valid. Charts that assert results require data. Label hypothetical illustrations at the point of use; never reuse them as measured project results.
+For each heading, state the criterion obligation, the evidence used, and the visual decision. Every table or figure needs a name or type, purpose, position, source, preparer, and status. **Not needed** is valid. Charts that assert results require data. Label hypothetical illustrations at the point of use; never reuse them as measured project results. A conclusion must not reuse illustration numbers as operational proof.
 
 If evidence required by a criterion is missing, apply the contract Missing Evidence Protocol and keep `delivery_status` as `draft_incomplete` while that gap remains.
 

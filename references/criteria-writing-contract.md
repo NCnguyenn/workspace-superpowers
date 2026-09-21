@@ -66,6 +66,8 @@ For analysis-only work, accurately identifying missing evidence can complete the
 - A decision is valid only for its recorded scope and applicable outline version/sections. Approval of section A does not approve a newly added section B.
 - Reuse decisions available in the conversation or supplied approval record. Do not ask the user to repeat a decision solely to follow a checklist.
 - A waiver concerns only the gate(s) the user waived. Skipping outline approval does not waive evidence requirements, factual fidelity, review, or verification.
+- Skipping confirmation, choosing a layout, or writing immediately is not a language instruction. Vietnamese “viết luôn” or “tự quyết bố cục” still yields English unless the user names the output language.
+- Compose only supplied facts from the prompt or fixture. Do not invent SLAs, on-call coverage, restore-test pass rates, extra tools, or other unstated operational metrics.
 - “Write a draft before the data is ready” is neither permission to invent results nor a blanket waiver of unrelated approval gates.
 - Wording and typo corrections within approved scope do not invalidate substantive approval. Material scope, argument, or structural changes reopen only the affected decision unless the user already authorized that change and continuation.
 - If applicability of a prior decision is genuinely unclear, ask about that uncertainty; do not assume approval or restart the entire interview.
@@ -95,7 +97,7 @@ Apply when a criterion requires a project example, measured comparison, experime
 2. Identify exactly what is missing, which criterion/claim it supports, and why current material is insufficient. Ask targeted questions or request concrete inputs: before/after logs under comparable conditions, benchmark settings, a dataset, or an actual screenshot of the specified function.
 3. Add the gap and affected section to blocking_gaps; mark corresponding evidence missing. Suspend assertions that depend on it. Continue independent, authorized work supported without that material.
 4. If the user permits writing before evidence is available, produce a clearly incomplete draft. Place neutral placeholders at affected claims, tables, or figures. Do not assume the direction, magnitude, significance, or cause of a result.
-5. Use an illustrative scenario only when the user permits it. Label it at the point of use and carry the distinction into related tables, figures, and conclusions. Never cite it as a measured or implemented project result.
+5. Use an illustrative scenario only when the user permits it. Label it at the point of use and carry the distinction into related tables, figures, and conclusions. Never cite it as a measured or implemented project result. A requested conclusion must not reuse the illustration's numbers as operational proof; keep those numbers adjacent to the local label, and leave a real-result claim incomplete if evidence is still required.
 6. On receiving evidence, inspect what it supports, update the register, replace affected placeholders, and review dependent claims. Merely receiving a file does not establish a result.
 
 ### Standard neutral placeholder

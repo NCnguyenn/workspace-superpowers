@@ -88,5 +88,8 @@ If a specialist cannot be loaded, apply its rules in the orchestrator using the 
 - Inferring scope or outline approval from silence.
 - Drafting analysis-only or outline-only requests.
 - Inventing benchmark numbers to fill a criterion.
+- Skip-approval or write-now is not a language instruction; conversation language still does not select output.
+- Inventing SLAs, on-call coverage, or tools absent from the supplied facts.
+- Reusing hypothetical illustration numbers in a conclusion as operational proof.
 - Calling both specialists on every paragraph by default.
 - Skipping `reviewing-work` after substantial composition.
