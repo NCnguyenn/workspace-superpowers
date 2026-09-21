@@ -7,6 +7,6 @@
   "keywords": ["pi-package", "skills"],
   "pi": { "skills": ["./skills"] },
   "scripts": {
-    "test": "node --test tests/architecture/*.test.mjs"
+    "test": "node tests/run.mjs"
   }
 }

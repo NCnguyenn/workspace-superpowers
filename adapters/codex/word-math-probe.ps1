@@ -264,6 +264,7 @@ try {
     $result.capabilities.wordCom = New-CapabilityRecord 'verified' 'automation' 'Created a new hidden Word.Application COM instance owned by this probe.'
 
     $doc = $word.Documents.Add()
+    $sourceCount = 0
     try {
         $doc.Content.Text = "(x+1)/2=3`ry=4`r"
         $range = $doc.Paragraphs.Item(1).Range
@@ -275,11 +276,15 @@ try {
         $null = $doc.OMaths.Add($secondRange)
         $doc.OMaths.Item(2).BuildUp()
         $doc.SaveAs2($source, 16)
-        $result.evidence.source = [ordered]@{ oMathCount = $doc.OMaths.Count; docx = (Get-DocxMathEvidence $source) }
+        $sourceCount = $doc.OMaths.Count
     }
-    finally { $doc.Close(0) }
+    finally { if ($null -ne $doc) { $doc.Close(0); $doc = $null } }
+    $result.evidence.source = [ordered]@{ oMathCount = $sourceCount; docx = (Get-DocxMathEvidence $source) }
 
     $doc = $word.Documents.Open($source, $false, $false)
+    $beforeCount = 0
+    $editedCount = 0
+    $sourceHash = $null
     try {
         $beforeCount = $doc.OMaths.Count
         if ($beforeCount -ne 2) { throw "Reopened source document has $beforeCount native oMath objects; expected 2." }
@@ -290,8 +295,8 @@ try {
         if ($lastCharacter.Text -ne '3') { throw 'Expected editable right-hand-side character not found.' }
         $lastCharacter.Text = '4'
         $doc.SaveAs2($edited, 16)
+        $editedCount = $doc.OMaths.Count
         $result.evidence.editBeforeSave = [ordered]@{ oMathCount = $beforeCount; expectedRightHandSide = '3' }
-        $result.evidence.editAfterSave = [ordered]@{ oMathCount = $doc.OMaths.Count; docx = (Get-DocxMathEvidence $edited) }
         try {
             $doc.SaveAs2($pdf, 17)
             $result.evidence.pdf = [ordered]@{ exists = (Test-Path -LiteralPath $pdf); bytes = if (Test-Path -LiteralPath $pdf) { (Get-Item $pdf).Length } else { 0 } }
@@ -300,30 +305,32 @@ try {
             $result.evidence.pdf = [ordered]@{ exists = $false; bytes = 0; error = $_.Exception.Message }
         }
     }
-    finally { $doc.Close(0) }
+    finally { if ($null -ne $doc) { $doc.Close(0); $doc = $null } }
+    $result.evidence.editAfterSave = [ordered]@{ oMathCount = $editedCount; docx = (Get-DocxMathEvidence $edited) }
 
     $doc = $word.Documents.Open($edited, $false, $true)
+    $reopenCount = 0
     try {
         $reopenCount = $doc.OMaths.Count
-        $reopenXml = Get-DocxMathEvidence $edited
-        $result.evidence.reopen = [ordered]@{ oMathCount = $reopenCount; docx = $reopenXml }
-        $structural = ($reopenCount -eq 2 -and $reopenXml.hasOmml -and $reopenXml.fractionCount -ge 1)
-        $sourceUnchanged = ((Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash -eq $sourceHash)
-        $result.evidence.originalSourceUnchanged = $sourceUnchanged
-        $semantic = (Test-FixtureMeaning $reopenXml '4') -and $sourceUnchanged
-        $createState = if ($result.evidence.source.oMathCount -ge 1) { 'verified' } else { 'failed' }
-        $roundTripState = if ($structural) { 'verified' } else { 'failed' }
-        $semanticState = if ($semantic) { 'verified' } else { 'failed' }
-        $result.capabilities.nativeEquationCreate = New-CapabilityRecord -State $createState -Fidelity 'structural' -Detail 'Created two native oMath fixture equations, including a fraction, and saved them as DOCX.'
-        $result.capabilities.existingDocxEditSaveReopen = New-CapabilityRecord -State $roundTripState -Fidelity 'structural' -Detail 'Reopened a disposable DOCX, edited its first equation, retained two native Equation objects, saved, and reopened it; content preservation is checked separately.'
-        $result.capabilities.ommlStructure = New-CapabilityRecord -State $roundTripState -Fidelity 'structural' -Detail 'Both Word oMath collection and namespace-aware DOCX OMML fraction evidence were inspected after reopen.'
-        $result.capabilities.semanticContentComparison = New-CapabilityRecord -State $semanticState -Fidelity 'limited-semantic' -Detail 'Compared OMML fraction numerator, denominator, right-hand-side, untouched second equation, and original source hash; limited to the known fixture.'
-        $pdfOk = $result.evidence.pdf.exists -and $result.evidence.pdf.bytes -gt 0
-        $pdfState = if ($pdfOk) { 'verified' } else { 'unavailable' }
-        $pdfFidelity = if ($pdfOk) { 'render-output' } else { 'none' }
-        $result.capabilities.pdfExport = New-CapabilityRecord -State $pdfState -Fidelity $pdfFidelity -Detail 'Word PDF export was attempted on the edited fixture; output existence is not visual layout inspection.'
     }
-    finally { $doc.Close(0) }
+    finally { if ($null -ne $doc) { $doc.Close(0); $doc = $null } }
+    $reopenXml = Get-DocxMathEvidence $edited
+    $result.evidence.reopen = [ordered]@{ oMathCount = $reopenCount; docx = $reopenXml }
+    $structural = ($reopenCount -eq 2 -and $reopenXml.hasOmml -and $reopenXml.fractionCount -ge 1)
+    $sourceUnchanged = ((Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash -eq $sourceHash)
+    $result.evidence.originalSourceUnchanged = $sourceUnchanged
+    $semantic = (Test-FixtureMeaning $reopenXml '4') -and $sourceUnchanged
+    $createState = if ($result.evidence.source.oMathCount -ge 1) { 'verified' } else { 'failed' }
+    $roundTripState = if ($structural) { 'verified' } else { 'failed' }
+    $semanticState = if ($semantic) { 'verified' } else { 'failed' }
+    $result.capabilities.nativeEquationCreate = New-CapabilityRecord -State $createState -Fidelity 'structural' -Detail 'Created two native oMath fixture equations, including a fraction, and saved them as DOCX.'
+    $result.capabilities.existingDocxEditSaveReopen = New-CapabilityRecord -State $roundTripState -Fidelity 'structural' -Detail 'Reopened a disposable DOCX, edited its first equation, retained two native Equation objects, saved, and reopened it; content preservation is checked separately.'
+    $result.capabilities.ommlStructure = New-CapabilityRecord -State $roundTripState -Fidelity 'structural' -Detail 'Both Word oMath collection and namespace-aware DOCX OMML fraction evidence were inspected after reopen.'
+    $result.capabilities.semanticContentComparison = New-CapabilityRecord -State $semanticState -Fidelity 'limited-semantic' -Detail 'Compared OMML fraction numerator, denominator, right-hand-side, untouched second equation, and original source hash; limited to the known fixture.'
+    $pdfOk = $result.evidence.pdf.exists -and $result.evidence.pdf.bytes -gt 0
+    $pdfState = if ($pdfOk) { 'verified' } else { 'unavailable' }
+    $pdfFidelity = if ($pdfOk) { 'render-output' } else { 'none' }
+    $result.capabilities.pdfExport = New-CapabilityRecord -State $pdfState -Fidelity $pdfFidelity -Detail 'Word PDF export was attempted on the edited fixture; output existence is not visual layout inspection.'
 }
 catch {
     $result.error = $_.Exception.Message

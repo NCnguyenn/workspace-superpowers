@@ -1,20 +1,47 @@
-import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { existsSync, lstatSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
-const SKIP_DIRS = new Set(['node_modules', '.git', 'dist', 'build', '.tmp']);
-const SECRET_NAME = /(?:^|\/)(?:\.env|.*secret.*|\.pem|\.key)$/i;
+const SKIP_DIRS = new Set(['node_modules', '.git', 'dist', 'build', '.tmp', '.venv', 'vendor', '__pycache__']);
+const SECRET_NAME = /(?:^|\/)(?:\.env(?:\..+)?|.+\.(?:pem|key|p12|pfx)|id_rsa(?:\.[^/]+)?|.*(?:secret|credential|password).*)$/i;
+const LIMITS = {
+  maxFiles: 400,
+  maxFileBytes: 256 * 1024,
+  maxDepth: 8,
+  preview: 240,
+};
 
-function walk(dir, root, files, skipped) {
-  for (const name of readdirSync(dir)) {
+function walk(dir, root, files, skipped, depth = 0) {
+  if (depth > LIMITS.maxDepth) {
+    skipped.push(relative(root, dir).replaceAll('\\', '/') || '.');
+    return;
+  }
+  let names;
+  try {
+    names = readdirSync(dir);
+  } catch {
+    skipped.push(relative(root, dir).replaceAll('\\', '/') || '.');
+    return;
+  }
+  for (const name of names) {
     const abs = join(dir, name);
     const rel = relative(root, abs).replaceAll('\\', '/');
-    const st = statSync(abs);
+    let st;
+    try {
+      st = lstatSync(abs);
+    } catch {
+      skipped.push(rel);
+      continue;
+    }
+    if (st.isSymbolicLink()) {
+      skipped.push(rel);
+      continue;
+    }
     if (st.isDirectory()) {
       if (SKIP_DIRS.has(name)) {
         skipped.push(rel);
         continue;
       }
-      walk(abs, root, files, skipped);
+      walk(abs, root, files, skipped, depth + 1);
       continue;
     }
     files.push(rel);
@@ -35,60 +62,90 @@ export function surveyProject({ root, runTests = false, contextName = 'project-c
   }
   if (!existsSync(root)) return { ok: false, error: `project root not found: ${root}` };
 
-  const files = [];
-  const skipped = [];
-  walk(root, root, files, skipped);
+  try {
+    const files = [];
+    const skipped = [];
+    walk(root, root, files, skipped);
 
-  const filesRead = [];
-  const excerpts = [];
-  for (const rel of files) {
-    if (rel === contextName || isSecret(rel)) continue;
-    const abs = join(root, rel);
-    const text = readFileSync(abs, 'utf8');
-    filesRead.push(rel);
-    excerpts.push({ path: rel, bytes: text.length, preview: text.slice(0, 240) });
+    const filesRead = [];
+    const excerpts = [];
+    const unread = [];
+    for (const rel of files) {
+      if (rel === contextName || isSecret(rel)) continue;
+      if (filesRead.length >= LIMITS.maxFiles) {
+        unread.push(rel);
+        continue;
+      }
+      const abs = join(root, rel);
+      let st;
+      try {
+        st = statSync(abs);
+      } catch {
+        unread.push(rel);
+        continue;
+      }
+      if (st.size > LIMITS.maxFileBytes) {
+        unread.push(rel);
+        continue;
+      }
+      try {
+        const buf = readFileSync(abs);
+        if (buf.includes(0)) {
+          unread.push(rel);
+          continue;
+        }
+        const text = buf.toString('utf8');
+        filesRead.push(rel);
+        excerpts.push({ path: rel, bytes: text.length, preview: text.slice(0, LIMITS.preview) });
+      } catch {
+        unread.push(rel);
+      }
+    }
+
+    const secretPaths = files.filter((rel) => isSecret(rel));
+    const contextFile = join(root, contextName);
+    const now = new Date().toISOString();
+    const lines = [
+      '# Derived project context',
+      '',
+      'This file is derived survey memory, not original project evidence. Claims must keep locators to inspected sources.',
+      '',
+      `Recorded: ${now}`,
+      '',
+      '## Inspected files',
+      ...filesRead.map((rel) => `- \`${rel}\``),
+      '',
+      '## Skipped / uninspected',
+      ...skipped.map((rel) => `- \`${rel}\` (dependency or generated tree; not fully inspected)`),
+      ...secretPaths.map((rel) => `- \`${rel}\` (secret-like filename; contents not copied)`),
+      ...unread.map((rel) => `- \`${rel}\` (unread: size, binary, limit, or read error)`),
+      '',
+      '## Source excerpts (non-secret)',
+      ...excerpts.flatMap((item) => [
+        `### ${item.path}`,
+        '',
+        '```',
+        item.preview.trimEnd(),
+        '```',
+        '',
+      ]),
+      '## Conflicts',
+      '',
+      'README and source must be compared separately. A README claim is not proof of implementation.',
+      '',
+    ];
+    writeFileSync(contextFile, lines.join('\n'), 'utf8');
+
+    return {
+      ok: true,
+      contextFile,
+      filesRead,
+      skipped: [...skipped, ...secretPaths, ...unread],
+      wrote: [contextName],
+    };
+  } catch (error) {
+    return { ok: false, error: error instanceof Error ? error.message : String(error) };
   }
-
-  const secretPaths = files.filter((rel) => isSecret(rel));
-  const contextFile = join(root, contextName);
-  const now = new Date().toISOString();
-  const lines = [
-    '# Derived project context',
-    '',
-    'This file is derived survey memory, not original project evidence. Claims must keep locators to inspected sources.',
-    '',
-    `Recorded: ${now}`,
-    '',
-    '## Inspected files',
-    ...filesRead.map((rel) => `- \`${rel}\``),
-    '',
-    '## Skipped / uninspected',
-    ...skipped.map((rel) => `- \`${rel}\` (dependency or generated tree; not fully inspected)`),
-    ...secretPaths.map((rel) => `- \`${rel}\` (secret-like filename; contents not copied)`),
-    '',
-    '## Source excerpts (non-secret)',
-    ...excerpts.flatMap((item) => [
-      `### ${item.path}`,
-      '',
-      '```',
-      item.preview.trimEnd(),
-      '```',
-      '',
-    ]),
-    '## Conflicts',
-    '',
-    'README and source must be compared separately. A README claim is not proof of implementation.',
-    '',
-  ];
-  writeFileSync(contextFile, lines.join('\n'), 'utf8');
-
-  return {
-    ok: true,
-    contextFile,
-    filesRead,
-    skipped: [...skipped, ...secretPaths],
-    wrote: [contextName],
-  };
 }
 
 function parseArgs(argv) {
