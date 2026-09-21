@@ -7,6 +7,18 @@ description: Use when starting a workspace-primary document, research, office, o
 
 Single entry router for the workspace domain. Classify, compose, and route. Contains no format-specific procedure.
 
+## Durable work and first-turn discovery
+
+Apply [persistent work tracking](../../references/work-tracking.md) on fresh
+Workspace chats, continuations and sustained work. Locate the adopted plan or
+bounded `work-plan.md` candidates with listing only, then delegate reading to
+`reading-artifacts` before scoping or planning. Reuse its checkpoint and load
+only the relevant source slices. Propose tracking once when justified, with
+zero/one/two record types according to the task; simple edits stay lightweight.
+Planning owns plan content, editing persists the shared record, and verification
+checks actual paths/revisions. The router does not write a plan or create an
+independent state system. Handoffs carry work/item identity and current targets.
+
 For mathematics entering Word, route the assigned operation under the
 [native Equation contract](../../references/math-in-documents.md). For folder-based
 reports, pass the [project survey contract](../../references/project-grounding.md)

@@ -5,6 +5,12 @@ The target artifact path, expected format, and the specific inspection goals (e.
 
 ## Job
 
+For [persistent work tracking](../references/work-tracking.md), receive the
+plan/work-item identity and read its checkpoint before the assigned source slice.
+Return actual file revisions, exact rubric locators, extraction coverage and
+unread regions. Inspect project context only when mapped to the assigned item.
+Do not write the plan or treat extracted Markdown as proof of full source coverage.
+
 For ongoing work, return artifact identity/revision and actual inspected coverage
 under the [workflow continuity contract](../references/workflow-continuity.md).
 For report continuation, include relevant structure and adjacent source excerpts

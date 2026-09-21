@@ -7,6 +7,13 @@ description: Use when verified workspace artifacts are ready to be named, organi
 
 Assemble, organize, and produce the final delivery report for verified workspace artifacts.
 
+For [persistent work tracking](../../references/work-tracking.md), report the
+exact delivered revision and whether it is working or user-approved. Preserve
+approved snapshots and linked evidence during cleanup. After an authorized move
+or rename, send new paths to the plan's editor and recheck links before delivery;
+do not leave the next session pointing at an obsolete path. A new export returns
+through conversion/verification rather than being marked current by packaging.
+
 For Word mathematics, apply the [Equation completion boundary](../../references/math-in-documents.md):
 do not package an unverified native Equation requirement as complete. An explicitly
 accepted limited handoff retains its limitations. During project surveys, the

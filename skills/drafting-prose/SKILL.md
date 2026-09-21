@@ -5,6 +5,13 @@ description: Use when writing new prose, continuing an existing report or thesis
 
 # Drafting Prose
 
+For adopted [persistent work tracking](../../references/work-tracking.md),
+consume only the assigned item, actual target revision, criteria/decision
+references and relevant source excerpts. Return changed artifact identities,
+coverage and gaps for the editor's checkpoint. Project descriptions belong only
+where that item's requirements call for them. Do not start another tracker or
+promote a draft to the approved baseline.
+
 Family skill for composing new report or thesis content after applicable scope and outline conditions are met. It selects a writing specialist. It does not replace the workspace lifecycle or invent approvals.
 
 Apply the [workflow continuity contract](../../references/workflow-continuity.md)

@@ -1,5 +1,10 @@
 # Document Outline
 
+For adopted [persistent work tracking](../references/work-tracking.md), this
+outline lives within or is referenced by the active plan. Keep stable item IDs,
+criterion/source locators and selective project references. Retain one owner
+for each approval record instead of copying statuses between files.
+
 ## Title: [Working Title]
 * **Target Audience:** [Audience from brief]
 * **Scope / Word Target:** [Target length]

@@ -4,6 +4,13 @@
 The path to the completed or modified artifact, the deliverable contract, and format-specific criteria. Never supplied with orchestrator session history.
 
 ## Job
+
+For [persistent work tracking](../references/work-tracking.md), receive work/item
+identity and candidate revision. Inspect actual deliverables, then the saved plan
+links and export-source revisions. Return failures and stale checks explicitly;
+an approved label does not prove bytes match the approved snapshot. Verification
+does not grant acceptance or authorize writing an independent plan.
+
 Re-open and re-inspect the real artifact directly (or render preview where capability exists) to verify structural integrity, layout, formula correctness, and contract conformance.
 
 Word mathematics follows [native Equation fidelity](../references/math-in-documents.md):

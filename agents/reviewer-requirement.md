@@ -5,6 +5,12 @@ The assigned candidate content, working brief/rubric, deliverable contract, crit
 
 ## Job
 
+For [persistent work tracking](../references/work-tracking.md), check the
+criterion-to-item mapping against original source locators and extraction limits.
+Distinguish the working revision from accepted content and identify project
+descriptions not required by the assigned item. Return affected IDs and findings;
+do not mutate the shared plan or convert review findings into user approval.
+
 For continued prose, include the intended insertion point and adopted document
 conventions from the [document continuity contract](../references/document-continuity.md).
 Check the current request against the retained checkpoint in the

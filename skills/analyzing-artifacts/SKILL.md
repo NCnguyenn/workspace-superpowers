@@ -9,6 +9,12 @@ Interpret completed reads for the requested analysis, continuation, or revision.
 Does not edit. Apply the [workflow continuity contract](../../references/workflow-continuity.md)
 when new inputs or changed requests require updating earlier findings.
 
+For [persistent work tracking](../../references/work-tracking.md), compare the
+read plan with relevant artifact revisions, map source obligations to stable
+work-item IDs and identify affected gaps/decisions. Match project context only
+to items needing its evidence. Return proposed checkpoint changes to the editor;
+do not infer acceptance from newer files or write an analysis-specific tracker.
+
 For a project folder, apply [project grounding](../../references/project-grounding.md):
 classify the inspected inventory, retain source revisions/conflicts and produce
 `structure_map` for planning. Descriptions and observations are different evidence

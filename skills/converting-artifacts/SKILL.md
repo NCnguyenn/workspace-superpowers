@@ -7,6 +7,16 @@ description: Use when converting, exporting, or transforming an artifact from on
 
 Transform, export, and convert artifacts across file formats while preserving structural fidelity and verifying the output.
 
+For [persistent work tracking](../../references/work-tracking.md), resolve
+whether the request targets the working or approved revision before conversion.
+Return export path/revision and exact source artifact/revision to the plan's
+editor after independent verification. Exporting is not content approval. An
+optional rubric extraction keeps source locators and unread regions; it is a
+derived aid, not a replacement for the original or the work plan.
+If an existing export matches the requested source revision and export settings,
+verify and deliver that file without duplication. Execute the conversion
+procedure when the output needs generation, changed settings or regeneration.
+
 Every conversion into Word with mathematics follows the
 [native Equation contract](../../references/math-in-documents.md). Detect math-capable
 conversion first, compare source content with target OMML and verify native

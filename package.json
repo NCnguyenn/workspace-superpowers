@@ -1,12 +1,14 @@
 {
   "name": "workspace-superpowers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "description": "Workspace-domain skill pack counterpart of obra/superpowers",
   "keywords": ["pi-package", "skills"],
   "pi": { "skills": ["./skills"] },
   "scripts": {
-    "test": "node tests/run.mjs"
+    "test": "node tests/run.mjs",
+    "package:pi": "python scripts/package-pi.py",
+    "test:package": "python scripts/test-package-pi.py"
   }
 }

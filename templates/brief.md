@@ -1,5 +1,9 @@
 # Working Brief
 
+For adopted [persistent work tracking](../references/work-tracking.md), keep
+this brief within or referenced by the active plan, not a second mutable copy.
+Carry `plan_file`, `work_id`, current item and target revision into handoffs.
+
 ## 1. Context & Objective
 * **Target Audience:** [Intended readers/stakeholders]
 * **Core Purpose:** [What this document achieves or explains]

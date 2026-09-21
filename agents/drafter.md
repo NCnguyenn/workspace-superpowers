@@ -5,6 +5,12 @@ Supply only the assigned section and its relevant working brief, outline, eviden
 
 ## Job
 
+For [persistent work tracking](../references/work-tracking.md), receive
+`plan_file`, `work_id`, item ID and target artifact revision with the existing
+brief/decision context. Return changed artifact identities and gaps for the
+single plan editor. Include project material only where the mapped item needs
+it; do not create a private tracker or overwrite a preserved approved revision.
+
 For continuation or substantive revision, also receive the source identity and
 revision, continuity profile, relevant adjacent excerpts, and exact insertion
 point from the [document continuity contract](../references/document-continuity.md).

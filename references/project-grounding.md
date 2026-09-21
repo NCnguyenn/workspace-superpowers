@@ -85,6 +85,15 @@ packaging. If no output write is authorized, retain observations in conversation
 and return the missing output-location decision. Read/reinspect the context file
 after an authorized update; never claim a write based on a proposed change list.
 
+When a work plan is adopted, apply [persistent work tracking](work-tracking.md)
+to bind `project_id`, source root and this exact `context_file` to the relevant
+work items. The plan lives in an authorized output location unless additional
+project writes were explicitly allowed. Survey authority alone still does not
+create a plan. Preserve context identity/metadata on refresh; a raw inventory
+generator that replaces the whole file is not an editor for an adopted record.
+Consult context only for items needing project evidence. Its availability does
+not authorize a project-description chapter or changes to an approved outline.
+
 ## Structure mapped to the report
 
 Analysis produces `structure_map`: heading/criterion, project paths, file roles,

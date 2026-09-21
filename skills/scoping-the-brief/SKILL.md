@@ -7,6 +7,13 @@ description: Use when material workspace requirements are unclear, report or the
 
 Resolve blocking ambiguity and establish an actionable working brief for substantial workspace tasks.
 
+For sustained work, use [persistent work tracking](../../references/work-tracking.md):
+inspect an existing plan before asking for requirements already recorded. Offer
+agent-managed persistence when warranted, without requiring user file management.
+Extract source requirements separately from proposals/unknowns; retain rubric
+coverage gaps. Tracking consent does not approve the scope or outline. Return
+the brief and decisions to planning/editor for the same adopted record.
+
 Apply the [workflow continuity contract](../../references/workflow-continuity.md).
 Consume partial answers without discarding other context. If the user asks a side
 question or supplies a file instead of answering, route that request and keep only

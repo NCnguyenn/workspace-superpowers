@@ -7,6 +7,12 @@ description: Use when a drafted or assembled workspace deliverable needs quality
 
 Coordinate quality review within the workspace lifecycle. The workspace entry router retains ownership of the overall workflow.
 
+For [persistent work tracking](../../references/work-tracking.md), reviewers
+receive the target plan/item identity, candidate revision and criterion/decision
+references. Check requirement-to-item coverage, unsupported completion claims
+and project material outside its mapped scope. Return findings and affected
+items to the editor; review findings are not user acceptance or plan mutations.
+
 Use the [workflow continuity contract](../../references/workflow-continuity.md)
 to review the current scope and artifact revision after user changes. For prose
 continuation, apply the [document continuity contract](../../references/document-continuity.md):

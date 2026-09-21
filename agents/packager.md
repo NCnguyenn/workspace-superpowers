@@ -4,6 +4,13 @@
 The deliverable contract, verified artifact paths, verification verdicts, and delivery notes. Never supplied with orchestrator session history.
 
 ## Job
+
+For [persistent work tracking](../references/work-tracking.md), report exact
+working/approved/export revisions and preserve linked snapshots during cleanup.
+Return any authorized path changes for the editor to update and recheck in the
+shared plan before delivery. Do not substitute the newest file for the requested
+approved version or promote content approval yourself.
+
 Assemble the final deliverable files, organize directory structure, ensure consistent naming and versioning, and draft the final packaging and delivery report.
 
 ## Hard Limits

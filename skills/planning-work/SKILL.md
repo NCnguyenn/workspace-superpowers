@@ -7,6 +7,15 @@ description: Use when an outline is requested, criteria-based writing needs an o
 
 Construct an execution plan, structural outline, and deliverable contract for complex workspace projects.
 
+For adopted [persistent work tracking](../../references/work-tracking.md), use
+the [work-plan template](../../templates/work-plan.md) to own the plan's content:
+brief, requirement-to-item coverage, outline/milestones, dependencies, decisions
+and next action. Reuse existing plan identity and decision owners; do not create
+parallel brief/outline registers. Send grounded content to `editing-documents`
+for the one persistent write and `verifying-artifacts` for readback. Missing
+criteria allow a clearly provisional plan, not invented mandatory requirements.
+Project references attach only to items that need them, not every heading.
+
 Apply the [workflow continuity contract](../../references/workflow-continuity.md)
 to feedback, side questions, and late files. Update only affected outline sections;
 retain valid decisions and resolve new evidence before dependent planning.
@@ -78,7 +87,7 @@ Planning owns outline creation, revisions, and receipt of approval under the con
 
 Abstract capability names, resolved by the harness adapter. Never a tool name.
 
-- `write_file(path, content)` — to generate the outline and deliverable contract when required.
+- `write_file(path, content)` — for standalone requested outlines/contracts; adopted work-plan persistence belongs to `editing-documents`.
 - `delegate(role, context)` — optional; only for specialist *planning* roles. Do not dispatch the full execution graph from this skill; `reviewing-work` and `verifying-artifacts` remain later lifecycle stages.
 
 ## Dependencies

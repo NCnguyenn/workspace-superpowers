@@ -8,6 +8,13 @@ changes, late files, pending questions, and resumption. Use the
 coherent continuation. These add no approval gates: reuse decisions that already
 apply and return only unresolved prerequisites to their owner.
 
+For adopted durable work, [persistent work tracking](work-tracking.md) stores or
+references this same semantic state. Criterion IDs retain original source
+locators and extraction limits; each maps to affected work items. Tracking
+consent is not scope, outline or content approval. Do not duplicate decisions
+between the plan and a previously adopted brief/outline. Missing criteria or
+unread rubric pages remain gaps even if the plan file was successfully saved.
+
 ## Deliverable language
 
 Follow the [language policy](language-policy.md): authored analysis, outlines, reports, and generated/exported artifacts default to English. Use Vietnamese or another language only when explicitly requested by the user for the relevant output. Conversation or source language does not override this default. Record the resolved language in scope and carry it through drafting, labels, placeholders, review, and export.

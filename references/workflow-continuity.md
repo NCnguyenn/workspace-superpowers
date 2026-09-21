@@ -5,6 +5,12 @@ and applicable prior instructions determine the work; a workflow is not a script
 the user must follow. The workspace router owns routing. Specialists perform
 their assigned operation and return results or gaps without expanding it.
 
+For fresh-chat discovery, durable checkpoints and artifact-version matching,
+apply [persistent work tracking](work-tracking.md). Read the adopted plan first,
+then only sources needed for the current operation. Its identity, revision and
+relevant item travel with every handoff; the existing editor persists updates.
+All specialists use this same record rather than create their own trackers.
+
 ## Interpret each new message
 
 Read the message together with the active task, pending questions, and relevant
@@ -39,9 +45,11 @@ resumption. Mathematics carries check records and the latest Word target under
 [mathematical checks](mathematics-checks.md) and [Word fidelity](math-in-documents.md).
 These are optional checkpoint fields, not new approval gates or parallel registers.
 
-Keep a proportional checkpoint in conversation state or the
+For transient work, keep a proportional checkpoint in conversation state or the
 [working brief](../templates/brief.md); no extra file, service, or user form is
-required. For a one-step task, a short note is sufficient. For sustained work retain:
+required. For sustained work, offer persistence under the tracking contract and
+use its adopted plan when accepted. For a one-step task, a short note is
+sufficient. For sustained work retain:
 
 - Goal and currently authorized operation; target artifact/section and stopping point.
 - Constraints, preserve-list, deliverable language, and applicable scope/outline decisions.

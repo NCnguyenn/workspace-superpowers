@@ -7,6 +7,13 @@ description: Use when an existing artifact — document, PDF, deck, workbook, im
 
 Generic input-reading for any existing file. Does not interpret. Does not edit.
 
+For [persistent work tracking](../../references/work-tracking.md), read the
+adopted plan's identity and Resume Here before linked documents. Return the
+recorded target revision, decisions and source locators; inspect only relevant
+rubric/draft passages and adjacent context next. Follow the Word/PDF/text intake
+rules there, preserving original requirements, source revisions and unread/OCR
+limits. Extraction to Markdown is optional and never proves complete coverage.
+
 For Word mathematics, include the representation and formula locators required
 by the [Equation contract](../../references/math-in-documents.md). For a project
 folder or its description, follow the acquisition and read-only boundaries in

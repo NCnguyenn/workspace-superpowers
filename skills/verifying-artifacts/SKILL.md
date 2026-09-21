@@ -7,6 +7,14 @@ description: Use when any artifact has been created, edited, converted, or expor
 
 Re-open the real artifact before claiming success.
 
+For [persistent work tracking](../../references/work-tracking.md), verify the
+saved deliverable revision, then re-read the updated plan's paths, revision
+identities, approval references and export-source relationships. Distinguish
+working from approved artifacts and unreadable/missing checks from completion.
+Report a saved artifact with failed checkpoint update as a split result. Return
+check evidence to the single editor; never invent an approval or repair content
+silently as part of verification.
+
 For Word mathematics, enforce the [native Equation contract](../../references/math-in-documents.md).
 Record content, OMML structure, rendered appearance and native edit/save/reopen
 checks separately, with target revision and Word environment. Missing required

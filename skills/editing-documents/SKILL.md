@@ -1,11 +1,19 @@
 ---
 name: editing-documents
-description: Use when editing existing text or document content, or when creating or updating the single derived context record for an authorized project survey.
+description: Use when editing text or documents, persisting an adopted work plan, or maintaining the designated context record for an authorized project survey.
 ---
 
 # Editing Documents
 
 Modify existing text or document content at the depth requested.
+
+For [persistent work tracking](../../references/work-tracking.md), create or
+update the adopted plan as the single writer after receiving content from its
+owners. This is a bounded creation exception alongside project-context creation.
+Check that a new path is unused; preserve existing user notes and decisions.
+Save/check artifacts first, then update exact working/approved/export identities
+and the affected checkpoint. Re-read the saved plan; a chat change list is not a
+saved update. Preserve approved artifact snapshots before subsequent file edits.
 
 Word mathematics follows the [native Equation contract](../../references/math-in-documents.md)
 for paste and in-file edits: preserve OMML and mathematical content, use the
@@ -35,7 +43,7 @@ does not require a new report outline or authorize any other project write.
 
 ## When not to use
 
-Create-from-blank deliverables other than the designated project context record. Read-only analysis with no authorized persistence. Verify-only. Spreadsheets, presentations, images and PDFs belong to their own artifact families.
+Create-from-blank deliverables other than an adopted work plan or designated project context record. Read-only analysis with no authorized persistence. Verify-only. Spreadsheets, presentations, images and PDFs belong to their own artifact families.
 
 ## Procedure
 

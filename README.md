@@ -12,6 +12,30 @@ Deliverables and repository content default to English, even when the user commu
 
 See the [design specification](docs/workspace-superpowers-design.md).
 
+## PI-Desktop local preview
+
+Build an installable package for PI-Desktop 0.15.1 with Python 3.9+ (standard
+library only):
+
+```powershell
+python scripts/test-package-pi.py
+python scripts/package-pi.py
+```
+
+Install `dist/pi/local.workspace-superpowers-0.1.1.piplug` from PI-Desktop's
+Plugins page, or choose the generated `dist/pi/local.workspace-superpowers`
+folder. Grant `agent.prompt.inject`, enable the plugin for the target project,
+and merge the supplied bootstrap into that project's effective instructions.
+See [installation and rollback](adapters/pi/install.md),
+[bootstrap](adapters/pi/bootstrap.md), and
+[real-world trial prompts](adapters/pi/dogfood.md).
+
+The builder preserves all 23 skills and their supporting references, uses
+explicit skill IDs, and reopens the archive to check every byte. Existing output
+directories are refused; use `--out dist/pi-next` for another build. Package
+validation is separate from runtime acceptance in PI-Desktop. No global
+instructions, installed plugins, or user documents are modified by the build.
+
 ## Skill catalog
 
 The current package contains 23 skills. Availability of actual artifact operations depends on the host's capabilities.
@@ -71,6 +95,21 @@ Continuation preserves an established citation convention; Harvard is the
 fallback only when citations are required and no convention is specified.
 
 ## Review and delivery
+
+For sustained work, the [tracking contract](references/work-tracking.md) adds
+agent-managed persistence through the existing lifecycle. At the first Workspace
+turn or a continuation, read an adopted `work-plan.md` before asking for progress,
+then read only relevant source slices. Offer tracking once when useful; simple
+questions, short deliverables and isolated edits do not acquire extra files.
+Users answer and approve through chat. Existing context records and decisions
+are reused rather than duplicated.
+
+The [plan template](templates/work-plan.md) links requirements to work items,
+optional project evidence, exact working/approved artifacts and export source
+revisions. Project descriptions appear only in mapped sections. Word/PDF rubric
+extraction retains original locators and unread/OCR gaps; a saved plan is not
+proof all criteria were read. Startup discovery requires effective workspace
+instructions and access to the same files; it is not a host background service.
 
 | Role | Review responsibility |
 |---|---|

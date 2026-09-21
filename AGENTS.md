@@ -42,6 +42,16 @@ required, prefer Workspace.
 
 Re-classify when the task changes mid-session.
 
+On the first Workspace turn in a new chat and on continuation, discover an
+existing `work-plan.md` before asking for progress or reading all source files.
+Follow the [persistent work-tracking contract](references/work-tracking.md):
+use the recorded plan path or bounded task-root discovery, route its read to
+`reading-artifacts`, then load only sources needed by its current item. Reuse
+matching plans and user decisions. Propose agent-managed tracking for sustained
+work; do not create it for simple Q&A, isolated edits or one-off exports. Users
+review and consent in chat; they need not create folders or maintain metadata.
+An existing plan does not turn an unrelated question into permission to resume.
+
 For ongoing Workspace work, apply the [workflow continuity contract](references/workflow-continuity.md).
 Interpret each new message in context: answer side questions normally, read new
 files before using them, preserve unaffected decisions, and resume at the relevant
