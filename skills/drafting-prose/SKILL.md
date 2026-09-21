@@ -32,7 +32,7 @@ Before composing:
 
 1. Confirm `task_mode` is draft or an authorized substantive compose. Stop at analysis or outline if that was the request.
 2. When the scope gate applies, confirm `scope_status` is `confirmed` or `waived`. If it is required and still `pending` or missing, return the gap to `scoping-the-brief`. Do not impose criteria-writing gates on unrelated prose with `not_required` decisions.
-3. Confirm `outline_status` is `approved`, `waived`, or `not_required` under the contract. If `pending`, `not_started`, or `revision_requested`, return to `planning-work`.
+3. Confirm `outline_status` is `approved`, `waived`, or `not_required` under the contract. If `pending`, `not_started`, or `revision_requested`, return to `planning-work`. A complete specification in the prompt is not outline approval; do not compose the section yet.
 4. Inspect the evidence register and `blocking_gaps` for the target section. Follow the contract Missing Evidence Protocol. Do not invent measurements or project results.
 
 ## Select a writing specialist

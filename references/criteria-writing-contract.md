@@ -68,7 +68,8 @@ For analysis-only work, accurately identifying missing evidence can complete the
 - A waiver concerns only the gate(s) the user waived. Skipping outline approval does not waive evidence requirements, factual fidelity, review, or verification.
 - Skipping confirmation, choosing a layout, or writing immediately is not a language instruction. Vietnamese “viết luôn” or “tự quyết bố cục” still yields English unless the user names the output language.
 - Compose only supplied facts from the prompt or fixture. Do not invent SLAs, on-call coverage, restore-test pass rates, extra tools, or other unstated operational metrics.
-- “Write a draft before the data is ready” is neither permission to invent results nor a blanket waiver of unrelated approval gates.
+- “Write a draft before the data is ready” is neither permission to invent results nor a blanket waiver of unrelated approval gates. It does not set `scope_status` or `outline_status` to waived.
+- A complete technical description in the prompt does not waive outline approval for a draft. Present the outline and stop unless that gate is already approved or explicitly waived.
 - Wording and typo corrections within approved scope do not invalidate substantive approval. Material scope, argument, or structural changes reopen only the affected decision unless the user already authorized that change and continuation.
 - If applicability of a prior decision is genuinely unclear, ask about that uncertainty; do not assume approval or restart the entire interview.
 
