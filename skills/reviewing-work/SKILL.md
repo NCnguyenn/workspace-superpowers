@@ -7,6 +7,14 @@ description: Use when a drafted or assembled workspace deliverable needs quality
 
 Coordinate quality review within the workspace lifecycle. The workspace entry router retains ownership of the overall workflow.
 
+Use the [workflow continuity contract](../../references/workflow-continuity.md)
+to review the current scope and artifact revision after user changes. For prose
+continuation, apply the [document continuity contract](../../references/document-continuity.md):
+provide reviewers the relevant profile, adjacent excerpts, and evidence locators.
+Check the insertion boundary and dependent conclusions, not just standalone
+fluency. Route continuity defects to coherence, prose, requirement, or evidence
+review by their cause; recheck affected passages after correction.
+
 For criteria-based writing, follow the [criteria-writing contract](../../references/criteria-writing-contract.md) for applicable decisions, evidence gaps, and delivery status. Apply the [language policy](../../references/language-policy.md) to findings and suggested wording.
 
 ## When to use

@@ -7,6 +7,13 @@ description: Use when authoring scholarly, analytical, or thesis prose requiring
 
 Specialist for scholarly and thesis prose: claim, warrant, evidence, interpretation, and calibrated certainty. Write like a capable final-year student in the discipline, not like a template.
 
+Honor the [workflow continuity contract](../../references/workflow-continuity.md)
+and the [document continuity contract](../../references/document-continuity.md).
+Ground a continuation in actual neighboring passages and the source profile.
+Keep the argument, terminology, register, and presentation coherent across
+sections; adapt tense and paragraph form to the section's function. Generic
+academic phrasing alone does not establish continuity with the user's document.
+
 Apply the [academic writing style guide](../../references/academic-writing-style.md) by rule ID. Honor the [criteria-writing contract](../../references/criteria-writing-contract.md) for evidence and authorization. Honor the [language policy](../../references/language-policy.md) for output language.
 
 ## When to use

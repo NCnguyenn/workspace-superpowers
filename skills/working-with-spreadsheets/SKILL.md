@@ -7,6 +7,12 @@ description: Use when inspecting, cleaning, analyzing, updating data, or creatin
 
 Inspect, manipulate, analyze, and format spreadsheet workbooks while strictly maintaining formula integrity and data types.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md).
+When a workbook supplies evidence for another task, return relevant sheet/cell
+locators, values, units, formulas, and calculation limits to analysis, then resume
+that task. Inspection/analysis alone does not authorize data cleaning, formula
+repairs, chart creation, or saving changes to the source workbook.
+
 ## When to use
 
 Inspecting sheets and named ranges, cleaning raw tabular data, updating numbers or labels, building summary views, creating charts, or modifying workbooks (XLSX, XLS, CSV).

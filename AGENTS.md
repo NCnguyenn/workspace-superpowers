@@ -42,6 +42,14 @@ required, prefer Workspace.
 
 Re-classify when the task changes mid-session.
 
+For ongoing Workspace work, apply the [workflow continuity contract](references/workflow-continuity.md).
+Interpret each new message in context: answer side questions normally, read new
+files before using them, preserve unaffected decisions, and resume at the relevant
+step. A pending question does not block unrelated work, and an off-topic answer
+is not approval. Users do not need to follow the workflow's expected sequence.
+When continuing a report, retain its argument, project context, terminology,
+voice, and presentation under the [document continuity contract](references/document-continuity.md).
+
 Never claim a skill was followed unless it was loaded.
 
 ## Deliverable Language

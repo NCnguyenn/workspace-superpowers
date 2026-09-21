@@ -7,6 +7,14 @@ description: Use when an outline is requested, criteria-based writing needs an o
 
 Construct an execution plan, structural outline, and deliverable contract for complex workspace projects.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md)
+to feedback, side questions, and late files. Update only affected outline sections;
+retain valid decisions and resolve new evidence before dependent planning.
+For continuing a report, consume the profile and source map from the
+[document continuity contract](../../references/document-continuity.md). Position
+the next criterion within the existing argument, headings, and numbering; do not
+replace the document's structure with a generic report outline.
+
 ## When to use
 
 Multi-section, multi-stage, research-heavy, or multi-artifact projects (e.g. theses, comprehensive reports, multi-slide decks, mixed-format packages) before authoring or modifying content.

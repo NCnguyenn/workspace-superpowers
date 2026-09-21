@@ -7,6 +7,22 @@ description: Use when starting a workspace-primary document, research, office, o
 
 Single entry router for the workspace domain. Classify, compose, and route. Contains no format-specific procedure.
 
+## Ongoing requests and continuity
+
+Apply the [workflow continuity contract](../../references/workflow-continuity.md)
+at every new message and specialist handoff. Select skills from the current
+request plus retained context; the user need not follow a fixed sequence.
+Answer simple side questions directly, process supplied files through reading
+and analysis, and return to the next authorized step. Preserve pending decisions
+without forcing them onto unrelated work. Pause, replace, or cancel only the
+scope the user actually changed.
+
+For report/thesis continuation, obtain the source-grounded profile and relevant
+adjacent excerpts through reading/analysis under the
+[document continuity contract](../../references/document-continuity.md), then
+pass them through planning, drafting/editing, and review. The router coordinates
+this handoff; it does not inspect substantive file content itself.
+
 ## Responsibilities
 
 1. Verify whether the request belongs to Workspace Superpowers.
@@ -99,7 +115,7 @@ For chat-only outputs, review the requested content without claiming file verifi
 
    * Invoke `scoping-the-brief` for material ambiguity, criteria analysis, or unresolved scope confirmation required by the criteria-writing contract.
    * Do not interview when the brief is already clear. Clarification and required scope confirmation are separate; reuse confirmed decisions and explicit waivers.
-   * When researching sources or citing references, invoke `researching-sources` and `citing-sources` only when the user explicitly requests literature research or citations. When citation style is not specified, default to Harvard Style.
+   * When researching sources or citing references, invoke `researching-sources` and `citing-sources` only for requested research or citations, including applicable requirements the user adopted. Preserve a coherent citation convention in an existing document; use Harvard Style only when citations are required and no style is established under the [citation style rules](../../references/citation-styles.md).
 
 5. **Analyze Before Substantive Modification**
 

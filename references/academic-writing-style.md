@@ -9,6 +9,22 @@ Shared style reference for writers and reviewers of academic and analytical cont
 
 ## 1. Paragraph architecture and cohesion
 
+For continuing or revising an existing report/thesis, apply the
+[document continuity contract](document-continuity.md). Inspect surrounding
+passages before selecting the voice and structure of new text.
+
+- **D1 — Continue the argument:** Make the new section's relationship to prior
+  findings explicit; avoid repeated introductions, redundant definitions, and
+  detached conclusions that do not advance the requested criterion.
+- **D2 — Keep the same context:** Preserve established project facts, actor names,
+  terminology, units, conditions, and uncertainty. Matching style cannot justify
+  carrying forward a known error or converting a plan into an observed result.
+- **D3 — Preserve compatible conventions:** Match the source's register, person,
+  heading/numbering system, and paragraph/list/citation conventions unless the
+  user or adopted requirements specify otherwise. Tense may vary by function.
+- **D4 — Review across the boundary:** Compare new and adjacent text with source
+  locators; assess continuity beyond standalone fluency and disclose missing context.
+
 - **P1 — Develop one point:** State the focus, support it with evidence or reasoning, and explain any necessary condition or implication. Do not leave a heading followed by an undeveloped assertion.
 - **P2 — Judge completeness:** Four to five sentences (typically 4–5 lines) is a recommended benchmark for developed analytical paragraphs, never a mechanical quota. A shorter definition, transition, or complete point is valid. Review reasoning, not rendered line counts; do not pad paragraphs or split one argument into stubs.
 - **P3 — Connect meaning:** Link sentences through comparison, sequence, qualification, or supported causation. Remove connectors that add no relationship.

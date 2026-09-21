@@ -48,6 +48,27 @@ Silence is not approval. Scoping owns scope confirmation; planning owns outline 
 
 Missing measurements block dependent assertions, not independent authorized work. A permitted early draft uses neutral placeholders and remains `draft_incomplete`. Hypothetical illustrations require explicit permission and local labels; they never substitute for required project results. Spreadsheet, slide, formatting, and conversion tasks do not acquire report-writing approval gates.
 
+## Flexible requests and coherent continuation
+
+Every skill references the [workflow continuity contract](references/workflow-continuity.md).
+The router interprets each new message with retained context: answer side
+questions normally, inspect late files, update affected work, and resume at the
+next authorized step. Pending decisions remain scoped to dependent actions;
+users do not have to follow a prescribed conversation sequence. Explicit pauses,
+replacement requests, and cancellations are respected.
+
+The [document continuity contract](references/document-continuity.md) requires
+reading the relevant source structure and surrounding passages before continuing
+a report or thesis. A compact profile carries its argument, project context,
+terminology, register, presentation, and evidence limits through planning,
+writing, and review. Review includes the transition between existing and new
+text. Existing approvals and language decisions remain applicable; the profile
+does not add another interview or approval gate.
+
+Audit-only and storyboard-only requests stop at their requested outputs.
+Continuation preserves an established citation convention; Harvard is the
+fallback only when citations are required and no convention is specified.
+
 ## Review and delivery
 
 | Role | Review responsibility |
@@ -61,10 +82,30 @@ Reviewers return findings; the author applies corrections and affected content i
 
 ## Validation status
 
-As of 2026-09-19, the criteria-writing implementation and structural checks are in place. The local architecture suite passes **49/49**, with no failures or skips. Behavioral cases **B01–B16 remain PENDING**: no dedicated interactive acceptance transcripts have been recorded. Structural PASS and bounded review exercises are not behavioral acceptance or release certification.
+The criteria-writing and continuity instructions are implemented. Run the
+tracked architecture suite with `npm test`. These checks cover structure, not
+observed model behavior.
 
-`tests/` and `docs/superpowers/plans/` are intentionally local-only and excluded from Git distribution. In a development workspace containing those files, run:
+The local **C01–C08** continuity campaign completed nine independent task runs
+(C07 split into two), including five multi-turn conversations and 17 scored
+request/response turns. A separate evaluator confirmed **response-level PASS**
+for all nine tasks. The retained responses demonstrate side-question handling,
+late-file incorporation, resumption, cancellation, evidence-conflict handling,
+source-consistent continuation, and review/audit/storyboard boundaries.
+
+Full hidden skill/tool traces were not retained; these results do not certify
+every skill invocation or all runtime behavior. A before/after manifest confirms
+unchanged final bytes for 52 existing files across C04–C08. The initial baseline
+launch was blocked by unavailable agent credits, so no before/after behavioral
+improvement is measured. **B01–B16** and **L01–L06** (long thesis, DOCX/PDF,
+compaction, citation preservation, execution traces) remain **PENDING**.
+Evidence: `tests/scenarios/reports/continuity-live-20260920/report.md`.
+
+Architecture tests, operator scripts, and retained evidence packs under `tests/`
+are tracked. `tests/scenarios/runs/` and ad-hoc `tests/scenarios/reports/report-*`
+dumps stay gitignored, as do `docs/superpowers/plans/`.
 
 ```powershell
-node --test (Get-ChildItem -Path tests/architecture/*.test.mjs | ForEach-Object { $_.FullName })
+npm test
 ```
+

@@ -18,4 +18,6 @@ build/
 node_modules/
 # Local-only: keep on disk, do not publish
 tests/
-docs/superpowers/plans/
+docs/superpowers/
+output/
+*.test.mjs

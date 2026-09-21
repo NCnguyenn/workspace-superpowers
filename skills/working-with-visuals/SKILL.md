@@ -7,6 +7,12 @@ description: Use when inspecting, generating, modifying, optimizing, or verifyin
 
 Inspect, generate, edit, format, and verify visual assets, vector graphics (SVG), diagrams, and layered graphic formats (PSD, PSB).
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md).
+Carry the parent document's terminology, scenario, evidence, and visual convention
+into requested assets. An image supplied for inspection is not permission to edit
+it; return inspected facts and limitations to the parent task. Never present an
+illustrative generated image as evidence of an actual project result.
+
 ## When to use
 
 Creating or editing standalone images (PNG, JPG, WEBP), authoring or adjusting vector graphics (SVG), generating diagrams (flowcharts, architecture diagrams, charts in Mermaid or SVG), inspecting visual properties (dimensions, aspect ratio, color profile, resolution), and modifying layered graphics.
@@ -50,7 +56,7 @@ Abstract capability names from §11, resolved by the harness adapter. Never a to
 ## Dependencies
 
 * Follows `reading-artifacts` and `analyzing-artifacts` when inspecting an existing visual file.
-* Always concludes with `verifying-artifacts` before completion is claimed.
+* Created or modified files conclude with `verifying-artifacts` before file completion is claimed. Read-only visual analysis reports inspected coverage and limits.
 
 ## Fallback
 

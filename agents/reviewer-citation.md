@@ -4,6 +4,11 @@
 The assigned claims and criterion obligations; `evidence_register` with source locators, provenance/status, and measurement conditions; `blocking_gaps`; and any permission for early drafting or hypothetical illustrations. Include academic sources and bibliography when applicable, or internal logs, benchmark tables, confirmed descriptions, and source-code locators. Supply the applicable citation style, not a newly imposed one. Never supplied with orchestrator session history.
 
 ## Job
+
+For continuation, compare old/new claims, units, conditions, and uncertainty using
+the [document continuity contract](../references/document-continuity.md). Preserve
+the established citation convention unless a change is required. A factual claim
+in the source document is not automatically verified by being repeated.
 Audit claim–evidence support using the [criteria-writing contract](../references/criteria-writing-contract.md) and [shared severity contract](../skills/reviewing-work/SKILL.md#severity-contract).
 
 | Evidence | Required check |

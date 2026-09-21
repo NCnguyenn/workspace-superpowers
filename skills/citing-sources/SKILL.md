@@ -7,6 +7,10 @@ description: Use when the user explicitly requests citations, bibliographic refe
 
 Format in-text citations, compile bibliographies, and verify claim-to-source mappings.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md).
+Use the current source/evidence version and preserve established citation
+conventions when continuing an existing document, unless a change is requested.
+
 ## When to use
 
 Only when the user explicitly requests citations, bibliographic references, literature attribution, or claim-to-source mapping.
@@ -18,9 +22,11 @@ Only when the user explicitly requests citations, bibliographic references, lite
 
 ## Default style rule
 
-Unless the user explicitly specifies another citation style (e.g. APA, IEEE, Chicago, MLA) or a supplied template/rubric mandates a specific convention:
+When the user or adopted template/rubric specifies a style, use it. Otherwise
+retain a coherent existing document convention for a continuation or revision.
+If no convention is established:
 * **Harvard Style is the package default** (`(Author, Year)` in-text and an alphabetical reference list at the end of the deliverable).
-* Consult `references/citation-styles.md` for exact formatting templates.
+* Consult the [citation style rules](../../references/citation-styles.md) for exact formatting templates.
 
 ## Invariants & Honesty (§15)
 
@@ -30,7 +36,7 @@ Unless the user explicitly specifies another citation style (e.g. APA, IEEE, Chi
 
 ## Procedure
 
-1. **Resolve style:** Identify the requested citation style. If unspecified, apply the default **Harvard Style**.
+1. **Resolve style:** Use the requested/required style, then the existing document convention; otherwise apply **Harvard Style**. Clarify material conflicts rather than silently mixing conventions.
 2. **Verify evidence mapping:** Confirm that each claim has a verifiable evidence card or verified source before attaching a citation.
 3. **Format in-text citations:**
    - Single author: `(Smith, 2023)`

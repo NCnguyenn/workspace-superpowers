@@ -27,6 +27,11 @@
 ## Structural Integrity Notes
 * **Transitions:** [How sections link together logically]
 * **Visuals & Tables:** [Planned charts, figures, or callouts]
+* **Continuity Reference (when extending a document):** [Profile in the brief or conversation under the [document continuity contract](../references/document-continuity.md); target insertion point, prior argument, terms, and numbering to retain]
+
+Apply the [workflow continuity contract](../references/workflow-continuity.md)
+when new files or changed requests affect this outline. Revise affected parts and
+retain other applicable decisions; receipt of a file is not outline approval.
 
 ## Criteria-based Writing (Optional)
 

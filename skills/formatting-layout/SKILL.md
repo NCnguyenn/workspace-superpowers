@@ -7,6 +7,11 @@ description: Use when applying or adjusting document formatting, layout, typogra
 
 Presentation, styling, typographic hierarchy, and page layout for text and document artifacts.
 
+Honor the current operation under the [workflow continuity contract](../../references/workflow-continuity.md).
+For inserted sections, carry forward the document's established heading, caption,
+numbering, and style conventions. Return newly requested content changes to the
+editing skill; formatting alone does not authorize rewriting.
+
 ## When to use
 
 Applying or adjusting typography, font hierarchy, line spacing, margins, section breaks, headers, footers, page numbering, table of contents (TOC), figure/table captions, and table styling in text and document artifacts (DOCX, ODT, RTF, Markdown).

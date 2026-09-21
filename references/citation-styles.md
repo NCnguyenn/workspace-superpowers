@@ -4,7 +4,12 @@ This guide establishes the citation standards for Workspace Superpowers.
 
 ## Default Citation Style: Harvard Style
 
-Unless the user explicitly specifies another style (such as APA, IEEE, Chicago, or MLA) or a provided rubric/template mandates one, **Harvard Style** is the package default for in-text citations and reference lists.
+Use the style explicitly requested by the user or required by an adopted
+rubric/template. For continuation or revision, otherwise preserve a coherent
+existing document convention. If citations are required and neither applies,
+**Harvard Style** is the package default for in-text citations and reference lists.
+Clarify material conflicts rather than mixing styles or silently reformatting
+unrequested sections. The fallback does not itself require adding citations.
 
 ### 1. In-Text Citations (Author-Date System)
 

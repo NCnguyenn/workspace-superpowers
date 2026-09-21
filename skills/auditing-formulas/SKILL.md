@@ -7,6 +7,11 @@ description: Use when auditing, diagnosing, tracing dependencies, or correcting 
 
 Audit, diagnose, trace cell dependencies, and repair broken formulas and calculation logic in spreadsheet workbooks.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md).
+Distinguish an audit-only request from an authorized repair. An audit returns
+findings, affected cells, and proposed corrections without editing the workbook.
+Only a requested repair proceeds to correction, recalculation, and verification.
+
 ## When to use
 
 Diagnosing formula calculation errors (`#REF!`, `#VALUE!`, `#DIV/0!`, `#N/A`, `#NAME?`, `#NUM!`, `#NULL!`), tracing precedent/dependent cell chains, detecting circular references, or auditing mathematical consistency across tabular models.
@@ -18,7 +23,7 @@ Diagnosing formula calculation errors (`#REF!`, `#VALUE!`, `#DIV/0!`, `#N/A`, `#
 
 ## Audit invariants (§10, §13)
 
-1. **Zero calculation errors:** Workbooks delivered to users must not contain unresolved spreadsheet error codes (`#REF!`, `#VALUE!`, `#DIV/0!`, `#N/A`, `#NAME?`, `#NUM!`, `#NULL!`).
+1. **Zero calculation errors for repair completion:** Do not claim a repaired workbook is error-free while unintended calculation errors remain (`#REF!`, `#VALUE!`, `#DIV/0!`, `#N/A`, `#NAME?`, `#NUM!`, `#NULL!`). An audit can complete by accurately reporting unresolved errors without altering them; distinguish intentional missing-value markers from faults.
 2. **Never hide errors with static numbers:** Never overwrite a broken formula with a static value merely to conceal an error. The root dependency or formula syntax must be repaired.
 3. **Detect circular dependencies:** Detect unintended circular references that destabilize calculation iterations.
 4. **Formula pattern consistency:** Flag anomalies where a formula within a uniform column or row abruptly breaks pattern with adjacent cells.
@@ -30,11 +35,11 @@ Diagnosing formula calculation errors (`#REF!`, `#VALUE!`, `#DIV/0!`, `#N/A`, `#
 3. **Diagnose root causes:**
    - `#REF!`: Identify deleted or shifted range references.
    - `#VALUE!`: Detect non-numeric text strings passed into mathematical functions.
-   - `#DIV/0!`: Check for zero or empty divisors; introduce `IFERROR` or `IF(denominator=0, ...)` guards where appropriate.
+   - `#DIV/0!`: Check for zero or empty divisors; propose `IFERROR` or `IF(denominator=0, ...)` guards where appropriate without concealing missing data.
    - `#NAME?`: Identify mistyped function names or missing quotes around text parameters.
    - `#N/A`: Verify lookup keys, sort order, and lookup range boundaries in `XLOOKUP`, `VLOOKUP`, or `INDEX-MATCH`.
-   - Circular reference: Trace the dependency loop and break the recursive reference.
-4. **Apply formula corrections:** Use `edit_spreadsheet` to update formula strings, preserving intended mathematical logic.
+   - Circular reference: Trace the dependency loop and identify the reference that needs correction.
+4. **Apply authorized formula corrections:** For audit-only work, return findings and stop. When repair is requested, use `edit_spreadsheet` to update formula strings, preserving intended mathematical logic.
 5. **Recalculate & re-audit:** Invoke `recalculate_spreadsheet` and re-run `audit_spreadsheet` to verify that all errors are resolved.
 6. **Hand off to verify:** Transfer the workbook to `verifying-artifacts` to confirm file health.
 
@@ -52,7 +57,7 @@ Abstract capability names from §11, resolved by the harness adapter. Never a to
 ## Dependencies
 
 - Works in tandem with `working-with-spreadsheets`.
-- Must conclude with `verifying-artifacts` before completion is claimed.
+- Modified workbooks and generated audit files must conclude with `verifying-artifacts` before file completion is claimed. A chat-only audit reports findings and inspection limits without claiming a repair.
 
 ## Fallback
 

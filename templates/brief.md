@@ -10,7 +10,7 @@
 * **Deliverable Format(s):** [e.g., DOCX, PDF, PPTX, XLSX]
 * **Length / Constraint:** [e.g., word count, page count, slide count]
 * **Template / Rubric:** [Path or description of applicable template/rubric]
-* **Citation Style:** [Taken from the brief, template, or discipline; never a package default. N/A if not required]
+* **Citation Style:** [Explicit/adopted requirement, otherwise the existing document convention; Harvard when citations are required and neither exists. N/A if not required. See the [citation style rules](../references/citation-styles.md).]
 
 ## 3. Working Assumptions & Preservations
 * **Key Preservations:** [Elements, styles, or data that must NOT be changed]
@@ -19,6 +19,35 @@
 ## 4. Input Sources & Evidence
 * **Primary Files:** [List of input files inspected]
 * **Reference Sources:** [Literature, datasets, or notes provided]
+
+## Ongoing Task Checkpoint (Optional)
+
+Use only for sustained or interrupted work under the
+[workflow continuity contract](../references/workflow-continuity.md). Keep this
+in conversation state when a separate brief is unnecessary; do not ask the user
+to fill internal fields.
+
+* **Goal / Current Operation / Stopping Point:** [Requested outcome and current authorized action]
+* **Current Target / Inputs:** [Artifact identity and revision, target section, inspected coverage and locators]
+* **Progress / Next Action:** [Completed work and next supported step]
+* **Pending Questions / Blocked Actions:** [Only unresolved decisions and the actions they block]
+* **Temporary Task / Return Point:** [If applicable; preserve the original task without resuming canceled work]
+* **Decision References:** [Applicable scope, outline version, and user instructions; reuse existing records]
+
+## Document Continuity Profile (Optional)
+
+For existing-document continuation or substantive revision, follow the
+[document continuity contract](../references/document-continuity.md). For new
+reports, build this from the brief and first accepted sections. Keep only fields
+that matter, with source locators and representative excerpts.
+
+* **Argument / Placement:** [Purpose, relevant prior conclusions, target criterion, and contribution of the next section]
+* **Project Context / Evidence Limits:** [System, actors, setting, methods, units, known facts, uncertainty, and source conflicts]
+* **Terminology / Notation:** [Established names, abbreviations, and definitions]
+* **Voice / Register:** [Person, tense by function, formality, paragraph development, and level of detail]
+* **Presentation:** [Heading/figure/table numbering, lists, captions, citation convention, cross-references, and visible styles]
+* **Adjacent Excerpts / Coverage:** [Relevant preceding/following text and uninspected or inaccessible material]
+* **Requested Deviations:** [Explicit changes from existing conventions and their scope; retain the language decision above]
 
 ## Criteria-based Writing (Optional)
 

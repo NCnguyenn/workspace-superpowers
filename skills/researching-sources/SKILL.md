@@ -7,6 +7,11 @@ description: Use when the user explicitly requests external research, literature
 
 Discover, evaluate, and extract verified evidence and bibliographic records from external literature.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md).
+Keep the assigned question, claim, source locators, and return point so retrieved
+evidence can update the relevant draft or outline. User-supplied files are read
+through `reading-artifacts`; they do not by themselves request an external search.
+
 ## When to use
 
 Only when the user explicitly requests finding reference materials, external research, literature reviews, or academic source discovery.

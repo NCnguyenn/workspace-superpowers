@@ -7,6 +7,11 @@ description: Use when inspecting, extracting content, splitting, merging, annota
 
 Inspect, extract, manipulate, and verify PDF documents while respecting structure and source authority.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md).
+For a PDF supplied as evidence during writing, inspect/extract only the requested
+content and return page locators and access limits to analysis. Page manipulation
+and form edits run only when requested; extraction does not authorize them.
+
 ## When to use
 
 Inspecting PDF properties, extracting formatted text, extracting tabular data, extracting images, splitting, merging, annotating, or filling interactive forms in existing PDF artifacts.
@@ -54,7 +59,7 @@ Abstract capability names from §11, resolved by the harness adapter. Never a to
 ## Dependencies
 
 - Follows `reading-artifacts` and `analyzing-artifacts` when diagnosing an existing PDF.
-- Always verified by `verifying-artifacts` before completion is reported.
+- Created or modified files require `verifying-artifacts` before file completion is reported. Read-only extraction returned in chat reports inspected coverage and limits.
 
 ## Fallback
 

@@ -4,10 +4,17 @@
 The assigned draft passages, applicable brief limits and language decision, and relevant evidence excerpts needed to preserve meaning. Use [academic-writing-style.md](../references/academic-writing-style.md) and [language-policy.md](../references/language-policy.md). Never supplied with orchestrator session history.
 
 ## Job
+
+For continuation, compare new and adjacent prose using the source profile under
+the [document continuity contract](../references/document-continuity.md). Inspect
+register, person, tense by function, terminology, paragraph/list conventions,
+and headings. Respect explicit requested deviations. Do not enforce a generic
+academic voice that conflicts with the adopted document style, or imitate errors.
 Judge observable prose defects by style-guide Rule ID and use the [shared severity contract](../skills/reviewing-work/SKILL.md#severity-contract). Do not score burstiness or run an AI detector.
 
 | Rules | Review focus |
 |---|---|
+| D1–D4 | Compare actual surrounding passages for continuity; refer argument/context defects to coherence/evidence review while retaining style findings. |
 | P1–P3 | One developed point per paragraph. Four to five sentences is guidance, not a quota. Flag incomplete reasoning, not line counts; a complete shorter paragraph is valid. |
 | L1–L5 | Prose for argument; lists for parallel items, ordered steps, or stable references; tables for shared fields. Flag lists that replace needed reasoning, not useful checklists. |
 | R1–R4 | Clear subjects, actions, known conditions, and plain academic wording. Refer authorization or evidential overclaiming to requirement/citation review through the orchestrator. |

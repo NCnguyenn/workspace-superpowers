@@ -1,11 +1,18 @@
 ---
 name: drafting-prose
-description: Use when drafting or substantively composing new text, sections, or full document content from an approved outline, working brief, and evidence register.
+description: Use when writing new prose, continuing an existing report or thesis section, or substantively recomposing content within the requested scope.
 ---
 
 # Drafting Prose
 
 Family skill for composing new report or thesis content after applicable scope and outline conditions are met. It selects a writing specialist. It does not replace the workspace lifecycle or invent approvals.
+
+Apply the [workflow continuity contract](../../references/workflow-continuity.md)
+when the request changes. For continuation or revision, follow the
+[document continuity contract](../../references/document-continuity.md): obtain
+the source profile, insertion point, adjacent excerpts, and evidence before
+composing. Use reading/analysis for missing context, then return here without
+restarting already satisfied gates. New file receipt alone is not permission to write.
 
 Follow the [criteria-writing contract](../../references/criteria-writing-contract.md), the [language policy](../../references/language-policy.md), and the [academic writing style guide](../../references/academic-writing-style.md).
 
@@ -24,7 +31,7 @@ Drafting-prose consumes recorded decisions. It cannot create, waive, or infer us
 Before composing:
 
 1. Confirm `task_mode` is draft or an authorized substantive compose. Stop at analysis or outline if that was the request.
-2. Confirm `scope_status` is `confirmed` or `waived`. If the gate is required and still `pending` or missing, return the gap to `scoping-the-brief`.
+2. When the scope gate applies, confirm `scope_status` is `confirmed` or `waived`. If it is required and still `pending` or missing, return the gap to `scoping-the-brief`. Do not impose criteria-writing gates on unrelated prose with `not_required` decisions.
 3. Confirm `outline_status` is `approved`, `waived`, or `not_required` under the contract. If `pending`, `not_started`, or `revision_requested`, return to `planning-work`.
 4. Inspect the evidence register and `blocking_gaps` for the target section. Follow the contract Missing Evidence Protocol. Do not invent measurements or project results.
 
@@ -38,7 +45,10 @@ Load one specialist for the section's job. Do not default to both on every parag
 | Scholarly argument, thesis prose, hedging, and claim–evidence cadence | `writing-academic-prose` |
 | Project or thesis report that needs both structure and scholarly argument | both, assigned by section |
 
-Use `invoke_skill(name)` to load the specialist. Pass only the target section, applicable decisions and version, criteria mapping, evidence register, and unresolved gaps.
+Use `invoke_skill(name)` to load the specialist. Pass the target section, applicable
+decisions and version, criteria mapping, evidence register, unresolved gaps, and
+relevant continuity profile with adjacent source excerpts. This bounded context
+must support continuity without passing the entire conversation.
 
 ## Procedure
 

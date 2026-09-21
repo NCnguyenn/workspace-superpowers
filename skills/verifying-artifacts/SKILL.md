@@ -7,6 +7,10 @@ description: Use when any artifact has been created, edited, converted, or expor
 
 Re-open the real artifact before claiming success.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md)
+when resuming or receiving changed files. Verify the current target version;
+do not reuse a check invalidated by an intervening write, insertion, or export.
+
 ## When to use
 
 Any created, edited, converted, or exported file is about to be reported as done.

@@ -7,6 +7,11 @@ description: Use when converting, exporting, or transforming an artifact from on
 
 Transform, export, and convert artifacts across file formats while preserving structural fidelity and verifying the output.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md).
+Resolve the current source revision and requested output set before export.
+Preserve the selected content and language; conversion is not authorization to
+rewrite or translate. Return newly exported files to verification before packaging.
+
 ## When to use
 
 Transforming an existing artifact into a different format (e.g. Markdown or DOCX to PDF, PPTX to PDF, XLSX to CSV or PDF, HTML to PDF), compiling source markup into document formats, or generating distributable publication files from editable sources.

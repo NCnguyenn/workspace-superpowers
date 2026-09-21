@@ -7,6 +7,10 @@ description: Use when an existing artifact — document, PDF, deck, workbook, im
 
 Generic input-reading for any existing file. Does not interpret. Does not edit.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md)
+when files arrive at any stage. Reading is an input step that returns to the
+requested operation; it does not restart the task or authorize editing.
+
 ## When to use
 
 An attached or referenced artifact must be opened before analysis or modification.
@@ -18,6 +22,15 @@ No existing file is involved. Analysis of already-read content belongs to `analy
 ## Procedure
 
 Open the real artifact and read the representation appropriate to its type: text, pages, sheets, cells, pixels, metadata, layers, or other available structure.
+
+Record artifact identity/revision, inspected locators, extracted content, and
+unreadable portions for downstream use. Reuse an unchanged prior read only if
+the relevant representation remains available. Read changed or uncovered parts.
+For writing the next section, inspect the structure, relevant preceding and
+following passages, definitions, and evidence requested by the
+[document continuity contract](../../references/document-continuity.md).
+Hand actual excerpts and coverage limits to analysis; do not infer style or facts
+from a filename or a short sample claimed to represent the whole document.
 
 Reading raw bytes alone does not constitute understanding the artifact.
 
@@ -43,7 +56,7 @@ None. Every other skill that touches an existing file requires this one first; `
 
 ## Fallback
 
-- The file cannot be opened → stop. Never guess contents. Opening a binary stream without a type-appropriate representation is not a successful read.
+- The file cannot be opened → stop the dependent reading/claim, disclose the limitation, and return the gap to the router so independent authorized work can proceed. Never guess contents. Opening a binary stream without a type-appropriate representation is not a successful read.
 - Scanned or image-only artifact with no OCR capability → report which pages or regions were unreadable. Do not paraphrase what a page probably says.
 - No typed inspection capability → read the accessible representation, such as extracted text, and state which structure was not observed.
 

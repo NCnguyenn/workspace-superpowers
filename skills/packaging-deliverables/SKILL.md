@@ -7,13 +7,20 @@ description: Use when verified workspace artifacts are ready to be named, organi
 
 Assemble, organize, and produce the final delivery report for verified workspace artifacts.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md)
+to the current requested output set. If the user changes the deliverable during
+packaging, route the affected work to its specialist and verification first.
+
 ## When to use
 
 Concluding any workspace task where artifacts were created, modified, converted, or reviewed, and final delivery is being made to the user.
 
 ## When not to use
 
-Before verification is complete. `verifying-artifacts` must verify the final files before packaging begins. Intermediate drafts or scratch files must not be packaged as deliverables.
+Before verification is complete. `verifying-artifacts` must verify the final files
+before packaging begins. Do not include unrequested intermediate or scratch files.
+An explicitly requested incomplete draft may be delivered after file verification,
+with its incomplete content/evidence status retained; it is not a finished report.
 
 ## Mandatory reporting invariants
 
@@ -46,7 +53,7 @@ Abstract capability names, resolved by the harness adapter. Never a tool name.
 - `read_file(path)` — to confirm deliverable existence and inspect verification status.
 - `write_file(path, content)` — to generate the final packaging report.
 - `list_files(dir)` — to locate verified artifacts in their working locations.
-- `export_artifact(file, format)` / `convert_artifact(src, format)` — only when the contract still requires an export after verification of the source.
+- `export_artifact(file, format)` / `convert_artifact(src, format)` — if an export is still required, hand it to `converting-artifacts`, then `verifying-artifacts` for the new output before resuming packaging. Source verification never verifies a new export.
 
 ## Dependencies
 

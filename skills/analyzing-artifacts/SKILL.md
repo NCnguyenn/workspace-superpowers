@@ -1,11 +1,13 @@
 ---
 name: analyzing-artifacts
-description: Use when a file that has already been read must be understood — structure, layout, headings, tables, what must be preserved, and what the user asked to change.
+description: Use when already-read artifacts need interpretation, comparison, synthesis, criteria mapping, or context for a requested continuation or revision.
 ---
 
 # Analyzing Artifacts
 
-Turn a completed read into a preserve-list and a change-list. Does not edit.
+Interpret completed reads for the requested analysis, continuation, or revision.
+Does not edit. Apply the [workflow continuity contract](../../references/workflow-continuity.md)
+when new inputs or changed requests require updating earlier findings.
 
 ## When to use
 
@@ -17,10 +19,19 @@ The file has not been read. Do not analyze from guessed or raw-byte-only input.
 
 ## Procedure
 
-1. Structure, content, and layout.
-2. What the user asked to change.
-3. Preserve-list: what must not change.
-4. Hand the preserve-list to any later edit.
+1. Identify the requested question or operation, source roles, inspected coverage,
+   structure, content, and layout. Analysis-only work does not require an edit list.
+2. Extract relevant findings with source locators. Map evidence to claims or criteria;
+   distinguish user assertions, observed data, inference, plans, and missing support.
+3. Compare sources by topic/claim; retain disagreement, units, conditions, and version
+   differences. Synthesize supported findings rather than concatenate summaries.
+4. For continuation or substantive revision, build the profile and adjacent context
+   in the [document continuity contract](../../references/document-continuity.md).
+   Identify the argument already established and the target section's contribution.
+5. Record a preserve-list and requested change-list when changes are authorized.
+   Pass findings, evidence locators, coverage limits, continuity profile, and gaps
+   to the selected planner/writer/editor. Return analysis-only findings and stop
+   when analysis is the requested outcome.
 
 Per-type inspection fields: `references/artifact-inspection.md`.
 

@@ -453,6 +453,20 @@ prompt
 
 ### 7.1 Classification
 
+The [workflow continuity contract](../references/workflow-continuity.md) applies
+to each new message, not only task entry. Retain a compact checkpoint, answer
+side questions normally, inspect late files, and select the next skill according
+to the current request and applicable prior decisions. An unanswered question
+blocks only dependent work. Temporary switches retain a return point; canceled
+work does not resume automatically. All 22 skills reference this shared contract.
+
+For report/thesis continuation, the [document continuity contract](../references/document-continuity.md)
+connects reading, analysis, planning, writing, and review. Its source-grounded
+profile captures the argument, scenario, terminology, register, presentation,
+and evidence limits. Writers and reviewers receive relevant adjacent excerpts;
+they check the insertion boundary as well as the new section. The profile lives
+in the brief or conversation state and introduces no new approval gate.
+
 Bootstrap classifies the request domain. The router then classifies the task
 inside the workspace domain: which families are involved, whether artifacts
 already exist, whether evidence is required, whether the output is a single file
@@ -867,9 +881,11 @@ Prohibited fabrication: author, DOI, title, publisher, journal, year, URL, page
 number. If a source cannot be verified, the text must say it is unverified or the
 claim must be removed or hedged.
 
-Citation style is taken from the brief, the template, the discipline, or asked
-(APA, Harvard, IEEE, Chicago, MLA, Vancouver, or house style). No single style is
-hardcoded as the default.
+Citation style follows the explicit user instruction or adopted template/rubric,
+then the coherent existing document convention for continuation or revision.
+When citations are required and neither establishes a style, Harvard is the
+package fallback under the [citation style rules](../references/citation-styles.md).
+Do not ask merely because this fallback applies or silently reformat unrelated sections.
 
 ## 16. Language Behaviour
 
@@ -980,7 +996,10 @@ when an adapter is implemented; current structural tests do not prove it.
 
 The tree illustrates the target layout, not a guarantee that every entry ships.
 The criteria-writing skills, reviewer-prose, contract, and templates shown are
-implemented. `tests/` and `docs/superpowers/plans/` remain local-only and ignored.
+implemented. `tests/architecture/`, `tests/scenarios/manual/`, and retained
+evidence packs under `tests/scenarios/reports/` are tracked.
+`tests/scenarios/runs/`, ad-hoc `tests/scenarios/reports/report-*` dumps, and
+`docs/superpowers/plans/` remain local-only and ignored.
 
 ```
 workspace-superpowers/
@@ -1117,11 +1136,11 @@ same job, and the graph is unchanged.
 ## 24. Testing Strategy
 
 Test ladder: architecture → skill contract → behavioral/pressure → regression.
-As of 2026-09-19, criteria-writing content and local structural tests are
-implemented; the architecture suite passes 49/49 with no skips. The manual
-B01–B16 script exists locally, but all 16 behavioral cases remain PENDING.
-Earlier bounded dry-run reviews, mock runs, and self-tests do not establish
-dedicated multi-turn acceptance. This is not a claim of full product completion.
+Run `npm test` for the current architecture count. The B01–B16, C01–C08, and
+L01–L06 operator scripts are tracked; B01–B16 and L01–L06 remain PENDING.
+C01–C08 are response-level only. Earlier bounded dry-run reviews, mock runs,
+and self-tests do not establish dedicated multi-turn acceptance. This is not a
+claim of full product completion.
 
 ### 24.1 Skill discipline tests (RED–GREEN–REFACTOR)
 
@@ -1169,8 +1188,8 @@ respective sessions; send follow-ups only after observed stops. Record model,
 environment, skill version, prompts, transcripts, and artifacts. PENDING means
 unattempted; attempted runs record PASS, FAIL, or BLOCKED with evidence. Neither
 structural string checks nor mock/self-test results may become behavioral PASS.
-These tests, transcripts, and implementation plans are local-only; fresh
-repository checkouts do not include them.
+Architecture tests and operator scripts are tracked. Ad-hoc run dumps stay
+local-only; fresh checkouts do not include `tests/scenarios/runs/`.
 
 ### 24.4 Packaging tests
 

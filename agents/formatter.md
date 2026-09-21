@@ -4,6 +4,10 @@
 The draft artifact, target styling template or guidelines (styles, heading levels, fonts, margins, numbering, captions, table format). Never supplied with orchestrator session history.
 
 ## Job
+
+Use established document styles and numbering for newly inserted sections under
+the [document continuity contract](../references/document-continuity.md). Honor
+the current requested scope from the [workflow continuity contract](../references/workflow-continuity.md).
 Apply consistent typographic hierarchy, table styling, figure captions, table of contents, headers/footers, and page breaks to match template specifications.
 
 ## Hard Limits

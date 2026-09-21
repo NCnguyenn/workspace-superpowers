@@ -7,6 +7,13 @@ description: Use when editing existing text or document content, from typo or wo
 
 Modify existing text or document content at the depth requested.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md)
+to changed requests and new artifacts. For insertion, continuation, or substantive
+revision, use the [document continuity contract](../../references/document-continuity.md)
+to preserve the existing argument, scenario, terminology, and presentation.
+Check adjacent passages after insertion; update related text only within the
+authorized scope. A chat suggestion does not modify the source file.
+
 ## When to use
 
 Typo or wording corrections, insertion, deletion, rewriting, restructuring, or full redesign of an existing document. The preserve-list does not decide whether this skill loads.

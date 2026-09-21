@@ -7,6 +7,11 @@ description: Use when creating, inspecting, modifying, styling, or preparing sli
 
 Author, inspect, structure, style, and verify presentation slide decks across supported presentation formats (PPTX, PPT, ODP, Markdown slide decks).
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md).
+Keep the current storyboard, evidence, theme, and slide version in the handoff.
+Read a late source file before revising dependent slides. Inspection or a request
+for slide advice does not authorize assembling or editing a deck.
+
 ## When to use
 
 Creating new slide decks from a brief or storyboard, editing existing slides, adjusting slide layout and placeholders, standardizing master slide themes and color palettes, organizing speaker notes, and verifying presentation artifacts.

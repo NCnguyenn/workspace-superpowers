@@ -7,6 +7,14 @@ description: Use when structuring, authoring, or evaluating technical, business,
 
 Specialist for technical, business, and operational reports. Map criteria onto headings that fit the assignment. Do not impose a fixed chapter template.
 
+Honor the current operation and handoff under the
+[workflow continuity contract](../../references/workflow-continuity.md).
+For the next criterion or section, follow the
+[document continuity contract](../../references/document-continuity.md): use the
+source profile and adjacent passages, retain the same project context and
+terminology, and extend the existing argument without restarting the introduction.
+Distinguish stylistic consistency from repeating unsupported source claims.
+
 Follow the [criteria-writing contract](../../references/criteria-writing-contract.md) for scope, evidence, and visuals. Follow the [language policy](../../references/language-policy.md) for output language. Follow the [academic writing style guide](../../references/academic-writing-style.md) for prose.
 
 ## When to use

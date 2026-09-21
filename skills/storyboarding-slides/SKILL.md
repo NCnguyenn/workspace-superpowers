@@ -7,6 +7,11 @@ description: Use when planning slide-by-slide narrative structure, formulating a
 
 Design slide-by-slide blueprints, narrative arcs, and action headlines before presentation deck construction.
 
+Apply the [workflow continuity contract](../../references/workflow-continuity.md).
+Preserve the source report's argument, terms, scenario, and evidence limits while
+adapting its presentation to slides. A storyboard-only request stops with the
+storyboard; approving it alone does not request deck construction.
+
 ## When to use
 
 Transforming complex reports, research documents, or briefs into structured presentation plans; defining narrative progression across slides; formulating assertive action headlines; establishing visual-verbal balance; and writing slide blueprints before generating or editing a slide deck.
@@ -49,7 +54,7 @@ A slide storyboard produces a structured specification for each slide:
 2. **Determine deck scope & length:** Align slide count with the intended presentation duration and audience format (e.g. 5-slide executive briefing vs 15-slide technical review).
 3. **Draft the narrative arc:** Outline the progression from context to problem, evidence, and conclusion.
 4. **Author slide blueprints:** Write assertive action headlines, select visual elements, and draft speaker notes for every slide.
-5. **Hand off to deck builder:** Hand the finalized storyboard to `working-with-presentations` for layout assembly, master slide styling, and deck production.
+5. **Respect the requested stopping point:** Deliver a requested storyboard and stop. If deck production is already authorized, pass the finalized storyboard, source locators, and retained constraints to `working-with-presentations` for assembly.
 
 ## Required capabilities
 

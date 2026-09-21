@@ -2,6 +2,12 @@
 
 Shared rules for interpreting criteria, confirming scope, approving outlines, and handling evidence in report or thesis writing. This reference defines handoffs within the existing workspace lifecycle; it is not another router. Ownership defines consumer responsibilities, including drafting-prose when available. This reference does not install skills or change routing by itself.
 
+Use the [workflow continuity contract](workflow-continuity.md) for message
+changes, late files, pending questions, and resumption. Use the
+[document continuity contract](document-continuity.md) for source context and
+coherent continuation. These add no approval gates: reuse decisions that already
+apply and return only unresolved prerequisites to their owner.
+
 ## Deliverable language
 
 Follow the [language policy](language-policy.md): authored analysis, outlines, reports, and generated/exported artifacts default to English. Use Vietnamese or another language only when explicitly requested by the user for the relevant output. Conversation or source language does not override this default. Record the resolved language in scope and carry it through drafting, labels, placeholders, review, and export.
@@ -115,7 +121,10 @@ Use the optional extensions in [the working brief](../templates/brief.md) and [t
 
 ## 7. Handoff and completion
 
-Pass the target section, applicable decisions/version, criteria mapping, evidence register, and unresolved gaps to the executing role. An outline or visual plan is not evidence that its contents have been implemented or measured.
+Pass the target section, applicable decisions/version, criteria mapping, evidence
+register, unresolved gaps, and relevant continuity profile with adjacent source
+excerpts to the executing role. An outline or visual plan is not evidence that
+its contents have been implemented or measured.
 
 Review content against authorized scope, criteria, outline, evidence, and applicable writing guidance. Apply corrections within authorization; do not reopen approval for routine wording fixes. Substantive changes arising from review follow the affected-scope transition above.
 

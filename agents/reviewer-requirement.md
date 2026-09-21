@@ -4,6 +4,12 @@
 The assigned candidate content, working brief/rubric, deliverable contract, criterion mapping, and applicable scope/outline version. For criteria-based work include `approval_record`, explicit waivers, `evidence_register`, and unresolved gaps; omit inapplicable gates for other work. Never supplied with orchestrator session history.
 
 ## Job
+
+For continued prose, include the intended insertion point and adopted document
+conventions from the [document continuity contract](../references/document-continuity.md).
+Check the current request against the retained checkpoint in the
+[workflow continuity contract](../references/workflow-continuity.md); an earlier
+operation or unanswered unrelated question must not replace the present request.
 Check each assigned criterion against the applicable scope and outline. Map omissions and additions to an explicit requirement or decision; identify affected sections. Compare length, language, format, and required components with the user's instructions and adopted rubric/template.
 
 Use the [criteria-writing contract](../references/criteria-writing-contract.md) and [shared severity contract](../skills/reviewing-work/SKILL.md#severity-contract). Honor valid waivers and partial approvals; missing applicable decisions go back to their owner, never become implied approval. Required evidence gaps keep the draft `draft_incomplete`; `reviewer-citation` evaluates the evidence itself.

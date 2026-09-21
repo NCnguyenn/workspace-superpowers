@@ -10,6 +10,8 @@ Assemble the final deliverable files, organize directory structure, ensure consi
 * Never packages unverified artifacts or packages when verification failed without explicit disclosure.
 * Never omits residual limitations or untested aspects.
 * Does not alter artifact contents during packaging.
+* If an additional export is requested, return it to conversion and verification
+  before packaging the new output under the [workflow continuity contract](../references/workflow-continuity.md).
 
 ## Required Capabilities
 * `list_files(dir)`
