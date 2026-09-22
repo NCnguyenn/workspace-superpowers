@@ -1,0 +1,35 @@
+{
+  "scenario": "trivial-typo-no-ceremony",
+  "note": "Grade broker-observed successful operations and real artifacts. Final-report semantics require independent review.",
+  "criteria": [
+    {
+      "id": "edit-lifecycle",
+      "type": "edit_lifecycle",
+      "input": "input/memo.md",
+      "output": "output/memo.md"
+    },
+    {
+      "id": "exact-typo-fix",
+      "type": "exact_edit",
+      "input": "input/memo.md",
+      "output": "output/memo.md",
+      "before": "recieve",
+      "after": "receive"
+    },
+    {
+      "id": "no-interview",
+      "type": "tool_not_called",
+      "tool": "ask_user"
+    },
+    {
+      "id": "no-subagent",
+      "type": "tool_not_called",
+      "tool": "delegate"
+    },
+    {
+      "id": "final-honesty",
+      "type": "final_review",
+      "requirement": "The report is accurate. There is no unnecessary interview or planning ceremony in messages or final text."
+    }
+  ]
+}

@@ -23,6 +23,9 @@ Carry `plan_file`, `work_id`, current item and target revision into handoffs.
 ## 4. Input Sources & Evidence
 * **Primary Files:** [List of input files inspected]
 * **Reference Sources:** [Literature, datasets, or notes provided]
+* **Source Title / Locator:** [Verbatim criterion or requirement title and its actual source; no paraphrase]
+* **Evidence Readiness:** [not_required / provided / pending / illustrative_authorized; use the [outline contract](../references/outline-structure.md)]
+* **Missing Inputs / Scoped Illustration Permission:** [Concrete missing evidence and question, or the user's explicit permission and the gaps it covers; never infer from general approval]
 
 ## Ongoing Task Checkpoint (Optional)
 
@@ -79,6 +82,8 @@ Use this extension only for interpreting, outlining, drafting, or substantively 
 
 * **Task Mode (task_mode):** [analyze / outline / draft / revise — the operation authorized by the user]
 * **Criteria Breakdown (criteria):** [Criterion ID, original wording or locator, and concrete obligations; do not add unstated requirements]
+* **Command Verbs and Required Depth:** [Each original verb, its subject, expected reasoning, theory/application boundaries, and evidence needed; distinguish rubric demands from proposals]
+* **Analysis Version:** [Criterion and analysis revision presented for approval; reference this revision in the scope decision]
 * **Scope Inclusion/Exclusion (scope):** [Included/excluded content, target sections, and established constraints; distinguish unresolved questions]
 * **Scope Confirmation Status (scope_status):** [pending / confirmed / waived / not_required; a decision is pending until the applicable user confirmation or waiver exists]
 * **Scope Decision (approval_record):** [User decision or locator, affected scope, and explicit waiver if any; do not infer confirmation from silence]
@@ -92,8 +97,18 @@ Use this extension only for interpreting, outlining, drafting, or substantively 
 |---|---|---|---|---|
 | [Specific missing input] | [Criterion obligation to substantiate] | [Dependent content to hold] | [Concrete data, source, or clarification] | [Authorized work unaffected by this gap, or None] |
 
-User_provided does not imply independent verification. If the user permits a draft before evidence is available, mark affected claims with neutral placeholders; do not invent results or assume the direction of change. Hypothetical illustrations require permission and a label at the point of use.
+User_provided does not imply independent verification. If an already approved
+outline supports an explicitly permitted incomplete draft, mark missing evidence
+with neutral placeholders; do not invent results or assume the direction of
+change. A new or affected outline must first meet the evidence prerequisite;
+general permission to draft early does not resolve it. Hypothetical illustrations
+require scoped permission and a label at the point of use.
 
 * **Delivery Status (delivery_status):** [draft_incomplete / ready_after_review — for the requested output only; mandatory missing evidence prevents a report from being described as complete]
 
 For analysis-only requests, deliver the analysis and stop. Identifying an evidence gap can complete analysis without authorizing an outline or full draft. Keep outline decisions with the outline and refer to the same record rather than maintaining conflicting approval copies.
+
+For a criterion draft with scope confirmation pending, present this analysis and
+wait before producing the detailed outline. An approved master heading is not
+approval of this interpretation. Use the existing scope decision, not a duplicate
+analysis gate or approval register.

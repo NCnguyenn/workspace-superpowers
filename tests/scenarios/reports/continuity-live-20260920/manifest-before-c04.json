@@ -1,0 +1,210 @@
+[
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\AGENTS.md",
+    "SHA256": "302534400A322A409227DD2BB030542CBA936FDEA122165A04FAA6920FB065EF"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\README.md",
+    "SHA256": "2166DB494B119C3F84CC0475F7703FA45511A961F109DCA8D43A301FD248F5E8"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\analyzing-artifacts\\SKILL.md",
+    "SHA256": "108B1C73A680978ED903EAF2B09061B73DB3C44364223EB8C9E2387E05EB2458"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\analyzing-artifacts\\references\\artifact-inspection.md",
+    "SHA256": "0EC665BEE607911B3121FDF911D30993DF5E80F774347B1C92DED678A5F839C3"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\auditing-formulas\\SKILL.md",
+    "SHA256": "BA5BD829775AF37A99B7DE5865EE0CD6D092F5FA3E8E52EF72F144D4487151F3"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\citing-sources\\SKILL.md",
+    "SHA256": "BF2FE923AAF50F85DAC2DC9B70EE7187B5E6F97706A6EC9F44F9806B3C257EFE"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\converting-artifacts\\SKILL.md",
+    "SHA256": "0866B16972F558E1154ABDC3BCF549888C9E1C75F9485EC34A5F5AADCD723E15"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\drafting-prose\\SKILL.md",
+    "SHA256": "6F3036AA2025E6E0757F81F5A19105C67B888DDC0F1E106E2056636150C297A9"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\editing-documents\\SKILL.md",
+    "SHA256": "04CA4E84C711AC4535C71B878A89BD3326B077DEC7E47F96D035E27E3C100207"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\formatting-layout\\SKILL.md",
+    "SHA256": "BE34E6D6F246138C820F755EBFC250370BB0782513CB311EA2E068F84245ABF0"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\packaging-deliverables\\SKILL.md",
+    "SHA256": "24B25A3104F89B7FAE9007B3A15AF267415768281D82C418434CB8BAC790F940"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\planning-work\\SKILL.md",
+    "SHA256": "B2021D17F057CB7C18984B04DF8C547C940F5DA9570BD0B526296978D91FA00B"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\reading-artifacts\\SKILL.md",
+    "SHA256": "852B9B247A6DCF0ED98F39D5D1298E8CCD4E2CB819807271DBC7068423551C68"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\researching-sources\\SKILL.md",
+    "SHA256": "EA67A5659FE7EA55EBB25DA972C9177FDF8BA4EDD974FAEE34D8C1609E0E0BC2"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\reviewing-work\\SKILL.md",
+    "SHA256": "EA1F36F5634C2EEC57362FECA6CC58C333713DBE066E8FD111224EA42142D866"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\scoping-the-brief\\SKILL.md",
+    "SHA256": "124F80E48C6E45C36BB7B79AAC7B52ECD550A88CC0AB98AD33134AF2ED03E3AF"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\storyboarding-slides\\SKILL.md",
+    "SHA256": "F076C0EBCD5985DE3A46F8A75DA7A097A7EE6901AD1FDD5D6E7D9773ECC8E5F5"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\using-workspace-superpowers\\SKILL.md",
+    "SHA256": "E79798FE662F63502FB813DBB74A8274E05CF08130D101996C2C83C358A129C1"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\verifying-artifacts\\SKILL.md",
+    "SHA256": "6DCAE36D754D3D38FA64ED469038DBF01E6755D54045E664EFA70AE98EBA0E85"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\verifying-artifacts\\references\\artifact-verification.md",
+    "SHA256": "8156E34FC08A2B6F5FDFF2366F6C21AFFC1C115BAE2DE028F579DE8364BCE8FB"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\working-with-pdf\\SKILL.md",
+    "SHA256": "3EC3426A93ADA61DC841CDAD4770BECFFB791203FC1FEAB6A584E729643049F9"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\working-with-presentations\\SKILL.md",
+    "SHA256": "A0EF6A5F015C747707DB20071218DDF17B596CCAC3E6807EEEAF05F4C1D669E1"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\working-with-spreadsheets\\SKILL.md",
+    "SHA256": "C38EF17F31D98105E5AB2B2D80938215E616EC420A4A2EC4A08E6DA84C10D8DE"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\working-with-visuals\\SKILL.md",
+    "SHA256": "33CE9A510C24D7C7D34EB0D00198B01D03D8361B6A43F403E9BD7CFA3D88F942"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\writing-academic-prose\\SKILL.md",
+    "SHA256": "CD209C3CD7C31FF6B91A1A359792BA7B23647E2C18A58043557E352785536DC8"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\skills\\writing-reports\\SKILL.md",
+    "SHA256": "386B8959B30B252FB32B64E60C38CF026F36B8AAA74151A34782D8718B59BF7F"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\agents\\drafter.md",
+    "SHA256": "627664ADA6B22ACE17471F9D59891A30C995C385A63F93229D5B6B52A23CBB58"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\agents\\formatter.md",
+    "SHA256": "EFD2B2D7D92FFA5369AEA3046FE32040CF3383DBF73ADAEE7C29D7232E17834E"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\agents\\inspector.md",
+    "SHA256": "4E46F429EFDA0EB644B448C27BC35D7F4AA65FAE6F116CC60FFFF5A931E3DD4D"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\agents\\packager.md",
+    "SHA256": "A0BC592A5A673746B1D3026BCA36CAB3EEEC8C989F939022A3A52EE72B514B95"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\agents\\researcher.md",
+    "SHA256": "07596EEA5A39DCCDA4954418C219EC52FF44542F20C8BA21A9C98856656AE882"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\agents\\reviewer-citation.md",
+    "SHA256": "E1C6FBF8FF3D1863F011ACCD7DFFB2FD69E3BDC1D1A0BBBE1370F4055D1B0CFC"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\agents\\reviewer-coherence.md",
+    "SHA256": "40284351137DFCDD20B5C672EFDABF05C871E866F730FD68CCE23402E4BA3079"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\agents\\reviewer-prose.md",
+    "SHA256": "F4F28238B6AFF32426A11C617BA3DCB4C6E02689DBD9AC0DC0D96F26BE158616"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\agents\\reviewer-requirement.md",
+    "SHA256": "8B2B822003191C82745F6F868AC85D26B6DF16F01174FE79238E446EF511C9CA"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\agents\\reviewer-visual.md",
+    "SHA256": "C45143D3DF075FBD89A8FA2A72499EACB62652B2275227B6755C80651506091D"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\agents\\verifier.md",
+    "SHA256": "2C4DF379A101329528578E8A5DDA787115C4DCFC53A1AB58A4A11A6EC6DCECDB"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\references\\academic-writing-style.md",
+    "SHA256": "6A0714C90AD512EB2FBBDD69F38C7EFFD456720671F530194B91461C277519AA"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\references\\citation-styles.md",
+    "SHA256": "42463C38D4A6F120C480F1C1C17E15576490D0C7B3711A7780A1948BA9653944"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\references\\criteria-writing-contract.md",
+    "SHA256": "30EBE4819969121A7B4F98027D5D396336A537A068C7EDAFA4C27E5080CC0D30"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\references\\document-continuity.md",
+    "SHA256": "FC6185ECB4FA5BB51A426DB3876ED1E117A81F0EC5147966849A5668EFBA42F5"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\references\\language-policy.md",
+    "SHA256": "D369F6C0E36694E6E6423665B871E38827A5748D96A0D8AED2456206A2273B47"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\references\\workflow-continuity.md",
+    "SHA256": "21A29387D90D9CCF165CE2C784FB81075163A16917DBB4E1D260C6F1B7E1254A"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\templates\\brief.md",
+    "SHA256": "6AE910B00B004406E67A2B68D263B9083F71DDEC7D4929FC364208FE1BA1690F"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\templates\\deliverable-contract.md",
+    "SHA256": "D9FD0B12D2EABAB61A7D6FF60CBA83E24F07A92E5B31E321C4293F379CFD3E6D"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\templates\\final-report.md",
+    "SHA256": "1F9D496F8D39189741D147F8526B1E94ED505D4AB59D3ED3920199C396080902"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\templates\\outline.md",
+    "SHA256": "B5E42AAB5C6CF7835CA42EED25BBF78170CF023B8B6D1ADD74128EAA32FA563B"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\templates\\review-findings.md",
+    "SHA256": "38C0B94D0E6BE6EAF09037A203CED72749A67B1319441FB0578BD5AA0ECA327E"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\.tmp\\continuity-baseline\\input\\audit.xlsx",
+    "SHA256": "0F6E788F4B7BF19630FE7680AAC79874B81EBD329D10AE47D1664FEAABA8AE92"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\.tmp\\continuity-baseline\\input\\notes.md",
+    "SHA256": "894BF38E2BF8FE295D91632C799CA48455BF48989E82F83615CC58C039DE6F7A"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\.tmp\\continuity-baseline\\input\\replacement.md",
+    "SHA256": "F83F0FA4DAE2DA57C839C508325AF17B9D53BDACEA794C319C792EBB1F199F20"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\.tmp\\continuity-baseline\\input\\report.md",
+    "SHA256": "B7D15FBF57BB3B540754F99FBFD6DC19D48FC027A9065BB9758DB8D17C813414"
+  }
+]

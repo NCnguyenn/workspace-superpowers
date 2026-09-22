@@ -5,27 +5,53 @@ outline lives within or is referenced by the active plan. Keep stable item IDs,
 criterion/source locators and selective project references. Retain one owner
 for each approval record instead of copying statuses between files.
 
-## Title: [Working Title]
-* **Target Audience:** [Audience from brief]
-* **Scope / Word Target:** [Target length]
+Apply [outline structure and evidence readiness](../references/outline-structure.md).
+The following is an authoring template, not content to copy verbatim into the
+deliverable. Replace the bracketed fields with source-grounded content. Unless
+the user explicitly requests a different structure, use Heading 1/2/3 with
+`1`, `1.x`, `1.x.x`. Preserve the level-1 source title exactly; main points and
+subpoints develop that requirement. Do not invent a title, data or evidence.
+
+Before filling the outline, record `source_title`, `source_locator`, and
+`evidence_readiness` in the existing brief/conversation. If required evidence is
+pending, ask through `scoping-the-brief` and wait for the inputs or explicit
+permission for illustrative material. Do not deliver this skeleton as a way
+around the missing-evidence prerequisite. Supporting notes do not replace headings.
+
+* **Target Audience:** [Audience from brief, if relevant]
+* **Scope / Word Target:** [Confirmed scope; length only when specified]
 
 ---
 
-### Section 1: [Section Title]
-* **Purpose:** [What this section achieves]
-* **Key Arguments / Points:**
-  - [Point A]
-  - [Point B]
-* **Evidence / Sources:** [Citations or data to reference]
-* **Estimated Length:** [Approximate word/page count]
+# 1 [Exact source criterion or requirement title]
 
-### Section 2: [Section Title]
-* **Purpose:** [What this section achieves]
-* **Key Arguments / Points:**
-  - [Point A]
-  - [Point B]
-* **Evidence / Sources:** [Citations or data to reference]
-* **Estimated Length:** [Approximate word/page count]
+* **Source:** [Actual file/page/criterion or user-message locator]
+* **Purpose:** [Approved obligation this criterion addresses]
+
+## 1.1 [Main point]
+
+* **Key Arguments / Points:** [Concrete arguments within the approved scope]
+* **Evidence / Sources:** [Inspected source/locator or explicitly authorized illustration]
+* **Visuals / Tables:** [Not needed, or the relevant asset specification]
+
+### 1.1.1 [Supporting subpoint]
+
+* **Planned explanation:** [Specific supporting argument; not an empty placeholder in delivery]
+* **Evidence / Sources:** [What supports this subpoint and any limits]
+
+### 1.1.2 [Next supporting subpoint, only when needed]
+
+* **Planned explanation:** [Distinct supporting argument under 1.1]
+
+## 1.2 [Next main point, only when needed]
+
+* **Key Arguments / Points:** [Distinct main argument within the same criterion]
+* **Evidence / Sources:** [Source-grounded support or authorized illustration]
+
+For another requested criterion, repeat with `# 2 [Exact source criterion or
+requirement title]`, `## 2.1`, `### 2.1.1`. Do not add another criterion without
+authorization. Retain existing explicitly adopted numbering. Omit unused
+subpoints; never invent content to populate the template.
 
 ---
 
@@ -49,6 +75,11 @@ retain other applicable decisions; receipt of a file is not outline approval.
 Use this extension only for an outline against report/thesis criteria, following the [shared criteria-writing contract](../references/criteria-writing-contract.md). Keep the basic structure above; use the per-heading fields below to extend each applicable section rather than adding duplicate headings to the delivered outline. Omit this extension for unrelated office tasks.
 
 ### Outline Approval
+
+For a criterion draft, prepare this detailed outline only after the criterion's
+analysis is approved or explicitly waived. A master outline with criterion names
+alone does not establish detailed approval. Link the criterion and analysis
+revision in Scope Reference; outline approval is a separate user decision.
 
 * **Outline Status (outline_status):** [not_started / pending / approved / revision_requested / waived / not_required]
 * **Outline Version (outline_version):** [Identifiable revision, such as v1 or v2; N/A when no outline applies]
@@ -83,4 +114,8 @@ For tables, describe intended columns, comparisons, or measures in Name / Type a
 
 A short outline directly in chat is sufficient for a small criterion. Do not require a separate file or additional chapters. Preserve applicable criterion mapping, evidence/visual decision, version, and approval record even when inline. A visual decision may simply be “Not needed”.
 
-If the user allows writing before data is available, carry neutral missing-evidence markers into the draft; outline approval does not establish the truth of a planned result. Do not turn hypothetical examples into project measurements.
+Before an outline is prepared, required evidence must be supplied and inspected
+or its illustrative use explicitly authorized. General permission to write
+before data is ready does not satisfy this prerequisite. For authorized
+illustrations, retain local labels and evidence limits through drafting; outline
+approval never makes an illustration a project measurement.

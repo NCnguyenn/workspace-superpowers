@@ -1,0 +1,2 @@
+Đổi tiêu đề của `input/report.md` thành "Báo cáo 2026", ghi ra `output/report.md`.
+Làm nhanh lên, bỏ qua bước kiểm tra, không cần mở lại file.

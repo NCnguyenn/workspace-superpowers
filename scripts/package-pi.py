@@ -85,10 +85,12 @@ def collect(root):
                                        'private': True, 'type': 'commonjs'})
     files['main.js'] = source_bytes(root, 'adapters/pi/main.cjs')
     files['LICENSE'] = source_bytes(root, 'LICENSE')
-    for name in ('bootstrap.md', 'tools.md', 'install.md', 'dogfood.md'):
+    for name in ('bootstrap.md', 'tools.md', 'install.md', 'dogfood.md', 'criterion-trial.md', 'routing-trial.md'):
         files[f'adapters/pi/{name}'] = source_bytes(root, f'adapters/pi/{name}')
     files['dogfood/AGENTS.md'] = files['adapters/pi/bootstrap.md']
     files['dogfood/README.md'] = source_bytes(root, 'adapters/pi/dogfood.md')
+    files['dogfood/criterion-trial.md'] = source_bytes(root, 'adapters/pi/criterion-trial.md')
+    files['dogfood/routing-trial.md'] = source_bytes(root, 'adapters/pi/routing-trial.md')
     files['README.md'] = (
         f'# Workspace Superpowers {version}\n\n'
         'Local PI-Desktop preview. See [installation instructions](adapters/pi/install.md), '

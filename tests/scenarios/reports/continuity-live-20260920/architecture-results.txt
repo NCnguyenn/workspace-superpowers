@@ -1,0 +1,65 @@
+✔ skills and agent roles name only §11 capability identifiers (22.7713ms)
+ℹ scanned 33 skill/role file(s) against 35 allowed capability names
+✔ every skill and bootstrap can reach the shared workflow contract directly (20.9579ms)
+✔ document continuity reaches input, authoring, review, and handoff consumers (5.9925ms)
+✔ local Markdown references across the distributed instruction pack resolve (42.2537ms)
+✔ helpers export PROSE_SKILLS and ship them without dropping prior groups (2.1785ms)
+✔ three prose skills exist with Use-when frontmatter matching the folder name (6.6663ms)
+✔ criteria lifecycle participants link to the same shared contract (3.737ms)
+✔ router selects prose skills by operation and preserves stopping boundaries (1.2476ms)
+✔ scoping separates clarification from applicable scope confirmation (0.7429ms)
+✔ planning owns versioned outline decisions and supports small chat outlines (0.6222ms)
+✔ editing routes substantive prose through prerequisites but keeps mechanical edits light (0.7637ms)
+✔ drafter receives bounded decisions and evidence without approval authority (0.6867ms)
+✔ all lifecycle Markdown links resolve inside the portable package (8.8994ms)
+✔ prose skills name only §11 capabilities and contain no harness leaks (2.0076ms)
+✔ prose skill relative links resolve to real reference files (4.4074ms)
+✔ reviewer-prose exists with the role contract and a relative style-guide link (6.9472ms)
+✔ reviewing-work dispatches reviewer-prose and treats fabricated evidence as blocking (0.7264ms)
+✔ four review dimensions stay distinct and citation accepts internal evidence (2.3364ms)
+✔ manual criteria-writing scenario file exists (0.4453ms)
+✔ manual criteria-writing scenarios define B01–B16 with required operator fields (2.5681ms)
+✔ language policy is reachable from bootstrap, router, scoping, brief, and writing references (9.2946ms)
+✔ active design and scoping rules no longer contradict the English default (2.1397ms)
+✔ default outline labels and missing-evidence example are English (1.205ms)
+✔ skill pack, agent roles, and templates do not name harness tools, MCP servers, or permission strings (25.0687ms)
+ℹ scanned 40 file(s) under skills/, agents/, templates/ for 5 forbidden strings
+✔ every role file in agents/ adheres to the role prompt contract (8.8816ms)
+ℹ checked 11 agent role file(s) under agents/
+✔ router names the four wave-1 specialists (5.7071ms)
+✔ editing-documents depends on read, analyze, and verify (0.8473ms)
+✔ verifying-artifacts states command success is not artifact success (0.8253ms)
+✔ verifying-artifacts states a later conversion invalidates prior inspection (0.819ms)
+✔ packaging-deliverables depends on verifying-artifacts (0.7986ms)
+✔ router references all core lifecycle skills (0.7326ms)
+✔ reviewing-work is a review router and does not rewrite wholesale (0.7115ms)
+✔ scoping-the-brief does not hardcode a citation style (0.6189ms)
+✔ citing-sources sets Harvard Style as the default when unspecified (0.7416ms)
+✔ researching-sources and citing-sources require explicit user request (1.4968ms)
+✔ working-with-pdf establishes source priority rule (0.7317ms)
+✔ working-with-spreadsheets establishes formula preservation rule (0.706ms)
+✔ auditing-formulas enforces zero calculation errors and circular reference detection (0.8556ms)
+✔ router references office specialist skills (0.6271ms)
+✔ formatting-layout depends on read, analyze, review, and verify (1.3146ms)
+✔ formatting-layout preserves substantive content integrity (0.685ms)
+✔ editing-documents routes to formatting-layout and converting-artifacts (0.6406ms)
+✔ converting-artifacts establishes source priority rule (0.5886ms)
+✔ converting-artifacts enforces post-conversion verification and stale check rule (0.9378ms)
+✔ router references formatting-layout under document skills and converting-artifacts under transform skills (0.8369ms)
+✔ working-with-presentations enforces fixed geometry and speaker notes separation (0.7329ms)
+✔ storyboarding-slides produces action headlines and narrative progression (0.6756ms)
+✔ working-with-visuals preserves vector graphics and handles layered image limitations (0.7813ms)
+✔ router references presentation and visual specialist skills (0.6113ms)
+✔ every SKILL.md has Use-when description and valid frontmatter (17.7041ms)
+ℹ checked 22 SKILL.md file(s) under skills/
+✔ all required standard templates exist under templates/ (3.7563ms)
+ℹ checked 5 template file(s) under templates/
+✔ catalog ships exactly the approved workspace skills (7.045ms)
+ℹ tests 52
+ℹ suites 0
+ℹ pass 52
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 154.371

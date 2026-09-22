@@ -17,7 +17,7 @@ build/
 *.zip
 node_modules/
 # Local-only: keep on disk, do not publish
-tests/
+tests/scenarios/runs/
+tests/scenarios/reports/report-*
 docs/superpowers/
 output/
-*.test.mjs

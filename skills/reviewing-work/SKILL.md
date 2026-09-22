@@ -117,7 +117,17 @@ Abstract capability names, resolved by the harness adapter. Never a tool name.
 
 ## Fallback
 
-If delegation is unavailable, the orchestrator applies the same role criteria sequentially. If a required source or representation cannot be inspected, report the limitation and keep affected claims unresolved; do not substitute assumptions for verification.
+If delegation is unavailable, the orchestrator must first load the applicable
+role instructions through actual file-reading calls, then apply their criteria
+sequentially before draft delivery. For substantial report or thesis prose,
+execute `read_file("../../agents/reviewer-prose.md")` and
+`read_file("../../agents/reviewer-coherence.md")`, resolving both paths from this
+skill's directory, and read the prose role's linked style guide. Return findings
+by role and recheck corrections before delivering the text. This is a fallback
+for missing delegation, never permission to skip loading `reviewing-work` or
+substitute a generic self-review. If a required source or representation cannot
+be inspected, report the limitation and keep affected claims unresolved; do not
+substitute assumptions for verification.
 
 ## Common mistakes
 

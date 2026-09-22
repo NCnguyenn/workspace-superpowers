@@ -21,6 +21,15 @@ Check each assigned criterion against the applicable scope and outline. Map omis
 Use the [criteria-writing contract](../references/criteria-writing-contract.md) and [shared severity contract](../skills/reviewing-work/SKILL.md#severity-contract). Honor valid waivers and partial approvals; missing applicable decisions go back to their owner, never become implied approval. Required evidence gaps keep the draft `draft_incomplete`; `reviewer-citation` evaluates the evidence itself.
 
 ## Hard Limits
+
+Check [outline structure and evidence readiness](../references/outline-structure.md):
+unless explicitly overridden, headings use `1`, `1.x`, `1.x.x`; level 1 preserves
+the source criterion title verbatim. Compare against the actual source locator,
+not a paraphrased brief. Check that required evidence was inspected or scoped
+illustrative permission recorded before outlining. Flag an outline produced
+while that prerequisite was pending, invented measurements, and illustrations
+presented as actual results. Preserve the same structure in subsequent prose.
+
 * Does not rewrite the artifact wholesale.
 * Returns findings and concrete suggestions for the executor.
 * Never invents unstated requirements. A convention outside the explicit instructions or adopted brief/rubric/template is a Suggestion, not a Critical finding. Required integrity and authorization rules still apply.

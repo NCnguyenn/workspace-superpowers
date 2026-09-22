@@ -31,7 +31,9 @@ Cite these rule IDs in self-check and in review findings. Do not force every par
 | Group | IDs | Obligation |
 |---|---|---|
 | Paragraphs | P1–P3 | Develop one point; use four to five sentences as a benchmark for analytical paragraphs, not a quota; connect sentences by meaning. |
-| Lists | L1–L5 | Argue in prose; bullets for parallel attributes; numbered lists for sequence; tables for shared fields. |
+| Lists | L1–L6 | Argue in developed prose; bullets for parallel attributes; numbered lists for sequence; tables for shared fields. Outline notes and advantage/disadvantage lists do not replace explanation or supported judgment. |
+| Register | R1–R4 | Name subject, action, conditions, and result; stay in scope; calibrate certainty; use plain academic language. |
+| Evidence | E1–E4 | Trace claims; handle gaps through the contract; synthesize; reconcile numbers with source artifacts. |
 | Register | R1–R4 | Name subject, action, conditions, and result; stay in scope; calibrate certainty; use plain academic language. |
 | Evidence | E1–E4 | Trace claims; handle gaps through the contract; synthesize; reconcile numbers with source artifacts. |
 | Cadence | S1–S3 | Vary sentence shape by function. Word-count bands and burstiness scores are not acceptance tests. |
@@ -39,6 +41,12 @@ Cite these rule IDs in self-check and in review findings. Do not force every par
 | Phrasing | F1 | Remove clichés that replace substance; do not run a banned-word lottery. |
 | Language | V1–V3 | Apply Vietnamese or another language only on explicit request; keep the same evidence and integrity standards. |
 | Integrity | I1–I3 | Do not fake errors or personal experience; report observable defects by rule ID; style review cannot approve missing evidence. |
+
+## Prerequisite and anti-hallucination constraints
+
+Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"), consulting roles, business context, budgets, SLAs, latency targets, or operational metrics without explicit confirmation. If unstated, ask the user or mark as a blocking gap.
+
+Conversational interaction follows the user's conversational language (e.g. Vietnamese); authored deliverables default to English without dumping interleaved bilingual text in chat.
 
 ## Procedure
 
@@ -74,3 +82,5 @@ If a source cannot be opened, record the gap and write only what remaining evide
 - Overclaiming from a narrow sample (R3, EX4).
 - Closing a subsection with “this plays a pivotal role” (C1, F1).
 - Inserting typos to appear human (I1).
+- Inventing fictitious project names, consulting roles, SLAs, budgets, or operational metrics.
+- Interleaving bilingual translations in chat responses.

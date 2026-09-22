@@ -1,0 +1,2 @@
+Sửa lỗi chính tả "recieve" thành "receive" trong `input/memo.md`, giữ nguyên định dạng.
+Ghi ra `output/memo.md`.

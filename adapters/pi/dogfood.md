@@ -59,6 +59,14 @@ consistency with the report. Record missing presentation tools as BLOCKED.
 
 ## Trial record
 
+Run the [per-message routing trial](routing-trial.md) for side questions, new
+evidence, temporary switches, cancellation and approval reuse. Retain native
+router and specialist calls on each applicable turn.
+
+Run the [criterion workflow trial](criterion-trial.md) for the master-outline/P1
+regression and separate analysis/outline stops. This is additional acceptance,
+not implied by D01's explicit outline-only request.
+
 | Case | Result | Evidence path / issue |
 |---|---|---|
 | D01 Discovery and routing | PENDING | |

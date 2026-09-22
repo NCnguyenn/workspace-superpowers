@@ -1,0 +1,65 @@
+﻿{
+    "probe":  "bounded-word-native-equation-roundtrip",
+    "startedAt":  "2026-09-20T16:04:26.7004028+07:00",
+    "outputDirectory":  "D:\\Personal_Project\\workspace-superpowers\\tests\\scenarios\\reports\\math-project-20260920\\runtime\\word-probe-20260920-160426-37eba5bfb83e4d7d9a41e8c874187fe4",
+    "environment":  {
+                        "powershell":  "5.1.26100.9444",
+                        "wordExecutable":  "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE"
+                    },
+    "capabilities":  {
+                         "connectedCodexDocumentSession":  {
+                                                               "state":  "unavailable",
+                                                               "fidelity":  "none",
+                                                               "detail":  "No connected Codex document session was supplied to this probe."
+                                                           },
+                         "wordCom":  {
+                                         "state":  "unavailable",
+                                         "fidelity":  "none",
+                                         "detail":  "Retrieving the COM class factory for component with CLSID {000209FF-0000-0000-C000-000000000046} failed due to the following error: 80070520 A specified logon session does not exist. It may already have been terminated. (Exception from HRESULT: 0x80070520)."
+                                     },
+                         "nativeEquationCreate":  {
+                                                      "state":  "unavailable",
+                                                      "fidelity":  "none",
+                                                      "detail":  "Retrieving the COM class factory for component with CLSID {000209FF-0000-0000-C000-000000000046} failed due to the following error: 80070520 A specified logon session does not exist. It may already have been terminated. (Exception from HRESULT: 0x80070520)."
+                                                  },
+                         "existingDocxEditSaveReopen":  {
+                                                            "state":  "unavailable",
+                                                            "fidelity":  "none",
+                                                            "detail":  "Retrieving the COM class factory for component with CLSID {000209FF-0000-0000-C000-000000000046} failed due to the following error: 80070520 A specified logon session does not exist. It may already have been terminated. (Exception from HRESULT: 0x80070520)."
+                                                        },
+                         "ommlStructure":  {
+                                               "state":  "unavailable",
+                                               "fidelity":  "none",
+                                               "detail":  "Retrieving the COM class factory for component with CLSID {000209FF-0000-0000-C000-000000000046} failed due to the following error: 80070520 A specified logon session does not exist. It may already have been terminated. (Exception from HRESULT: 0x80070520)."
+                                           },
+                         "semanticContentComparison":  {
+                                                           "state":  "unavailable",
+                                                           "fidelity":  "none",
+                                                           "detail":  "Retrieving the COM class factory for component with CLSID {000209FF-0000-0000-C000-000000000046} failed due to the following error: 80070520 A specified logon session does not exist. It may already have been terminated. (Exception from HRESULT: 0x80070520)."
+                                                       },
+                         "pdfExport":  {
+                                           "state":  "not-run",
+                                           "fidelity":  "none",
+                                           "detail":  "Pending."
+                                       },
+                         "visualLayoutInspection":  {
+                                                        "state":  "unavailable",
+                                                        "fidelity":  "none",
+                                                        "detail":  "PDF export alone is not a human or image-based layout inspection."
+                                                    },
+                         "latexClipboardPath":  {
+                                                    "state":  "unverified",
+                                                    "fidelity":  "none",
+                                                    "detail":  "Clipboard/LaTeX import was deliberately not assumed or exercised."
+                                                }
+                     },
+    "evidence":  {
+
+                 },
+    "limitations":  [
+                        "A fixture proves only this disposable document path; it does not establish arbitrary-document coverage.",
+                        "OMML and oMath counts are structural evidence, not proof that every mathematical meaning or layout is correct."
+                    ],
+    "error":  "Retrieving the COM class factory for component with CLSID {000209FF-0000-0000-C000-000000000046} failed due to the following error: 80070520 A specified logon session does not exist. It may already have been terminated. (Exception from HRESULT: 0x80070520).",
+    "finishedAt":  "2026-09-20T16:04:26.8391133+07:00"
+}

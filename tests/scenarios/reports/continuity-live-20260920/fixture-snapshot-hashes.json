@@ -1,0 +1,18 @@
+[
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\tests\\scenarios\\reports\\continuity-live-20260920\\fixtures\\audit.xlsx",
+    "Hash": "0F6E788F4B7BF19630FE7680AAC79874B81EBD329D10AE47D1664FEAABA8AE92"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\tests\\scenarios\\reports\\continuity-live-20260920\\fixtures\\notes.md",
+    "Hash": "894BF38E2BF8FE295D91632C799CA48455BF48989E82F83615CC58C039DE6F7A"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\tests\\scenarios\\reports\\continuity-live-20260920\\fixtures\\replacement.md",
+    "Hash": "F83F0FA4DAE2DA57C839C508325AF17B9D53BDACEA794C319C792EBB1F199F20"
+  },
+  {
+    "Path": "D:\\Personal_Project\\workspace-superpowers\\tests\\scenarios\\reports\\continuity-live-20260920\\fixtures\\report.md",
+    "Hash": "B7D15FBF57BB3B540754F99FBFD6DC19D48FC027A9065BB9758DB8D17C813414"
+  }
+]

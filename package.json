@@ -1,6 +1,6 @@
 {
   "name": "workspace-superpowers",
-  "version": "0.1.1",
+  "version": "0.1.3-beta8",
   "private": true,
   "type": "module",
   "description": "Workspace-domain skill pack counterpart of obra/superpowers",

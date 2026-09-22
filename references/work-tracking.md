@@ -75,6 +75,14 @@ materially or the user asks. Keep the decline in available conversation state;
 do not create a file solely to store a refusal. Do independent authorized work
 while a proposal is pending. Honor explicit no-write instructions.
 
+### Mandatory user interview and approval before creating tracking or project files
+
+Never unilaterally or silently create tracking markdown files (`work-plan.md`, `progress.md`) or project deliverable files (e.g. `report.md`, `brief.md`, `outline.md`) behind the user's back with unconfirmed assumptions, fabricated milestones, or invented facts while the user has not verified them.
+Before creating any tracking or project file:
+1. **Interview and gather input in chat:** Ask the user to confirm essential project parameters: project title, core problem statement, system objectives, scope boundaries, and proposed project directory name.
+2. **Present the proposal in chat:** Clearly present the proposed tracking structure, milestones, and deliverable file paths directly in chat for user inspection.
+3. **STOP and await explicit approval:** Wait for the user to review, provide feedback, or explicitly approve in chat. Only after the user confirms may the AI proceed to create the folder and write the markdown files.
+
 ## Record ownership and placement
 
 The active plan is the persisted view of the existing brief, outline, decisions
@@ -94,8 +102,14 @@ an approval status that could diverge. No extra brief/outline files are required
 - [verifying-artifacts](../skills/verifying-artifacts/SKILL.md) reinspects the
   actual artifacts and updated plan. Review checks requirement coverage first.
 
-Default to `work-plan.md` in the authorized task/output root. For distinct
-concurrent work, use `work/<work-id>/work-plan.md` rather than overwrite an
+### Dedicated common project folder created by AI
+
+When creating work-tracking files and project deliverable files, organize them into a **single dedicated common project directory created by the AI** (e.g. `<project_name>/` or `projects/<project_name>/`, such as `SmartFood_Delivery_Platform/`), rather than leaving `work-plan.md` scattered in the workspace root or placing deliverable files in arbitrary disconnected paths.
+
+Both the tracking file (e.g. `<project_folder>/work-plan.md`) and the project deliverable files (e.g. `<project_folder>/report.md`, `<project_folder>/brief.md`) reside together in this shared project directory. The AI proposes the folder name and structure to the user for approval during the initial interview before creation.
+
+Default to `<project_folder>/work-plan.md` in the authorized project root. For distinct
+concurrent work, use `<project_folder>/work/<work-id>/work-plan.md` rather than overwrite an
 existing record. Keep the canonical path in the working checkpoint. Existing
 nonstandard named plans remain valid when adopted; do not rename or duplicate
 them merely to conform. If no startup-visible location records that path,

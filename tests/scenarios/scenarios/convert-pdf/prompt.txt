@@ -1,0 +1,3 @@
+Convert file này sang PDF: `input/source.md` → `output/report.pdf`.
+
+Dùng công cụ chuyển đổi có sẵn trong phiên.

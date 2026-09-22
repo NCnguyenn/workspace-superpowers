@@ -16,7 +16,7 @@ Judge observable prose defects by style-guide Rule ID and use the [shared severi
 |---|---|
 | D1–D4 | Compare actual surrounding passages for continuity; refer argument/context defects to coherence/evidence review while retaining style findings. |
 | P1–P3 | One developed point per paragraph. Four to five sentences is guidance, not a quota. Flag incomplete reasoning, not line counts; a complete shorter paragraph is valid. |
-| L1–L5 | Prose for argument; lists for parallel items, ordered steps, or stable references; tables for shared fields. Flag lists that replace needed reasoning, not useful checklists. |
+| L1–L6 | Prose for argument; lists for parallel items, ordered steps, or stable references; tables for shared fields. Flag lists that replace needed reasoning, not useful checklists. In report bodies, identify obligations answered only by bullet stacks or numbered mini-answers and request developed explanation/judgment. Do not count numbered headings as list prose or impose a list quota. |
 | R1–R4 | Clear subjects, actions, known conditions, and plain academic wording. Refer authorization or evidential overclaiming to requirement/citation review through the orchestrator. |
 | S1–S3 | Sentence variation by function. No required short sentence, word-count band, or cadence score. |
 | C1–C3 | Remove redundant subsection endings; retain supported implications, limits, transitions, and required report conclusions. |

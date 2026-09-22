@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "id": "local.workspace-superpowers",
   "name": "Workspace Superpowers",
-  "version": "0.1.1",
+  "version": "0.1.3-beta8",
   "description": "Portable workflows for documents, research, citations, spreadsheets, presentations, and verified deliverables. Local dogfooding build.",
   "main": "main.js",
   "permissions": ["agent.prompt.inject"],
   "engines": { "piDesktop": ">=0.15.1" },
   "categories": ["productivity"],
   "activationEvents": ["onStartup"],
-  "safetyNotes": "Instruction-only skill pack. Lifecycle hooks register no tools and perform no file or network operations. Artifact work uses capabilities separately available to the agent."
+  "safetyNotes": "Instruction skill pack. The lifecycle hook reads its bundled bootstrap and refreshes routing instructions in the agent prompt. It registers no tools, writes no files, and makes no network requests. Artifact work uses capabilities separately available to the agent."
 }

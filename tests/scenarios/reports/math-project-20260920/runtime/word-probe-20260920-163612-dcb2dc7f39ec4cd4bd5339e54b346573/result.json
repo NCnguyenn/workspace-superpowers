@@ -1,0 +1,10 @@
+﻿{
+    "probe":  "bounded-word-native-equation-roundtrip",
+    "status":  "timed-out",
+    "outputDirectory":  "D:\\Personal_Project\\workspace-superpowers\\tests\\scenarios\\reports\\math-project-20260920\\runtime\\word-probe-20260920-163612-dcb2dc7f39ec4cd4bd5339e54b346573",
+    "timeoutSeconds":  30,
+    "error":  "The probe worker exceeded its bounded timeout and only that worker process was stopped.",
+    "limitations":  [
+                        "No Word process was killed by the watchdog; a manual session check may be required if Word COM activation hung."
+                    ]
+}

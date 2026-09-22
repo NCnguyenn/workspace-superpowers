@@ -50,7 +50,7 @@ A slide storyboard produces a structured specification for each slide:
 
 ## Procedure
 
-1. **Analyze source material:** Use `reading-artifacts` and `analyzing-artifacts` to extract key arguments, data points, and constraints from the input report, brief, or draft.
+1. **Analyze source material:** For source files, use `reading-artifacts` and `analyzing-artifacts` to extract key arguments, data points, and constraints. For text pasted in chat, inspect the supplied text directly; do not invent a file-read step or require an attachment. Preserve evidence limits in either case.
 2. **Determine deck scope & length:** Align slide count with the intended presentation duration and audience format (e.g. 5-slide executive briefing vs 15-slide technical review).
 3. **Draft the narrative arc:** Outline the progression from context to problem, evidence, and conclusion.
 4. **Author slide blueprints:** Write assertive action headlines, select visual elements, and draft speaker notes for every slide.
@@ -72,7 +72,9 @@ Abstract capability names from §11, resolved by the harness adapter. Never a to
 
 ## Fallback
 
-If template tools or dedicated planning canvases are unavailable, produce a clean markdown storyboard document following the blueprint format above.
+If template tools or dedicated planning canvases are unavailable, produce a clean
+Markdown storyboard following the blueprint above. Deliver it directly in chat
+when that is the requested output; create a file only when authorized.
 
 ## Common mistakes
 

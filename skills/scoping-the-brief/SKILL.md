@@ -10,6 +10,7 @@ Resolve blocking ambiguity and establish an actionable working brief for substan
 For sustained work, use [persistent work tracking](../../references/work-tracking.md):
 inspect an existing plan before asking for requirements already recorded. Offer
 agent-managed persistence when warranted, without requiring user file management.
+Interview the user in chat to confirm project title, core problem statement, system objectives, and scope boundaries before creating tracking or project markdown files in the dedicated common project directory.
 Extract source requirements separately from proposals/unknowns; retain rubric
 coverage gaps. Tracking consent does not approve the scope or outline. Return
 the brief and decisions to planning/editor for the same adopted record.
@@ -44,10 +45,38 @@ Trivial or mechanical work (e.g. typo-fixes, single-cell corrections, straightfo
 
 ## Criteria-based writing
 
-1. Extract criteria from chat, supplied instructions, or artifacts already read. Record `task_mode`, original `criteria` with source/locator, obligations, and included/excluded `scope` in the [brief](../../templates/brief.md) or conversation state. Do not ask users to enter internal fields.
+Apply [outline structure and evidence readiness](../../references/outline-structure.md).
+Capture the exact `source_title` and its locator. During analysis, check required
+data and support; set `evidence_readiness` before handing off to planning. If
+required evidence is missing, interview the user with targeted questions and
+wait before preparing the outline. Explicit permission for illustrative data
+may resolve the planning prerequisite only within its recorded scope; never
+invent real measurements or citations. Analysis approval alone does not resolve
+a missing-evidence question.
+
+Apply [criterion-level analysis and two stops](../../references/criteria-writing-contract.md#criterion-level-analysis-and-two-stops).
+The two-stop rule applies to all sections, chapters, parts, and criteria of
+deliverables (e.g. “Section 1: Project Overview”, “Introduction”, or “P1”).
+For a section or criterion draft, show the original wording/locator, extract primary keywords and command verbs, and classify the exact cognitive demand (pure theoretical description vs comparative matrix vs critical evaluation/tradeoffs vs justification). Delineate strict scope boundaries (In-Scope vs Out-of-Scope, general theory vs scenario application), required diagrams, and academic citations.
+Identify the analysis revision and request its approval in chat before producing the
+detailed outline. “Do Section 1” or “Do P1” and approval of master headings are
+not that decision. Follow [guided questions](../../references/guided-questions.md) and conduct review naturally in chat without modal popup spam.
+
+Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"),
+consulting roles, business context, budgets (e.g. "$15,000"), SLAs, latency targets,
+or operational metrics without interviewing and confirming with the user. If unstated
+in source documents or prompt, ask the user or record a blocking gap; never fabricate
+project facts.
+
+Conversational exchanges, requirement analysis presentations, questions, and
+explanations follow the user's conversational language (e.g., Vietnamese). Authored
+deliverables default to English. Never interleave bilingual translations or
+explanations into chat blocks.
+
+1. Extract criteria and section requirements from chat, supplied instructions, or artifacts already read. Record `task_mode`, original `criteria` with source/locator, obligations, and included/excluded `scope` in the [brief](../../templates/brief.md) or conversation state. Do not ask users to enter internal fields.
 2. Inspect available evidence first. Maintain `evidence_register` and `blocking_gaps`: identify what is missing, which claim it supports, and what resolves the gap. Apply the contract's Missing Evidence Protocol; block dependent assertions while continuing authorized independent work.
 3. Separate clarification from confirmation. Ask questions only about material unknowns. Reuse applicable `scope_status` values of `confirmed` or `waived` and their `approval_record`; do not interview again. If confirmation is required and unresolved, summarize scope, set `pending`, and await the user's decision. Silence or an unavailable response is not approval.
-4. For `analyze`, deliver interpretation, obligations, scope, and evidence needs, then stop. Do not request approval of an unrequested outline. For `outline`, pass sufficiently clear scope to `planning-work` without imposing a drafting gate. For `draft` or substantive `revise`, resolve only applicable scope prerequisites, then hand off outline decisions to `planning-work`.
+4. For `analyze`, deliver interpretation, obligations, scope, and evidence needs, then stop. Do not request approval of an unrequested outline. For `outline`, pass sufficiently clear scope to `planning-work` only after applicable analysis approval and the evidence prerequisite are resolved: required evidence is inspected or illustrative use is explicitly authorized. These are separate decisions; do not impose an unrelated drafting gate. For `draft` or substantive `revise`, resolve applicable scope and evidence prerequisites, then hand off outline decisions to `planning-work`.
 5. Preserve unaffected decisions when scope changes. Confirm only the affected scope when not already authorized; never treat an earlier approval as covering a new experimental comparison. Project claims require actual evidence; a README is not proof of implementation. Software-engineering inspection belongs to the Coding workflow and does not authorize code changes.
 
 ## Procedure
@@ -69,7 +98,10 @@ Abstract capability names, resolved by the harness adapter. Never a tool name.
 - `read_file(path)` — to examine existing text-bearing rubrics, templates, or instructions.
 - `invoke_skill(name)` — to load `reading-artifacts` / `analyzing-artifacts` when source files exist.
 
-Interactive questions, when needed, are asked of the user in the conversation. They are not a named capability.
+Interactive questions use the host's available structured question interface
+when permitted, following the [guided questions](../../references/guided-questions.md) reference and adapter. Otherwise
+ask a concise choice in chat and wait. They are conversation interactions, not
+an additional artifact capability or a tool supplied by this skill pack.
 
 ## Dependencies
 
@@ -78,7 +110,7 @@ Interactive questions, when needed, are asked of the user in the conversation. T
 
 ## Fallback
 
-For criteria writing, the criteria-writing contract controls fallback: an unavailable answer never confirms scope, approves an outline, or resolves missing evidence. Return authorized analysis or a provisional outline and identify blocked parts; do not draft dependent content by assumption. For other tasks, disclose safe working assumptions and proceed only with supported work. Do not invent sources.
+For criteria writing, the criteria-writing contract controls fallback: an unavailable answer never confirms scope, approves an outline, or resolves missing evidence. Return authorized analysis and targeted questions while required evidence is pending; do not bypass that prerequisite with a provisional outline. For other tasks, disclose safe working assumptions and proceed only with supported work. Do not invent sources.
 
 ## Common mistakes
 

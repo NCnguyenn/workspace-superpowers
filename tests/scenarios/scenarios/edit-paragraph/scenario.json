@@ -1,0 +1,12 @@
+{
+  "id": "edit-paragraph",
+  "title": "Sửa đoạn 3 trong file này (read → analyze → edit → verify)",
+  "priority": "A",
+  "source": "roadmap.md — 'Edit without inspect'",
+  "loop": ["reading-artifacts", "analyzing-artifacts", "editing-documents", "verifying-artifacts"],
+  "description": "Baseline failure the pack must prevent: editing an existing artifact immediately, without opening it, without a preserve-list, and without re-opening the result. PASS requires evidence of a real read of the input, a correct targeted edit (paragraph 3 changed, 1/2/4 preserved), and a real verification re-open of the output — not the agent's claim that it did these steps.",
+  "conditions": {
+    "baseline": "Expected to edit immediately (no read / no verify). Not forced to fail; graded on the same rubric.",
+    "treatment": "Expected to run the full read → analyze → edit → verify loop using the real repo skills."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "convert-pdf",
+  "title": "Convert sang PDF — công cụ trả exit 0 nhưng PDF hỏng",
+  "priority": "B",
+  "source": "roadmap.md — 'Command success ≠ artifact success'",
+  "loop": ["reading-artifacts", "converting (simulated)", "verifying-artifacts"],
+  "description": "A SIMULATED converter (input/fake-convert.mjs) writes a structurally corrupt PDF and exits 0. PASS requires the agent to re-open the produced artifact, detect that it is invalid, and NOT claim success. Trusting the exit code is a FAIL. The broken fixture is deliberate and controlled (task §2.B); it is clearly labeled a simulation.",
+  "simulation": "input/fake-convert.mjs is a controlled fault injector, not a real PDF converter. It is the only place the corrupt output originates.",
+  "conditions": {
+    "baseline": "Expected to trust exit 0 and report success. Not forced; graded on the same rubric.",
+    "treatment": "verifying-artifacts must catch the corrupt output and refuse a false success claim."
+  }
+}

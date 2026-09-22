@@ -1,20 +1,44 @@
 ---
 name: using-workspace-superpowers
-description: Use when starting a workspace-primary document, research, office, or knowledge-work request, or when entering the workspace slice of a mixed request — before planning or touching workspace artifacts.
+description: Use when any message starts, continues, changes, approves or resumes document, research, office or knowledge work, including new files and the workspace part of mixed requests.
 ---
 
 # using-workspace-superpowers
 
 Single entry router for the workspace domain. Classify, compose, and route. Contains no format-specific procedure.
 
+## Entry and reselection
+
+Load this router on every Workspace turn, including short approvals and
+continuations. Use the current message together with retained context to select
+the next operation; do not mechanically advance the previous workflow. For
+Simple Q&A, answer directly. For Coding, hand off to `using-superpowers`.
+A mixed message may need a direct answer and a separate artifact operation.
+
+Before selecting a specialist, identify the requested result, the target
+artifact or section, and the authorized stopping point. Resolve its name against
+the host's available catalog and load its actual instructions before use.
+Descriptions are discovery cues, not a substitute for the skill body. Match
+meaning and context rather than isolated words such as "report" or "formula".
+Do not preload the catalog or ask the user to name a skill.
+
+Reassess when new evidence, a correction or a different operation appears, even
+within one turn. Reuse still-applicable approvals; invalidate only dependent
+decisions. A skill's next step cannot authorize an unrequested draft, rewrite,
+export or file creation. Keep the return point of temporary switches and honor
+explicit pauses and cancellations. Apply the continuity contract below rather
+than restarting an interview. PI's exact IDs and calls are defined by its host
+adapter; loading the router does not load the specialists.
+
 ## Durable work and first-turn discovery
 
 Apply [persistent work tracking](../../references/work-tracking.md) on fresh
 Workspace chats, continuations and sustained work. Locate the adopted plan or
-bounded `work-plan.md` candidates with listing only, then delegate reading to
+bounded `work-plan.md` candidates in the task root or dedicated project directory with listing only, then delegate reading to
 `reading-artifacts` before scoping or planning. Reuse its checkpoint and load
 only the relevant source slices. Propose tracking once when justified, with
 zero/one/two record types according to the task; simple edits stay lightweight.
+Tracking files and project deliverable files are co-located in a dedicated common project directory created by AI. Mandatory interview and explicit user approval in chat are required before creating tracking or project markdown files.
 Planning owns plan content, editing persists the shared record, and verification
 checks actual paths/revisions. The router does not write a plan or create an
 independent state system. Handoffs carry work/item identity and current targets.
@@ -74,6 +98,23 @@ It may use:
 
 Content reading, substantive interpretation, artifact manipulation, and verification are delegated to specialist skills.
 
+## Mandatory invocation contract
+
+`invoke_skill(name)` means an actual tool call through the host adapter that
+loads the named skill's instructions. It is not internal reasoning, a route
+description, or an announcement. At every stage transition, including a new
+turn after approval, execute the designated skill call and read its result
+before performing that stage. A router call or a specialist loaded upfront on
+an earlier stage does not satisfy this requirement. Keep recorded user approvals;
+skill loading does not require another approval.
+
+FORBIDDEN: You must NEVER draft section prose, generate outlines, or analyze criteria using generic LLM knowledge without first invoking the designated specialist skill. The router (`using-workspace-superpowers`) only classifies and routes; it does NOT authorize writing prose directly.
+
+If the designated skill cannot be loaded, stop the affected stage and report
+the missing capability. A lower-level artifact-tool fallback still requires
+loading the responsible specialist; it does not authorize generic composition.
+Simple Q&A and trivial mechanical edits retain their existing lean routes.
+
 ## Core Lifecycle and Domain Composition
 
 Core lifecycle skills may include:
@@ -120,14 +161,33 @@ preserve the active writing stage and earlier approvals.
 
 ## Criteria-based writing routes
 
+Apply [outline structure and evidence readiness](../../references/outline-structure.md):
+default to Heading 1/2/3 numbered `1`, `1.x`, `1.x.x`, retaining the source
+criterion title verbatim at level 1. Before outlining, route missing title or
+required evidence to `scoping-the-brief` for an interview. Wait for supplied
+evidence or explicit scoped permission for illustrative examples. This also
+applies to outline-only requests; do not bypass it with provisional headings.
+
+For “do P1” or another section/chapter draft, enforce the contract's
+[criterion-level analysis and two stops](../../references/criteria-writing-contract.md#criterion-level-analysis-and-two-stops)
+before selecting prose specialists. The two-stop rule applies to all sections,
+chapters, parts, and criteria of deliverables (e.g. “Section 1: Project Overview”,
+“Introduction”, or “P1”). An approved master outline containing only
+headings is not a detailed approval. Route to analysis and
+scope confirmation first; only after that decision route to the detailed outline
+and its separate approval. Preserve valid section-specific decisions/waivers.
+Never invent fictitious project names, roles, SLAs, budgets, or operational metrics.
+Conversational interaction follows the user's language (e.g. Vietnamese); deliverables
+default to English without dumping interleaved bilingual text in chat.
+
 Use the [criteria-writing contract](../../references/criteria-writing-contract.md) for activation, state, and authorization. Infer `task_mode` from the requested operation, not the words “report” or “thesis”. For source files, invoke `reading-artifacts` and applicable `analyzing-artifacts` before scoping; chat criteria need no artificial file step.
 
 | task_mode | Route and stopping point |
 |---|---|
-| `analyze` | `scoping-the-brief` with `analyzing-artifacts` as needed → interpretation, scope, and evidence needs. Stop at analysis. |
-| `outline` | `scoping-the-brief` as needed → `planning-work` → criterion, evidence, and visual mapping. Stop at the outline and wait for feedback; outline approval alone does not authorize drafting. |
-| `draft` | `scoping-the-brief` / `planning-work` for unresolved contract prerequisites → `drafting-prose` selects writing specialist(s) → `reviewing-work`. Continue through applicable gates using recorded decisions. |
-| `revise` | `editing-documents` → `drafting-prose` for substantive report/thesis rewrites under the contract; it selects prose specialists. Typo or wording-only edits stay in `editing-documents`; format-only edits use `formatting-layout`, without writing approval gates. |
+| `analyze` | You MUST execute `invoke_skill("scoping-the-brief")` before criterion analysis, and `invoke_skill("analyzing-artifacts")` for substantive artifact interpretation as needed. Present interpretation, scope, and evidence needs. Stop at analysis. |
+| `outline` | Invoke `scoping-the-brief` for unresolved scope prerequisites. You MUST execute `invoke_skill("planning-work")` before generating the detailed outline, including criterion, evidence, and visual mapping. Stop at the outline and wait for feedback; outline approval alone does not authorize drafting. |
+| `draft` | Invoke `scoping-the-brief` / `planning-work` for unresolved contract prerequisites. You MUST physically execute `invoke_skill("drafting-prose")`; it must invoke the selected writing specialist(s). You are forbidden from outputting draft paragraphs without loading `drafting-prose`. Then execute `invoke_skill("reviewing-work")` before delivering the prose. Continue through applicable gates using recorded decisions. |
+| `revise` | Execute `invoke_skill("editing-documents")`, then `invoke_skill("drafting-prose")` for substantive report/thesis rewrites under the contract; it must invoke prose specialists, followed by `invoke_skill("reviewing-work")` before delivery. Typo or wording-only edits stay in `editing-documents`; format-only edits use `formatting-layout`, without writing approval gates. |
 
 Scoping owns scope confirmation; planning owns outline decisions. Drafting checks prerequisites without approving them. Reuse applicable decisions and explicit waivers; ask only about unresolved requirements or decisions. An explicit request to write after an outline can change the authorized operation under the contract.
 
@@ -142,19 +202,20 @@ For chat-only outputs, review the requested content without claiming file verifi
 
 2. **Select Lifecycle Skills**
 
-   * Compose the lifecycle stages appropriate to the task scope.
+   * Compose the lifecycle stages appropriate to the task scope, then execute `invoke_skill(name)` for each selected stage before doing its work. A conceptual route alone does not execute it.
    * Small tasks run lean; substantial tasks execute the full sequence.
 
 3. **Enforce Hard Dependencies**
 
    * No file modification before `reading-artifacts` (and `analyzing-artifacts` for non-trivial modifications).
    * Criteria-based prose follows the contract's applicable scope and outline prerequisites, including small sections. Other complex or multi-artifact prose needs `planning-work`.
+   * No criterion analysis without an actual `scoping-the-brief` invocation, no detailed outline without `planning-work`, and no draft paragraphs without `drafting-prose` and its selected writing specialist. Recheck this at each stage transition, not only on the first turn.
    * No file completion claim before `verifying-artifacts` re-opens the real deliverable.
    * No delivery packaging before verification has passed.
 
 4. **Scope When Material Facts Are Missing**
 
-   * Invoke `scoping-the-brief` for material ambiguity, criteria analysis, or unresolved scope confirmation required by the criteria-writing contract.
+   * You MUST execute `invoke_skill("scoping-the-brief")` before material ambiguity resolution, criteria analysis, or unresolved scope confirmation required by the criteria-writing contract.
    * Do not interview when the brief is already clear. Clarification and required scope confirmation are separate; reuse confirmed decisions and explicit waivers.
    * When researching sources or citing references, invoke `researching-sources` and `citing-sources` only for requested research or citations, including applicable requirements the user adopted. Preserve a coherent citation convention in an existing document; use Harvard Style only when citations are required and no style is established under the [citation style rules](../../references/citation-styles.md).
 
@@ -165,18 +226,18 @@ For chat-only outputs, review the requested content without claiming file verifi
 
 6. **Plan Proportionally to the Task**
 
-   * Invoke `planning-work` for a requested outline, unresolved criteria-writing outline prerequisites, or multi-stage, high-risk, multi-artifact, or otherwise complex work.
+   * You MUST execute `invoke_skill("planning-work")` before a requested outline, unresolved criteria-writing outline prerequisites, or multi-stage, high-risk, multi-artifact, or otherwise complex planning work.
    * A small criterion can use a short outline in chat; no separate plan file is required.
    * Do not require a planning stage for trivial or mechanical tasks.
 
 7. **Compose Domain Specialists**
 
-   * Invoke the family and specialist skills required by the deliverable.
+   * You MUST execute `invoke_skill(name)` for the family and specialist skills required by the deliverable. For `task_mode: draft`, execute `invoke_skill("drafting-prose")` before any draft paragraphs; it loads the writing specialist and required style references.
    * Keep lifecycle responsibilities separate from format-specific procedures.
 
 8. **Review Substantial Deliverables**
 
-   * Invoke `reviewing-work` for drafted, graded, multi-section, research, or otherwise substantial artifacts.
+   * You MUST execute `invoke_skill("reviewing-work")` after composition and before delivering drafted, graded, multi-section, research, or otherwise substantial content, including chat-only drafts. Do not defer review until after the user's review of the delivered draft.
    * Do not invoke `reviewing-work` for trivial mechanical fixes. Those proceed to `verifying-artifacts`.
    * Reviewers return findings; they do not rewrite the artifact wholesale. Fix Critical and Important findings before verification.
 

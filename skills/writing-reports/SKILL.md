@@ -51,13 +51,22 @@ For each heading, state the criterion obligation, the evidence used, and the vis
 
 If evidence required by a criterion is missing, apply the contract Missing Evidence Protocol and keep `delivery_status` as `draft_incomplete` while that gap remains.
 
+Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"), consulting roles, business context, budgets, SLAs, latency targets, or operational metrics without explicit confirmation. If unstated, ask the user or mark as a blocking gap.
+
+Conversational interaction follows the user's conversational language (e.g. Vietnamese); authored deliverables default to English without dumping interleaved bilingual text in chat.
+
 ## Procedure
 
+Write the report body in developed paragraphs by default (L6). Fulfil each
+approved command verb through explanation, comparison or supported judgment,
+not a list of labels. Keep useful lists/tables where L2–L4 apply and preserve
+the adopted heading numbering. Check that outline notes became connected prose.
+
 1. Read the authorized outline, criteria mapping, and evidence register for the section.
-2. Choose headings that cover the criteria. Do not add chapters the brief does not require.
+2. Maintain strict coherence with the approved outline: directly expand approved arguments point by point into academic prose (Analysis → Outline → Report). Do not add chapters the brief does not require or drop planned points.
 3. Write each layer with named subjects, actions, conditions, and results where known.
 4. Place tables and figures only where the outline or criterion needs them, with source labels.
-5. Return the section to `drafting-prose` for handoff to `reviewing-work`.
+5. Return the candidate section to `drafting-prose` for an actual `reviewing-work` invocation and correction of blocking findings before user delivery. After review, deliver the complete section text in chat for user review and approval before advancing. Co-locate persistent files in the dedicated common project directory.
 
 ## Required capabilities
 
@@ -84,3 +93,5 @@ If typed inspect capabilities are unavailable, read text-bearing evidence with `
 - Adding decorative tables or a standard thesis skeleton the criterion does not ask for.
 - Filling empty cells with assumed percentages.
 - Treating user-provided notes as independently verified measurements.
+- Inventing fictitious project names, consulting roles, SLAs, budgets, or operational metrics.
+- Interleaving bilingual translations in chat responses.

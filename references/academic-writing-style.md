@@ -42,6 +42,16 @@ Choose the form that serves the reader; these rules also permit compact guidance
 
 **L5:** Add interpretation after a list only when needed. Do not append a recap merely to return to prose, or force a checklist into paragraphs.
 
+**L6 — Report body:** Write report and assignment bodies in developed paragraphs by default.
+For each explanatory or evaluative obligation, connect the point, evidence or
+mechanism, and its implication or limit. An outline expanded into bullet stacks
+or numbered mini-answers is not finished analytical prose. A list of advantages
+and disadvantages alone does not evaluate alternatives; explain their relative
+importance and support the judgment. Apply L2–L4 to genuine parallel items,
+procedures and comparison tables. There is no list percentage or sentence quota.
+Numbered section headings are not numbered-list prose. Compact analysis/outline
+approval cards may use lists; the final report still needs developed reasoning.
+
 ## 3. Objective, concrete register
 
 - **R1 — Name the substance:** Identify the subject, action, conditions, and result where known. Spread these across sentences when clearer. Use the actual tool, parameter, dataset, or operation instead of praise.

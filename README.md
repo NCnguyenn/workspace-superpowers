@@ -11,6 +11,8 @@ The root `package.json` `"pi"` field is distribution/discovery metadata only. Sk
 Deliverables and repository content default to English, even when the user communicates in Vietnamese. Use another language only on an explicit user request. See the [language policy](references/language-policy.md).
 
 See the [design specification](docs/workspace-superpowers-design.md).
+See [the changelog](CHANGELOG.md) for changes by version, historical build labels,
+and validation limits through 0.1.3-beta8.
 
 ## PI-Desktop local preview
 
@@ -22,10 +24,11 @@ python scripts/test-package-pi.py
 python scripts/package-pi.py
 ```
 
-Install `dist/pi/local.workspace-superpowers-0.1.1.piplug` from PI-Desktop's
+Install `dist/pi/local.workspace-superpowers-0.1.3-beta8.piplug` from PI-Desktop's
 Plugins page, or choose the generated `dist/pi/local.workspace-superpowers`
 folder. Grant `agent.prompt.inject`, enable the plugin for the target project,
-and merge the supplied bootstrap into that project's effective instructions.
+and start a fresh chat. The lifecycle hook supplies the bootstrap where
+supported; otherwise merge it into the project's effective instructions.
 See [installation and rollback](adapters/pi/install.md),
 [bootstrap](adapters/pi/bootstrap.md), and
 [real-world trial prompts](adapters/pi/dogfood.md).
@@ -35,6 +38,14 @@ explicit skill IDs, and reopens the archive to check every byte. Existing output
 directories are refused; use `--out dist/pi-next` for another build. Package
 validation is separate from runtime acceptance in PI-Desktop. No global
 instructions, installed plugins, or user documents are modified by the build.
+
+The hook refreshes per-message routing separately from stage-specific Skill
+calls. Old project instructions cannot suppress a missing routing block merely
+because the writing-stage block is current. Each Workspace turn loads the
+router before its operation; specialists are selected from the current request
+and retained context. Simple Q&A stays direct. The hook supplies instructions,
+not a deterministic skill executor. Use the [multi-turn routing trial](adapters/pi/routing-trial.md)
+to retain actual PI tool calls before claiming behavioral acceptance.
 
 ## Skill catalog
 
@@ -59,6 +70,14 @@ The prose family adds three complementary skills:
 | [writing-academic-prose](skills/writing-academic-prose/SKILL.md) | Develops claims with evidence and interpretation, calibrates certainty, and removes empty phrasing. Four to five sentences is guidance for developed paragraphs, not a quota; concise complete paragraphs remain valid. |
 
 ## Writing against criteria
+
+The [outline structure contract](references/outline-structure.md) defaults to
+Heading 1/2/3 numbered `1`, `1.x`, `1.x.x` unless the user explicitly requests
+another structure. Level 1 preserves the supplied criterion title verbatim;
+child headings develop main points and subpoints. During analysis, missing
+required evidence triggers a focused interview before outlining. The affected
+outline waits for inspected inputs or explicit scoped permission for hypothetical
+material, which remains labeled and never counts as actual project results.
 
 The [shared contract](references/criteria-writing-contract.md) applies to interpreting, outlining, drafting, or substantively revising report/thesis content against requirements. Users need not name a skill or provide an internal mode value.
 

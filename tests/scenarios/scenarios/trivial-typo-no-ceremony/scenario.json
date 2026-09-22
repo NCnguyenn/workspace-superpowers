@@ -1,0 +1,12 @@
+{
+  "id": "trivial-typo-no-ceremony",
+  "title": "Sửa lỗi nhỏ không được kéo theo phỏng vấn / lập kế hoạch",
+  "priority": "extra",
+  "source": "task §2 — 'Sửa lỗi nhỏ không kéo theo phỏng vấn hay lập kế hoạch không cần thiết'",
+  "loop": ["reading-artifacts", "editing-documents", "verifying-artifacts"],
+  "description": "Adaptive Gate (design §3.4): a trivial, fully-specified fix must NOT trigger an interview or a subagent swarm. PASS requires the typo fixed, formatting/content preserved, and NO ask_user (interview) and NO delegate (spawn). This scenario can catch an over-ceremonial agent OR an over-eager pack; the baseline is not assumed to fail.",
+  "conditions": {
+    "baseline": "May just fix it (could PASS) — this scenario does not require baseline failure.",
+    "treatment": "Must fix it without over-interviewing or over-spawning; verification still applies."
+  }
+}
