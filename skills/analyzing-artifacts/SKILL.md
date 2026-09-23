@@ -46,6 +46,9 @@ The file has not been read. Do not analyze from guessed or raw-byte-only input.
    to the selected planner/writer/editor. Return analysis-only findings and stop
    when analysis is the requested outcome.
 
+
+For initial intake of an assignment brief, rubric, or graded guide with no named section or narrower requested operation, return an intake map in this order: deliverables and submission rules with locators; each graded criterion mapped to the work the source requires, not only its code; failure constraints; contradictions left unresolved; decisions the source does not already settle. A contents list or glance table is not coverage. Do not choose a side in a contradiction. On continuation, reuse the existing intake map and update only findings affected by new inputs. Named-section analysis, outlining and narrow comparisons stay within their requested scope; they do not restart whole-guide intake.
+
 Per-type inspection fields: `references/artifact-inspection.md`.
 
 ## Required capabilities

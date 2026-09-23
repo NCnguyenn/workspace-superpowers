@@ -72,6 +72,10 @@ Never invent project names (e.g. fictitious apps/companies), consulting roles, b
 Conversational questions follow the user's conversational language (e.g. Vietnamese); the authored outline defaults to English. Never interleave bilingual translations or explanations into chat blocks.
 
 Planning owns outline creation, revisions, and receipt of approval under the contract. Scope confirmation belongs to `scoping-the-brief`; drafting only consumes these decisions.
+Apply the [guided questions](../../references/guided-questions.md) visible delivery and recovery
+rules: display the complete detailed outline before its review question, and
+redisplay it if the user reports it missing. An internal plan is not user-visible
+delivery or approval.
 
 1. Reuse applicable scope and outline decisions. Return unresolved applicable analysis approval to scoping, including for a criterion outline-only request. Once that analysis is approved or explicitly waived, sufficient scope and resolved evidence prerequisites permit outlining without another interview. Evidence permission alone does not approve the analysis.
 2. Unless the user explicitly requests another structure, use Heading 1/2/3 numbered `1`, `1.x`, `1.x.x`: the exact source criterion/requirement title verbatim at level 1, main points at level 2 and supporting subpoints at level 3. Follow the shared contract for existing adopted numbering and title fidelity. Ground all child headings in the approved analysis scope. For each heading, map the criterion obligation, main points (concrete bullet points detailing specific arguments to be developed in each paragraph, never empty placeholders), planned evidence, and length if specified or useful. A small criterion may use a short outline directly in chat; a separate file is optional.

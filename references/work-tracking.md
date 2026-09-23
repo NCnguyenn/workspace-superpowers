@@ -78,8 +78,10 @@ while a proposal is pending. Honor explicit no-write instructions.
 ### Mandatory user interview and approval before creating tracking or project files
 
 Never unilaterally or silently create tracking markdown files (`work-plan.md`, `progress.md`) or project deliverable files (e.g. `report.md`, `brief.md`, `outline.md`) behind the user's back with unconfirmed assumptions, fabricated milestones, or invented facts while the user has not verified them.
+If a brief, rubric, or graded guide was supplied, the intake map comes first. This interview confirms only identity fields that map does not already settle. It does not replace the map or authorize skipping the read.
+
 Before creating any tracking or project file:
-1. **Interview and gather input in chat:** Ask the user to confirm essential project parameters: project title, core problem statement, system objectives, scope boundaries, and proposed project directory name.
+1. **Interview only unsettled identity fields:** Ask for a project title, problem, objectives, scope boundary, or directory name only when the intake map or supplied brief does not already settle it.
 2. **Present the proposal in chat:** Clearly present the proposed tracking structure, milestones, and deliverable file paths directly in chat for user inspection.
 3. **STOP and await explicit approval:** Wait for the user to review, provide feedback, or explicitly approve in chat. Only after the user confirms may the AI proceed to create the folder and write the markdown files.
 

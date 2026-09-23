@@ -30,6 +30,9 @@ pack. An announcement or a remembered summary is not a successful `Skill` call.
 Recheck selection when the operation changes within a turn. Follow the specialist's
 dependencies; its later steps do not expand the user's requested scope.
 
+
+If there is even a 1% chance a catalog skill applies, call that skill before any response, question, or file action. The user need not name the skill or follow the previous step. A remembered summary is not a call. If the loaded skill does not fit, stop using it. Do not preload the catalog.
+
 Keep approved decisions and the return point for temporary switches. A pause or
 cancellation stops only its affected work. New files must be read before use;
 revise only conclusions and approvals affected by changed inputs. Pending
@@ -42,13 +45,40 @@ If a required skill is missing or its call fails, state the affected limitation.
 Continue independent authorized work; use only an available, appropriate fallback
 permitted by the router. Never claim an unavailable skill ran. Keep routing
 explanations brief; do not ask users to select skills or learn the workflow.
+
+When the user supplies an assignment brief, rubric, or graded guide, read that whole file before any summary or question. A contents list or glance table is not a complete read. Call `reading-artifacts`, then `analyzing-artifacts`, before `scoping-the-brief`.
+
+For an initial guide with no named section or narrower requested operation, the first reply is an intake map, in this order: source locators for deliverables and submission rules; each graded criterion mapped to the work the source requires, not only its code; failure constraints stated by the source; contradictions inside the source, left unresolved; only the decisions the source does not already settle. Ask only that last list. Do not ask grade target, report language, or which assignment when the source or language policy already settles them. Do not ask for a project folder until the map is shown. Introducing the file does not authorize drafting and does not skip the map. Plan discovery may skip unrelated files; it does not skip this supplied file. On continuation, reuse the existing intake map; a named-section request or narrow comparison focuses on that target after source inspection, without repeating a whole-guide setup interview.
+
+
+## Match this message, then call that skill
+
+The current message selects the skill. Do not continue the previous skill because it was last. The user need not name a skill, say "use workspace-superpowers", or follow the last workflow step. After the router call, call the specialist whose description matches this message before doing its work. Load only that operation. A pending approval blocks only its dependent next stage.
+
+| This message asks for | Call |
+|---|---|
+| Open or inspect a supplied file | `reading-artifacts` |
+| Interpret, compare, or map a file already read | `analyzing-artifacts` |
+| Initial assignment guide, no named section or narrower operation | `reading-artifacts`, then `analyzing-artifacts`; intake map, not a setup interview |
+| Unclear requirements or criterion interpretation | `scoping-the-brief` |
+| An outline | `planning-work` |
+| Section prose | `drafting-prose`, only after the gates that apply to that request |
+| Wording or document edit | `editing-documents` |
+| Layout only | `formatting-layout` |
+| A spreadsheet or its formulas | `working-with-spreadsheets` or `auditing-formulas` |
+| Slides | `storyboarding-slides` or `working-with-presentations` |
+| Convert or export | `converting-artifacts` |
+| Citations required or already present | `citing-sources` |
+| A side question with no artifact operation | Answer directly |
+
+Do not start the writing pipeline because the message mentions a report, assignment, or file.
+
 <!-- workspace-superpowers:routing:end -->
 
 <!-- workspace-superpowers:skill-invocation:begin -->
 ## Mandatory specialist tool calls
 
-For Workspace work, these are execution requirements at every stage transition,
-including follow-up turns after user approval. You MUST call the `Skill` tool
+Call the row below only when this message selected that stage, including a follow-up after approval. The table is not a sequence to start because the turn is Workspace work. A side question, conversion, layout fix, spreadsheet audit, or file read does not enter this table. You MUST call the `Skill` tool
 with the exact namespaced `id` for the stage you are about to execute, and read
 its returned instructions before producing that stage's content:
 
@@ -104,6 +134,20 @@ not imply a need for empirical project data.
 Reserve `asktool` for upfront evidence clarification, distinct branching choices,
 or an explicit request for interactive cards. Analysis/outline approval stays in
 ordinary chat unless the user requests a card; do not obstruct reading long text.
+For approval, show the complete analysis or detailed outline first and its natural
+review question last in the same chat response, then end the response and wait.
+Internal reasoning, a tool result, a saved file path or "see below" is not visible
+delivery. If an approval card is explicitly requested and permitted, show the
+full proposal in a visible chat message before the call; if that display order
+is unavailable, deliver the proposal and question in chat and end the turn.
+An evidence card does not authorize using cards for later approval decisions.
+If the user says they cannot see the proposal, acknowledge briefly and redisplay
+the complete content in chat, keeping approval pending. Do not open another approval card.
+If the proposal was never prepared, load its responsible skill and prepare it;
+if required evidence is missing, ask only the focused evidence question instead.
+Keep internal labels such as "Stop 2" and "Gate 1" out of question and option text,
+including parenthetical labels and translations. Follow the visible delivery and
+recovery rules in `references/guided-questions.md` from the package root.
 This current evidence-interview guidance replaces older bootstrap restrictions
 that limited cards solely to explicit requests or complex technical choices.
 For these defaults, this current contract replaces legacy H2/H3/H4 examples
@@ -224,11 +268,11 @@ Interact through natural collaborative dialogue in chat, following the philosoph
 ## Project Directory and Work-Tracking Governance
 
 - **Dedicated common project folder created by AI:** When creating tracking files (`work-plan.md`, `progress.md`) and project deliverable files (e.g. `report.md`, `brief.md`), the AI must co-locate them into a dedicated common project directory created by the AI (e.g. `<Project_Name>/` such as `SmartFood_Delivery_Platform/`), rather than scattering files in the workspace root or using disconnected paths.
-- **Mandatory user interview & approval before file creation:** Never unilaterally or silently create tracking markdown files or project deliverable files behind the user's back with unconfirmed assumptions or fabricated milestones. The AI must interview the user in chat to confirm project identity (title, objectives, scope, directory name), propose the structure in chat, and STOP to await explicit user approval before creating the directory and files.
+- **Mandatory user interview & approval before file creation:** Never create tracking or project files from unconfirmed assumptions. If a brief, rubric, or graded guide was supplied, the intake map comes first. Confirm only identity fields that map does not already settle, propose the folder in chat, and STOP before creating files.
 
 On the first Workspace turn in a new chat and on continuation, locate the adopted
 plan or `work-plan.md` in the current task root or dedicated project directory before asking for progress or
-reading all source files. Invoke the router and reader to follow the persistent
+reading unrelated source files. A file the user just supplied is not unrelated: read it in full. Invoke the router and reader to follow the persistent
 work-tracking contract at `references/work-tracking.md` inside the installed
 package. Reuse the checkpoint and read only sources relevant to the current
 authorized operation. Propose

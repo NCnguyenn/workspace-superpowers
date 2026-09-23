@@ -1,6 +1,6 @@
 # Changelog
 
-Changes are listed newest first. The current package version is **0.1.3-beta9**.
+Changes are listed newest first. The current package version is **0.1.4-beta**.
 Historical entries below were reconstructed from retained local package contents,
 the Git history, and the criterion workflow report. They describe implementation
 changes, not proof of publication or successful execution in PI-Desktop.
@@ -10,6 +10,20 @@ package manifests. They are build iterations, not distinct semantic-version
 releases. The changes after the existing 0.1.1 commit are being published as one
 consolidated source update; this changelog does not imply separate historical
 commits or tags for those builds.
+
+## 0.1.4-beta — 2026-09-23
+
+- When the user supplies an assignment brief or graded guide, read the whole file and return an intake map before any setup interview. A glance table is not a complete read. Ask only decisions the source does not already settle. Do not ask grade target, language, or which assignment when the source already settles them, and do not ask for a folder before the map.
+- Match each new message to the skill for that request, even when the user does not follow the previous workflow or name a skill. A pending approval blocks only its dependent next stage. Do not start the writing pipeline because a message mentions a report, assignment, or file.
+
+- If a catalog skill has even a 1% chance of applying, call it before any response, question, or file action. The user need not name the skill. A remembered summary is not a call.
+
+- Show the complete analysis or detailed outline in chat before requesting approval. Recover from an unseen proposal by showing its content and keeping approval pending, without another approval popup. Keep internal stage labels out of question text and options.
+- Separate focused evidence interviews from proposal approval. Evidence cards do not authorize later approval cards; explicitly requested approval cards require visible content first and a chat fallback when the host cannot preserve that order.
+- Reuse an existing intake map for named-section continuations. Compose relevant specialist dependencies, and remove examples that force a full lifecycle or interview before reading supplied sources.
+- Preserve the separate analysis and detailed-outline decisions, existing user approvals, lean routes for small edits, and verification before file delivery. No new skills, tools or plugin permissions are introduced.
+- Add structural guards and native PI trial cases for visible delivery, recovery, card scope and operation routing. Native PI multi-turn acceptance remains **PENDING**; automated checks do not certify the desktop display or model compliance.
+- Validation: **126 architecture/adapter tests, 43 scenario-harness self-tests, and 5 package integration tests passed**. Two independent response-level simulations satisfied the visible-analysis and evidence-card boundaries; these are not native PI trials. See [release notes](docs/releases/0.1.4-beta.md) for scope and remaining acceptance work.
 
 ## 0.1.3-beta9 — 2026-09-23
 

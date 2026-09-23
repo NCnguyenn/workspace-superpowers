@@ -46,6 +46,14 @@ An explicit new request can change the mode. Responding to a question, correctin
 
 ## Criterion-level analysis and two stops
 
+Apply [guided questions](guided-questions.md) for visible delivery and recovery.
+Each approval concerns a complete analysis or detailed outline already displayed
+in chat. Deliver the content first and a natural review question last; a card,
+internal reasoning or saved file cannot replace that visible content. A user's
+report that content is missing keeps approval pending and requires redisplaying
+the proposal, not another approval card. Keep internal labels out of questions
+and options as well as the main response.
+
 The two-stop rule (Requirement Analysis Approval -> Detailed Outline Approval -> Drafting) applies to **ALL** sections, chapters, parts, and criteria of deliverables — including introductory chapters (e.g. "Section 1: Project Overview", "Introduction", "Background", "Executive Summary"), substantive chapters, literature reviews, as well as formal criteria labeled P1/M1/D1 or syllabus rubrics.
 
 For a request to draft a section or criterion such as “Section 1: Project Overview” or “P1”, apply these two stops to the target section or criterion, even after a master outline was approved. A request such as “do Section 1”, “write Introduction”, “do P1”, “continue P1”, or “the information is already in the brief” authorizes the outcome; it does not approve an unseen interpretation or detailed outline.

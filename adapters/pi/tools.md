@@ -63,10 +63,15 @@ the skill pack does not need to register a new tool or request new permissions.
 not the native name declared by this Pi runtime. Do not call that alias by guess.
 
 Use ordinary chat for routine interviews and gate decisions. Availability of
-`asktool` alone is not a reason to interrupt reading with a card. When the user
-requests that interface, or a complex choice warrants it and the bootstrap
-permits it, show the proposal first and actually call the tool; merely writing
-options into the response does not open the card. Keep one decision per call.
+`asktool` alone is not a reason to interrupt reading with a card. A complex
+clarification may warrant a card; analysis/outline approval cards require an
+explicit user request and host permission. Follow [visible delivery and recovery](../../references/guided-questions.md):
+display the complete proposal in chat before an approval card. If the host cannot
+display that text before the card, end with the proposal and review question in
+chat. Merely writing options does not open the card. Keep one decision per call.
+An evidence-card preference does not request approval cards. If the user reports
+unseen content, redisplay it in chat and keep approval pending, without another
+approval card. Internal labels such as "Stop 2" belong in neither question nor option text.
 For missing required project metrics, use a focused structured question card before presenting
 the completed analysis: offer “I have real data to provide” and “I authorize
 illustrative assumptions for the missing budget, timeline and scale”, naming only

@@ -10,7 +10,7 @@ Resolve blocking ambiguity and establish an actionable working brief for substan
 For sustained work, use [persistent work tracking](../../references/work-tracking.md):
 inspect an existing plan before asking for requirements already recorded. Offer
 agent-managed persistence when warranted, without requiring user file management.
-Interview the user in chat to confirm project title, core problem statement, system objectives, and scope boundaries before creating tracking or project markdown files in the dedicated common project directory.
+For an initial supplied brief, rubric, or graded guide with no named section or narrower requested operation, present the intake map before any setup question. On continuation, reuse the existing intake map; inspect changed inputs and focus on the named section instead of repeating intake. Confirm only identity fields that the source or map does not already settle, and only before creating tracking or project files. Do not ask grade target, report language, or which assignment when the source or language policy already settles them.
 Extract source requirements separately from proposals/unknowns; retain rubric
 coverage gaps. Tracking consent does not approve the scope or outline. Return
 the brief and decisions to planning/editor for the same adopted record.
@@ -95,6 +95,9 @@ For a section or criterion draft, show the original wording/locator, extract pri
 Identify the analysis revision and request its approval in chat before producing the
 detailed outline. “Do Section 1” or “Do P1” and approval of master headings are
 not that decision. Follow [guided questions](../../references/guided-questions.md) and conduct review naturally in chat without modal popup spam.
+Apply its visible delivery and recovery rules: complete analysis first, natural
+review question last. If the user did not see the analysis, return to visible
+delivery; do not replace it with a confirmation card or a scope-only summary.
 
 Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"),
 consulting roles, business context, budgets (e.g. "$15,000"), SLAs, latency targets,

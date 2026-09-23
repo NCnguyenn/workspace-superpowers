@@ -50,7 +50,7 @@ Q&A stays direct and Coding stays with `using-superpowers`. On PI-Desktop use
 the native `Skill` tool and the actual namespaced catalog IDs.
 
 On the first Workspace turn in a new chat and on continuation, discover an
-existing `work-plan.md` in the current task root or dedicated project directory before asking for progress or reading all source files.
+existing `work-plan.md` in the current task root or dedicated project directory before asking for progress or reading unrelated source files. A file the user just supplied is not unrelated: read it in full.
 Follow the [persistent work-tracking contract](references/work-tracking.md):
 use the recorded plan path or bounded task-root discovery, route its read to
 `reading-artifacts`, then load only sources needed by its current item. Reuse
@@ -62,7 +62,7 @@ An existing plan does not turn an unrelated question into permission to resume.
 ### Project Directory and Work-Tracking Governance
 
 - **Dedicated common project folder created by AI:** When creating tracking files (`work-plan.md`, `progress.md`) and project deliverable files (e.g. `report.md`, `brief.md`), the AI must co-locate them into a dedicated common project directory created by the AI (e.g. `<Project_Name>/` such as `SmartFood_Delivery_Platform/`), rather than scattering files in the workspace root or using arbitrary paths.
-- **Mandatory user interview & approval before file creation:** Never unilaterally or silently create tracking markdown files or project deliverable files behind the user's back with unconfirmed assumptions or fabricated milestones. The AI must interview the user in chat to confirm project identity (title, objectives, scope, directory name), propose the structure in chat, and STOP to await explicit user approval before creating the directory and files.
+- **Mandatory user interview & approval before file creation:** Never create tracking or project files from unconfirmed assumptions. If a brief, rubric, or graded guide was supplied, the intake map comes first. Confirm only identity fields that map does not already settle, propose the folder in chat, and STOP before creating files.
 
 For ongoing Workspace work, apply the [workflow continuity contract](references/workflow-continuity.md).
 Interpret each new message in context: answer side questions normally, read new
@@ -107,6 +107,8 @@ Strictly follow the natural collaborative dialogue of **obra/superpowers** witho
 Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"), consulting roles, business context, budgets, SLAs, or operational metrics without interviewing and confirming with the user.
 
 Interact through natural collaborative dialogue in chat like obra/superpowers. Present the full analysis or outline directly in chat for comfortable reading. Do NOT abuse modal question tools (like `asktool`) to obstruct the user's reading; ask for approval naturally at the end of the chat message, and let the user review and respond in chat. Ask only when necessary.
+
+Apply [visible delivery and recovery](references/guided-questions.md): deliver the complete proposal before its review question. If the user says it is missing, show it in chat and keep approval pending; do not open another approval card. Internal labels, including parenthetical "Stop 2", must not appear in questions or options. Evidence cards do not authorize later approval cards.
 
 ## Deliverable Language
 

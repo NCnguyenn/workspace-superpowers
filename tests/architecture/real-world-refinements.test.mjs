@@ -65,3 +65,48 @@ test('PI refreshable instructions carry evidence interview and draft checks', as
   assert.match(managed, /before (?:finalizing|presenting) the requirement analysis/i);
   assert.match(managed, /unavailable[\s\S]*chat/i);
 });
+
+ test('a supplied graded brief is mapped before any setup interview', async () => {
+   const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
+   const routing = bootstrap.match(/<!-- workspace-superpowers:routing:begin -->([\s\S]*?)<!-- workspace-superpowers:routing:end -->/)[1];
+   assert.match(routing, /intake map/i);
+   assert.match(routing, /reading-artifacts/);
+   assert.match(routing, /analyzing-artifacts/);
+   assert.match(routing, /glance table is not a complete read/i);
+   assert.match(routing, /Do not ask grade target/i);
+   assert.match(routing, /does not skip this supplied file/i);
+   const scoping = await readUtf8('skills/scoping-the-brief/SKILL.md');
+   assert.match(scoping, /intake map/i);
+   assert.doesNotMatch(scoping, /Interview the user in chat to confirm project title, core problem statement/);
+   const tracking = await readUtf8('references/work-tracking.md');
+   assert.match(tracking, /intake map comes first/i);
+ });
+
+test('a new message selects its own skill instead of resuming the last workflow', async () => {
+  const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
+  const routing = bootstrap.match(/<!-- workspace-superpowers:routing:begin -->([\s\S]*?)<!-- workspace-superpowers:routing:end -->/)[1];
+  assert.match(routing, /Match this message, then call that skill/);
+  assert.match(routing, /Do not start the writing pipeline/);
+  assert.match(routing, /side question/i);
+  const invocation = bootstrap.match(/<!-- workspace-superpowers:skill-invocation:begin -->([\s\S]*?)<!-- workspace-superpowers:skill-invocation:end -->/)[1];
+  assert.match(invocation, /not a sequence to start/);
+  const router = await readUtf8('skills/using-workspace-superpowers/SKILL.md');
+  assert.match(router, /current message selects the operation/i);
+  assert.match(router, /do not start the writing pipeline/i);
+});
+
+test('a one-percent skill match must be called before acting', async () => {
+  const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
+  const routing = bootstrap.match(/<!-- workspace-superpowers:routing:begin -->([\s\S]*?)<!-- workspace-superpowers:routing:end -->/)[1];
+  assert.match(routing, /1% chance/);
+  assert.match(routing, /before any response, question, or file action/);
+  assert.match(routing, /need not name the skill/);
+  assert.match(routing, /remembered summary is not a call/i);
+  const router = await readUtf8('skills/using-workspace-superpowers/SKILL.md');
+  assert.match(router, /1% chance a skill might apply/);
+  assert.match(router, /do not have a choice/i);
+  assert.match(router, /I already know this skill/);
+  const description = router.match(/^description: (.+)$/m)[1];
+  assert.match(description, /before any response/i);
+  assert.ok(description.length <= 240, `description length ${description.length}`);
+});

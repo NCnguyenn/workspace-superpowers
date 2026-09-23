@@ -1,11 +1,24 @@
 ---
 name: using-workspace-superpowers
-description: Use when any message starts, continues, changes, approves or resumes document, research, office or knowledge work, including new files and the workspace part of mixed requests.
+description: Use when any message starts, continues, changes, approves or resumes document, research, office or knowledge work, including new files and mixed requests, before any response or action.
 ---
 
 # using-workspace-superpowers
 
 Single entry router for the workspace domain. Classify, compose, and route. Contains no format-specific procedure.
+
+
+The current message selects the operation. Do not advance the previous workflow because it was last, and do not start the writing pipeline because the message mentions a report, assignment, or file. After this router, call the specialist whose catalog description matches the current operation, then load additional skills for its applicable dependencies as their work begins. The user need not name a skill or follow the last step. A pending approval blocks only its dependent next stage.
+
+
+If there is even a 1% chance a skill might apply, call it before any response, question, or file action. You do not have a choice. You must use it. The user need not name the skill or follow the previous step. A remembered summary is not a call. If the loaded skill does not fit, stop using it. Do not preload the catalog.
+
+| Thought | Reality |
+|---|---|
+| I already know this skill | Load the current body. Memory is not a call. |
+| I'll ask first | Call the matching skill before the question. |
+| The last step comes next | The current message selects the skill. |
+| 1% is too small | 1% means call it. Stop only after the body does not fit. |
 
 ## Entry and reselection
 
@@ -38,7 +51,7 @@ bounded `work-plan.md` candidates in the task root or dedicated project director
 `reading-artifacts` before scoping or planning. Reuse its checkpoint and load
 only the relevant source slices. Propose tracking once when justified, with
 zero/one/two record types according to the task; simple edits stay lightweight.
-Tracking files and project deliverable files are co-located in a dedicated common project directory created by AI. Mandatory interview and explicit user approval in chat are required before creating tracking or project markdown files.
+Tracking files and project deliverable files are co-located in a dedicated common project directory created by AI. Mandatory interview and explicit user approval in chat are required before creating tracking or project markdown files. A supplied brief, rubric, or graded guide is read in full and mapped before that interview. The interview does not replace the intake map.
 Planning owns plan content, editing persists the shared record, and verification
 checks actual paths/revisions. The router does not write a plan or create an
 independent state system. Handoffs carry work/item identity and current targets.
@@ -203,7 +216,7 @@ For chat-only outputs, review the requested content without claiming file verifi
 2. **Select Lifecycle Skills**
 
    * Compose the lifecycle stages appropriate to the task scope, then execute `invoke_skill(name)` for each selected stage before doing its work. A conceptual route alone does not execute it.
-   * Small tasks run lean; substantial tasks execute the full sequence.
+   * Small tasks run lean; substantial tasks execute only the stages required and authorized for the current outcome.
 
 3. **Enforce Hard Dependencies**
 
@@ -263,7 +276,9 @@ Substantive document revision:
 
 Ambiguous complex deliverable:
 
-`scoping-the-brief → reading-artifacts → analyzing-artifacts → planning-work → relevant specialists → reviewing-work → verifying-artifacts → packaging-deliverables`
+With supplied sources: `reading-artifacts → analyzing-artifacts → scoping-the-brief when needed → planning-work → relevant specialists → reviewing-work → verifying-artifacts → packaging-deliverables`.
+Without supplied sources, start with `scoping-the-brief` only for material ambiguity.
+These are possible stages, not permission to exceed the requested operation.
 
 Research deliverable:
 

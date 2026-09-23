@@ -4,7 +4,7 @@ Workspace-domain counterpart of [obra/superpowers](https://github.com/obra/super
 
 It is not a coding framework, not a UI plugin, and not a document-generator library. After install, workspace prompts auto-route. Do not type `/skill`.
 
-Core lifecycle: **route → scope → read → analyze → plan → draft/edit → review → verify → package**. Stages follow the requested operation. Trivial file edits skip ceremony, never final file verification; chat-only content does not require a generated file.
+Core lifecycle: **route → read supplied sources → analyze → scope when needed → plan → draft/edit → review → verify → package**. Stages follow the requested operation; without supplied sources, scope material unknowns first. Trivial file edits skip ceremony, never final file verification; chat-only content does not require a generated file.
 
 The root `package.json` `"pi"` field is distribution/discovery metadata only. Skills are portable and must not depend on it.
 
@@ -12,7 +12,7 @@ Deliverables and repository content default to English, even when the user commu
 
 See the [design specification](docs/workspace-superpowers-design.md).
 See [the changelog](CHANGELOG.md) for changes by version, historical build labels,
-and validation limits through 0.1.3-beta9.
+and validation limits through 0.1.4-beta.
 
 ## PI-Desktop local preview
 
@@ -21,11 +21,11 @@ library only):
 
 ```powershell
 python scripts/test-package-pi.py
-python scripts/package-pi.py --out dist/pi-0.1.3-beta9
+python scripts/package-pi.py --out dist/pi-0.1.4-beta
 ```
 
-Install `dist/pi-0.1.3-beta9/local.workspace-superpowers-0.1.3-beta9.piplug` from PI-Desktop's
-Plugins page, or choose the generated `dist/pi-0.1.3-beta9/local.workspace-superpowers`
+Install `dist/pi-0.1.4-beta/local.workspace-superpowers-0.1.4-beta.piplug` from PI-Desktop's
+Plugins page, or choose the generated `dist/pi-0.1.4-beta/local.workspace-superpowers`
 folder. Grant `agent.prompt.inject`, enable the plugin for the target project,
 and start a fresh chat. The lifecycle hook supplies the bootstrap where
 supported; otherwise merge it into the project's effective instructions.
@@ -46,6 +46,13 @@ router before its operation; specialists are selected from the current request
 and retained context. Simple Q&A stays direct. The hook supplies instructions,
 not a deterministic skill executor. Use the [multi-turn routing trial](adapters/pi/routing-trial.md)
 to retain actual PI tool calls before claiming behavioral acceptance.
+
+In 0.1.4-beta, a newly supplied guide without a named section receives a source-grounded
+intake map before setup questions. Interviews ask only material missing facts,
+one decision at a time. Analysis and detailed outlines appear in full before
+their natural chat approval question. If the user cannot see the content, the
+agent presents it before asking again; an evidence card does not request later
+approval popups. See [guided questions](references/guided-questions.md).
 
 ## Skill catalog
 

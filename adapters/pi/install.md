@@ -6,7 +6,7 @@ model behavior or Office rendering. Keep the original source documents intact.
 ## Install
 
 1. Open PI-Desktop's **Plugins** page. Use its install-from-package action and
-   select `local.workspace-superpowers-0.1.3-beta9.piplug` from the build output.
+   select `local.workspace-superpowers-0.1.4-beta.piplug` from the build output.
    The unpacked `local.workspace-superpowers` folder can also be selected with
    install-from-folder. Do not select the source repository root.
 2. Review the requested `agent.prompt.inject` permission in PI-Desktop and grant
@@ -54,7 +54,7 @@ disable or uninstall Workspace Superpowers through the Plugins page and remove
 only the marked bootstrap block from projects where you added it. Your source
 documents and generated reports remain in their working directories.
 
-For 0.1.3-beta9, reload the plugin or restart PI-Desktop, then start a fresh chat
+For 0.1.4-beta, reload the plugin or restart PI-Desktop, then start a fresh chat
 and run the [routing trial](routing-trial.md) and
 [criterion trial](criterion-trial.md). Old conversations may retain loaded skill
 instructions. The hook appends or refreshes two marked blocks: per-message
@@ -85,6 +85,13 @@ The update also requires PEEL development, at least 65% discursive prose in core
 analytical sections under the style guide's exceptions, and immediate references
 with bidirectional citation checks for each delivered section. Run the beta9
 cases in the criterion trial; native PI acceptance remains pending.
+
+0.1.4-beta adds source-first intake, current-request skill selection, specialist
+dependency composition and visible approval delivery. Routine interviews and
+approval use chat; focused evidence cards and explicitly requested approval cards
+follow separate rules. If content is missing, display the full proposal and keep
+approval pending. Run R10–R14 in the routing trial, including actual card display
+order and Skip behavior. The package contains no replacement question UI.
 
 ## Build from source
 

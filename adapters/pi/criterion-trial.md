@@ -6,7 +6,7 @@ runtime acceptance. Record plugin version, host/model, actual loaded skill IDs,
 question-tool availability, each response and the user's subsequent reply.
 Send one turn at a time; do not paste future approvals into the starting prompt.
 
-## Required tool trace (0.1.3-beta9)
+## Required tool trace (0.1.4-beta)
 
 Record actual calls and successful tool results before each stage's content,
 including stages reached on later turns. A skill name in commentary, claimed
