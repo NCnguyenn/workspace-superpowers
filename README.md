@@ -12,7 +12,7 @@ Deliverables and repository content default to English, even when the user commu
 
 See the [design specification](docs/workspace-superpowers-design.md).
 See [the changelog](CHANGELOG.md) for changes by version, historical build labels,
-and validation limits through 0.1.3-beta8.
+and validation limits through 0.1.3-beta9.
 
 ## PI-Desktop local preview
 
@@ -21,11 +21,11 @@ library only):
 
 ```powershell
 python scripts/test-package-pi.py
-python scripts/package-pi.py
+python scripts/package-pi.py --out dist/pi-0.1.3-beta9
 ```
 
-Install `dist/pi/local.workspace-superpowers-0.1.3-beta8.piplug` from PI-Desktop's
-Plugins page, or choose the generated `dist/pi/local.workspace-superpowers`
+Install `dist/pi-0.1.3-beta9/local.workspace-superpowers-0.1.3-beta9.piplug` from PI-Desktop's
+Plugins page, or choose the generated `dist/pi-0.1.3-beta9/local.workspace-superpowers`
 folder. Grant `agent.prompt.inject`, enable the plugin for the target project,
 and start a fresh chat. The lifecycle hook supplies the bootstrap where
 supported; otherwise merge it into the project's effective instructions.

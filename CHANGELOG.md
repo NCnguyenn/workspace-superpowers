@@ -1,6 +1,6 @@
 # Changelog
 
-Changes are listed newest first. The current package version is **0.1.3-beta8**.
+Changes are listed newest first. The current package version is **0.1.3-beta9**.
 Historical entries below were reconstructed from retained local package contents,
 the Git history, and the criterion workflow report. They describe implementation
 changes, not proof of publication or successful execution in PI-Desktop.
@@ -10,6 +10,28 @@ package manifests. They are build iterations, not distinct semantic-version
 releases. The changes after the existing 0.1.1 commit are being published as one
 consolidated source update; this changelog does not imply separate historical
 commits or tags for those builds.
+
+## 0.1.3-beta9 — 2026-09-23
+
+- Ask for missing data/evidence before completed analysis only when the current
+  requirement needs it. Pure theory and metrics needed only by later sections
+  do not trigger a project-data interview. Reuse supplied facts and scoped
+  illustrative permission; never embed invented defaults in an analysis.
+- Permit PI evidence question cards with chat fallback, while keeping ordinary
+  analysis/outline approvals in chat. Empty or skipped answers remain pending.
+- Require PEEL development, a nonmechanical 4–5-sentence paragraph benchmark,
+  and complete grammatical clauses instead of casual dash chaining.
+- Set a 65% discursive-prose floor for core analytical sections, with explicit
+  counting scope and format exceptions. Keep tables and atomic lists as support
+  for reasoning; align the writing specialists and prose reviewer.
+- Complete references at every cited section delivery, including chat excerpts
+  and cumulative saved reports. Audit citation/source correspondence in both
+  directions and verify metadata; never guess bibliographic fields.
+- Align citation routing for required or existing citations, and refresh the PI
+  bootstrap so older project instructions receive these rules.
+- Validation: **117 automated tests and 5 package integration tests passed**.
+  Added structural regression coverage and manual Unit 7 cases. Native PI
+  multi-turn acceptance remains **PENDING**; simulations are not host evidence.
 
 ## 0.1.3-beta8 — 2026-09-22
 

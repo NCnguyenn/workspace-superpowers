@@ -99,9 +99,10 @@ must support continuity without passing the entire conversation.
 1. Run the prerequisite check. Stop and hand back if it fails.
 2. Read the required style guide and invoke the selected writing specialist(s) for the assigned section using actual tool calls.
 3. Compose only authorized content. Use the contract's neutral placeholder when a permitted incomplete draft is allowed.
-4. Execute `invoke_skill("reviewing-work")` before delivering the draft, including chat-only prose. Have it apply prose and coherence review with the loaded role instructions, including S1 and F1/R4. Fix blocking findings within the approved scope and recheck affected passages. Do not self-approve or postpone this review until after delivery.
-5. Output the complete drafted text for the section directly into chat for user review and approval (never hide text behind a file path or merely report "saved to file"). Even if saved to a file for persistence, render the full prose in chat. File deliverables also require artifact verification before delivery.
-6. STOP after delivering the section draft: wait for user review and approval before advancing to the next section or criterion. Never bundle draft delivery of section N with analysis of section N+1 in the same turn.
+4. Before review, check PEEL development (P1–P3), casual dash chaining (S1–S3), and L6: at least 65% discursive prose for core analytical sections under its counting scope and exceptions. Objectives, scope and constraints need supported explanation, not list/table-only subsections. When formal citations are required or present, execute `invoke_skill("citing-sources")` and complete its bidirectional audit. Reuse a completed audit for the same revision if the specialist already performed it. Append `## References` to the chat section and update the terminal cumulative list in any saved report; do not postpone references until the whole report is finished.
+5. Execute `invoke_skill("reviewing-work")` before delivering the draft, including chat-only prose. Have it apply prose and coherence review with the loaded role instructions, including P1–P3, L6, S1–S3 and F1/R4; include citation review when applicable. Fix blocking findings within the approved scope and recheck affected passages and citations. Do not self-approve or postpone this review until after delivery.
+6. Output the complete drafted text for the section directly into chat for user review and approval (never hide text behind a file path or merely report "saved to file"). Include its reference list when cited, even if a cumulative list exists in the file. File deliverables also require artifact verification before delivery.
+7. STOP after delivering the section draft: wait for user review and approval before advancing to the next section or criterion. Never bundle draft delivery of section N with analysis of section N+1 in the same turn.
 
 ## Required capabilities
 
@@ -109,7 +110,7 @@ Abstract capability names, resolved by the harness adapter. Never a tool name.
 
 - `read_file(path)` — brief, outline, evidence, and source artifacts.
 - `write_file(path, content)` / `edit_document(file, change)` — compose or insert authorized text.
-- `invoke_skill(name)` — load `writing-reports` or `writing-academic-prose`, then `reviewing-work` before delivery.
+- `invoke_skill(name)` — load `writing-reports` or `writing-academic-prose`, `citing-sources` when applicable, then `reviewing-work` before delivery.
 - `delegate(role, context)` — optional executing or review roles; do not dispatch the full lifecycle.
 
 ## Dependencies

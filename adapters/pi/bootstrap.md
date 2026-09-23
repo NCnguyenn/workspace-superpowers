@@ -57,6 +57,7 @@ its returned instructions before producing that stage's content:
 | Requirement analysis | Call `Skill` with `id: "local.workspace-superpowers/scoping-the-brief"` before analyzing the section or criterion. For substantive interpretation of already-read artifacts, also call `Skill` with `id: "local.workspace-superpowers/analyzing-artifacts"` as needed. |
 | Detailed outline | Call `Skill` with `id: "local.workspace-superpowers/planning-work"` before generating outline headings, arguments, or visual specifications. |
 | Drafting or substantive prose revision | Call `Skill` with `id: "local.workspace-superpowers/drafting-prose"`, then the selected writing specialist: `id: "local.workspace-superpowers/writing-reports"` or `id: "local.workspace-superpowers/writing-academic-prose"`. |
+| Formal citations required or present | Call `Skill` with `id: "local.workspace-superpowers/citing-sources"` before delivering cited prose; complete the section reference list and audit both citation directions. |
 | Pre-delivery review | Call `Skill` with `id: "local.workspace-superpowers/reviewing-work"` after composing and before delivering substantial prose, including chat-only section drafts. Apply the prose and coherence review roles; fix blocking findings and recheck the changed passages before delivery. |
 
 For document outlines and subsequent prose, default to **1 → 1.x → 1.x.x**
@@ -79,6 +80,32 @@ Label authorized hypothetical material locally; never present it as real project
 results or fabricate citations. Pure theory needs no irrelevant data interview.
 Follow `references/outline-structure.md` from the actual package root. Preserve
 these prerequisites while continuing unrelated authorized work.
+
+For missing scenario metrics needed by the target (budget, timeline, partner/user
+counts, concurrency), conduct the evidence interview **before presenting the requirement analysis**
+for approval. After inspecting available inputs, call native `asktool` when
+available and permitted, offering real data versus explicit permission for
+illustrative assumptions for the named gaps. Inspect the current tool schema;
+if unavailable or disallowed, ask the same focused question in chat and wait.
+Never insert invented defaults in the analysis and then ask whether to adjust
+them. Optional numbers in a choice must be labeled hypothetical, never a verified
+BTEC standard. A selected default without submission, Skip, cancellation or
+general approval leaves unresolved gaps pending. Reuse prior scoped permission;
+pure theory needs no irrelevant numeric interview. Evidence permission does not
+approve the analysis or outline.
+
+This is not a mandatory interview for every section. Ask only when data or
+evidence necessary to the current requirement or claim remains missing after
+inspection. For a theoretical section with no such gap, record `not_required`
+and continue its applicable steps without an evidence question. Do not block
+it on metrics needed only by a later section. Required academic citations do
+not imply a need for empirical project data.
+
+Reserve `asktool` for upfront evidence clarification, distinct branching choices,
+or an explicit request for interactive cards. Analysis/outline approval stays in
+ordinary chat unless the user requests a card; do not obstruct reading long text.
+This current evidence-interview guidance replaces older bootstrap restrictions
+that limited cards solely to explicit requests or complex technical choices.
 For these defaults, this current contract replaces legacy H2/H3/H4 examples
 and older instructions allowing an outline with unresolved required evidence.
 An explicit user-selected structure still takes precedence over the default.
@@ -102,6 +129,22 @@ Follow **F1/R4**: remove empty AI clichés and inflated promotional language suc
 as "premier enterprise software consultancy" and "To guarantee engineering rigor".
 Preserve supported technical meaning and accurate quotations; do not fabricate
 facts to replace a cliché. Review against these rules before delivering the text.
+
+Apply **P1–P3** using PEEL (Point, Explanation, Evidence/Example, Link); benchmark
+analytical paragraphs at 4–5 developed sentences without filler. Replace casual
+em-dash clause chaining with complete sentences or grammatical clauses; preserve
+accurate quotations, compound-word hyphens and ranges. Apply **L6**: core analytical
+report sections require at least **65%** discursive prose under the style guide's
+counting scope and explicit-format exceptions. Explain objectives, scope boundaries
+and constraint tradeoffs in prose; tables summarize that reasoning. Adjacent
+subsections must not consist solely of lists or tables with token introductions.
+
+If formal citations are required or present, invoke the citation specialist above
+and verify metadata from inspected sources. Before completing the turn, append a
+terminal `## References` list to the chat draft and update the cumulative list
+at the end of any saved report. Audit both directions for the delivered scope;
+do not postpone references to the last chapter or invent bibliographic fields.
+Review PEEL, L6, dash chaining and citation completeness before delivery.
 <!-- workspace-superpowers:skill-invocation:end -->
 
 The normal installed package root is
@@ -176,7 +219,7 @@ Interact through natural collaborative dialogue in chat, following the philosoph
 - **Do not abuse modal popups:** Do NOT trigger intrusive modal popup cards or abuse modal tools like `asktool` at standard approval stops. Such popups obstruct the screen, prevent the user from reading the analysis, and feel like questionnaire spam.
 - **Natural conversational checkpoint:** Conclude naturally at the bottom of the chat message with a clear, polite confirmation question (e.g., asking the user to review the analysis or outline above and give their approval in chat when ready).
 - **Ask only when necessary:** The user provides approval or feedback directly in ordinary chat (e.g., "ok duyệt", "đồng ý", or requested revisions). Do not interrogate or spam questions.
-- Reserve `asktool` strictly for occasions where the user explicitly requests an interactive selection card or when presenting complex multiple-choice decision matrices with distinct technical paths. Never use `asktool` to block ordinary reading of analysis or outlines.
+- Reserve `asktool` for upfront evidence clarification when required project metrics are missing, distinct branching decisions, or an explicit user request for an interactive card. Use chat fallback when unavailable or disallowed, and wait for the answer. Never use `asktool` merely to block ordinary reading of analysis, outlines or drafts.
 
 ## Project Directory and Work-Tracking Governance
 

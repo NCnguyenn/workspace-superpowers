@@ -9,7 +9,10 @@ approve a visible proposal; these are different purposes.
 Present the analysis or outline before asking for its approval. Identify the
 criterion and version in the question so the user knows what the answer covers.
 Use ordinary chat for routine interviews and approval decisions. A tool being
-available does not require a card. If the user requests a structured interface,
+available does not require a card. For upfront clarification of missing required
+scenario metrics, use a structured evidence question when available and permitted
+by the host; ask for real data or scoped illustrative permission before presenting
+the completed analysis. If the user requests a structured interface,
 or a complex choice warrants it and the effective instructions permit it, invoke it.
 Resolve the tool through the host adapter and inspect its current schema.
 Writing choices in prose is not a substitute for that tool call when a card is

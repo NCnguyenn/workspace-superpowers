@@ -25,8 +25,8 @@ passages before selecting the voice and structure of new text.
 - **D4 — Review across the boundary:** Compare new and adjacent text with source
   locators; assess continuity beyond standalone fluency and disclose missing context.
 
-- **P1 — Develop one point:** State the focus, support it with evidence or reasoning, and explain any necessary condition or implication. Do not leave a heading followed by an undeveloped assertion.
-- **P2 — Judge completeness:** Four to five sentences (typically 4–5 lines) is a recommended benchmark for developed analytical paragraphs, never a mechanical quota. A shorter definition, transition, or complete point is valid. Review reasoning, not rendered line counts; do not pad paragraphs or split one argument into stubs.
+- **P1 — Develop one point:** Apply PEEL to analytical paragraphs: Point, Explanation, Evidence/Example, and Link to the argument, implication or limit. Integrate these functions naturally, without printing PEEL labels or inventing evidence. Do not leave a heading followed by an undeveloped assertion.
+- **P2 — Judge completeness:** Use 4–5 sentences as the benchmark for a developed analytical paragraph, not rendered lines or a mechanical quota. Inspect 2–3-sentence analytical stubs for missing explanation, support or implication; develop the missing reasoning rather than padding them. A short definition or transition may remain short when complete. Do not force a redundant closing link or split one argument into stubs.
 - **P3 — Connect meaning:** Link sentences through comparison, sequence, qualification, or supported causation. Remove connectors that add no relationship.
 
 ## 2. Purposeful list usage
@@ -36,7 +36,7 @@ Choose the form that serves the reader; these rules also permit compact guidance
 | Rule | Form | Use when |
 |---|---|---|
 | L1 | Prose | Developing an argument, explaining a mechanism, interpreting evidence, or connecting causes and limits. Do not reduce that reasoning to bullet fragments. |
-| L2 | Bullets | Presenting parallel attributes, parameters, examples, requirements, or independent findings. |
+| L2 | Bullets | Presenting genuinely parallel, atomic attributes, parameters, requirements or examples, such as technical stack items. Reasoning about their significance belongs in prose. |
 | L3 | Numbered list | Expressing procedure, chronology, rank, or items needing stable numbered references. Do not imply order for an unordered set. |
 | L4 | Table | Comparing items across shared fields. Keep explanations outside cells when they need sustained argument. |
 
@@ -48,9 +48,23 @@ mechanism, and its implication or limit. An outline expanded into bullet stacks
 or numbered mini-answers is not finished analytical prose. A list of advantages
 and disadvantages alone does not evaluate alternatives; explain their relative
 importance and support the judgment. Apply L2–L4 to genuine parallel items,
-procedures and comparison tables. There is no list percentage or sentence quota.
-Numbered section headings are not numbered-list prose. Compact analysis/outline
-approval cards may use lists; the final report still needs developed reasoning.
+procedures and comparison tables. Objectives, scope justification and constraints
+need cohesive paragraphs explaining why boundaries exist, how constraints interact
+and which tradeoffs follow. Tables summarize comparisons and accompany the
+explanation; they do not replace it. Adjacent subsections must not consist solely
+of tables or lists with token introductory lines.
+
+For core analytical report/assignment sections, discursive prose must comprise
+at least **65%** of body word count unless an explicit user or required template
+format overrides this default. Calculate prose words / total body words: the
+denominator includes paragraphs, bullet/numbered items and table-cell text;
+exclude headings, captions, reference lists and verbatim quotations/code from
+both counts. Count each word once. Reference lists and numbered headings are not
+bullet-heavy report prose. This floor does not apply to analysis/outline approval
+cards, checklists, appendices, or source-preserving mechanical edits. Passing the
+ratio does not establish analytical depth; review PEEL and criterion coverage too.
+Repair by developing supported reasoning, never by padding or relabeling bullet
+fragments as paragraphs. If evidence is insufficient, report the gap under E2.
 
 ## 3. Objective, concrete register
 
@@ -71,6 +85,11 @@ approval cards may use lists; the final report still needs developed reasoning.
 - **S1:** Let sentence function determine length: a short sentence can state a limit; a medium sentence can explain a mechanism; a longer sentence can connect necessary conditions.
 - **S2:** Reread repetitive openings and sentence shapes for clarity and flow. Revise where repetition makes the argument hard to follow. No paragraph must contain all three lengths.
 - **S3:** Do not use word-count bands, mandatory short sentences, or burstiness scores as acceptance criteria. Preserve meaning and conditions when splitting or combining sentences.
+  Avoid casual em-dash (—) or spaced-hyphen clause chaining in authored analytical
+  prose. Rewrite appositive definitions and stacked clauses as complete sentences
+  or grammatical subordinate/coordinating clauses. Preserve exact quotations,
+  legitimate compound-word hyphens and numeric ranges; this is not a blanket
+  punctuation ban.
 
 ## 6. Redundant section conclusions
 

@@ -1,6 +1,6 @@
 # Per-message routing acceptance trial
 
-Target: Workspace Superpowers 0.1.3-beta8, PI-Desktop with the plugin enabled.
+Target: Workspace Superpowers 0.1.3-beta9, PI-Desktop with the plugin enabled.
 Live PI acceptance: **PENDING** until native tool traces are retained. Node hook
 tests establish prompt refresh and registration behavior; package tests establish
 installable bytes and IDs. Neither proves that the model followed the prompt.

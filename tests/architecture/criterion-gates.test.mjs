@@ -42,7 +42,8 @@ test('prose contract rejects list-shaped reasoning without banning useful lists'
   const style = await readUtf8('references/academic-writing-style.md');
   assert.match(style, /L6/);
   assert.match(style, /paragraphs by default/i);
-  assert.match(style, /no.*(?:percentage|quota)/i);
+  assert.match(style, /65%/);
+  assert.match(style, /does not apply to analysis\/outline/i);
   assert.match(await readUtf8('agents/reviewer-prose.md'), /L6/);
   assert.match(await readUtf8('skills/writing-reports/SKILL.md'), /paragraphs by default/i);
 });

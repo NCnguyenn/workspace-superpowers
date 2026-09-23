@@ -76,6 +76,10 @@ function assertStageCalls(prompt) {
   assert.ok(prompt.includes('1 → 1.x → 1.x.x'));
   assert.match(prompt, /verbatim/);
   assert.match(prompt, /before preparing the outline/);
+  for (const marker of ['PEEL', '65%', '## References', 'local.workspace-superpowers/citing-sources']) {
+    assert.ok(prompt.includes(marker), `runtime refinements missing ${marker}`);
+  }
+  assert.match(prompt, /before (?:finalizing|presenting) the requirement analysis/i);
 }
 
 test('each fresh turn receives mandatory native stage calls and style binding', async () => {

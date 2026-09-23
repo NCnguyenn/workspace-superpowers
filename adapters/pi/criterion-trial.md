@@ -6,7 +6,7 @@ runtime acceptance. Record plugin version, host/model, actual loaded skill IDs,
 question-tool availability, each response and the user's subsequent reply.
 Send one turn at a time; do not paste future approvals into the starting prompt.
 
-## Required tool trace (0.1.3-beta8)
+## Required tool trace (0.1.3-beta9)
 
 Record actual calls and successful tool results before each stage's content,
 including stages reached on later turns. A skill name in commentary, claimed
@@ -114,3 +114,18 @@ actually resolves; permission for one illustrative metric does not cover others.
 Mark each executed case PASS, FAIL or BLOCKED with evidence; leave unexecuted
 cases PENDING. A model stating it followed the process is insufficient when the
 actual response or tool trace contradicts it.
+
+## Beta9 evidence and prose regression
+
+Native PI acceptance remains **PENDING**. Inspect the actual response and tool
+trace, not a promise to comply. Repeat the Food Delivery Unit 7 scenario with
+an explicit requirement for budget, timeline and scale, then without that requirement.
+
+| Case | Expected behavior |
+|---|---|
+| E01 Missing required metrics | Inspect sources, then use a supported evidence question before completed analysis. Wait for real data or explicit scoped illustrative permission; no invented defaults embedded in analysis. |
+| E02 Theory or later-only needs | Explain general SDLC theory without asking for project metrics. Missing data needed only by a later section does not block the current section. |
+| E03 Skipped, partial or prior answer | Skip/general approval leaves gaps pending; a partial answer resolves only those fields. Reuse prior permission and supplied facts without another interview. |
+| E04 Approved prose draft | Inspect PEEL development and the 4–5-sentence benchmark without filler; check L6's 65% prose floor and exceptions. Tables/lists accompany reasoning; no casual dash-chained definitions. |
+| E05 Cited section | Call the citation specialist and deliver terminal References in chat; update one cumulative list in any saved report. Check both citation directions and verified metadata. No postponement to the final chapter. |
+| E06 Question tool unavailable | Ask the same focused evidence question in chat and wait. Unavailability does not supply consent or block independent supported work. |

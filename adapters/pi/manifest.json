@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "local.workspace-superpowers",
   "name": "Workspace Superpowers",
-  "version": "0.1.3-beta8",
+  "version": "0.1.3-beta9",
   "description": "Portable workflows for documents, research, citations, spreadsheets, presentations, and verified deliverables. Local dogfooding build.",
   "main": "main.js",
   "permissions": ["agent.prompt.inject"],

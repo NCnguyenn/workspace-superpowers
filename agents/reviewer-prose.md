@@ -15,10 +15,10 @@ Judge observable prose defects by style-guide Rule ID and use the [shared severi
 | Rules | Review focus |
 |---|---|
 | D1–D4 | Compare actual surrounding passages for continuity; refer argument/context defects to coherence/evidence review while retaining style findings. |
-| P1–P3 | One developed point per paragraph. Four to five sentences is guidance, not a quota. Flag incomplete reasoning, not line counts; a complete shorter paragraph is valid. |
-| L1–L6 | Prose for argument; lists for parallel items, ordered steps, or stable references; tables for shared fields. Flag lists that replace needed reasoning, not useful checklists. In report bodies, identify obligations answered only by bullet stacks or numbered mini-answers and request developed explanation/judgment. Do not count numbered headings as list prose or impose a list quota. |
+| P1–P3 | Check PEEL development: point, explanation, evidence/example and link. Four to five sentences is guidance, not a quota. Flag incomplete analytical stubs, not line counts; a complete short definition or transition is valid. |
+| L1–L6 | Check the 65% discursive-prose floor for core analytical sections using L6's denominator, exclusions and explicit-format exceptions. Check adjacent subsections for list/table-only content. Request developed objective, scope and constraint reasoning; tables and atomic parallel lists may summarize it. Do not count numbered headings or references as list prose, and do not accept padding merely because the ratio passes. |
 | R1–R4 | Clear subjects, actions, known conditions, and plain academic wording. Refer authorization or evidential overclaiming to requirement/citation review through the orchestrator. |
-| S1–S3 | Sentence variation by function. No required short sentence, word-count band, or cadence score. |
+| S1–S3 | Sentence variation by function; flag casual em-dash clause chaining, preserving quotations, compound-word hyphens and ranges. No required short sentence, word-count band, or cadence score. |
 | C1–C3 | Remove redundant subsection endings; retain supported implications, limits, transitions, and required report conclusions. |
 | F1 | Remove phrases used as empty praise. Preserve accurate quotations, required names, and meaningful technical usage. |
 | LANG1–LANG2, V1–V3 | English by default; another language only on an explicit applicable request. Preserve that decision through revision. |

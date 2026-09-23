@@ -6,7 +6,7 @@ model behavior or Office rendering. Keep the original source documents intact.
 ## Install
 
 1. Open PI-Desktop's **Plugins** page. Use its install-from-package action and
-   select `local.workspace-superpowers-0.1.3-beta8.piplug` from the build output.
+   select `local.workspace-superpowers-0.1.3-beta9.piplug` from the build output.
    The unpacked `local.workspace-superpowers` folder can also be selected with
    install-from-folder. Do not select the source repository root.
 2. Review the requested `agent.prompt.inject` permission in PI-Desktop and grant
@@ -54,7 +54,7 @@ disable or uninstall Workspace Superpowers through the Plugins page and remove
 only the marked bootstrap block from projects where you added it. Your source
 documents and generated reports remain in their working directories.
 
-For 0.1.3-beta8, reload the plugin or restart PI-Desktop, then start a fresh chat
+For 0.1.3-beta9, reload the plugin or restart PI-Desktop, then start a fresh chat
 and run the [routing trial](routing-trial.md) and
 [criterion trial](criterion-trial.md). Old conversations may retain loaded skill
 instructions. The hook appends or refreshes two marked blocks: per-message
@@ -77,6 +77,14 @@ source criterion titles, and a required evidence interview before outlining when
 support is missing. These instructions live in the refreshable specialist-call
 block, so beta6/beta7 project bootstraps receive them without a full overwrite.
 Run the heading/evidence cases in the criterion trial as well as the routing cases.
+
+Beta9 makes the evidence interview conditional on missing support needed by the
+current requirement, before completed analysis. Pure theory does not require
+project metrics, and data needed only by later sections does not block it.
+The update also requires PEEL development, at least 65% discursive prose in core
+analytical sections under the style guide's exceptions, and immediate references
+with bidirectional citation checks for each delivered section. Run the beta9
+cases in the criterion trial; native PI acceptance remains pending.
 
 ## Build from source
 

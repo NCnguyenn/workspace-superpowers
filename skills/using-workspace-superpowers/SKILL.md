@@ -131,7 +131,7 @@ Additional family and specialist skills are selected according to the task.
 
 Examples include:
 
-* Research & Evidence: `researching-sources`, `citing-sources` (invoke only upon explicit user request for external research, reference materials, or citations)
+* Research & Evidence: `researching-sources` for requested external research or reference materials; `citing-sources` for requested/required citations or citations already present in a draft.
 * Documents & Media: `editing-documents`, `formatting-layout`, `working-with-pdf`, `working-with-spreadsheets`, `auditing-formulas`, `working-with-presentations`, `storyboarding-slides`, `working-with-visuals`
 * Prose: `drafting-prose`, `writing-reports`, `writing-academic-prose`
 * Mathematics: `working-with-mathematics` for optional mathematical support; equation-only layout/conversion remains with document skills, spreadsheet audits with `auditing-formulas`.
@@ -217,7 +217,7 @@ For chat-only outputs, review the requested content without claiming file verifi
 
    * You MUST execute `invoke_skill("scoping-the-brief")` before material ambiguity resolution, criteria analysis, or unresolved scope confirmation required by the criteria-writing contract.
    * Do not interview when the brief is already clear. Clarification and required scope confirmation are separate; reuse confirmed decisions and explicit waivers.
-   * When researching sources or citing references, invoke `researching-sources` and `citing-sources` only for requested research or citations, including applicable requirements the user adopted. Preserve a coherent citation convention in an existing document; use Harvard Style only when citations are required and no style is established under the [citation style rules](../../references/citation-styles.md).
+   * Invoke `researching-sources` for requested research, including applicable requirements the user adopted. Invoke `citing-sources` for requested/required citations or citations already present in a draft, so section-level references are completed before delivery. Preserve a coherent citation convention in an existing document; use Harvard Style only when citations are required and no style is established under the [citation style rules](../../references/citation-styles.md). Citation repair does not authorize unrelated research or unsolicited citations.
 
 5. **Analyze Before Substantive Modification**
 
@@ -301,5 +301,5 @@ Do not merge their procedures into a single workflow.
 * **Assuming a missing specialist requires total failure:** attempt a safe lower-level fallback first.
 * **Inlining specialist procedures:** Word, Excel, PDF, presentation, research, and visual procedures belong in their respective skills.
 * **Routing coding work into workspace workflows:** software engineering remains with `using-superpowers`.
-* **Invoking research or citations spontaneously:** invoke `researching-sources` and `citing-sources` only when the user explicitly requests literature research or citations.
+* **Invoking research or citations spontaneously:** keep external research within requested/adopted requirements. Do not add unsolicited formal citations; required or existing citations must still be checked and completed through `citing-sources`.
 * **Treating the listed specialist examples as the complete catalog:** the router must remain extensible.

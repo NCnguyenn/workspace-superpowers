@@ -54,6 +54,40 @@ may resolve the planning prerequisite only within its recorded scope; never
 invent real measurements or citations. Analysis approval alone does not resolve
 a missing-evidence question.
 
+### Interview missing scenario metrics before analysis delivery
+
+This is not a mandatory interview for every section. Ask only about missing data
+or evidence necessary to the current requirement or claim after inspecting inputs.
+A theoretical explanation does not need a project-data interview; record
+`not_required` when no evidence gap affects it and continue the applicable steps.
+Do not block it on metrics needed only by a later section. Required academic
+citations remain applicable without demanding empirical project evidence.
+
+Inspect supplied sources and prior answers before presenting the requirement analysis.
+If an applied scenario requires absent budget, timeline, scale, concurrency or
+other factual bounds, ask one focused evidence question and wait before delivering
+the completed analysis for approval. Never place a generated package of numbers
+inside that analysis and ask whether the user wants to adjust it afterward.
+
+Offer a choice between supplying real data and explicitly authorizing illustrative
+assumptions for the named gaps. Use the host's structured question interface when
+available and permitted for evidence clarification; otherwise ask in chat. For example:
+“Do you have budget, delivery timeline and target scale in your brief, or may I
+propose hypothetical values for these missing constraints?” A proposed numeric
+option must be labeled optional and hypothetical, not a standard BTEC benchmark.
+Do not mark illustrative data as the recommended choice without a task-specific reason.
+
+Record the answer and scoped permission in the existing conversation or brief.
+Set `provided` only after inspecting sufficient supplied inputs; set
+`illustrative_authorized` only for gaps the user explicitly allows you to model.
+A preselected option, skipped question, timeout, general “continue”, or partial
+answer leaves unresolved gaps `pending`. Reuse permission already granted; do not
+ask again. No metric interview is needed for pure theory or nonessential numbers.
+An analysis-only diagnosis may explain missing evidence without inventing it.
+Safe working assumptions about presentation never authorize invented project facts.
+
+### Section decisions
+
 Apply [criterion-level analysis and two stops](../../references/criteria-writing-contract.md#criterion-level-analysis-and-two-stops).
 The two-stop rule applies to all sections, chapters, parts, and criteria of
 deliverables (e.g. “Section 1: Project Overview”, “Introduction”, or “P1”).
@@ -110,13 +144,14 @@ an additional artifact capability or a tool supplied by this skill pack.
 
 ## Fallback
 
-For criteria writing, the criteria-writing contract controls fallback: an unavailable answer never confirms scope, approves an outline, or resolves missing evidence. Return authorized analysis and targeted questions while required evidence is pending; do not bypass that prerequisite with a provisional outline. For other tasks, disclose safe working assumptions and proceed only with supported work. Do not invent sources.
+For criteria writing, the criteria-writing contract controls fallback: an unavailable answer never confirms scope, approves an outline, or resolves missing evidence. While the evidence interview is pending, return a gap diagnosis and targeted questions, not a completed analysis for approval or a provisional outline. An analysis-only diagnosis can identify gaps without filling them. For other tasks, disclose safe working assumptions and proceed only with supported work. Do not invent sources.
 
 ## Common mistakes
 
 * Asking questions on a trivial edit or typo fix.
 * Asking for information already specified in the prompt or rubric.
-* Asking endless open-ended questions instead of proposing concrete defaults.
+* Asking endless open-ended questions instead of offering a focused evidence choice.
+* Treating optional illustrative numbers as accepted defaults before the user's answer.
 * Treating "decide for me" as a reason for optional interviews, or as a waiver of every approval and evidence requirement.
 * Forgetting to record established constraints in a working brief.
 * Reopening an established citation convention or asking solely because the documented Harvard fallback applies.

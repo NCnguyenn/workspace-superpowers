@@ -50,7 +50,34 @@ The two-stop rule (Requirement Analysis Approval -> Detailed Outline Approval ->
 
 For a request to draft a section or criterion such as “Section 1: Project Overview” or “P1”, apply these two stops to the target section or criterion, even after a master outline was approved. A request such as “do Section 1”, “write Introduction”, “do P1”, “continue P1”, or “the information is already in the brief” authorizes the outcome; it does not approve an unseen interpretation or detailed outline.
 
-**First stop — requirement analysis.** Read the original criterion and relevant rubric context before proposing scope. Present a rigorous, clear analysis report directly in chat:
+**Evidence interview before analysis delivery.** Inspect the original requirement,
+available sources and prior answers before finalizing the requirement analysis.
+This is a conditional check, not a mandatory interview for every section.
+Ask only when the current requirement or a necessary claim needs specific data
+or evidence that remains missing after inspection. Do not make a theoretical
+section wait for project metrics needed only by a later section. When no evidence
+gap affects the current target, record `not_required` and continue through its
+applicable analysis/outline steps without an evidence question. Required academic
+citations still apply; they do not create a demand for empirical project data.
+When an applied scenario needs missing budget, delivery timeline, partner/user
+counts, concurrency or other factual bounds, load `scoping-the-brief` and ask
+whether real data exists or the user authorizes illustrative assumptions for
+those specific gaps. Wait before presenting the completed analysis for approval.
+Do not embed invented defaults in the analysis and then ask whether to adjust
+them. An analysis-only diagnosis may describe the gaps without filling them.
+
+Use a supported structured question interface for this focused evidence
+interview when host rules permit; otherwise ask a concise question in chat.
+Keep `evidence_readiness: pending` until required inputs are inspected or scoped
+illustrative permission is received. A preselected option, cancellation, silence,
+or general approval leaves unanswered gaps pending. Reuse an existing applicable
+permission; pure theory and adequately supplied scenarios need no extra interview.
+Any proposed numbers in an interview option must be clearly optional hypothetical
+values, not an established BTEC standard or verified benchmark. Record the actual
+answer and its scope; illustrative permission does not approve the analysis or
+outline and never turns assumptions into measured project facts.
+
+**First stop — requirement analysis.** Read the original criterion and relevant rubric context before proposing scope. Resolve the evidence interview above only when its conditions apply, then present a rigorous, clear analysis report directly in chat:
 - **Keywords, Command Verbs & Cognitive Depth:** Accurately extract the primary keywords and command verbs (e.g. identify, describe, explain, compare, contrast, analyze, evaluate, critique, justify). Explicitly classify and explain the cognitive demand:
   * *Pure Theoretical / Descriptive (Lý thuyết nền tảng)*: describe, identify, explain principles. Focus on theoretical foundations, definitions, mechanisms, lifecycles, and phases without jumping into comparisons, critiques, or premature project decisions.
   * *Comparative / Analytical (So sánh đối chiếu)*: compare, contrast, analyze differences/similarities. Establish formal multi-dimensional comparison criteria and comparison matrices.
@@ -96,7 +123,7 @@ These stops and gates are strictly internal behavioral rules for the agent, not 
 
 **Reusing decisions.** A master outline with only “Section 1 Overview” or “P1 Components” is structural navigation, not approval of the section's analysis or detailed outline. Prior decisions count only when the displayed material and user's decision actually cover the target section or criterion's interpretation and detailed plan. Reference that evidence; do not invent a fresh gate when both decisions already apply. An explicit waiver can skip exactly the named gate(s). Silence, a default option, or urgency cannot. Approval of Section 1 or P1 does not approve Section 2 or P2. Material revisions reopen only the affected decision unless the user already authorizes the change and continuation.
 
-**Recovery after a skipped gate.** Acknowledge the missed step and return to the earliest unresolved decision. An unsolicited draft or outline is unapproved; its existence is not consent. If analysis is pending, return analysis alone and wait, even if a detailed outline could be produced in the same response.
+**Recovery after a skipped gate.** Acknowledge the missed step and return to the earliest unresolved decision. An unsolicited draft or outline is unapproved; its existence is not consent. If the evidence interview is unresolved, return only a gap diagnosis and the focused question. Otherwise, if analysis approval is pending, return analysis alone and wait, even if a detailed outline could be produced in the same response.
 
 These stops govern section and criterion writing. Preserve analysis-only and
 outline-only stopping points, bounded edits, existing approvals and explicit
@@ -149,7 +176,7 @@ For analysis-only work, accurately identifying missing evidence can complete the
 - Compose only supplied facts from the prompt or fixture. Do not invent SLAs, on-call coverage, restore-test pass rates, extra tools, or other unstated operational metrics.
 - Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"), consulting roles, business domains, budgets (e.g. "$15,000"), SLAs, latency/performance numbers (e.g. "2.5s"), user counts, or other operational metrics without interviewing and confirming with the user. If unstated in source documents or prompt, ask the user or mark as a blocking gap. Never fabricate project context.
 - Strictly forbid dumping interleaved bilingual blocks in chat (e.g. `[Bản tiếng Anh nộp bài]` interleaved with `[Giải thích tiếng Việt]`).
-- Do not abuse modal question tools (such as `asktool`) to obstruct the user's reading at approval stops. Conduct review naturally in chat, and reserve `asktool` strictly for cases where the user explicitly requests an interactive card or when choosing between distinct branching paths.
+- Do not abuse modal question tools to obstruct reading at approval stops. Conduct analysis/outline review naturally in chat. Reserve structured cards for upfront evidence clarification, distinct branching decisions, or an explicit user request, subject to host permissions.
 - “Write a draft before the data is ready” is neither permission to invent results nor a blanket waiver of unrelated approval gates. It does not set `scope_status` or `outline_status` to waived.
 - A complete technical description in the prompt does not waive outline approval for a draft. Present the outline and stop unless that gate is already approved or explicitly waived.
 - Wording and typo corrections within approved scope do not invalidate substantive approval. Material scope, argument, or structural changes reopen only the affected decision unless the user already authorized that change and continuation.
@@ -168,7 +195,7 @@ For analysis-only work, accurately identifying missing evidence can complete the
 | “Change heading B as follows, then write” | If the change and affected scope are clear, record the instruction as authorization for that revised version/section and continuation. Do not ask for the same authorization again. |
 | User explicitly skips a gate | Mark that gate waived and record the instruction. Stay within the authorized operation/scope; remaining gates and evidence checks still apply. |
 | Scope or outline materially changes later | Preserve unaffected decisions. Confirm the changed part when not already authorized; block dependent drafting while that part is pending. |
-| No interactive response can be obtained | Explain the unresolved prerequisite and return only the current authorized stage. For pending analysis or required evidence, return analysis and targeted questions without an affected outline. A provisional outline is allowed only when source-title and evidence prerequisites are resolved and applicable analysis decisions permit it. Never bypass a prerequisite by guessing. |
+| No interactive response can be obtained | Explain the unresolved prerequisite and return only the current authorized stage. While the evidence interview is pending, return a gap diagnosis and targeted questions, not a completed analysis for approval or an affected outline. Once evidence readiness is resolved, pending analysis approval permits analysis alone. A provisional outline is allowed only when source-title and evidence prerequisites are resolved and applicable analysis decisions permit it. Never bypass a prerequisite by guessing. |
 
 Before substantive drafting, check applicable scope/outline decisions, their scope/version, the authorized operation, and evidence needed by the target section. A permitted incomplete draft follows the protocol below; it is not an alternative way to bypass approval gates.
 
@@ -176,7 +203,7 @@ Before substantive drafting, check applicable scope/outline decisions, their sco
 
 Apply when a criterion requires a project example, measured comparison, experimental result, system data, screenshot, or other support that is absent or insufficient for the intended claim.
 
-Run this check during analysis, before planning the affected outline. Set
+Run this check before finalizing the requirement analysis and before planning the affected outline. Set
 `evidence_readiness: pending` and use `scoping-the-brief` for the focused
 interview. Wait for sufficient inspected inputs or explicit authorization for
 illustrative material before outlining. This is an evidence prerequisite within
@@ -219,5 +246,12 @@ excerpts to the executing role. An outline or visual plan is not evidence that
 its contents have been implemented or measured.
 
 Review content against authorized scope, criteria, outline, evidence, and applicable writing guidance. Apply corrections within authorization; do not reopen approval for routine wording fixes. Substantive changes arising from review follow the affected-scope transition above.
+
+Before delivering a cited section, invoke `citing-sources` and check both citation
+directions against a terminal `## References` list (or the required style's
+equivalent). Include the section's references in chat and update the cumulative
+list in any saved report. Do not defer this until the last chapter. Apply P1–P3,
+L6 and S1–S3 from the style guide: PEEL development, the core-section prose floor,
+and complete sentences instead of casual dash chaining.
 
 For file deliverables, reopen the final artifact after the latest edit/export before reporting it verified. For chat-only content, review the response without claiming file creation or verification. Completion refers to the requested output: analysis, outline, draft, or revision, with remaining evidence limitations stated honestly.

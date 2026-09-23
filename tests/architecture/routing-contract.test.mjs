@@ -141,7 +141,7 @@ test(
 );
 
 test(
-  'researching-sources and citing-sources require explicit user request',
+  'research stays requested while citation repair also covers required or existing citations',
   { skip },
   async () => {
     const researchText = await readSkill('researching-sources');
@@ -155,8 +155,10 @@ test(
     assert.equal(
       /explicitly requests/i.test(citingText),
       true,
-      'citing-sources must state it requires an explicit user request',
+      'citing-sources must retain explicit user requests as a trigger',
     );
+    assert.match(citingText, /already contains formal citations/i);
+    assert.match(citingText, /brief\/template\/rubric requires/i);
   },
 );
 

@@ -13,7 +13,7 @@ The skill pack names conceptual operations. They are not executable tool names.
 | `delegate(role, context)` | If the current catalog exposes Task/subagents, inspect its schema and use a supported agent type with the bundled `agents/<role>.md` as task instructions. Bundled role files are not automatically registered agent types. Otherwise perform a separate review pass and disclose the absence of independent review. |
 | Render/export/inspect Office and PDF | Discover the current Office/PDF libraries, tools, or connectors before promising an output. Reopen exported artifacts. Skill installation supplies no renderer or Office application. |
 | Research/citations | Use an available search or retrieval tool when authorized by the request. Preserve source metadata and verification status. |
-| Guided questions / gate decisions | Present the proposal and ask naturally in chat by default, as required by the bootstrap. Use native `asktool` for a requested structured question card or an appropriate complex choice; inspect `questions` with `question`, string `options`, and optional `multiSelect`. Offer one decision at a time. Follow [guided questions](../../references/guided-questions.md) and the mapping below. |
+| Guided questions / gate decisions | Ask naturally in chat for analysis/outline approval. Use native `asktool` for upfront evidence clarification, a requested card or a distinct branching choice; inspect `questions` with `question`, string `options`, and optional `multiSelect`. Offer one decision at a time. Follow [guided questions](../../references/guided-questions.md) and the mapping below. |
 | Mathematics | Follow the portable mathematics contracts; use a separately available computation or native Word Equation engine. The historical probes in the repository do not establish capability in a new session. |
 
 Plugin loading contributes a bounded catalog (up to 32 skills, 128 KiB per skill,
@@ -67,13 +67,19 @@ Use ordinary chat for routine interviews and gate decisions. Availability of
 requests that interface, or a complex choice warrants it and the bootstrap
 permits it, show the proposal first and actually call the tool; merely writing
 options into the response does not open the card. Keep one decision per call.
+For missing required project metrics, use a focused structured question card before presenting
+the completed analysis: offer “I have real data to provide” and “I authorize
+illustrative assumptions for the missing budget, timeline and scale”, naming only
+the actual gaps. Proposed values must be optional and hypothetical. Wait for an
+explicit answer; a suggested/default choice does not grant permission. Use chat
+fallback when the tool is unavailable or disallowed, without bypassing the wait.
 The runtime supports up to 20 questions, requires nonempty question text and at
 least one string option, and deduplicates options. Use two or three useful
 choices; omit an “Other” option because the card already supplies free text.
 Use `multiSelect: false` for mutually exclusive approval decisions. Questions
 may follow the conversation language; these examples use English for clarity.
 
-If a structured card is appropriate, after displaying P1 analysis v1 call
+If the user explicitly requests an approval card, after displaying P1 analysis v1 call
 `asktool` with:
 
 ```json

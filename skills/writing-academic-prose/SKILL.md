@@ -30,13 +30,11 @@ Cite these rule IDs in self-check and in review findings. Do not force every par
 
 | Group | IDs | Obligation |
 |---|---|---|
-| Paragraphs | P1–P3 | Develop one point; use four to five sentences as a benchmark for analytical paragraphs, not a quota; connect sentences by meaning. |
-| Lists | L1–L6 | Argue in developed prose; bullets for parallel attributes; numbered lists for sequence; tables for shared fields. Outline notes and advantage/disadvantage lists do not replace explanation or supported judgment. |
+| Paragraphs | P1–P3 | Use PEEL (Point, Explanation, Evidence/Example, Link); develop analytical paragraphs to a 4–5-sentence benchmark without filler. Inspect short stubs for missing support or interpretation. |
+| Lists | L1–L6 | Core analytical sections need at least 65% discursive prose under L6's counting scope and format exceptions. Bullets hold atomic parallel items; tables accompany reasoning. Explain objectives, scope and constraint tradeoffs in paragraphs. |
 | Register | R1–R4 | Name subject, action, conditions, and result; stay in scope; calibrate certainty; use plain academic language. |
 | Evidence | E1–E4 | Trace claims; handle gaps through the contract; synthesize; reconcile numbers with source artifacts. |
-| Register | R1–R4 | Name subject, action, conditions, and result; stay in scope; calibrate certainty; use plain academic language. |
-| Evidence | E1–E4 | Trace claims; handle gaps through the contract; synthesize; reconcile numbers with source artifacts. |
-| Cadence | S1–S3 | Vary sentence shape by function. Word-count bands and burstiness scores are not acceptance tests. |
+| Cadence | S1–S3 | Vary sentence shape by function; replace casual dash-chained definitions with complete sentences or grammatical clauses. Word-count bands and burstiness scores are not acceptance tests. |
 | Endings | C1–C3 | Cut empty subsection finales; keep a closing sentence only when it adds a result, limit, or needed transition. |
 | Phrasing | F1 | Remove clichés that replace substance; do not run a banned-word lottery. |
 | Language | V1–V3 | Apply Vietnamese or another language only on explicit request; keep the same evidence and integrity standards. |
@@ -50,12 +48,12 @@ Conversational interaction follows the user's conversational language (e.g. Viet
 
 ## Procedure
 
-1. State the section's claim in the topic sentence (P1).
+1. Develop each analytical paragraph through PEEL (P1–P3), starting with its point and explaining why it matters within the approved argument.
 2. Support it with identified evidence (E1). If the support is missing, stop the assertion and follow the contract protocol (E2).
 3. Interpret only as far as the data allow (R3). Correlation is not causation.
-4. Prefer developed paragraphs over bullet stacks (L1). Use a list only when L2 or L3 applies.
+4. Prefer developed paragraphs over bullet stacks (L1/L6). Check the 65% prose floor and adjacent subsections for list/table-only coverage. Use a list only when L2 or L3 applies; do not add filler to meet the floor.
 5. Stop when the point is complete (C2). Do not applaud the topic.
-6. Return the section to `drafting-prose` for `reviewing-work`.
+6. If citations are required or present, invoke `citing-sources` before handoff to complete the terminal `## References` list and bidirectional audit for chat and any saved report. Return the section to `drafting-prose` for `reviewing-work` with these checks completed.
 
 ## Required capabilities
 
@@ -64,12 +62,13 @@ Abstract capability names, resolved by the harness adapter. Never a tool name.
 - `read_file(path)` — brief, outline, sources, and the style guide.
 - `write_file(path, content)` / `edit_document(file, change)` — compose scholarly prose.
 - `read_reference_documentation(query)` — optional; library or standard documentation named in the brief.
+- `invoke_skill(name)` — load `citing-sources` when formal citations are required or present.
 
 ## Dependencies
 
 - Selected by `drafting-prose` after contract prerequisites are met.
 - May be combined with `writing-reports` on a project or thesis report, by section.
-- Precedes `reviewing-work`. Does not replace `citing-sources` when formal citations are requested.
+- Precedes `reviewing-work`. Requires `citing-sources` when formal citations are required or present; reuse a completed citation check for the same revision rather than duplicating it.
 
 ## Fallback
 
