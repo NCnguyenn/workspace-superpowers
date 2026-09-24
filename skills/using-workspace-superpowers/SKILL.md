@@ -98,6 +98,7 @@ this handoff; it does not inspect substantive file content itself.
 ## Deliverable Language
 
 Apply the [shared language policy](../../references/language-policy.md): authored deliverables default to English unless the user explicitly requests another language. Vietnamese conversation or input does not select Vietnamese output. Skipping gates, choosing a layout, or writing immediately is not an explicit language request. Carry the resolved language into the brief and downstream specialists; a missing language instruction does not require an interview.
+Chat explanations follow the language of the user's current message. Do not default that language to Vietnamese.
 
 ## Allowed Router Capabilities
 
@@ -148,6 +149,7 @@ Examples include:
 * Documents & Media: `editing-documents`, `formatting-layout`, `working-with-pdf`, `working-with-spreadsheets`, `auditing-formulas`, `working-with-presentations`, `storyboarding-slides`, `working-with-visuals`
 * Prose: `drafting-prose`, `writing-reports`, `writing-academic-prose`
 * Mathematics: `working-with-mathematics` for optional mathematical support; equation-only layout/conversion remains with document skills, spreadsheet audits with `auditing-formulas`.
+* Document choice: `brainstorming` — when several valid document interpretations or organizations remain, present 2–3 options, recommend one, and stop for the user's choice. This is not a software-design skill.
 * Transform: `converting-artifacts`
 
 The catalog is extensible. These examples are not an exhaustive list.
@@ -190,15 +192,15 @@ headings is not a detailed approval. Route to analysis and
 scope confirmation first; only after that decision route to the detailed outline
 and its separate approval. Preserve valid section-specific decisions/waivers.
 Never invent fictitious project names, roles, SLAs, budgets, or operational metrics.
-Conversational interaction follows the user's language (e.g. Vietnamese); deliverables
-default to English without dumping interleaved bilingual text in chat.
+An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. Route it through `reading-artifacts` and `analyzing-artifacts`, then return the intake map. On continuation, reuse the existing intake map.
+Chat explanations, questions, summaries, and requirement analysis follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence. Do not list unexplained keywords, and do not produce a line-by-line translation. Deliverables stay in the locked submission language without interleaved bilingual text.
 
 Use the [criteria-writing contract](../../references/criteria-writing-contract.md) for activation, state, and authorization. Infer `task_mode` from the requested operation, not the words “report” or “thesis”. For source files, invoke `reading-artifacts` and applicable `analyzing-artifacts` before scoping; chat criteria need no artificial file step.
 
 | task_mode | Route and stopping point |
 |---|---|
-| `analyze` | You MUST execute `invoke_skill("scoping-the-brief")` before criterion analysis, and `invoke_skill("analyzing-artifacts")` for substantive artifact interpretation as needed. Present interpretation, scope, and evidence needs. Stop at analysis. |
-| `outline` | Invoke `scoping-the-brief` for unresolved scope prerequisites. You MUST execute `invoke_skill("planning-work")` before generating the detailed outline, including criterion, evidence, and visual mapping. Stop at the outline and wait for feedback; outline approval alone does not authorize drafting. |
+| `analyze` | You MUST execute `invoke_skill("scoping-the-brief")` before criterion analysis, and `invoke_skill("analyzing-artifacts")` for substantive artifact interpretation as needed. If several valid interpretations remain after required evidence is sufficient, execute `invoke_skill("brainstorming")`, present 2–3 options, recommend one, and stop for the user's choice. Present interpretation, scope, and evidence needs. Stop at analysis. |
+| `outline` | Invoke `scoping-the-brief` for unresolved scope prerequisites. You MUST execute `invoke_skill("planning-work")` before generating the detailed outline, including criterion, evidence, and visual mapping. If several valid organizations remain, execute `invoke_skill("brainstorming")`, present 2–3 outlines, recommend one, and stop. The user chooses. Do not select one and write. Stop at the outline and wait for feedback; outline approval alone does not authorize drafting. |
 | `draft` | Invoke `scoping-the-brief` / `planning-work` for unresolved contract prerequisites. You MUST physically execute `invoke_skill("drafting-prose")`; it must invoke the selected writing specialist(s). You are forbidden from outputting draft paragraphs without loading `drafting-prose`. Then execute `invoke_skill("reviewing-work")` before delivering the prose. Continue through applicable gates using recorded decisions. |
 | `revise` | Execute `invoke_skill("editing-documents")`, then `invoke_skill("drafting-prose")` for substantive report/thesis rewrites under the contract; it must invoke prose specialists, followed by `invoke_skill("reviewing-work")` before delivery. Typo or wording-only edits stay in `editing-documents`; format-only edits use `formatting-layout`, without writing approval gates. |
 

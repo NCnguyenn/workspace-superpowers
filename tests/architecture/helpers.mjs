@@ -58,6 +58,10 @@ export const PROSE_SKILLS = [
   'writing-academic-prose',
 ];
 
+export const DOCUMENT_CHOICE_SKILLS = [
+  'brainstorming',
+];
+
 export const SHIPPED_SKILLS = [
   ...CORE_LIFECYCLE_SKILLS,
   ...RESEARCH_SKILLS,
@@ -67,6 +71,7 @@ export const SHIPPED_SKILLS = [
   ...PRESENTATION_SPECIALIST_SKILLS,
   ...VISUAL_SPECIALIST_SKILLS,
   ...PROSE_SKILLS,
+  ...DOCUMENT_CHOICE_SKILLS,
   'working-with-mathematics',
 ];
 

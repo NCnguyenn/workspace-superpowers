@@ -12,7 +12,7 @@ Deliverables and repository content default to English, even when the user commu
 
 See the [design specification](docs/workspace-superpowers-design.md).
 See [the changelog](CHANGELOG.md) for changes by version, historical build labels,
-and validation limits through 0.1.4-beta.
+and validation limits through 0.1.5-beta.
 
 ## PI-Desktop local preview
 
@@ -21,11 +21,11 @@ library only):
 
 ```powershell
 python scripts/test-package-pi.py
-python scripts/package-pi.py --out dist/pi-0.1.4-beta
+python scripts/package-pi.py --out dist/pi-0.1.5-beta
 ```
 
-Install `dist/pi-0.1.4-beta/local.workspace-superpowers-0.1.4-beta.piplug` from PI-Desktop's
-Plugins page, or choose the generated `dist/pi-0.1.4-beta/local.workspace-superpowers`
+Install `dist/pi-0.1.5-beta/local.workspace-superpowers-0.1.5-beta.piplug` from PI-Desktop's
+Plugins page, or choose the generated `dist/pi-0.1.5-beta/local.workspace-superpowers`
 folder. Grant `agent.prompt.inject`, enable the plugin for the target project,
 and start a fresh chat. The lifecycle hook supplies the bootstrap where
 supported; otherwise merge it into the project's effective instructions.
@@ -33,7 +33,7 @@ See [installation and rollback](adapters/pi/install.md),
 [bootstrap](adapters/pi/bootstrap.md), and
 [real-world trial prompts](adapters/pi/dogfood.md).
 
-The builder preserves all 23 skills and their supporting references, uses
+The builder preserves all 24 skills and their supporting references, uses
 explicit skill IDs, and reopens the archive to check every byte. Existing output
 directories are refused; use `--out dist/pi-next` for another build. Package
 validation is separate from runtime acceptance in PI-Desktop. No global
@@ -56,11 +56,11 @@ approval popups. See [guided questions](references/guided-questions.md).
 
 ## Skill catalog
 
-The current package contains 23 skills. Availability of actual artifact operations depends on the host's capabilities.
+The current package contains 24 skills. Availability of actual artifact operations depends on the host's capabilities.
 
 | Group | Implemented skills |
 |---|---|
-| Entry and lifecycle | `using-workspace-superpowers`, `scoping-the-brief`, `reading-artifacts`, `analyzing-artifacts`, `planning-work`, `reviewing-work`, `verifying-artifacts`, `packaging-deliverables` |
+| Entry and lifecycle | `using-workspace-superpowers`, `scoping-the-brief`, `reading-artifacts`, `analyzing-artifacts`, `planning-work`, `brainstorming`, `reviewing-work`, `verifying-artifacts`, `packaging-deliverables` |
 | Research and citations | `researching-sources`, `citing-sources` |
 | Documents and conversion | `editing-documents`, `formatting-layout`, `converting-artifacts`, `working-with-pdf` |
 | Spreadsheets | `working-with-spreadsheets`, `auditing-formulas` |

@@ -50,6 +50,12 @@ user-managed form. Keep internal status values out of user-facing choices.
 Keep labels such as "Stop 2", "Gate 1" and their translations out of all question and option
 text, including parenthetical labels. Name the actual next work instead.
 
+## Card selections are not locked
+
+After a structured question card returns, summarize the selections in the language of the user's current message and ask the user to confirm or correct them in chat. A card selection is not locked until the user confirms that summary. A wrong name, scale, budget, or timeline is not a settled decision. Do not invent numbers while summarizing or correcting.
+
+The inspected host question schema accepts `question`, `options`, and `multiSelect` only. It has no back parameter. The host card may offer Decline all, Skip, and Next, but it has no Back control. This is a host gap. Do not invent a Back button, a back parameter, or a fake control. The correction step is in chat: the user names the earlier question and the corrected answer, then confirms the revised summary.
+
 ## Visible delivery and recovery
 
 If the user says they cannot see the analysis or outline, acknowledge the missing

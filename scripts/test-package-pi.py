@@ -84,8 +84,8 @@ main({ on(event, handler) { hook = handler; } });
                 self.assertEqual(manifest['id'], 'local.workspace-superpowers')
                 self.assertEqual(manifest['permissions'], ['agent.prompt.inject'])
                 skills = manifest['contributes']['skills']
-                self.assertEqual(len(skills), 23)
-                self.assertEqual(len({s['id'] for s in skills}), 23)
+                self.assertEqual(len(skills), 24)
+                self.assertEqual(len({s['id'] for s in skills}), 24)
                 router = next(s for s in skills if s['id'] == 'using-workspace-superpowers')
                 for trigger in ['continues', 'changes', 'approves', 'resumes']:
                     self.assertIn(trigger, router['description'])

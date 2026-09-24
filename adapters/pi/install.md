@@ -6,14 +6,14 @@ model behavior or Office rendering. Keep the original source documents intact.
 ## Install
 
 1. Open PI-Desktop's **Plugins** page. Use its install-from-package action and
-   select `local.workspace-superpowers-0.1.4-beta.piplug` from the build output.
+   select `local.workspace-superpowers-0.1.5-beta.piplug` from the build output.
    The unpacked `local.workspace-superpowers` folder can also be selected with
    install-from-folder. Do not select the source repository root.
 2. Review the requested `agent.prompt.inject` permission in PI-Desktop and grant
    it to enable the skill catalog. The host owns this permission decision.
 3. Confirm Workspace Superpowers is enabled for the project being tested.
    Start a fresh conversation. If the catalog remains stale, restart PI-Desktop.
-4. Confirm **23 distinct skills**, including
+4. Confirm **24 distinct skills**, including
    `local.workspace-superpowers/using-workspace-superpowers`, are available.
 
 ## Enable automatic routing

@@ -1,0 +1,11 @@
+{
+  "id": "tavily",
+  "label": "Tavily",
+  "description": "Tavily AI Remote MCP for real-time web search, extraction, and crawling",
+  "transport": "http",
+  "command": null,
+  "args": [],
+  "env": {},
+  "url": "https://mcp.tavily.com/mcp",
+  "headers": {}
+}

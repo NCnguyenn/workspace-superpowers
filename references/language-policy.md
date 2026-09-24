@@ -10,7 +10,7 @@ Do not infer the deliverable language from the language used in conversation, th
 
 ## Communication and artifact content
 
-Chat, Q&A, explanations, requirement analysis reports, progress updates, and user interaction MUST follow the user's conversational language (e.g., Vietnamese when the user speaks Vietnamese). The actual requested report, outline, plan, document, or other authored deliverable remains English unless an explicit applicable override exists. A report or outline pasted into chat is still a deliverable, not a conversational update.
+Chat, Q&A, explanations, requirement analysis presented in chat, summaries, progress updates, and user interaction follow the language of the user's current message. Do not default that language to Vietnamese or to any other language. An example that mentions Vietnamese is not a package rule. The actual requested report, outline, plan, document, or other authored deliverable remains in the locked submission language, English unless an explicit applicable override exists. A report or outline pasted into chat is still a deliverable, not a conversational update.
 
 Keep authored headings, captions, chart/table labels, placeholders, and notes in the selected deliverable language. Skills, references, and repository documentation are written in English by default. Do not insert Vietnamese labels into an otherwise English template merely because the request arrived in Vietnamese.
 
@@ -21,6 +21,12 @@ NEVER interleave bilingual translations or explanations directly into chat block
 - Authored deliverables (the outline, report sections, drafted content, and files) are delivered cleanly in English (unless the user explicitly requests another deliverable language).
 - When delivering an English deliverable (such as an outline or drafted section in chat), present it cleanly as the authored artifact without interleaving bilingual sentence-by-sentence or paragraph-by-paragraph translations. Do not create parallel bilingual text unless the user explicitly requests a bilingual deliverable.
 
+
+### Explain terms without a parallel translation
+
+When a chat explanation must keep a source term, explain that term in the same sentence. Do not list unexplained keywords. Do not produce a line-by-line translation or a parallel gloss of the submission text.
+
+A short framing sentence may use the conversation language. Deliver the submission outline or report as one clean artifact in the locked submission language, not as paired translations.
 ## Requirements, fidelity, and exports
 
 - An explicit user request to follow a stated language requirement, including one in a supplied rubric, is a language instruction. Merely receiving non-English source material or a template is not.

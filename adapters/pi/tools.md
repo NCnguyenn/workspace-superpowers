@@ -81,6 +81,8 @@ fallback when the tool is unavailable or disallowed, without bypassing the wait.
 The runtime supports up to 20 questions, requires nonempty question text and at
 least one string option, and deduplicates options. Use two or three useful
 choices; omit an “Other” option because the card already supplies free text.
+
+The inspected `asktool` schema has no back parameter. The card has no Back control. This is a host gap. Do not invent a Back button or claim one was added. After the card returns, summarize the selections and ask the user to confirm or correct them in chat. A card selection is not locked until the user confirms that summary.
 Use `multiSelect: false` for mutually exclusive approval decisions. Questions
 may follow the conversation language; these examples use English for clarity.
 

@@ -51,16 +51,13 @@ For each heading, state the criterion obligation, the evidence used, and the vis
 
 If evidence required by a criterion is missing, apply the contract Missing Evidence Protocol and keep `delivery_status` as `draft_incomplete` while that gap remains.
 
-Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"), consulting roles, business context, budgets, SLAs, latency targets, or operational metrics without explicit confirmation. If unstated, ask the user or mark as a blocking gap.
+Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"), consulting roles, business context, budgets, SLAs, latency targets, or operational metrics without explicit confirmation. Do not add a deliverable that belongs to a later assignment, such as a functional prototype, or scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it. If unstated, ask the user or mark as a blocking gap.
 
-Conversational interaction follows the user's conversational language (e.g. Vietnamese); authored deliverables default to English without dumping interleaved bilingual text in chat.
+Chat explanations follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language without interleaved bilingual text.
 
 ## Procedure
 
-Write the report body in developed paragraphs by default (L6). Fulfil each
-approved command verb through explanation, comparison or supported judgment,
-not a list of labels. Keep useful lists/tables where L2–L4 apply and preserve
-the adopted heading numbering. Check that outline notes became connected prose.
+Write the report body in developed paragraphs by default (L6). An analytical subsection that is only one lead sentence followed by a list is not finished prose. Develop it to the P2 benchmark of 4–5 sentences, not a rendered-line quota. A short lead may remain short when it already carries its meaning. Bullets and numbered lists remain allowed for parallel items, parameters, or sequence. Do not abuse lists to avoid paragraphs. Fulfil each approved command verb through explanation, comparison or supported judgment, not a list of labels. Keep useful lists and tables where L2–L4 apply and preserve the adopted heading numbering. Check that outline notes became connected prose.
 
 1. Read the authorized outline, criteria mapping, and evidence register for the section.
 2. Maintain strict coherence with the approved outline: directly expand approved arguments point by point into academic prose (Analysis → Outline → Report). Do not add chapters the brief does not require or drop planned points.

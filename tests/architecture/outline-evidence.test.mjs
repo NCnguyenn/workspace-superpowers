@@ -34,3 +34,15 @@ test('PI refreshable stage contract carries heading and evidence prerequisites',
   assert.match(managed, /before (?:preparing|generating) the outline/);
   assert.match(managed, /explicit.*(?:permission|authorization)/i);
 });
+
+test('outline depth previews content without becoming a word quota', async () => {
+  for (const file of ['references/outline-structure.md', 'skills/planning-work/SKILL.md', 'adapters/pi/bootstrap.md']) {
+    const text = await readUtf8(file);
+    assert.match(text, /30–40%/, file);
+    assert.match(text, /60–70%/, file);
+    assert.match(text, /do not reverse/i, file);
+    assert.match(text, /word-count quota/i, file);
+    assert.match(text, /brainstorming/, file);
+    assert.match(text, /user chooses/i, file);
+  }
+});

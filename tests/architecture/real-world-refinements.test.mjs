@@ -110,3 +110,32 @@ test('a one-percent skill match must be called before acting', async () => {
   assert.match(description, /before any response/i);
   assert.ok(description.length <= 240, `description length ${description.length}`);
 });
+
+test('an opening question about a supplied guide is an intake map, not simple Q&A', async () => {
+  for (const file of ['adapters/pi/bootstrap.md', 'skills/using-workspace-superpowers/SKILL.md', 'skills/analyzing-artifacts/SKILL.md', 'skills/scoping-the-brief/SKILL.md']) {
+    const text = await readUtf8(file);
+    assert.match(text, /not Simple Q&A/i, file);
+    assert.match(text, /not a narrower operation/i, file);
+    assert.match(text, /parts, criteria, or structure/i, file);
+  }
+});
+
+test('document brainstorming is wired and does not design software', async () => {
+  const skill = await readUtf8('skills/brainstorming/SKILL.md');
+  assert.match(skill, /not a software-design skill/i);
+  assert.match(skill, /2–3/);
+  assert.match(skill, /recommend one/i);
+  assert.match(skill, /user chooses/i);
+  for (const name of ['using-workspace-superpowers', 'scoping-the-brief', 'analyzing-artifacts', 'planning-work']) {
+    assert.match(await readUtf8(`skills/${name}/SKILL.md`), /brainstorming/, name);
+  }
+});
+
+test('a delivered section stops for approval and does not invent citation details', async () => {
+  const drafting = await readUtf8('skills/drafting-prose/SKILL.md');
+  assert.match(drafting, /do not start the next section/i);
+  assert.match(drafting, /approved/i);
+  const citing = await readUtf8('skills/citing-sources/SKILL.md');
+  assert.match(citing, /page numbers, publishers/i);
+  assert.match(citing, /do not start the next section/i);
+});

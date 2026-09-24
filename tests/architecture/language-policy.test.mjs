@@ -32,3 +32,19 @@ test('default outline labels and missing-evidence example are English', async ()
   assert.doesNotMatch(outline, /Dự kiến|Không cần/);
   assert.ok(contract.includes('[Before/after CPU measurements under the same test conditions are required; the direction and magnitude of change are not yet established.]'));
 });
+
+test('conversation language follows the current message and is not a Vietnamese default', async () => {
+  for (const file of [
+    'references/language-policy.md',
+    'skills/scoping-the-brief/SKILL.md',
+    'skills/planning-work/SKILL.md',
+    'adapters/pi/bootstrap.md',
+    'AGENTS.md',
+  ]) {
+    const text = await readUtf8(file);
+    assert.match(text, /language of the user's current message/i, file);
+    assert.match(text, /do not default that language to Vietnamese/i, file);
+    assert.match(text, /same sentence/i, file);
+    assert.match(text, /line-by-line/i, file);
+  }
+});

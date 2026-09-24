@@ -54,6 +54,8 @@ and which tradeoffs follow. Tables summarize comparisons and accompany the
 explanation; they do not replace it. Adjacent subsections must not consist solely
 of tables or lists with token introductory lines.
 
+**Lead-and-list defect:** An analytical subsection that is only one lead sentence followed by a bullet or numbered list is still an outline, not finished prose. Develop that reasoning to the P2 benchmark of 4–5 sentences. Count sentences, not rendered lines. A short lead or transition may remain short when it already carries its meaning. Bullets and numbered lists remain allowed for genuinely parallel items, parameters, or sequence. Do not abuse a list, or stack line breaks, to avoid writing a paragraph. Do not convert "4–5 lines" into a mechanical line-count quota; that would contradict P2 and S3.
+
 For core analytical report/assignment sections, discursive prose must comprise
 at least **65%** of body word count unless an explicit user or required template
 format overrides this default. Calculate prose words / total body words: the

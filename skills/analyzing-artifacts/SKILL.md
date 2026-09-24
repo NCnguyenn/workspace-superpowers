@@ -49,6 +49,8 @@ The file has not been read. Do not analyze from guessed or raw-byte-only input.
 
 For initial intake of an assignment brief, rubric, or graded guide with no named section or narrower requested operation, return an intake map in this order: deliverables and submission rules with locators; each graded criterion mapped to the work the source requires, not only its code; failure constraints; contradictions left unresolved; decisions the source does not already settle. A contents list or glance table is not coverage. Do not choose a side in a contradiction. On continuation, reuse the existing intake map and update only findings affected by new inputs. Named-section analysis, outlining and narrow comparisons stay within their requested scope; they do not restart whole-guide intake.
 
+An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. Answer it inside the intake map, not instead of the map. On continuation, reuse the existing intake map. If several valid readings remain and the source does not contradict itself, invoke `brainstorming`, present 2–3 options, recommend one, and stop. The user chooses. Do not select one and write. Explain necessary source terms in the same sentence in the language of the user's current message. Do not default that language to Vietnamese, and do not produce a line-by-line translation.
+
 Per-type inspection fields: `references/artifact-inspection.md`.
 
 ## Required capabilities
@@ -60,8 +62,7 @@ Abstract capability names, resolved by the harness adapter. Never a tool name.
 
 ## Dependencies
 
-- `reading-artifacts` — required; never analyze an unread file.
-- `editing-documents` and `verifying-artifacts` — downstream consumers of the preserve-list.
+- `reading-artifacts` — required; never analyze an unread file. `brainstorming` — when several valid readings remain. `editing-documents` and `verifying-artifacts` — downstream consumers of the preserve-list.
 
 ## Fallback
 

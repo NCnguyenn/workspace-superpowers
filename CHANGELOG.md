@@ -1,6 +1,6 @@
 # Changelog
 
-Changes are listed newest first. The current package version is **0.1.4-beta**.
+Changes are listed newest first. The current package version is **0.1.5-beta**.
 Historical entries below were reconstructed from retained local package contents,
 the Git history, and the criterion workflow report. They describe implementation
 changes, not proof of publication or successful execution in PI-Desktop.
@@ -10,6 +10,19 @@ package manifests. They are build iterations, not distinct semantic-version
 releases. The changes after the existing 0.1.1 commit are being published as one
 consolidated source update; this changelog does not imply separate historical
 commits or tags for those builds.
+
+
+## 0.1.5-beta — 2026-09-23
+
+- An opening question about the parts, criteria, or structure of a newly supplied assignment guide is an intake map, not Simple Q&A. The map still names source locators, criterion obligations, failure constraints, unresolved contradictions, and only the decisions the source leaves open.
+- After a question card, summarize the selections in the user's current language and let the user confirm or correct them in chat. A card selection is not locked until that confirmation. The inspected host schema has no back parameter and the card has no Back control. This remains a host gap. The pack does not invent a Back button.
+- Add document `brainstorming`. It is not a software-design skill. The router, scoping, analysis, and planning call it when several valid document approaches remain, present 2–3 options, recommend one, and stop for the user's choice.
+- Chat explanations follow the language of the user's current message. Do not default that language to Vietnamese. Explain a necessary source term in the same sentence. Do not produce a line-by-line translation. Submission text stays in the locked submission language.
+- An outline previews about 30–40% of the section's detailed content. The complete draft adds the remaining 60–70%. Do not reverse the ratios or turn them into a word-count quota.
+- An analytical subsection that is only one lead sentence followed by a list is not finished prose. Develop it to the 4–5 sentence benchmark, not a rendered-line quota. Bullets and numbered lists remain allowed for parallel items, parameters, or sequence.
+- When citations are required, deliver in-text citations and a References list for that section. Do not invent page numbers, publishers, or unchecked bibliographic details. After a section, ask whether it is approved. Do not start the next section in the same turn.
+- Do not add metrics, a later-assignment deliverable such as a functional prototype, or scope details the user has not confirmed. Ask before using an unsettled detail.
+- Validation: **136 architecture and adapter tests passed** (`node tests/run.mjs`). See [release notes](docs/releases/0.1.5-beta.md). Native PI multi-turn acceptance remains **PENDING**.
 
 ## 0.1.4-beta — 2026-09-23
 
