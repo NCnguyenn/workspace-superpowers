@@ -42,6 +42,24 @@ cancels, or pauses it. If an unrelated substantial request has an unclear relati
 to the current work, handle its clear independent portion and ask only about the
 ambiguous ordering. Do not automatically restart an interview or erase context.
 
+## Intent-aware synchronization
+
+Classify the current message before changing a record. Keep question, comparison,
+brainstorming, hypothetical, clear decision, revision, change of order, new file,
+approval, praise, cancellation and unrelated question as distinct intents.
+Discussion is not adoption: a recommendation does not become adoption or
+approval, and praise does not become an approval, instruction or decision. A
+question, comparison, brainstorming option or hypothetical leaves the adopted
+decision unchanged. A clear decision or revision records its actual scope and
+effects; a change of order updates the next task without rejecting the overall
+outline or approved structure. A new file is inspected before its role is
+adopted, and a short approval applies only to an unambiguous pending version.
+
+Propagate synchronization only to affected items and dependencies. For each
+change origin (report, outline, or project), record its effect/impact and review
+only dependent claims, visuals, exports and decisions; do not rewrite unrelated
+content. A pending decision blocks only its dependent action.
+
 ## Compact checkpoint and handoff
 
 Project-folder tasks also use [project grounding](project-grounding.md). Carry

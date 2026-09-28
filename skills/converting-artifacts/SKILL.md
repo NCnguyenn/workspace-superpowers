@@ -41,6 +41,14 @@ Transforming an existing artifact into a different format (e.g. Markdown or DOCX
 
 ## Source priority and verification rules (§10, §14)
 
+For Word tables and figures apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
+Resolve the requested source/content revision (approved or working) and retain its
+approval status alongside the applicable rubric/template, preserving
+native Word tables (`w:tbl`), image relationships/media, inline drawings
+(`wp:inline`), captions, sources, order and relative placement. Conversion never
+authorizes a replacement asset or altered cell values. Inspect actual structure
+and render where supported; XML checks alone do not prove full document fidelity.
+
 * **Source priority rule:** Prefer editing the source over patching derived formats. Always convert from the highest-fidelity editable source artifact (e.g. DOCX, LaTeX, Markdown) rather than lossy intermediates.
 * **Post-conversion verification and stale check rule:** A check on an earlier generation is stale after another write or conversion. Converting an artifact produces a new artifact requiring independent inspection and verification. Command success is not artifact success.
 * **Separate verification:** An export is verified separately from its source: check both.

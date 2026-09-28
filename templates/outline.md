@@ -100,6 +100,14 @@ Repeat these fields for each proposed heading, keeping the original purpose, poi
 * **Planned Evidence:** [Source/locator and what it supports; mark missing or illustrative material explicitly]
 * **Planned Tables / Figures:** [List each proposed asset below, or write Not needed]
 
+Use [visual assets and Word fidelity](../references/visual-assets-and-word-fidelity.md).
+Show each available figure preview and supported Markdown table with caption and
+source under its outline point; specifications alone are insufficient when a
+preview is available. Extend the rows below only as needed with asset ID/revision,
+provenance, reuse conditions, preview limits and the applicable approval locator.
+List candidate sources separately as proposed; final References cover actual
+outline citations and figure/table attribution only.
+
 | Name / Type | Purpose | Intended position | Source / Data | Preparer | Status |
 |---|---|---|---|---|---|
 | [Figure/table name; diagram, screenshot, chart, or table] | [Criterion or point it explains/supports] | [Heading and placement relative to the argument] | [Confirmed source/data or specific missing input] | [User supplies / executing role creates] | [Available / requested / to create / blocked by missing evidence] |

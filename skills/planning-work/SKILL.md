@@ -16,6 +16,13 @@ for the one persistent write and `verifying-artifacts` for readback. Missing
 criteria allow a clearly provisional plan, not invented mandatory requirements.
 Project references attach only to items that need them, not every heading.
 
+Planning owns the whole-report plan and stable item mapping, but it does not
+persist the record itself. Carry the adopted `plan_file`, `work_id`, item IDs,
+target revision and applicable `context_file` to `editing-documents`. Revise only
+affected items and dependencies; preserve prior approvals by version and keep
+project-dependent work waiting when no authorized concrete project exists. A
+saved next action is a checkpoint, not permission to override the current prompt.
+
 Apply the [workflow continuity contract](../../references/workflow-continuity.md)
 to feedback, side questions, and late files. Update only affected outline sections;
 retain valid decisions and resolve new evidence before dependent planning.
@@ -57,6 +64,12 @@ automatically a chapter. Carry read-only survey permissions into any software
 handoff. Plan required evidence without authorizing new tests, builds or mutations.
 
 ## Criteria-based outline
+
+Use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md)
+for actual preview delivery and source/asset identity. Call `working-with-visuals`
+when an asset needs inspection or preparation, and `citing-sources` for required
+attribution. Return to the current outline; these dependencies do not authorize
+drafting. Keep candidate sources separate from the outline's actually cited list.
 
 Apply [outline structure and evidence readiness](../../references/outline-structure.md)
 before generating any headings. Check `source_title`, `source_locator` and

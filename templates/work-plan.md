@@ -6,6 +6,62 @@ inapplicable optional sections. Users supply answers in chat, never schema field
 Paths in the adopted record resolve relative to that record. Remove this template
 instruction and its package-relative link from the user's instantiated file.
 
+## Where We Are / Resume Here
+
+- Current position / section: <item ID/link; artifact and revision from its record>
+- Last checked checkpoint: <change reference and actual saved/inspected result; check IDs>
+- Next action: <concrete authorized action>
+- Completion condition: <observable result for the next action>
+- Read next: <only relevant source IDs, revisions and exact locators>
+- Blockers / pending decisions: <links to affected item gaps and question IDs, or none>
+- Temporary task / return point: <if applicable>
+
+## What This Work Must Deliver
+
+- Purpose and audience: <...>
+- Included / excluded scope: <...>
+- Authoritative brief / requirements: <path or locator>
+- Deliverable language: <applicable explicit instruction or English default>
+- Outputs / deadline / length / format / citation requirements: <known values or unknown>
+- Continuity: <argument, terminology, voice, numbering; adjacent prose read as needed>
+- Criteria availability: <supplied | not_provided | user_confirms_none | incomplete_read>
+- Scope / outline decisions: <existing record locator or decision IDs below>
+- Outline version: <version; approval applies only to recorded scope>
+
+## Whole-Report Outline and Progress
+
+Repeat the compact item block for every known section or milestone. This is the
+single item-progress register; distant work may remain provisional. Reference
+decision/check records rather than copying their status. The checkpoint above
+owns the selected next action; item blocks describe remaining work and dependencies.
+
+### <Item ID> — <actual heading or milestone>
+
+- Purpose / requirements: <purpose and criterion IDs>
+- Progress: <not started / in progress / review / revision needed / done>
+- Evidence readiness: <ready / gap / blocked / unknown; exact missing support>
+- Content locator: <artifact ID and heading/table; revision via Artifact Registry,
+  or exact chat delivery locator marked unsaved>
+- Remaining work / dependencies: <unfulfilled obligations and prerequisite item/question IDs>
+- Approval references: <decision IDs with revision/scope in the decision record, or pending>
+- Verification references: <check IDs with result/limits in the check record, or pending>
+- Project / asset references: <only relevant project, evidence, figure/table IDs, or none>
+
+## Completed Summaries
+
+- <Item ID/link> — <substantive argument or conclusion and inherited implications;
+  use the item record for content locators, status, decisions and check limits>
+
+## Upcoming Work and Dependencies
+
+- <Item ID/link> — <ordering rationale; read the item's remaining work and
+  dependencies, without maintaining a second task or status list>
+
+## Recent Changes and Unresolved Decisions
+
+- <timestamp / shared change reference> — <change, reason, affected items,
+  context/source/output revisions and saved/unsaved portions; question IDs>
+
 ## Identity and Authority
 
 ```yaml
@@ -14,33 +70,14 @@ work_id: <stable ID assigned by the agent>
 plan_file: <canonical path>
 task_root: <authorized task root>
 output_root: <authorized output location>
+context_file: <exact designated project-context.md path, or none>
+placement_authority: <report-workspace | explicitly authorized source-project path | none>
 plan_revision: 1
 lifecycle: active # active | paused | completed | canceled
 updated_at: <timestamp with timezone>
 tracking_consent: <user decision/reference and authorized record locations>
 authorized_operation: <requested action and stopping point>
 ```
-
-## Resume Here
-
-- Current target: <artifact ID, path, revision, item/heading>
-- Last checked checkpoint: <what was actually saved/inspected>
-- Next action: <concrete action within recorded authorization>
-- Completion condition: <observable result for that action>
-- Read next: <only relevant source IDs, revisions and exact locators>
-- Pending decisions / blocked actions: <question IDs or none>
-- Temporary task / return point: <if applicable>
-
-## Brief and Applicable Decisions
-
-- Objective / audience: <...>
-- Included / excluded scope: <...>
-- Deliverable language: <applicable explicit instruction or English default>
-- Outputs / deadline / length / format / citation requirements: <known values or unknown>
-- Continuity: <argument, terminology, voice, numbering; adjacent prose read as needed>
-- Criteria availability: <supplied | not_provided | user_confirms_none | incomplete_read>
-- Scope / outline decisions: <existing record locator or decision IDs below>
-- Outline version: <version; approval applies only to recorded scope>
 
 ## Source and Extraction Register
 
@@ -56,20 +93,9 @@ authorized_operation: <requested action and stopping point>
 
 Completeness: <verified coverage or specific unread/missing portions; do not call incomplete extraction exhaustive>
 
-## Outline / Work Items
-
-Keep stable item IDs when headings are renamed. Use outline entries for writing
-or milestones for other office work; do not invent chapters for unrelated tasks.
-
-- <Item ID — heading/milestone>
-  - Purpose / main points: <...>
-  - Criteria: <IDs or not applicable>
-  - Evidence / visuals: <locator and purpose, missing input, or not needed>
-  - Project references: <project ID + relevant claim/locator, or none>
-
-| Item ID | Status | Artifact revision / locator | Blocker / dependency | Next action | Check / acceptance references |
-|---|---|---|---|---|---|
-| <ID> | <todo/drafting/review/revision_needed/done> | <exact target> | <ID or none> | <action> | <actual checks and scoped decisions> |
+The whole-report item blocks above are the single item register. Keep stable item
+IDs when headings are renamed, and update their locator/dependency fields when work
+moves, merges or splits. Do not create a second item-status table.
 
 ## Project References (Optional)
 
@@ -84,14 +110,14 @@ record; do not duplicate its contents or treat a folder as a mandatory chapter.
 
 Repeat per deliverable family when work includes several outputs.
 
-| Artifact ID | Role | Path | Revision / fingerprint | Verification | Approval reference / scope |
+| Artifact ID | Role | Path | Revision / fingerprint | Verification references | Approval references |
 |---|---|---|---|---|---|
-| <ID> | working | <editable file> | <revision and actual hash if available> | <checks or missing> | <pending or existing decision> |
-| <ID> | approved | <preserved snapshot/version-history locator> | <exact approved revision> | <actual checks> | <decision ID and sections> |
+| <ID> | working | <editable file> | <revision and actual hash if available> | <check IDs or pending> | <decision IDs or pending> |
+| <ID> | approved | <preserved snapshot/version-history locator> | <exact approved revision> | <check IDs> | <decision IDs with scope in the decision record> |
 
-| Export ID / path | Export revision | Source artifact / revision | Verification | Currency relative to working / approved |
+| Export ID / path | Export revision | Source artifact / revision | Verification references | Currency relative to working / approved |
 |---|---|---|---|---|
-| <ID + path> | <actual identity> | <exact source> | <independent output checks> | <current/stale/not applicable for each baseline> |
+| <ID + path> | <actual identity> | <exact source> | <independent output check IDs> | <current/stale/not applicable for each baseline> |
 
 No approval yet: omit the approved row. No export: omit the export table.
 A populated path or a newer timestamp is not approval or verification.
@@ -109,10 +135,6 @@ A populated path or a newer timestamp is not approval or verification.
 | Check ID | Artifact / revision | Inspection performed / result | Limits / affected items |
 |---|---|---|---|
 | <ID> | <exact target> | <actual check, including failed checks> | <unverified portions or none> |
-
-## Recent Changes
-
-- <timestamp> — <saved change, reason, affected items and revisions>
 
 Keep this short. Archived decision/check records retain exact locators. This plan
 is derived state; originals and actual user decisions remain authoritative.

@@ -4,6 +4,17 @@ What verification means per type. No tool names. Companion to
 `artifact-inspection.md` under `analyzing-artifacts/references/`, which records
 what inspection yields for the same types.
 
+For DOCX tables/figures use [visual assets and Word fidelity](../../../references/visual-assets-and-word-fidelity.md):
+inspect native `w:tbl` table cells, image relationships/media and inline drawings,
+caption/source text and the selected revision's order and paragraph-relative
+placement. Keep three checks distinct: the selected revision, its working/approved
+status, and the requested order/placement for that revision. An authorized working
+revision may be exported and verified without fabricating or granting approval;
+new content approval is not a prerequisite for this export or verification. Compare
+template formatting and actual asset identity, accounting for authorized
+transformations. Render separately; XML checks alone do not prove layout or
+native PI-Desktop runtime behavior.
+
 | Artifact | Verification means |
 |---|---|
 | DOCX / DOC / ODT / RTF | File opens; sections, styles, tables and images intact; expected content present; page breaks and layout correct; references/TOC consistent; pages rendered where a render capability exists |

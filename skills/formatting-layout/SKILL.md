@@ -36,6 +36,12 @@ Formatting edits are strictly presentational. Never delete text, insert new clai
 
 ## Typographic and layout standards
 
+Apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
+Explicit instructions and applicable rubric/template requirements govern; preserve
+established formatting when no change is requested. The examples below are defaults,
+not universal standards. Do not force their font, spacing, borders, shading or
+caption styling over the template. Disclose material authoritative conflicts.
+
 * **Heading hierarchy:** Enforce strict monotonic nesting (Heading 1 → Heading 2 → Heading 3). Never skip heading levels for visual size.
 * **Body typography:** Consistent font family and proportional line spacing (e.g. 1.15–1.5x); use paragraph spacing after rather than repeated empty returns.
 * **Page setup:** Standard margins (e.g. 1 inch / 25.4mm); use clean section breaks when changing page orientation, header/footer sequences, or column counts.

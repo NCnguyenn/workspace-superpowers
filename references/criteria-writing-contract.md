@@ -8,6 +8,12 @@ changes, late files, pending questions, and resumption. Use the
 coherent continuation. These add no approval gates: reuse decisions that already
 apply and return only unresolved prerequisites to their owner.
 
+Use [visual assets and Word fidelity](visual-assets-and-word-fidelity.md) for
+conditional table/figure decisions, actual outline previews, source states and
+export checks. This preserves both analysis and detailed-outline approval and the
+existing post-draft review: deliver the complete section in chat, ask for approval,
+and wait before proceeding to the next section.
+
 For adopted durable work, [persistent work tracking](work-tracking.md) stores or
 references this same semantic state. Criterion IDs retain original source
 locators and extraction limits; each maps to affected work items. Tracking
@@ -45,6 +51,13 @@ An opening question about the parts, criteria, or structure of a newly supplied 
 | revise | Change existing content | Read the source and honor the requested changes and preserve-list. Bounded wording edits do not reopen approval gates. Material scope, argument, or structural changes require confirmation of affected scope/outline unless already authorized or waived. Stop after the requested revision and its review/verification. |
 
 An explicit new request can change the mode. Responding to a question, correcting an outline, or approving its structure must not be treated as permission for an unrelated operation. In an already authorized drafting task, outline approval permits continuation within its scope without asking again whether to write.
+
+For continuation or substantive revision, requirement analysis must state the
+continuity profile, preserve-list, adjacent argument, evidence needs, and any
+unresolved terminology/person/scenario conflict before asking for analysis review.
+When an outline applies, its first point must specify the bridge from the prior
+section at the actual insertion seam. These are handoff details inside the
+existing two-stop workflow, not a new user-facing approval gate.
 
 ## Criterion-level analysis and two stops
 
@@ -120,6 +133,7 @@ Record this analysis within `criteria` and `scope`, using `scope_status: pending
 - **Strictly grounded in approved analysis:** The outline must directly derive from the approved scope boundaries, keywords, and cognitive demands established in Stop 1. Every heading and point must fulfill an identified in-scope requirement.
 - **Hierarchical headings (H1, H2, H3):** Default to `1`, `1.x`, `1.x.x`, unless an alternative structure is explicitly requested. Heading 1 copies the original criterion/requirement title verbatim; Heading 2 contains main points and Heading 3 supporting subpoints. Preserve source identifiers, punctuation and language. Do not paraphrase or translate the protected title.
 - **Key arguments and content per heading:** Concrete bullet points detailing the specific points to be developed in each paragraph, never empty heading placeholders.
+- **Continuity bridge:** For a continuation, show the sentence-level or paragraph-level bridge from the immediately preceding content, the inherited project/terminology decisions, and the evidence that supports the new contribution. Do not outline a standalone mini-report.
 
 The outline shows about 30–40% of the detailed content the complete section will contain. The complete draft adds the remaining 60–70%. Do not reverse these ratios. Do not turn either ratio into a word-count quota or invent content to satisfy a ratio. If several valid organizations remain, invoke `brainstorming`, present 2–3 outlines, recommend one, and stop. The user chooses. Do not select one and write the section.
 - **Visuals and tables specification:** Explicitly specify any proposed tables (name, columns/criteria) or diagrams (name, process flow).
@@ -130,6 +144,11 @@ The outline shows about 30–40% of the detailed content the complete section wi
 - **Strictly grounded in approved outline:** Drafting must directly translate and expand the approved detailed outline heading by heading, point by point. It must maintain strict argument coherence and factual fidelity. Do not drift into unapproved topics, drop planned points, or invent unstated metrics. Do not add a deliverable that belongs to a later assignment, such as a functional prototype, or scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it.
 - **Full in-chat text delivery:** The complete drafted text for the section must be output directly into the chat response so the user can read, review, and evaluate it immediately. Do not hide text behind a file path or merely say "saved to file". Even if saved locally into the dedicated project folder for persistence, the complete drafted content must appear in chat.
 - **STOP after delivering the section draft:** Ask whether the delivered section is approved. Do not start the next section or analyze the next criterion in the same message. Ending at the last paragraph without that question is not a stop. When citations are required, include in-text citations and a References list. Do not invent page numbers, publishers, or unchecked bibliographic details.
+
+The existing prose contract's PEEL and lead-and-list checks remain qualitative:
+four to five sentences is a development benchmark, not a sentence-count quota.
+A complete short definition or transition may remain short; reviewers inspect
+argument completeness, evidence, and continuity rather than padding paragraphs.
 
 **Internal discipline — No process leakage or meta-announcements.**
 These stops and gates are strictly internal behavioral rules for the agent, not a script or labels to display to the user. Follow the natural collaborative style of **obra/superpowers**:

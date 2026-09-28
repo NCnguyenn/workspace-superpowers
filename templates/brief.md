@@ -21,6 +21,11 @@ Carry `plan_file`, `work_id`, current item and target revision into handoffs.
 * **Explicit Assumptions:** [Decisions made when user requested minimal interview]
 
 ## 4. Input Sources & Evidence
+
+Use [visual assets and Word fidelity](../references/visual-assets-and-word-fidelity.md)
+inside the existing evidence register where assets apply: stable asset ID, source
+and revision, provenance/reuse conditions, preview/approval scope and output locator.
+Add a hash or transformation record only when useful; no separate asset tracker.
 * **Primary Files:** [List of input files inspected]
 * **Reference Sources:** [Literature, datasets, or notes provided]
 * **Source Title / Locator:** [Verbatim criterion or requirement title and its actual source; no paraphrase]

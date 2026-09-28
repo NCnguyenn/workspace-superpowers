@@ -63,7 +63,7 @@ An existing plan does not turn an unrelated question into permission to resume.
 
 ### Project Directory and Work-Tracking Governance
 
-- **Dedicated common project folder created by AI:** When creating tracking files (`work-plan.md`, `progress.md`) and project deliverable files (e.g. `report.md`, `brief.md`), the AI must co-locate them into a dedicated common project directory created by the AI (e.g. `<Project_Name>/` such as `SmartFood_Delivery_Platform/`), rather than scattering files in the workspace root or using arbitrary paths.
+- **Dedicated common project folder created by AI:** When creating the canonical tracking file (`work-plan.md`) and project deliverable files (e.g. `report.md`, `brief.md`), the AI must co-locate them into a dedicated common project directory created by the AI (e.g. `<Project_Name>/` such as `SmartFood_Delivery_Platform/`), rather than scattering files in the workspace root or using arbitrary paths. `progress.md` is not a second tracker; progress belongs in the work plan's single item register.
 - **Mandatory user interview & approval before file creation:** Never create tracking or project files from unconfirmed assumptions. If a brief, rubric, or graded guide was supplied, the intake map comes first. Confirm only identity fields that map does not already settle, propose the folder in chat, and STOP before creating files.
 
 For ongoing Workspace work, apply the [workflow continuity contract](references/workflow-continuity.md).

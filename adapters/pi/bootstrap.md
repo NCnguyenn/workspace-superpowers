@@ -52,13 +52,56 @@ For an initial guide with no named section or narrower requested operation, the 
 
 An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. The first reply is still the intake map. A narrower operation is a named section, a specific comparison, or a continuation after that map already exists.
 
+For tracked Workspace work, carry the canonical `plan_file`, `work_id`, item ID,
+target revision and (when applicable) `context_file` through each specialist
+handoff. Apply `references/workflow-continuity.md` to classify the current
+message as discussion, comparison, brainstorming, hypothetical, decision,
+revision, order change, new file, approval, praise, cancellation or unrelated
+question; a recommendation, praise or saved next action is not approval. Apply
+`references/work-tracking.md` for the sole persistent writer, affected-item
+propagation, external/dirty-source checks and checkpoint recovery. A concrete
+project and setup authority are required before creating `project-context.md`;
+read-only inspection does not authorize project writes.
+
+External changes are detected only when the relevant sources are accessible and
+inspected. This route does not provide continuous/background monitoring, native
+PI execution or rendered-artifact verification without retained host traces and
+the actual artifact.
+
+When the user asks to read or remember a completed assignment or report, whether
+it is newly supplied or retained from an earlier turn, use the completed-work
+read-back route: call
+`reading-artifacts`, then `analyzing-artifacts`, and return a source-grounded
+read-back. This route does not use the intake map. When a completed assignment
+is already in context and a later guide is supplied, or both are supplied
+together, and the user asks what remains, use a narrow comparison: read the
+relevant earlier and later sources, then state what criteria are already present,
+what criteria are still missing, and any evidence-bound mismatch. Do not restart
+the guide intake.
+
+For continuation, substantive revision, or drafting from an earlier document,
+call `reading-artifacts`, then `analyzing-artifacts`, before the authorized
+writing stage. Apply the existing continuity profile in
+`references/document-continuity.md` from the actual package root. Inspect the
+requested document/version, insertion point, adjacent argument and dependencies;
+reuse unchanged inspected content still in context, but reread changed or
+uncertain sources. Carry the profile, preserve-list, evidence and unresolved
+conflicts into analysis, outline and drafting as applicable. Analysis explains
+the connection and evidence needs; an applicable detailed outline includes an
+explicit bridge from prior content. Reuse valid analysis and outline approvals.
+Reading or remembering a completed assignment alone remains the read-back route;
+it does not activate drafting, style enforcement or a new intake map.
+
 
 ## Match this message, then call that skill
 
-The current message selects the skill. Do not continue the previous skill because it was last. The user need not name a skill, say "use workspace-superpowers", or follow the last workflow step. After the router call, call the specialist whose description matches this message before doing its work. Load only that operation. A pending approval blocks only its dependent next stage.
+The current message selects the skill. Do not continue the previous skill because it was last. The user need not name a skill, say "use workspace-superpowers", or follow the last workflow step. After the router call, call the specialist whose description matches this message before doing its work. Load only that operation. A pending approval blocks only its dependent next stage. Apply the most specific row first; completed-work rows take precedence over the generic file-inspection row.
 
 | This message asks for | Call |
 |---|---|
+| Completed assignment or report to read or remember | `reading-artifacts`, then `analyzing-artifacts`; completed-work read-back, not the intake map |
+| Completed assignment retained or supplied plus a later guide, asking what remains | `reading-artifacts` for the relevant sources, then `analyzing-artifacts`; narrow comparison, not the intake map |
+| Continue, substantively revise, or draft from an earlier document | `reading-artifacts`, then `analyzing-artifacts` for the existing continuity profile; enter only the authorized analysis, outline, drafting or editing stage |
 | Open or inspect a supplied file | `reading-artifacts` |
 | Interpret, compare, or map a file already read | `analyzing-artifacts` |
 | Initial assignment guide, no named section or narrower operation | `reading-artifacts`, then `analyzing-artifacts`; intake map, not a setup interview |
@@ -94,6 +137,25 @@ its returned instructions before producing that stage's content:
 | Drafting or substantive prose revision | Call `Skill` with `id: "local.workspace-superpowers/drafting-prose"`, then the selected writing specialist: `id: "local.workspace-superpowers/writing-reports"` or `id: "local.workspace-superpowers/writing-academic-prose"`. |
 | Formal citations required or present | Call `Skill` with `id: "local.workspace-superpowers/citing-sources"` before delivering cited prose; complete the section reference list and audit both citation directions. |
 | Pre-delivery review | Call `Skill` with `id: "local.workspace-superpowers/reviewing-work"` after composing and before delivering substantial prose, including chat-only section drafts. Apply the prose and coherence review roles; fix blocking findings and recheck the changed passages before delivery. |
+
+For a substantive continuation or revision, compare the new text with the
+inspected continuity profile and adjacent passages before delivery. Preserve
+an established term for the same role or concept; do not collapse distinct roles,
+quotations, citations, references or examples merely because `teacher`,
+`lecturer` and `professor` appear together. Preserve the established narrative
+person and tense by function; surface conflicting authorial persons rather than
+silently converting an individual or group document. Inherit project/scenario
+identity, technical decisions, evidence status and limits; do not invent modules,
+technologies, metrics or results, or silently reconcile material source conflicts.
+Review register, paragraph development, presentation conventions and the actual
+seam between old and new content. Correct critical or important findings only
+within authorization, or report them as blockers; self-review does not authorize
+rewriting earlier sections. For file edits/exports, call `Skill` with
+`id: "local.workspace-superpowers/verifying-artifacts"` and reuse the existing
+Word visual fidelity checks and capability limits. Keep profile data separate
+from approval and verified evidence, using existing state rather than new
+tracking files for an isolated continuation. After delivering the complete draft
+in chat, request review and wait before the next section; this adds no new gate.
 
 For document outlines and subsequent prose, default to **1 → 1.x → 1.x.x**
 (Heading 1/2/3) unless the user explicitly requests another structure. Level 1
@@ -184,7 +246,9 @@ Preserve supported technical meaning and accurate quotations; do not fabricate
 facts to replace a cliché. Review against these rules before delivering the text.
 
 Apply **P1–P3** using PEEL (Point, Explanation, Evidence/Example, Link); benchmark
-analytical paragraphs at 4–5 developed sentences without filler. Replace casual
+analytical paragraphs at 4–5 developed sentences without filler. This is a
+qualitative guideline, not a rigid sentence-count quota: argument completeness,
+evidence, clarity and continuity take priority. Replace casual
 em-dash clause chaining with complete sentences or grammatical clauses; preserve
 accurate quotations, compound-word hyphens and ranges. Apply **L6**: core analytical
 report sections require at least **65%** discursive prose under the style guide's
@@ -192,7 +256,7 @@ counting scope and explicit-format exceptions. Explain objectives, scope boundar
 and constraint tradeoffs in prose; tables summarize that reasoning. Adjacent
 subsections must not consist solely of lists or tables with token introductions.
 
-An analytical subsection that is only one lead sentence followed by a list is not finished prose. Develop it to the P2 benchmark of 4–5 sentences, not a rendered-line quota. A short lead may remain short when it already carries its meaning. Bullets and numbered lists remain allowed for parallel items, parameters, or sequence. Do not abuse lists to avoid paragraphs. Do not convert "4–5 lines" into a line-count quota.
+An analytical subsection that is only one lead sentence followed by a list is not finished prose. Develop its argument using the P2 benchmark of 4–5 sentences as guidance, not a sentence-count or rendered-line quota. A short lead may remain short when it already carries its meaning. Bullets and numbered lists remain allowed for parallel items, parameters, or sequence. Do not abuse lists to avoid paragraphs. Do not convert "4–5 lines" into a line-count quota.
 
 If formal citations are required or present, invoke the citation specialist above
 and verify metadata from inspected sources. Before completing the turn, append a
@@ -237,7 +301,7 @@ Project Overview”, “Introduction”, or “P1”):
   * **Hierarchical headings (H1, H2, H3):** Default to `1`, `1.x`, `1.x.x`: verbatim source criterion/requirement title, main points, supporting subpoints. Follow an explicitly requested alternative structure; never silently edit the protected title.
   * **Key arguments and content per heading:** Concrete bullet points detailing specific points to be developed in each paragraph, never empty heading placeholders.
   * **Preview depth:** The outline shows about 30–40% of the detailed content. The complete draft adds the remaining 60–70%. Do not reverse these ratios, and do not turn them into a word-count quota.
-  * **Visuals & Tables specification:** Explicitly specify any proposed tables (name, columns/criteria) or diagrams (name, process flow).
+  * **Visuals & Tables specification:** Apply `references/visual-assets-and-word-fidelity.md`. For each applicable heading specify **Not needed** or a stable asset identity, type, purpose, position, source/data, provenance, reuse condition, preparer, revision and status. During outline delivery show available figure previews and supported Markdown table structure with captions/sources; disclose unavailable previews and never fabricate values, URLs or screenshots.
   * **STOP and await user approval in chat** before drafting paragraphs.
 - **Drafting & Full In-Chat Delivery:**
   * Only after detailed outline approval can paragraph drafting proceed.
@@ -284,7 +348,7 @@ Interact through natural collaborative dialogue in chat, following the philosoph
 
 ## Project Directory and Work-Tracking Governance
 
-- **Dedicated common project folder created by AI:** When creating tracking files (`work-plan.md`, `progress.md`) and project deliverable files (e.g. `report.md`, `brief.md`), the AI must co-locate them into a dedicated common project directory created by the AI (e.g. `<Project_Name>/` such as `SmartFood_Delivery_Platform/`), rather than scattering files in the workspace root or using disconnected paths.
+- **Dedicated common project folder created by AI:** When creating the canonical tracking file (`work-plan.md`) and project deliverable files (e.g. `report.md`, `brief.md`), the AI must co-locate them into a dedicated common project directory created by the AI (e.g. `<Project_Name>/` such as `SmartFood_Delivery_Platform/`), rather than scattering files in the workspace root or using disconnected paths. `progress.md` is not a second tracker; progress belongs in the work plan's single item register.
 - **Mandatory user interview & approval before file creation:** Never create tracking or project files from unconfirmed assumptions. If a brief, rubric, or graded guide was supplied, the intake map comes first. Confirm only identity fields that map does not already settle, propose the folder in chat, and STOP before creating files.
 
 On the first Workspace turn in a new chat and on continuation, locate the adopted

@@ -30,6 +30,12 @@ If no convention is established:
 
 ## Invariants & Honesty (§15)
 
+Apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md):
+distinguish proposed sources, verified sources and sources actually cited, including
+figure/table attribution. Check reuse/license conditions independently of citation
+formatting. Harvard is a fallback; the resolved style above controls. Outline
+candidate lists are labeled as proposed and are separate from final References.
+
 * **Zero fabrication:** Never invent author names, publication years, titles, DOIs, URLs, page numbers, publishers, or other bibliographic details that have not been checked against an inspected source.
 * **Claim–source correspondence:** An in-text citation must directly ground the sentence or paragraph it accompanies. Do not cite a source for claims it did not establish.
 * **Bidirectional completeness:** Every citation in the body text must match an entry in the reference list. Every entry in the reference list must be cited in the text.

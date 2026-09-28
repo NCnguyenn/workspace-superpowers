@@ -8,12 +8,23 @@ description: Use when any artifact has been created, edited, converted, or expor
 Re-open the real artifact before claiming success.
 
 For [persistent work tracking](../../references/work-tracking.md), verify the
-saved deliverable revision, then re-read the updated plan's paths, revision
+saved deliverable revision, then re-read the affected designated context when
+present and affected, followed by the updated plan's paths, revision
 identities, approval references and export-source relationships. Distinguish
 working from approved artifacts and unreadable/missing checks from completion.
 Report a saved artifact with failed checkpoint update as a split result. Return
 check evidence to the single editor; never invent an approval or repair content
 silently as part of verification.
+
+Reopen the actual artifact, the affected designated context (if any), and the
+adopted tracking record identified by `plan_file`, `work_id` and target revision.
+Confirm that changed links, affected items, shared change reference and approval
+scope agree, while retaining any incomplete or unsynchronized state for recovery.
+For a project survey handoff, also confirm the exact `context_file` and its
+`placement_authority`; an adopted context is updated only by the designated
+editor, then reopened and compared byte-for-byte with the saved content.
+Verification cannot establish background monitoring, native
+PI execution or rendered fidelity without the corresponding trace or artifact.
 
 For Word mathematics, enforce the [native Equation contract](../../references/math-in-documents.md).
 Record content, OMML structure, rendered appearance and native edit/save/reopen
@@ -23,6 +34,15 @@ Equation checks block Word completion even when generic opening/rendering passes
 Apply the [workflow continuity contract](../../references/workflow-continuity.md)
 when resuming or receiving changed files. Verify the current target version;
 do not reuse a check invalidated by an intervening write, insertion, or export.
+For a substantive continuation or revision, also apply the [document continuity
+contract](../../references/document-continuity.md): recheck the final text against
+the inspected profile and preserve/change lists at the actual seam. Compare role
+names and terminology, narrative person and tense by function, project/scenario
+identity and technical decisions, factual claims/metrics/evidence status and
+citations, paragraph/register and lead-and-list defects, headings/cross-references,
+and the transition between existing and new content. Return content findings to
+review/editor; do not silently rewrite unrelated earlier sections. Reuse the
+existing Word/table/image/caption/placement/render checks for DOCX work.
 
 ## When to use
 
@@ -33,6 +53,12 @@ Any created, edited, converted, or exported file is about to be reported as done
 No artifact was produced or changed.
 
 ## Procedure
+
+For tables and figures apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
+Compare actual table cells, media identity, captions, sources and placement with
+the requested revision, its approval status and rubric/template. Separate structural and rendered checks;
+missing checks remain unverified. Source/package or DOCX success cannot establish
+native PI-Desktop acceptance.
 
 1. Reopen or re-read the actual file.
 2. Compare against the deliverable contract and the preserve-list.

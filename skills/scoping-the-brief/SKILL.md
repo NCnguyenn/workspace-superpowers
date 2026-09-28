@@ -12,10 +12,19 @@ inspect an existing plan before asking for requirements already recorded. Offer
 agent-managed persistence when warranted, without requiring user file management.
 For an initial supplied brief, rubric, or graded guide with no named section or narrower requested operation, present the intake map before any setup question. On continuation, reuse the existing intake map; inspect changed inputs and focus on the named section instead of repeating intake. Confirm only identity fields that the source or map does not already settle, and only before creating tracking or project files. Do not ask grade target, report language, or which assignment when the source or language policy already settles them.
 
-An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. The first reply is still the intake map: source locators, each criterion mapped to the work the source requires, failure constraints, contradictions left unresolved, and only the decisions the source does not already settle. A narrower operation is a named section, a specific comparison, or a continuation that can reuse the existing intake map.
+An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. The first reply is still the intake map: source locators, each criterion mapped to the work the source requires, failure constraints, contradictions left unresolved, and only the decisions the source does not already settle. A narrower operation is a named section, a specific comparison, or a continuation that can reuse the existing intake map. When the user supplies a completed assignment/report, reading or remembering it requires a completed-assignment read-back; comparing it with a later guide identifies the remaining criteria and uses a narrow comparison, not a new intake map.
 Extract source requirements separately from proposals/unknowns; retain rubric
 coverage gaps. Tracking consent does not approve the scope or outline. Return
 the brief and decisions to planning/editor for the same adopted record.
+
+For tracked work, hand the existing `plan_file`, stable `work_id` and affected
+item/revision to planning or editing; do not create a second brief, tracker or
+project context. Setup consent, scope confirmation and content approval remain
+separate. Create or update `project-context.md` only when a concrete project,
+designated path and applicable setup authority exist; a description or read-only
+source survey alone is not implementation or runtime evidence. A new prompt may
+change only the affected scope, and a proposal or comparison never changes the
+adopted decision without a clear decision.
 
 Apply the [workflow continuity contract](../../references/workflow-continuity.md).
 Consume partial answers without discarding other context. If the user asks a side

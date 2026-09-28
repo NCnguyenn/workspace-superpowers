@@ -18,8 +18,9 @@ Operator script for an interactive shell (not a nested worker): `adapters/pi/wor
 
 | Capability | State | Evidence |
 |---|---|---|
-| Inspect-only folder survey | verified | `adapters/pi/project-survey.mjs` plus `adapters/pi/project-survey.test.mjs` (2/2). |
-| One derived Markdown context file | verified | Writes/updates `project-context.md` only. |
+| Inspect-only folder survey | verified | `adapters/pi/project-survey.mjs` plus `adapters/pi/project-survey.test.mjs` (15/15 executable behavior checks). No persistence path means read-only survey. |
+| Authorized derived Markdown context | verified | A new context defaults to an explicitly authorized report workspace; an adopted context requires the exact authorized path and placement metadata, returns an editor handoff, and is never overwritten by the raw survey writer. |
+| Checkpoint conflict and partial-save recovery | verified | `adapters/pi/tracking-checkpoint.mjs` checks the expected revision before every write, reopens/verifies bytes, skips absent/unaffected context, and returns exact saved/unsaved paths without creating a recovery tracker. |
 | Refuse tests/builds | verified | `runTests: true` and CLI `--run-tests` exit nonzero and write nothing. |
 | Skip vendor trees and secret-like files | verified | `node_modules` skipped; `config/secrets.example` contents not copied. |
 

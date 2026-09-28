@@ -3,11 +3,12 @@
 - **Mã tài liệu:** `test-issues/2026-09-23-ghi-nhan-van-de.md`
 - **Phiên bản:** `workspace-superpowers` v0.1.4-beta
 - **Nguồn:** Test Unit 7 SDLC, Assignment 1, Section 1, kịch bản SmartFood Delivery Platform
-- **Trạng thái:** Chỉ ghi nhận. Chưa sửa skill, reference, host UI, và chưa thêm skill mới.
+- **Trạng thái ban đầu (23/09/2026):** Chỉ ghi nhận. Chưa sửa skill, reference, host UI, và chưa thêm skill mới.
+- **Trạng thái hiện tại (27/09/2026):** Đã được rà soát lại và phê duyệt đóng ở cấp mã nguồn và gói cài đặt; xem quyết định cuối tài liệu.
 
 File này thay toàn bộ biên bản rời trong `test-issues/`.
 
-## Vấn đề còn mở
+## Các vấn đề được ghi nhận ở v0.1.4-beta
 
 ### 1. Prompt đầu chưa đủ Intake Map
 
@@ -112,10 +113,46 @@ Các chi tiết chưa được hỏi lại vẫn nằm trong dàn ý và bài vi
 - Prompt 6–7 có dàn ý tiếng Anh, lời dẫn theo ngôn ngữ người dùng, không dịch đối chiếu từng dòng, và dừng để hỏi duyệt.
 - Prompt 8 có toàn văn Section 1 trong chat, đúng tiếng Anh, không viết Section 2, không thấy tạo file.
 
-## Chưa làm
+## Trạng thái lịch sử trước v0.1.5-beta
 
 - Chưa thêm nút lùi.
 - Chưa tạo skill brainstorming cho tài liệu.
 - Chưa nối skill mới với `scoping-the-brief`, `analyzing-artifacts`, hoặc `planning-work`.
 - Chưa sửa quy tắc dàn ý, phân tích yêu cầu, đoạn văn, hoặc trích dẫn.
 - Chưa viết lại dàn ý hoặc Section 1.
+
+## Closure review — APPROVED
+
+- **Ngày phê duyệt:** 27/09/2026.
+- **Phạm vi:** Phê duyệt đóng bảy vấn đề của biên bản này ở cấp **source and package** của `workspace-superpowers` v0.1.5-beta.
+- **Ngoại lệ đã biết:** `Back control` thực sự vẫn là một **host limitation**. Gói skill không giả lập nút Back; lựa chọn trên thẻ chỉ được khóa sau khi AI tóm tắt và người dùng xác nhận hoặc sửa trong chat.
+- **Nghiệm thu hành vi:** `native PI-Desktop multi-turn acceptance` vẫn **PENDING** cho đến khi có transcript và native skill/tool trace của các ca đã định nghĩa. Trạng thái này không được đổi thành PASS từ kiểm thử chuỗi ký tự hoặc mô phỏng.
+- **Bản bài sinh viên:** Việc viết lại dàn ý hoặc Section 1 không thuộc thay đổi sản phẩm. Biên bản này phê duyệt các hàng rào workflow, không phê duyệt lại nội dung bài test cũ.
+
+### Đối chiếu bảy vấn đề
+
+| # | Kết luận duyệt | Bằng chứng triển khai |
+|---|---|---|
+| 1 | Đóng ở cấp source/package | Router, scoping và analysis phân loại câu hỏi mở đầu về một guide mới thành intake map; kiểm thử kiến trúc khóa các điểm gọi đọc và phân tích. |
+| 2 | Đóng bằng phương án thay thế trong phạm vi gói; giới hạn host được giữ rõ | `guided-questions`, `scoping-the-brief`, PI bootstrap và test liên quan đều yêu cầu tóm tắt lựa chọn, cho sửa trong chat và không khóa trước khi xác nhận. Không tuyên bố có nút Back. |
+| 3 | Đóng ở cấp source/package | Document `brainstorming` hiện tồn tại, có routing/integration với `using-workspace-superpowers`, `scoping-the-brief`, `analyzing-artifacts` và `planning-work`. Skill đưa 2–3 lựa chọn, nêu đánh đổi, đề xuất một lựa chọn nhưng không tự chọn, rồi trả kết quả về skill gọi nó. |
+| 4 | Đóng ở cấp source/package | Chính sách ngôn ngữ tách requirement analysis trong chat theo ngôn ngữ thông điệp hiện tại khỏi ngôn ngữ của deliverable; protocol nghiệm thu đã được đồng bộ để không chấm sai phân tích tiếng Việt. |
+| 5 | Đóng ở cấp source/package | Outline contract yêu cầu luận điểm cụ thể, bằng chứng/visual và mức xem trước 30–40%; phần hoàn chỉnh phát triển 60–70% còn lại mà không biến tỷ lệ thành quota từ. |
+| 6 | Đóng ở cấp source/package | Style và prose contracts phát hiện lead-and-list, dùng mốc 4–5 câu cho đoạn phân tích và cho phép danh sách khi nội dung thực sự song song; không dùng quota số dòng. |
+| 7 | Đóng ở cấp source/package | Drafting/citation workflow yêu cầu in-text citations và References khi áp dụng, cấm bịa metadata, giao toàn văn trong chat và dừng hỏi duyệt trước khi sang phần tiếp theo. |
+
+### Kiểm tra riêng cho brainstorming
+
+Brainstorming integration is wired vào đúng bốn điểm: router chọn operation, scoping gọi sau khi đủ bằng chứng nhưng còn nhiều cách hiểu, analysis gọi khi cùng nguồn cho nhiều cách đọc hợp lệ, và planning gọi khi còn nhiều cách tổ chức mục/bằng chứng/bảng/sơ đồ. Matching không kích hoạt khi thiếu bằng chứng, nguồn tự mâu thuẫn, người dùng đã chốt cách làm, yêu cầu chỉ là sửa cơ học, hoặc công việc là thiết kế phần mềm.
+
+Các ca nghiệm thu nhiều lượt `BR01`–`BR03` và `R15`–`R17` đã được định nghĩa để kiểm tra: đưa phương án rồi dừng; sửa lựa chọn thẻ và xác nhận; quay về đúng calling skill sau khi người dùng chọn; và bỏ qua brainstorming khi cách làm đã được chốt. Các ca này vẫn giữ `PENDING` cho đến khi chạy trên PI-Desktop thật.
+
+### Kết quả xác minh và quyết định cuối
+
+Kết quả được đọc trực tiếp sau lần sửa ngày 27/09/2026:
+
+- `node --test tests/architecture/real-world-refinements.test.mjs`: **14/14 PASS**, gồm ba kiểm thử hồi quy mới cho ngôn ngữ phân tích, nghiệm thu brainstorming nhiều lượt và phạm vi phê duyệt của biên bản này.
+- `node tests/run.mjs`: **139/139 PASS**, không có kiểm thử lỗi, bỏ qua hoặc bị hủy.
+- `python scripts/test-package-pi.py`: **5/5 PASS**, gồm khả năng đóng gói, tái lập bản build và thực thi routing trong runtime đã đóng gói.
+
+**Quyết định: APPROVED.** Bảy vấn đề được đóng ở cấp source/package của v0.1.5-beta. Brainstorming và matching được phê duyệt về kiến trúc, điều kiện kích hoạt, điểm quay về calling skill và protocol nghiệm thu. `BR01`–`BR03` cùng `R15`–`R17` vẫn mang trạng thái `PENDING` riêng cho lần replay trên PI-Desktop thật; trạng thái đó giới hạn tuyên bố về host runtime nhưng không làm mất hiệu lực phê duyệt source/package này.

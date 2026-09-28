@@ -8,7 +8,8 @@ description: Use when an existing artifact — document, PDF, deck, workbook, im
 Generic input-reading for any existing file. Does not interpret. Does not edit.
 
 For [persistent work tracking](../../references/work-tracking.md), read the
-adopted plan's identity and Resume Here before linked documents. Return the
+adopted plan's identity and `Where We Are / Resume Here` (or its adopted
+equivalent) before linked documents. Return the
 recorded target revision, decisions and source locators; inspect only relevant
 rubric/draft passages and adjacent context next. Follow the Word/PDF/text intake
 rules there, preserving original requirements, source revisions and unread/OCR
@@ -19,6 +20,13 @@ by the [Equation contract](../../references/math-in-documents.md). For a project
 folder or its description, follow the acquisition and read-only boundaries in
 [project grounding](../../references/project-grounding.md); return observed paths,
 versions and coverage to analysis. This reading skill does not write the context file.
+
+The extraction handoff carries `plan_file`, `work_id`, stable item ID, target
+artifact revision and the designated `context_file` when present. Return source
+locators, revision/dirty-state observations and coverage limits to analysis; do
+not update a tracker, infer approval or create a context record. When inspecting
+an external or uncommitted source, report only what was actually accessible and
+checked; an unread or unavailable region remains unverified.
 
 Apply the [workflow continuity contract](../../references/workflow-continuity.md)
 when files arrive at any stage. Reading is an input step that returns to the
@@ -44,6 +52,29 @@ following passages, definitions, and evidence requested by the
 [document continuity contract](../../references/document-continuity.md).
 Hand actual excerpts and coverage limits to analysis; do not infer style or facts
 from a filename or a short sample claimed to represent the whole document.
+
+For continuation or substantive revision, hand analysis the inspected
+document/version, requested insertion point or seam, source excerpts and locators
+that expose the argument relationship, project/scenario identity, actors, scope,
+technology and constraints, evidence and coverage limits, terminology and
+abbreviations, narrative person/register and presentation conventions, and any
+explicit user preserve-list, requested change-list, unresolved conflict or output
+language. This is an extraction handoff; analysis builds the continuity profile
+and preserve-list from those observations and decisions. Keep role terms
+source-grounded: do not collapse distinct roles or quoted/cited terminology.
+
+For a completed assignment/report read-back, hand analysis the exact identity
+from the artifact, its actual major headings, excerpts that expose each part's
+arguments and conclusions or limits, the scenario transitions and project thread, explicit
+criterion labels, and the inspected or unread coverage. Preserve names, dates,
+heading wording and projected-versus-observed language exactly as found. This
+is an extraction handoff, not permission for the reading step to interpret or
+rewrite the document.
+
+When a completed assignment is compared with a later guide, hand analysis the
+two source roles separately: the earlier document's actual headings/content and
+the later guide's actual criterion requirements. Do not hand off layout fields
+as if they were evidence of completed content.
 
 Reading raw bytes alone does not constitute understanding the artifact.
 

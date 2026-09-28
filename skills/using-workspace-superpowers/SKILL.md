@@ -82,6 +82,19 @@ adjacent excerpts through reading/analysis under the
 pass them through planning, drafting/editing, and review. The router coordinates
 this handoff; it does not inspect substantive file content itself.
 
+### Shared tracking handoff
+
+At every lifecycle handoff, apply the intent and propagation rules in
+[workflow continuity](../../references/workflow-continuity.md) and the identity,
+placement and checkpoint rules in [persistent work tracking](../../references/work-tracking.md).
+Carry the canonical `plan_file`, `work_id`, item ID, target revision and (when
+applicable) `context_file`; do not select a record by timestamp or create a
+parallel tracker. A project context is conditional on a concrete project and
+authorized setup, and a read-only survey does not authorize project writes.
+Readers, analyzers, planners, reviewers and agents return bounded findings or
+content; `editing-documents` is the persistent writer. The router must not imply
+continuous monitoring, native host execution or verification that has no trace.
+
 ## Responsibilities
 
 1. Verify whether the request belongs to Workspace Superpowers.
@@ -192,14 +205,14 @@ headings is not a detailed approval. Route to analysis and
 scope confirmation first; only after that decision route to the detailed outline
 and its separate approval. Preserve valid section-specific decisions/waivers.
 Never invent fictitious project names, roles, SLAs, budgets, or operational metrics.
-An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. Route it through `reading-artifacts` and `analyzing-artifacts`, then return the intake map. On continuation, reuse the existing intake map.
+An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. Route it through `reading-artifacts` and `analyzing-artifacts`, then return the intake map. On continuation, reuse the existing intake map. This guide-intake rule does not apply when the supplied document is a completed assignment/report: a request to read or remember it uses a completed-assignment read-back, and a request to compare it with a later guide identifies the remaining criteria and uses a narrow comparison.
 Chat explanations, questions, summaries, and requirement analysis follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence. Do not list unexplained keywords, and do not produce a line-by-line translation. Deliverables stay in the locked submission language without interleaved bilingual text.
 
 Use the [criteria-writing contract](../../references/criteria-writing-contract.md) for activation, state, and authorization. Infer `task_mode` from the requested operation, not the words “report” or “thesis”. For source files, invoke `reading-artifacts` and applicable `analyzing-artifacts` before scoping; chat criteria need no artificial file step.
 
 | task_mode | Route and stopping point |
 |---|---|
-| `analyze` | You MUST execute `invoke_skill("scoping-the-brief")` before criterion analysis, and `invoke_skill("analyzing-artifacts")` for substantive artifact interpretation as needed. If several valid interpretations remain after required evidence is sufficient, execute `invoke_skill("brainstorming")`, present 2–3 options, recommend one, and stop for the user's choice. Present interpretation, scope, and evidence needs. Stop at analysis. |
+| `analyze` | For completed-assignment read-back and remaining-criteria comparison, call `reading-artifacts` and `analyzing-artifacts` as required and skip new intake/scoping; these are source-grounded narrow operations. For criterion analysis, you MUST execute `invoke_skill("scoping-the-brief")` before analysis, and `invoke_skill("analyzing-artifacts")` for substantive artifact interpretation as needed. If several valid interpretations remain after required evidence is sufficient, execute `invoke_skill("brainstorming")`, present 2–3 options, recommend one, and stop for the user's choice. Present interpretation, scope, and evidence needs. Stop at analysis. |
 | `outline` | Invoke `scoping-the-brief` for unresolved scope prerequisites. You MUST execute `invoke_skill("planning-work")` before generating the detailed outline, including criterion, evidence, and visual mapping. If several valid organizations remain, execute `invoke_skill("brainstorming")`, present 2–3 outlines, recommend one, and stop. The user chooses. Do not select one and write. Stop at the outline and wait for feedback; outline approval alone does not authorize drafting. |
 | `draft` | Invoke `scoping-the-brief` / `planning-work` for unresolved contract prerequisites. You MUST physically execute `invoke_skill("drafting-prose")`; it must invoke the selected writing specialist(s). You are forbidden from outputting draft paragraphs without loading `drafting-prose`. Then execute `invoke_skill("reviewing-work")` before delivering the prose. Continue through applicable gates using recorded decisions. |
 | `revise` | Execute `invoke_skill("editing-documents")`, then `invoke_skill("drafting-prose")` for substantive report/thesis rewrites under the contract; it must invoke prose specialists, followed by `invoke_skill("reviewing-work")` before delivery. Typo or wording-only edits stay in `editing-documents`; format-only edits use `formatting-layout`, without writing approval gates. |

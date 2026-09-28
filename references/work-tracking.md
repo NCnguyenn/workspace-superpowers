@@ -6,6 +6,47 @@ lifecycle or the user's authorization. Users work through chat; agents maintain
 file identities, paths, checkpoints and version links. No new skill, role or
 background service is required.
 
+## Canonical records and ownership
+
+Use a canonical two-record model with at most two management Markdown records
+for a sustained deliverable: `work-plan.md` and, only when a concrete project
+is selected and authorized, `project-context.md`. The work plan owns the
+whole-report outline, progress, decisions, dependencies and next action. The
+project context owns project identity, project evidence and observed source
+state. The work plan must not become a project specification, and the project
+context must not become a progress tracker. Do not create or maintain a third,
+extra or parallel tracker, recovery log, migration register or private agent
+progress file.
+Do not create a third tracker or management record.
+
+Keep new records in the approved dedicated common project directory or other
+authorized output location by default. Record the context-file placement decision
+in the plan under [project grounding](project-grounding.md): an existing adopted
+context may remain in the source project when its exact path is explicitly
+authorized; an explicitly authorized new path there is also a valid override.
+Survey authority alone grants neither choice. Otherwise place a new context in
+the report workspace/authorized output beside the plan. Reuse the
+adopted or designated context identity and path; never create duplicate context
+records. Without a concrete project, maintain only the work plan and leave
+project-dependent items waiting; do not create an empty context.
+The `context_file` placement decision records report workspace versus source
+project placement and is reused on continuation.
+
+The work plan has one authoritative orientation/checkpoint section named
+`Where We Are / Resume Here` and one authoritative whole-report item register.
+Do not maintain separate editable copies of current position, next action,
+progress, readiness, approval or verification in the same plan. A compact
+summary or index may point to those sections, but it is derived and must not be
+treated as another source of state.
+The checkpoint owns the selected next action; item records own progress,
+readiness, remaining obligations and dependencies. Approval and verification
+references resolve to the existing decision/check records for exact revision,
+scope, result and limits rather than copying those facts into editable summaries.
+For an adopted legacy plan, read its equivalent checkpoint and item register;
+do not append the new sections alongside them. Consolidate only under existing
+editing authority, preserve decisions/history/user notes, and resolve any
+conflicting state before removing duplicates.
+
 ## Discovery and resumption
 
 On the first Workspace turn of a new chat, after context loss, and on a request
@@ -19,7 +60,8 @@ event or memory shared across inaccessible workspaces.
    the conventional `work/*/work-plan.md` locations within that task root.
    Do not search the whole disk, vendor trees or unrelated projects.
 2. Have [reading-artifacts](../skills/reading-artifacts/SKILL.md) read candidate
-   identity and Resume Here sections. Exclude templates, examples and archives.
+   identity and `Where We Are / Resume Here` sections (or the adopted equivalent).
+   Exclude templates, examples and archives.
    With one matching record appropriate to the request, read its brief, decisions
    and target item. Explicit resumption of a paused task preserves that record's
    identity and decisions and returns its lifecycle to active when persisted.
@@ -77,7 +119,7 @@ while a proposal is pending. Honor explicit no-write instructions.
 
 ### Mandatory user interview and approval before creating tracking or project files
 
-Never unilaterally or silently create tracking markdown files (`work-plan.md`, `progress.md`) or project deliverable files (e.g. `report.md`, `brief.md`, `outline.md`) behind the user's back with unconfirmed assumptions, fabricated milestones, or invented facts while the user has not verified them.
+Never unilaterally or silently create the canonical tracking markdown file (`work-plan.md`) or project deliverable files (e.g. `report.md`, `brief.md`, `outline.md`) behind the user's back with unconfirmed assumptions, fabricated milestones, or invented facts while the user has not verified them. `progress.md` is not a parallel tracker; progress is maintained in the work plan's authoritative item register.
 If a brief, rubric, or graded guide was supplied, the intake map comes first. This interview confirms only identity fields that map does not already settle. It does not replace the map or authorize skipping the read.
 
 Before creating any tracking or project file:
@@ -102,7 +144,8 @@ an approval status that could diverge. No extra brief/outline files are required
   relevant criteria/decisions and source excerpts. They return results, changed
   paths, checks and gaps; they do not create private plans or approve their work.
 - [verifying-artifacts](../skills/verifying-artifacts/SKILL.md) reinspects the
-  actual artifacts and updated plan. Review checks requirement coverage first.
+  actual artifacts, affected designated context and updated plan. Review checks
+  requirement coverage first.
 
 ### Dedicated common project folder created by AI
 
@@ -118,8 +161,9 @@ them merely to conform. If no startup-visible location records that path,
 offer a minimal locator in effective workspace instructions within authorized
 scope; without it, do not promise automatic rediscovery next chat.
 
-[Project grounding](project-grounding.md) still permits only one designated
-context write inside the source project. Put plans, extracts and outputs in an
+[Project grounding](project-grounding.md) permits a designated context write
+inside the source project only for its explicitly authorized exact path; new
+contexts default to the report workspace. Put plans, extracts and outputs in an
 authorized output location. A tracking proposal may include explicit permission
 for its named location inside the project; survey authority alone does not.
 No hidden permission to run builds, tests, migrations or reorganize the project.
@@ -207,6 +251,8 @@ ambiguous "OK" covering several candidates needs narrow clarification. Reuse
 clear existing decisions. Approval of a plan, a proposed edit, content acceptance
 and file verification are different facts. An export request approves none of
 them. Newly saved/verified r04 does not replace approved r03 automatically.
+Approval refers to the identified revision and scope; this is a revision-scoped
+approval and reopening an item preserves its previous approval for that revision.
 
 Resolve export source from the request: "approved version" means the approved
 revision within its recorded scope; "current draft" means working revision.
@@ -224,7 +270,9 @@ the output is missing or invalid, or the user explicitly requests regeneration.
 Record which path occurred; reuse never grants new content approval.
 
 Each work item records criterion IDs, status, exact artifact revision/locator,
-blockers, next action, evidence/check references and applicable approval scope.
+blockers, remaining obligations/dependencies, evidence/check references and
+applicable approval scope. Select the next action in the single checkpoint;
+do not copy it into a second editable task list.
 Separate content state (`todo`, `drafting`, `review`, `revision_needed`, `done`)
 from blockers, verification and acceptance. `done` means its agreed acceptance
 checks passed; required user acceptance must be recorded. A count of words or a
@@ -232,30 +280,71 @@ successful save is insufficient. Propagate material changes only to dependent
 items/decisions. Wording-only edits preserve substantive approval where meaning
 is unchanged, but still require checking the newly saved file.
 
+Progress and readiness are separate states. An approved but incomplete item with
+an evidence gap or verification limit is not complete or ready; approval does
+not replace a check. Approval is revision-scoped and scope-scoped, and must be
+checked against the recorded verification for that same version and scope.
+
+Stable item identities survive heading renames, reordering, merges and splits.
+Keep a mapping from old items to new locators (an old-to-new item/locator
+mapping) and keep the criterion ID mapping authoritative; preserve it when
+content moves.
+Reopening an item preserves its previous approval
+against its old revision; record the new revision and affected scope separately.
+Do not treat a newly saved or verified revision as replacing an approved
+revision automatically.
+
 ## Checkpoint transaction and handoff
 
 Update at meaningful boundaries: saved section, reviewed revision, received
 decision, new evidence, export or session handoff. Avoid a file for each turn.
 
-1. Re-read the active plan and compare its revision with the one used for this
-   operation. Resolve concurrent changes; do not replace another writer's state.
-2. Save the artifact; preserve applicable approved snapshots. Reopen and check
-   it, recording the actual result and any limitation. Failed or missing checks
-   remain explicit; do not mark the item complete.
-3. Have the designated editor update only affected plan entries and a concise
-   Resume Here checkpoint. Keep unrelated decisions and useful user notes.
-4. Re-read the saved plan and verify linked paths, revisions, source/export
-   relationships, required decision references and the next action. Use a safe
-   replacement/backup where supported; do not leave a partially written plan.
-5. Report the actual changed artifact, remaining gap and next action briefly.
+1. Read the adopted plan when present and the existing records affected by this operation.
+   Immediately before each write, compare the target's current revision with
+   the one read; reconcile concurrent changes and preserve unrelated user edits.
+   For a new authorized target, confirm the path is still unused. Use safe
+   replacement/backup where supported; do not overwrite another writer's state.
+2. Save the requested deliverable first when it is being edited; preserve
+   applicable approved snapshots. Reopen and check the actual saved revision.
+   Failed or missing checks remain explicit; do not mark the item complete.
+   For a decision/evidence-only checkpoint, inspect the relevant existing
+   deliverable without rewriting it. A survey-only operation skips this step
+   if no deliverable is involved.
+3. Update the designated project context only if it is affected and authorized,
+   then reopen and check its actual saved revision. If context is absent or
+   unaffected, skip this step; do not create a context to satisfy the transaction.
+   First context creation requires its own already-authorized placement/scope.
+4. Update the affected plan entries and the single `Where We Are / Resume Here`
+   checkpoint last. Link the context and plan with the same change reference
+   and source/output revision references; record actual saved results and gaps.
+   If context was not touched, record only the relevant artifact/decision change.
+   Do not inject tracking metadata into the authored report merely to link it.
+   A survey-only context update without an adopted plan skips this step; it
+   never creates a plan as a side effect.
+5. Re-read every artifact and record touched by the transaction. Verify paths,
+   revisions, the shared change reference, source/export relationships, required
+   decision references and next action agree. A mismatch is incomplete
+   synchronization and must be reconciled before claiming consistency.
+6. Report the actual changed artifact, remaining gap and next action briefly.
 
-If artifact saving succeeds but plan updating fails, report that split result.
-Next session reconciles the artifact and plan before continuing; absence of a
-checkpoint is not proof work was never performed. Never record a saved artifact
-when the write failed. One writer owns each checkpoint; reviewers return findings.
+If the deliverable write fails, do not advance its saved revision in either
+record. If the deliverable saves but context updating fails, report the partial
+save with exact saved and unsaved paths/revisions; do not mark the plan fully
+synchronized. If context updating succeeds but plan updating fails, preserve the
+saved deliverable/context and report that split result. The same rule applies
+when artifact saving succeeds but plan updating fails with no affected context.
+A still-writable existing plan may record the partial checkpoint, never an
+invented success. Next session reconciles the actual artifact, affected context
+and plan before continuing; absence of a checkpoint is not proof work was never
+performed. One writer owns each checkpoint; reviewers return findings.
 
-Keep Resume Here near the top: current target/revision, last checked checkpoint,
-next action and completion condition, required source locators, pending decisions,
-and any temporary task's return point. Move long historical logs to archives only
-when needed; preserve locators for approvals and never delete versions as routine
-cleanup. A paused/canceled/completed plan is not resumed by an unrelated question.
+This is a recoverable sequence for interrupted updates: identify the saved and
+unsaved parts, preserve unrelated changes, and reconcile them on resumption.
+Do not generate a third tracker or recovery file to hold the split result.
+
+Keep `Where We Are / Resume Here` near the top: current target/revision, last
+checked checkpoint, next action and completion condition, required source
+locators, pending decisions, and any temporary task's return point. Move long
+historical logs to archives only when needed; preserve locators for approvals and
+never delete versions as routine cleanup. A paused/canceled/completed plan is not
+resumed by an unrelated question.

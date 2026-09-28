@@ -5,6 +5,7 @@ What analysis should record per type. No tool names.
 | Artifact | Inspection yields |
 |---|---|
 | DOCX / DOC / ODT / RTF | Sections, styles, heading hierarchy, tables, images, captions, TOC, references, headers/footers, page setup |
+| Completed assignment/report read-back | Content reading: exact identity, headings, arguments, conclusions/limits, scenario/project transitions, explicit criterion labels, and inspected/unread coverage. Style, headers and page setup are inspected only when the user asks about layout or export. |
 | Word mathematics | Formula/source locators and content; native `oMath` / OMML versus images, plain Unicode or raw LaTeX; inline/display structure, numbering/references and inspection limits under [Equation fidelity](../../../references/math-in-documents.md) |
 | PDF | Page count, text layers, tables, figures, embedded fonts, scan vs text |
 | PPTX / PPT / ODP | Slide count, layouts, placeholders, themes, charts, images, notes |

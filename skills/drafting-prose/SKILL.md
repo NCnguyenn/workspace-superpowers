@@ -5,6 +5,12 @@ description: Use when writing new prose, continuing an existing report or thesis
 
 # Drafting Prose
 
+For approved tables and figures consume [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
+Carry the actual previews, supported tables, captions, attribution and evidence
+limits into full in-chat delivery. Load `working-with-visuals` for needed asset work
+and `citing-sources` for required citations. Retain the post-draft approval question
+and wait before starting the next section.
+
 Retain the approved heading hierarchy and protected source criterion titles
 under [outline structure and evidence readiness](../../references/outline-structure.md).
 Do not rename level-1 titles or flatten numbered main points/subpoints during
