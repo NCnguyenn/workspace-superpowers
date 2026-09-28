@@ -35,7 +35,7 @@ test('guided questions are discoverable at both gates and mapped in Pi', async (
   assert.match(guide, /preselected.*not.*approval/i);
   assert.match(guide, /unavailable/i);
   assert.match(await readUtf8('adapters/pi/tools.md'), /structured question/i);
-  assert.match(await readUtf8('adapters/pi/bootstrap.md'), /analysis.*approval/i);
+  assert.match(await readUtf8('references/criteria-writing-contract.md'), /analysis.*approval/i);
 });
 
 test('prose contract rejects list-shaped reasoning without banning useful lists', async () => {
@@ -74,7 +74,7 @@ test('Pi question examples match the inspected asktool schema and separate decis
   assert.match(examples[0].questions[0].question, /analysis/i);
   assert.match(examples[1].questions[0].question, /outline/i);
   assert.match(text, /Skip.*Decline all.*not.*approval/i);
-  assert.match(await readUtf8('adapters/pi/bootstrap.md'), /`asktool`/);
+  assert.match(await readUtf8('adapters/pi/tools.md'), /`asktool`/);
 });
 
 test('available structured questions must be invoked rather than imitated in prose', async () => {
@@ -84,7 +84,7 @@ test('available structured questions must be invoked rather than imitated in pro
 });
 
 test('later-assignment deliverables and unconfirmed scope are asked, not invented', async () => {
-  for (const file of ['references/criteria-writing-contract.md', 'skills/scoping-the-brief/SKILL.md', 'skills/drafting-prose/SKILL.md', 'adapters/pi/bootstrap.md']) {
+  for (const file of ['references/criteria-writing-contract.md', 'skills/scoping-the-brief/SKILL.md', 'skills/drafting-prose/SKILL.md']) {
     const text = await readUtf8(file);
     assert.match(text, /functional prototype/i, file);
     assert.match(text, /later assignment/i, file);

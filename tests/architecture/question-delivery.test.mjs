@@ -12,7 +12,7 @@ test('shared question guidance separates missing facts from approval of visible 
 });
 
 test('an unseen proposal is redisplayed without treating a visibility complaint as approval', async () => {
-  for (const file of ['references/guided-questions.md', 'adapters/pi/bootstrap.md']) {
+  for (const file of ['references/guided-questions.md']) {
     const text = await readUtf8(file);
     assert.match(text, /cannot see[\s\S]*redisplay[\s\S]*pending/i, file);
     assert.match(text, /not open another approval card/i, file);
@@ -20,10 +20,9 @@ test('an unseen proposal is redisplayed without treating a visibility complaint 
   }
 });
 
-test('visible delivery rules reach refreshed PI instructions and both approval owners', async () => {
-  const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
-  const managed = bootstrap.match(/<!-- workspace-superpowers:skill-invocation:begin -->([\s\S]*?)<!-- workspace-superpowers:skill-invocation:end -->/)[1];
-  assert.match(managed, /complete analysis or detailed outline[\s\S]*same chat response/i);
+test('visible delivery rules reach both approval owners', async () => {
+  const guidance = await readUtf8('references/guided-questions.md');
+  assert.match(guidance, /complete analysis or detailed outline[\s\S]*same chat response/i);
   for (const file of ['skills/scoping-the-brief/SKILL.md', 'skills/planning-work/SKILL.md', 'references/criteria-writing-contract.md']) {
     const text = await readUtf8(file);
     assert.match(text, /guided-questions\.md/);
@@ -39,7 +38,7 @@ test('operation routing permits dependencies without forcing a complete lifecycl
 });
 
 test('a supplied guide does not force repeated intake on a named-section continuation', async () => {
-  for (const file of ['skills/scoping-the-brief/SKILL.md', 'skills/analyzing-artifacts/SKILL.md', 'adapters/pi/bootstrap.md']) {
+  for (const file of ['skills/scoping-the-brief/SKILL.md', 'skills/analyzing-artifacts/SKILL.md']) {
     const text = await readUtf8(file);
     assert.match(text, /no named section/i, file);
     assert.match(text, /reuse.*intake map/i, file);
@@ -57,7 +56,7 @@ test('approval-card exceptions agree across shared and PI guidance', async () =>
 });
 
 test('a question card has no Back control and its answer is not locked', async () => {
-  for (const file of ['references/guided-questions.md', 'adapters/pi/tools.md', 'skills/scoping-the-brief/SKILL.md', 'adapters/pi/bootstrap.md']) {
+  for (const file of ['references/guided-questions.md', 'adapters/pi/tools.md', 'skills/scoping-the-brief/SKILL.md']) {
     const text = await readUtf8(file);
     assert.match(text, /no back parameter/i, file);
     assert.match(text, /host gap/i, file);

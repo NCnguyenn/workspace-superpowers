@@ -38,7 +38,6 @@ test('conversation language follows the current message and is not a Vietnamese 
     'references/language-policy.md',
     'skills/scoping-the-brief/SKILL.md',
     'skills/planning-work/SKILL.md',
-    'adapters/pi/bootstrap.md',
     'AGENTS.md',
   ]) {
     const text = await readUtf8(file);

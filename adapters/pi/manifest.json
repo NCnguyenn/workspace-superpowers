@@ -2,12 +2,26 @@
   "schemaVersion": 1,
   "id": "local.workspace-superpowers",
   "name": "Workspace Superpowers",
-  "version": "0.1.5-beta",
+  "version": "0.1.6-beta",
   "description": "Portable workflows for documents, research, citations, spreadsheets, presentations, and verified deliverables. Local dogfooding build.",
   "main": "main.js",
-  "permissions": ["agent.prompt.inject"],
-  "engines": { "piDesktop": ">=0.15.1" },
-  "categories": ["productivity"],
-  "activationEvents": ["onStartup"],
-  "safetyNotes": "Instruction skill pack. The lifecycle hook reads its bundled bootstrap and refreshes routing instructions in the agent prompt. It registers no tools, writes no files, and makes no network requests. Artifact work uses capabilities separately available to the agent."
+  "permissions": [
+    "agent.prompt.inject",
+    "agent.extension"
+  ],
+  "contributes": {
+    "agentExtensions": [
+      "adapters/pi/agent-extension.js"
+    ]
+  },
+  "engines": {
+    "piDesktop": ">=0.15.9"
+  },
+  "categories": [
+    "productivity"
+  ],
+  "activationEvents": [
+    "onStartup"
+  ],
+  "safetyNotes": "Instruction skill pack with a native agent extension. Requires agent.extension to read the bundled bootstrap and return prompt instructions before each agent turn. Registers no tools, writes no files, and makes no network requests. Artifact work uses capabilities separately available to the agent."
 }

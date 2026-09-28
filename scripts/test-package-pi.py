@@ -1,6 +1,7 @@
 """Integration checks for the real PI package, using only the standard library."""
 import json
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -12,7 +13,25 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class PackageTests(unittest.TestCase):
-    def test_packaged_runtime_enforces_skill_calls_with_legacy_project_instructions(self):
+    def test_oversized_description_is_rejected_instead_of_changing_skill_trigger(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp) / 'source'
+            source.mkdir()
+            for folder in ('skills', 'agents', 'references', 'templates', 'adapters'):
+                shutil.copytree(ROOT / folder, source / folder)
+            for name in ('package.json', 'LICENSE'):
+                shutil.copy2(ROOT / name, source / name)
+            target = source / 'skills/reading-artifacts/SKILL.md'
+            contents = target.read_text(encoding='utf-8')
+            target.write_text(re.sub(r'^description:.*$', 'description: Use when ' + 'x' * 240,
+                                     contents, count=1, flags=re.M), encoding='utf-8')
+            output = Path(temp) / 'output'
+            result = self.build(output, source)
+            self.assertNotEqual(result.returncode, 0, 'catalog triggers must not be silently truncated')
+            self.assertIn('description exceeds', result.stderr)
+            self.assertFalse(output.exists())
+
+    def test_packaged_native_extension_injects_thin_bootstrap_with_legacy_project_instructions(self):
         with tempfile.TemporaryDirectory() as temp:
             out = Path(temp) / 'output'
             result = self.build(out)
@@ -20,35 +39,25 @@ class PackageTests(unittest.TestCase):
             plugin = out / 'local.workspace-superpowers'
             probe = r'''
 const assert = require('node:assert/strict');
-const main = require(process.argv[1]);
+const extension = require(process.argv[1]);
 let hook;
-main({ on(event, handler) { hook = handler; } });
+extension({ on(event, handler) { assert.equal(event, 'before_agent_start'); hook = handler; } });
 (async () => {
   const result = await hook({ systemPrompt: '## Workspace Superpowers\nLegacy project rules.' });
-  assert.ok(result, 'legacy heading must not suppress stage instructions');
-  for (const name of ['scoping-the-brief', 'planning-work', 'drafting-prose', 'reviewing-work']) {
-    assert.ok(result.systemPrompt.includes(`id: "local.workspace-superpowers/${name}"`), name);
-  }
-  assert.ok(result.systemPrompt.includes('academic-writing-style.md'));
-  const routing = '<!-- workspace-superpowers:routing:begin -->';
-  assert.equal(result.systemPrompt.split(routing).length, 2);
-  assert.ok(result.systemPrompt.includes('id: "local.workspace-superpowers/using-workspace-superpowers"'));
-  assert.ok(result.systemPrompt.includes('every new message'));
-  assert.ok(result.systemPrompt.includes('1 → 1.x → 1.x.x'));
-  assert.ok(result.systemPrompt.includes('before preparing the outline'));
-  assert.ok(result.systemPrompt.includes('verbatim'));
-  // A current stage contract without routing reproduces the beta6 upgrade gap.
-  const stageOnly = result.systemPrompt.replace(
-    /<!-- workspace-superpowers:routing:begin -->[\s\S]*?<!-- workspace-superpowers:routing:end -->/,
-    '',
-  );
-  const upgraded = await hook({ systemPrompt: stageOnly });
-  assert.ok(upgraded, 'current stage rules must not suppress routing upgrade');
-  assert.equal(upgraded.systemPrompt.split(routing).length, 2);
+  assert.ok(result, 'legacy heading must not suppress current routing');
+  assert.ok(result.systemPrompt.startsWith('## Workspace Superpowers\nLegacy project rules.'));
+  assert.ok(result.systemPrompt.includes('local.workspace-superpowers/using-workspace-superpowers'));
+  assert.ok(result.systemPrompt.includes(process.argv[2]), 'actual package root must be present');
+  assert.ok(result.systemPrompt.length < 6000, 'workflow details load from specialists');
   assert.equal(await hook({ systemPrompt: result.systemPrompt }), undefined);
+  const afterCompact = await hook({ systemPrompt: 'Restored base after compact.' });
+  assert.ok(afterCompact.systemPrompt.includes('local.workspace-superpowers/using-workspace-superpowers'));
 })().catch(error => { console.error(error); process.exitCode = 1; });
 '''
-            runtime = subprocess.run(['node', '-e', probe, str(plugin / 'main.js')],
+            manifest = json.loads((plugin / 'manifest.json').read_text(encoding='utf-8'))
+            self.assertEqual(manifest['contributes']['agentExtensions'], ['adapters/pi/agent-extension.js'])
+            runtime = subprocess.run(['node', '-e', probe,
+                                      str(plugin / manifest['contributes']['agentExtensions'][0]), str(plugin)],
                                      text=True, capture_output=True, check=False)
             self.assertEqual(runtime.returncode, 0, runtime.stderr)
             drafting = (plugin / 'skills/drafting-prose/SKILL.md').read_text(encoding='utf-8')
@@ -87,7 +96,7 @@ main({ on(event, handler) { hook = handler; } });
                 manifest = json.loads(package.read('manifest.json'))
                 plugin = out / manifest['id']
                 self.assertEqual(manifest['id'], 'local.workspace-superpowers')
-                self.assertEqual(manifest['permissions'], ['agent.prompt.inject'])
+                self.assertEqual(manifest['permissions'], ['agent.prompt.inject', 'agent.extension'])
                 skills = manifest['contributes']['skills']
                 self.assertEqual(len(skills), 24)
                 self.assertEqual(len({s['id'] for s in skills}), 24)

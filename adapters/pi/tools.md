@@ -1,6 +1,7 @@
 # PI-Desktop capability mapping
 
-Target inspected: PI-Desktop 0.15.1 on Windows, 2026-09-21.
+Target for native prompt lifecycle: PI-Desktop 0.15.9 on Windows, 2026-09-28.
+Earlier tool/UI observations below retain their original version and date.
 
 The skill pack names conceptual operations. They are not executable tool names.
 
@@ -19,10 +20,13 @@ The skill pack names conceptual operations. They are not executable tool names.
 Plugin loading contributes a bounded catalog (up to 32 skills, 128 KiB per skill,
 240 characters per description). Full bodies load on demand. The plugin does not
 automatically execute its packaged `AGENTS.md` or register the role files.
-The enabled `before_agent_start` hook reads the bundled bootstrap and refreshes
-its routing and specialist-call blocks in the prompt. It does not itself invoke
-`Skill` or inspect tool traces. When hooks are unavailable, use the supplied
-bootstrap in the working project's instructions.
+The native agent extension declared in `contributes.agentExtensions` handles
+`before_agent_start` in the agent runtime and returns the thin bootstrap with the
+actual package root. It does not invoke `Skill` or inspect model traces. Plugin-
+process `pi.events.on` handlers cannot inject prompts: their returns are ignored.
+The runtime refreshes only its own managed block before each turn, including after
+compaction; existing project instructions remain intact. Without native extension
+permission, use the supplied bootstrap in the project's effective instructions.
 
 ## Persistent work plans
 
@@ -62,12 +66,15 @@ of `skills/<name>/SKILL.md` would produce the same `skill` ID for every entry on
 the inspected host. The generated adapter note is not written back to portable
 source skills.
 
-The only declared plugin permission is `agent.prompt.inject`. PI-Desktop's
-installer requires its own permission grant before the skills become available.
+The declared permissions are `agent.prompt.inject` for the catalog and
+`agent.extension` for the native runtime bootstrap. PI-Desktop owns both grants.
+The new extension permission is not granted by building or installing source files.
 
 ## Question UI capability boundary
 
-The installed PI-Desktop 0.15.1 runtime was inspected on 2026-09-21:
+The question-card UI evidence below comes from an installed PI-Desktop 0.15.1
+runtime inspected on 2026-09-21. It is legacy UI evidence, not the 0.15.9
+native prompt-lifecycle contract above:
 `agent-runtime/sidecar.js` defines `ASK_TOOL_NAME = "asktool"`, registers it as
 a core conversation tool, and emits `asktool_request`. The desktop renderer
 displays the **A few questions** card, selectable options, **Enter another answer**,

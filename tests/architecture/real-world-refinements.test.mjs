@@ -4,7 +4,7 @@ import { readUtf8 } from './helpers.mjs';
 
 // Structural guards for the runtime audit; these do not prove live PI behavior.
 test('evidence interviews are conditional on the current requirement, not every section', async () => {
-  for (const file of ['references/criteria-writing-contract.md', 'skills/scoping-the-brief/SKILL.md', 'adapters/pi/bootstrap.md']) {
+  for (const file of ['references/criteria-writing-contract.md', 'skills/scoping-the-brief/SKILL.md']) {
     const text = await readUtf8(file);
     assert.match(text, /not a mandatory interview for every section/i, file);
     assert.match(text, /later section/i, file);
@@ -56,25 +56,30 @@ test('citation completion triggers for existing citations and covers each delive
   assert.doesNotMatch(router, /researching-sources` and `citing-sources` only when the user explicitly requests/);
 });
 
-test('PI refreshable instructions carry evidence interview and draft checks', async () => {
-  const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
-  const managed = bootstrap.match(/<!-- workspace-superpowers:skill-invocation:begin -->([\s\S]*?)<!-- workspace-superpowers:skill-invocation:end -->/)[1];
-  for (const marker of ['asktool', 'PEEL', '65%', '## References', 'local.workspace-superpowers/citing-sources']) {
-    assert.ok(managed.includes(marker), `refreshable contract missing ${marker}`);
+test('evidence interview and draft checks have reachable owners', async () => {
+  const router = await readUtf8('skills/using-workspace-superpowers/SKILL.md');
+  assert.match(router, /scoping-the-brief/);
+  assert.match(router, /drafting-prose/);
+  const scoping = await readUtf8('skills/scoping-the-brief/SKILL.md');
+  assert.match(scoping, /before presenting the requirement analysis/i);
+  const toolMap = await readUtf8('adapters/pi/tools.md');
+  assert.match(toolMap, /asktool/);
+  assert.match(toolMap, /unavailable[\s\S]*chat/i);
+  const draft = await readUtf8('skills/drafting-prose/SKILL.md');
+  for (const marker of ['PEEL', '65%', '## References', 'citing-sources']) {
+    assert.ok(draft.includes(marker), `draft owner missing ${marker}`);
   }
-  assert.match(managed, /before (?:finalizing|presenting) the requirement analysis/i);
-  assert.match(managed, /unavailable[\s\S]*chat/i);
 });
 
  test('a supplied graded brief is mapped before any setup interview', async () => {
-   const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
-   const routing = bootstrap.match(/<!-- workspace-superpowers:routing:begin -->([\s\S]*?)<!-- workspace-superpowers:routing:end -->/)[1];
+   const routing = await readUtf8('skills/using-workspace-superpowers/SKILL.md');
    assert.match(routing, /intake map/i);
    assert.match(routing, /reading-artifacts/);
    assert.match(routing, /analyzing-artifacts/);
-   assert.match(routing, /glance table is not a complete read/i);
-   assert.match(routing, /Do not ask grade target/i);
-   assert.match(routing, /does not skip this supplied file/i);
+   const analysis = await readUtf8('skills/analyzing-artifacts/SKILL.md');
+   assert.match(analysis, /glance table is not coverage/i);
+   const reader = await readUtf8('skills/reading-artifacts/SKILL.md');
+   assert.match(reader, /Open the real artifact and read the representation appropriate to its type/i);
    const scoping = await readUtf8('skills/scoping-the-brief/SKILL.md');
    assert.match(scoping, /intake map/i);
    assert.doesNotMatch(scoping, /Interview the user in chat to confirm project title, core problem statement/);
@@ -83,21 +88,19 @@ test('PI refreshable instructions carry evidence interview and draft checks', as
  });
 
 test('a new message selects its own skill instead of resuming the last workflow', async () => {
-  const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
-  const routing = bootstrap.match(/<!-- workspace-superpowers:routing:begin -->([\s\S]*?)<!-- workspace-superpowers:routing:end -->/)[1];
-  assert.match(routing, /Match this message, then call that skill/);
-  assert.match(routing, /Do not start the writing pipeline/);
-  assert.match(routing, /side question/i);
-  const invocation = bootstrap.match(/<!-- workspace-superpowers:skill-invocation:begin -->([\s\S]*?)<!-- workspace-superpowers:skill-invocation:end -->/)[1];
-  assert.match(invocation, /not a sequence to start/);
+  const routing = await readUtf8('skills/using-workspace-superpowers/SKILL.md');
+  assert.match(routing, /current message selects the operation/i);
+  assert.match(routing, /do not start the writing pipeline/i);
+  assert.match(routing, /side questions/i);
+  const invocation = routing;
+  assert.match(invocation, /At every stage transition/i);
   const router = await readUtf8('skills/using-workspace-superpowers/SKILL.md');
   assert.match(router, /current message selects the operation/i);
   assert.match(router, /do not start the writing pipeline/i);
 });
 
 test('a one-percent skill match must be called before acting', async () => {
-  const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
-  const routing = bootstrap.match(/<!-- workspace-superpowers:routing:begin -->([\s\S]*?)<!-- workspace-superpowers:routing:end -->/)[1];
+  const routing = await readUtf8('skills/using-workspace-superpowers/SKILL.md');
   assert.match(routing, /1% chance/);
   assert.match(routing, /before any response, question, or file action/);
   assert.match(routing, /need not name the skill/);
@@ -112,7 +115,7 @@ test('a one-percent skill match must be called before acting', async () => {
 });
 
 test('an opening question about a supplied guide is an intake map, not simple Q&A', async () => {
-  for (const file of ['adapters/pi/bootstrap.md', 'skills/using-workspace-superpowers/SKILL.md', 'skills/analyzing-artifacts/SKILL.md', 'skills/scoping-the-brief/SKILL.md']) {
+  for (const file of ['skills/using-workspace-superpowers/SKILL.md', 'skills/analyzing-artifacts/SKILL.md', 'skills/scoping-the-brief/SKILL.md']) {
     const text = await readUtf8(file);
     assert.match(text, /not Simple Q&A/i, file);
     assert.match(text, /not a narrower operation/i, file);
@@ -180,16 +183,11 @@ test('a delivered section stops for approval and does not invent citation detail
 });
 
 test('completed assignments use a read-back route instead of assignment intake', async () => {
-  const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
-  const routing = bootstrap.match(/<!-- workspace-superpowers:routing:begin -->([\s\S]*?)<!-- workspace-superpowers:routing:end -->/)[1];
+  const routing = await readUtf8('skills/using-workspace-superpowers/SKILL.md');
   assert.match(routing, /completed assignment[\s\S]*read-back/i);
   assert.match(routing, /reading-artifacts[\s\S]*analyzing-artifacts/i);
-  assert.match(routing, /does not use the intake map/i);
-  assert.ok(
-    routing.indexOf('Completed assignment or report to read or remember')
-      < routing.indexOf('Open or inspect a supplied file'),
-    'specific completed-work route must precede generic file inspection',
-  );
+  assert.match(routing, /skip new intake\/scoping/i);
+  assert.match(routing, /completed-assignment read-back[\s\S]*skip new intake\/scoping/i);
 
   for (const file of ['skills/using-workspace-superpowers/SKILL.md', 'skills/scoping-the-brief/SKILL.md']) {
     const text = await readUtf8(file);

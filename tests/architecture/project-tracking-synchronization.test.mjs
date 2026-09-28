@@ -232,8 +232,12 @@ test('lifecycle consumers and PI routing expose the shared handoff without claim
     assert.match(source, /work-tracking\.md/i, `${file}: missing tracking handoff`);
     assert.match(source, /workflow-continuity\.md/i, `${file}: missing continuity handoff`);
   }
-  const bootstrap = await text('adapters/pi/bootstrap.md');
-  assert.match(bootstrap, /external changes|single[- ]writer|checkpoint.*recover/i);
+  const router = await text('skills/using-workspace-superpowers/SKILL.md');
+  assert.match(router, /checkpoint rules/i);
+  const tracking = await text(TRACKING);
+  assert.match(tracking, /external write/i);
+  assert.match(tracking, /One writer owns each checkpoint/i);
+  assert.match(tracking, /recoverable sequence for interrupted updates/i);
   const trial = await text('adapters/pi/routing-trial.md');
   assert.match(trial, /SYNC-0?1|project-tracking-synchronization|tracking synchronization/i);
   assert.match(trial, /PENDING|not (?:executed|verified)/i);

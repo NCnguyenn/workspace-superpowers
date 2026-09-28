@@ -112,7 +112,6 @@ test('template formatting takes precedence and missing capabilities stay explici
     'skills/converting-artifacts/SKILL.md',
     'skills/verifying-artifacts/SKILL.md',
     'adapters/pi/tools.md',
-    'adapters/pi/bootstrap.md',
   ]) {
     const text = await readUtf8(rel);
     assert.match(text, /template|rubric/i, rel);
@@ -124,10 +123,9 @@ test('template formatting takes precedence and missing capabilities stay explici
 });
 
 test('completed-work routes remain ahead of generic inspection and are not reopened', async () => {
-  const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
-  const route = bootstrap.match(/<!-- workspace-superpowers:routing:begin -->([\s\S]*?)<!-- workspace-superpowers:routing:end -->/)[1];
-  assert.ok(route.indexOf('Completed assignment or report to read or remember') < route.indexOf('Open or inspect a supplied file'));
-  assert.match(route, /narrow comparison[\s\S]*does not use the intake map/i);
+  const route = await readUtf8('skills/using-workspace-superpowers/SKILL.md');
+  assert.match(route, /completed-assignment read-back/i);
+  assert.match(route, /skip new intake\/scoping/i);
 
   const closure = await readUtf8('test-issues/2026-09-24-doc-bai-da-lam.md');
   assert.match(closure, /Closure review[^\n]*APPROVED/i);

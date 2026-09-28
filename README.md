@@ -2,50 +2,58 @@
 
 Workspace-domain counterpart of [obra/superpowers](https://github.com/obra/superpowers): an installable **skill pack** for knowledge and office work.
 
-It is not a coding framework, not a UI plugin, and not a document-generator library. After install, workspace prompts auto-route. Do not type `/skill`.
+It is not a coding framework, not a UI plugin, and not a document-generator library. The host exposes the catalog and bootstrap so the model can select skills from natural requests; a slash command is not required.
 
 Core lifecycle: **route → read supplied sources → analyze → scope when needed → plan → draft/edit → review → verify → package**. Stages follow the requested operation; without supplied sources, scope material unknowns first. Trivial file edits skip ceremony, never final file verification; chat-only content does not require a generated file.
 
-The root `package.json` `"pi"` field is distribution/discovery metadata only. Skills are portable and must not depend on it.
+The root `package.json` `"pi"` field registers the Pi CLI extension and skills. PI-Desktop uses its separate generated manifest. Portable skills depend on neither host API.
 
 Deliverables and repository content default to English, even when the user communicates in Vietnamese. Use another language only on an explicit user request. See the [language policy](references/language-policy.md).
 
 See the [design specification](docs/workspace-superpowers-design.md).
 See [the changelog](CHANGELOG.md) for changes by version, historical build labels,
-and validation limits through 0.1.5-beta.
+and validation limits through 0.1.6-beta.
 
 ## PI-Desktop local preview
 
-Build an installable package for PI-Desktop 0.15.1 with Python 3.9+ (standard
-library only):
+Build an installable package for PI-Desktop 0.15.9+ with Python 3.9+ (standard library only):
 
 ```powershell
 python scripts/test-package-pi.py
-python scripts/package-pi.py --out dist/pi-0.1.5-beta
+python scripts/package-pi.py --out dist/pi-orchestration-0.1.6-beta
 ```
 
-Install `dist/pi-0.1.5-beta/local.workspace-superpowers-0.1.5-beta.piplug` from PI-Desktop's
-Plugins page, or choose the generated `dist/pi-0.1.5-beta/local.workspace-superpowers`
-folder. Grant `agent.prompt.inject`, enable the plugin for the target project,
-and start a fresh chat. The lifecycle hook supplies the bootstrap where
-supported; otherwise merge it into the project's effective instructions.
-See [installation and rollback](adapters/pi/install.md),
-[bootstrap](adapters/pi/bootstrap.md), and
-[real-world trial prompts](adapters/pi/dogfood.md).
+Install the resulting `.piplug` through the Plugins page. Version 0.1.6-beta
+requires `agent.prompt.inject` for the skill catalog and **`agent.extension`** for
+native prompt injection. Review the permission change in PI-Desktop; building
+this repository never grants it. The plugin retains the same ID and 24 skill IDs.
+See [installation and rollback](adapters/pi/install.md) and
+[release notes](docs/releases/0.1.6-beta.md).
 
-The builder preserves all 24 skills and their supporting references, uses
-explicit skill IDs, and reopens the archive to check every byte. Existing output
-directories are refused; use `--out dist/pi-next` for another build. Package
-validation is separate from runtime acceptance in PI-Desktop. No global
-instructions, installed plugins, or user documents are modified by the build.
+The native extension returns a thin bootstrap from `before_agent_start` on every
+agent turn, including turns after compaction. Managed runtime blocks are refreshed
+without rewriting unrelated project instructions. The desktop plugin-process
+`pi.events.on` API is notification-only and is no longer used for injection.
+Domain rules remain in the router, specialists and shared references, loaded on
+demand. The router-per-Workspace-turn requirement is preserved.
 
-The hook refreshes per-message routing separately from stage-specific Skill
-calls. Old project instructions cannot suppress a missing routing block merely
-because the writing-stage block is current. Each Workspace turn loads the
-router before its operation; specialists are selected from the current request
-and retained context. Simple Q&A stays direct. The hook supplies instructions,
-not a deterministic skill executor. Use the [multi-turn routing trial](adapters/pi/routing-trial.md)
-to retain actual PI tool calls before claiming behavioral acceptance.
+The builder reopens every archive entry, rejects truncated skill descriptions,
+and refuses existing output directories. Building changes no installed plugin,
+global instructions, project scopes or user documents. Native loader/prompt
+boundary checks and [multi-turn model acceptance](adapters/pi/routing-trial.md)
+are separate evidence classes; neither a catalog entry nor a hook test proves
+that a model applied a skill correctly.
+
+## Pi CLI
+
+Install this repository as a local Pi package using your Pi CLI's package
+installation flow. Its `.pi/extensions/superpowers.ts` entry registers native
+skill discovery and a small per-turn system-prompt bootstrap. Session start and
+compaction invalidate its cached template. It resolves the package and router by
+absolute path, independent of the user's working directory. Pi CLI loads skills
+with native `read`; it must not invent PI-Desktop's namespaced `Skill` API.
+See [Pi CLI mapping](adapters/pi-cli/README.md). Native Pi CLI execution remains
+unverified; the event-boundary behavior has automated coverage.
 
 In 0.1.4-beta, a newly supplied guide without a named section receives a source-grounded
 intake map before setup questions. Interviews ask only material missing facts,

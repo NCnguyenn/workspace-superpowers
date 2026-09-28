@@ -1,6 +1,6 @@
 # Changelog
 
-Changes are listed newest first. The current package version is **0.1.5-beta**.
+Changes are listed newest first. The current package version is **0.1.6-beta**.
 Historical entries below were reconstructed from retained local package contents,
 the Git history, and the criterion workflow report. They describe implementation
 changes, not proof of publication or successful execution in PI-Desktop.
@@ -11,6 +11,23 @@ releases. The changes after the existing 0.1.1 commit are being published as one
 consolidated source update; this changelog does not imply separate historical
 commits or tags for those builds.
 
+
+## 0.1.6-beta — 2026-09-28
+
+- Replace the ineffective plugin-process notification hook with a native
+  PI-Desktop agent extension, requiring `agent.extension` as well as the existing
+  `agent.prompt.inject`. The tested host floor is now 0.15.9.
+- Keep only classification, native skill invocation and capability limits in the
+  always-on bootstrap. Workflow rules remain in their owning skills/references.
+- Preserve router calls on each Workspace turn, approval gates and all 24 skill
+  IDs. Refresh managed runtime blocks while retaining project instructions.
+- Add a separate Pi CLI extension with native discovery, absolute skill paths,
+  session/compaction cache reset and visible missing-bootstrap handling.
+- Reject catalog descriptions over the host limit instead of silently truncating
+  their triggers. Package the executable native extension and its helper.
+- Add executable adapter and native loader boundary checks. Full model/skill
+  acceptance and rendered Office fidelity are separate, unverified claims.
+  See [release notes](docs/releases/0.1.6-beta.md).
 
 ## 0.1.5-beta — 2026-09-23
 

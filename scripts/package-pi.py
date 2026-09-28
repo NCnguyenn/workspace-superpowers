@@ -47,8 +47,10 @@ def collect(root):
                     relative = (Path(directory) / name).relative_to(root).as_posix()
                     files[relative] = source_bytes(root, relative)
     manifest = json.loads(source_bytes(root, 'adapters/pi/manifest.json'))
-    if manifest['id'] != PLUGIN_ID or manifest['permissions'] != ['agent.prompt.inject']:
+    if manifest['id'] != PLUGIN_ID or manifest['permissions'] != ['agent.prompt.inject', 'agent.extension']:
         raise ValueError('Unexpected plugin identity or permissions')
+    if manifest.get('contributes') != {'agentExtensions': ['adapters/pi/agent-extension.js']}:
+        raise ValueError('Expected the native PI-Desktop bootstrap extension')
     manifest['version'] = version
     skills = []
     for path in sorted(files):
@@ -62,8 +64,11 @@ def collect(root):
         name = path.split('/')[1]
         if metadata.get('name', '').strip() != name or not metadata.get('description', '').strip():
             raise ValueError(f'Invalid skill metadata: {path}')
+        description = metadata['description'].strip().strip('\"\'')
+        if len(description.encode('utf-16-le')) // 2 > 240:
+            raise ValueError(f'Skill description exceeds 240 characters: {path}')
         skills.append({'id': name, 'path': path, 'name': name,
-                       'description': metadata['description'].strip().strip('\"\'')[:240]})
+                       'description': description})
         footer = (
             '\n\n## PI-Desktop adapter (generated)\n\n'
             f'This skill is `{PLUGIN_ID}/{name}`. Invoke sibling skills with the native '
@@ -79,11 +84,13 @@ def collect(root):
         raise ValueError('Expected a router and 1–32 skills')
     if any(len(files[s['path']]) > 128 * 1024 for s in skills):
         raise ValueError('Skill exceeds the PI-Desktop size limit')
-    manifest['contributes'] = {'skills': skills}
+    manifest['contributes']['skills'] = skills
     files['manifest.json'] = json_bytes(manifest)
     files['package.json'] = json_bytes({'name': 'workspace-superpowers-pi', 'version': version,
                                        'private': True, 'type': 'commonjs'})
     files['main.js'] = source_bytes(root, 'adapters/pi/main.cjs')
+    files['adapters/pi/agent-extension.js'] = source_bytes(root, 'adapters/pi/agent-extension.cjs')
+    files['adapters/pi/bootstrap-runtime.cjs'] = source_bytes(root, 'adapters/pi/bootstrap-runtime.cjs')
     # Small executable adapter helpers used by the native route boundaries.
     # Keep them beside main.js so the packaged runtime exercises the same code.
     for name in ('revision-export-route.cjs', 'tracking-checkpoint.mjs', 'project-survey.mjs'):

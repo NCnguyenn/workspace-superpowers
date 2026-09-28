@@ -168,30 +168,25 @@ test('PEEL and lead-and-list checks remain qualitative and scoped', async () => 
 });
 
 test('completed-work read-back does not trigger voice enforcement or continuation drafting', async () => {
-  const [reading, analysis, bootstrap] = await Promise.all([
+  const [reading, analysis, router] = await Promise.all([
     read('skills/reading-artifacts/SKILL.md'), read('skills/analyzing-artifacts/SKILL.md'),
-    readUtf8('adapters/pi/bootstrap.md'),
+    readUtf8('skills/using-workspace-superpowers/SKILL.md'),
   ]);
   assert.match(reading, /For a completed assignment\/report read-back.*actual major headings.*arguments and conclusions/i);
   assert.match(reading, /extraction handoff, not permission.*interpret or rewrite/i);
   assert.match(analysis, /completed-work read-back remains a read-back.*do not trigger drafting, style enforcement, or a new intake map merely because the artifact was read/i);
-  const routing = bootstrap.match(/<!-- workspace-superpowers:routing:begin -->([\s\S]*?)<!-- workspace-superpowers:routing:end -->/)?.[1];
-  assert.ok(routing, 'refreshable PI routing block missing');
-  const specific = routing.indexOf('Completed assignment or report to read or remember');
-  assert.ok(specific >= 0 && specific < routing.indexOf('Open or inspect a supplied file'),
-    'specific read-back must precede generic inspection');
-  assert.match(compact(routing), /read-back.*does not use the intake map/i);
+  assert.match(router, /completed-assignment read-back/i);
+  assert.match(router, /skip new intake\/scoping/i);
 });
 
-test('PI continuation exposes source inspection, profile, seam and approval reuse', async () => {
-  const bootstrap = await read('adapters/pi/bootstrap.md');
-  const route = bootstrap.match(/<!-- workspace-superpowers:routing:begin -->(.*?)<!-- workspace-superpowers:routing:end -->/)?.[1];
-  assert.ok(route, 'refreshable PI routing block missing');
+test('router continuation exposes source inspection, profile, seam and approval reuse', async () => {
+  const route = await read('skills/using-workspace-superpowers/SKILL.md');
   assert.match(route, /continuation|substantive revision/i);
-  assert.match(route, /continuity profile/i);
+  assert.match(route, /source-grounded profile/i);
   assert.match(route, /reading-artifacts.*analyzing-artifacts/i);
-  assert.match(route, /seam|bridge/i);
-  assert.match(route, /reuse.*approval|existing.*approval/i);
+  const continuity = await read('references/document-continuity.md');
+  assert.match(continuity, /seam|bridge/i);
+  assert.match(route, /Reuse still-applicable approvals/i);
 });
 
 test('synthetic corpus locators resolve to real source and candidate passages', async () => {

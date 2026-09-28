@@ -29,11 +29,12 @@ test('work tracking is reachable from startup, lifecycle, roles and existing con
   for (const file of files) {
     assert.ok(links(file, await readUtf8(file)).includes(target), `${file}: missing tracking handoff`);
   }
-  // Bootstrap is copied to arbitrary project roots; its locator must resolve
-  // inside the installed package, not from that destination's relative path.
+  // Startup resolves the router inside the installed package; the router owns
+  // the work-tracking handoff.
   const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
-  assert.ok(bootstrap.includes('`references/work-tracking.md`'));
-  assert.ok(bootstrap.includes('inside the installed'));
+  assert.ok(bootstrap.includes('skills/using-workspace-superpowers/SKILL.md'));
+  assert.ok(bootstrap.includes('actual package root'));
+  assert.ok(links('skills/using-workspace-superpowers/SKILL.md', await readUtf8('skills/using-workspace-superpowers/SKILL.md')).includes(target));
 });
 
 test('tracking guidance resolves to existing owners and the single plan template', async () => {

@@ -26,17 +26,16 @@ test('outline owners share title fidelity and evidence-before-outline requiremen
   assert.match(contract, /not.*(?:measured|empirical)/i);
 });
 
-test('PI refreshable stage contract carries heading and evidence prerequisites', async () => {
-  const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
-  const managed = bootstrap.match(/<!-- workspace-superpowers:skill-invocation:begin -->([\s\S]*?)<!-- workspace-superpowers:skill-invocation:end -->/)[1];
-  assert.match(managed, /1 → 1\.x → 1\.x\.x/);
+test('outline owner carries heading and evidence prerequisites', async () => {
+  const managed = await readUtf8('references/outline-structure.md');
+  assert.match(managed, /1\.x\.x/);
   assert.match(managed, /verbatim/);
-  assert.match(managed, /before (?:preparing|generating) the outline/);
+  assert.match(managed, /before preparing the outline/);
   assert.match(managed, /explicit.*(?:permission|authorization)/i);
 });
 
 test('outline depth previews content without becoming a word quota', async () => {
-  for (const file of ['references/outline-structure.md', 'skills/planning-work/SKILL.md', 'adapters/pi/bootstrap.md']) {
+  for (const file of ['references/outline-structure.md', 'skills/planning-work/SKILL.md']) {
     const text = await readUtf8(file);
     assert.match(text, /30–40%/, file);
     assert.match(text, /60–70%/, file);
