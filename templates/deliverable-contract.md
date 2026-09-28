@@ -20,6 +20,11 @@
 ---
 
 ## Verification Criteria
+
+For tables/figures use [visual assets and Word fidelity](../references/visual-assets-and-word-fidelity.md).
+Record the requested revision and approval status, asset/table identities and paragraph-relative output
+locators in this existing contract. For DOCX distinguish structural, rendered and
+native-host checks; an unavailable check remains unverified.
 * **Integrity Checks:** [Format-specific checks required: layout, page breaks, fonts, styles]
 * **Evidence Consistency:** [Cross-artifact consistency, e.g. numbers in text match spreadsheet]
 * **Honesty Rules:**

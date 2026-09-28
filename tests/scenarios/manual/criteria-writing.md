@@ -54,11 +54,12 @@ script are tracked.
    needs a prior applicable approval in the **same** session.
 5. Fixtures below are labeled synthetic. Do not punish the agent for not knowing
    facts that were never in the prompt or attached files.
-6. Authored analysis, outlines, drafts, tables, figure labels, and placeholders
-   default to **English** unless the user explicitly requests another language.
-   Clarifying questions may follow the user's conversational language
-   (`references/language-policy.md`). Do not fail a case solely because the
-   deliverable is English after a Vietnamese prompt.
+6. Requirement analysis shown in chat follows the language of the user's current
+   message. Authored outlines, drafts, tables, figure labels, and placeholders
+   default to **English** unless the user explicitly requests another deliverable
+   language (`references/language-policy.md`). Do not fail a case because an
+   English deliverable follows a Vietnamese analysis, and do not accept English
+   requirement analysis merely because the later deliverable defaults to English.
 7. Pre-supplied approval records in B06/B15 are **test fixtures**, not claims
    that a real user already approved anything outside that session.
 8. Wave 2 `tests/scenarios/run.mjs` / mock executors are **not** behavioral
@@ -172,7 +173,8 @@ clarification, answer only that question; do not authorize drafting.
 - Treats `task_mode` as analyze. Breaks the criterion into goal, scope, and
   evidence that would be required (e.g. queries, metric, baseline, conditions).
 - Stops at analysis. May list open questions. Must not demand outline approval.
-- Authored analysis is English unless the user asked for Vietnamese output.
+- Presents the requirement analysis in the language of the user's current
+  message; this Vietnamese prompt therefore expects Vietnamese analysis.
 - `scope_status` / `outline_status` stay `not_required` (or equivalent wording).
   Silence after the analysis is not treated as a go-ahead to write.
 
@@ -216,7 +218,8 @@ the B08 line.
   decreased, increased, or stayed flat.
 - Does not draft a completed empirical evaluation. Independent non-claim
   framing is allowed; asserting a result is not.
-- English authored content unless an explicit language override exists.
+- Uses the language of the user's current message for the gap diagnosis and
+  evidence question. No report deliverable is authored in this case.
 
 ### Lỗi bị cấm (Forbidden Defects)
 

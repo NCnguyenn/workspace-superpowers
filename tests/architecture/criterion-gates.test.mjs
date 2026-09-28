@@ -82,3 +82,24 @@ test('available structured questions must be invoked rather than imitated in pro
   assert.match(guide, /invoke it/i);
   assert.match(guide, /Writing choices in prose.*not.*substitute/i);
 });
+
+test('later-assignment deliverables and unconfirmed scope are asked, not invented', async () => {
+  for (const file of ['references/criteria-writing-contract.md', 'skills/scoping-the-brief/SKILL.md', 'skills/drafting-prose/SKILL.md', 'adapters/pi/bootstrap.md']) {
+    const text = await readUtf8(file);
+    assert.match(text, /functional prototype/i, file);
+    assert.match(text, /later assignment/i, file);
+    assert.match(text, /ask before using it/i, file);
+  }
+});
+
+test('analytical prose rejects a lead sentence plus a list without banning useful lists', async () => {
+  for (const file of ['references/academic-writing-style.md', 'skills/writing-academic-prose/SKILL.md', 'skills/writing-reports/SKILL.md', 'agents/reviewer-prose.md']) {
+    const text = await readUtf8(file);
+    assert.match(text, /one lead sentence/i, file);
+    assert.match(text, /rendered-line quota|line-count quota/i, file);
+    assert.match(text, /parallel items, parameters, or sequence/i, file);
+  }
+  const style = await readUtf8('references/academic-writing-style.md');
+  assert.match(style, /4–5 sentences/);
+  assert.doesNotMatch(style, /must contain exactly 4 lines/i);
+});

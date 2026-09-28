@@ -11,7 +11,7 @@ The skill pack names conceptual operations. They are not executable tool names.
 | Read/list/search | Use the currently exposed Read, Glob, Grep, or bounded shell tools. Resolve package-relative references from the originating instruction file. |
 | Write/edit | Use current Write/Edit or shell tools only within the user's authorized artifact scope. |
 | `delegate(role, context)` | If the current catalog exposes Task/subagents, inspect its schema and use a supported agent type with the bundled `agents/<role>.md` as task instructions. Bundled role files are not automatically registered agent types. Otherwise perform a separate review pass and disclose the absence of independent review. |
-| Render/export/inspect Office and PDF | Discover the current Office/PDF libraries, tools, or connectors before promising an output. Reopen exported artifacts. Skill installation supplies no renderer or Office application. |
+| Render/export/inspect Office and PDF | Discover the current Office/PDF libraries, tools, or connectors before promising an output. Reopen exported artifacts. For DOCX inspect native tables, image relationships/media, inline drawings, captions and placement when supported. Skill installation supplies no renderer or Office application; do not hard-code capability or treat XML checks alone as native host acceptance. |
 | Research/citations | Use an available search or retrieval tool when authorized by the request. Preserve source metadata and verification status. |
 | Guided questions / gate decisions | Ask naturally in chat for analysis/outline approval. Use native `asktool` for upfront evidence clarification, a requested card or a distinct branching choice; inspect `questions` with `question`, string `options`, and optional `multiSelect`. Offer one decision at a time. Follow [guided questions](../../references/guided-questions.md) and the mapping below. |
 | Mathematics | Follow the portable mathematics contracts; use a separately available computation or native Word Equation engine. The historical probes in the repository do not establish capability in a new session. |
@@ -35,13 +35,27 @@ Resolve adopted paths from the plan location and reuse available host read/write
 tools; users consent and review through chat rather than editing metadata.
 
 The development `project-survey.mjs` utility produces a raw inventory context and
-replaces its target. Do not use that whole-file writer to refresh an adopted
-context with identity or curated notes; use the reader/analyzer/editor handoff
-to preserve that record. The work plan references the designated context path.
+replaces its target. It may be used only against a disposable test fixture or a
+source-project path explicitly authorized for that exact write. Do not use that
+whole-file writer to create a new context path by assumption or refresh an
+adopted context with identity or curated notes; use the reader/analyzer/editor
+handoff to preserve the designated record. The work plan references the exact
+`context_file` path. Normal survey authority is read-only and does not grant
+repository writes.
 
 Word/PDF extraction must use an actually available reader/converter/OCR engine.
 Markdown extraction, if useful, remains derived and carries source-page/table
 locators and unread regions. Package installation supplies no extraction engine.
+
+For a missing preview or project screenshot, use ordinary chat to request a
+supported attachment/path or pasted input; a text question card cannot receive a
+file unless its schema explicitly supports attachments. If display, embedding,
+inspection or rendering is unavailable, report a limited handoff/unverified check;
+do not bypass host restrictions through downloads or alternate tools.
+
+Apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md)
+to supported DOCX operations. Preserve the requested revision, its approval status and authoritative
+template/rubric formatting; do not substitute universal font or caption defaults.
 
 Every generated skill has an explicit contribution ID. Relying on the basename
 of `skills/<name>/SKILL.md` would produce the same `skill` ID for every entry on
@@ -81,6 +95,8 @@ fallback when the tool is unavailable or disallowed, without bypassing the wait.
 The runtime supports up to 20 questions, requires nonempty question text and at
 least one string option, and deduplicates options. Use two or three useful
 choices; omit an “Other” option because the card already supplies free text.
+
+The inspected `asktool` schema has no back parameter. The card has no Back control. This is a host gap. Do not invent a Back button or claim one was added. After the card returns, summarize the selections and ask the user to confirm or correct them in chat. A card selection is not locked until the user confirms that summary.
 Use `multiSelect: false` for mutually exclusive approval decisions. Questions
 may follow the conversation language; these examples use English for clarity.
 
@@ -124,3 +140,12 @@ The user supplied a screenshot of this UI; source inspection establishes the
 mapping. No new live Pi call was executed from this Codex session. Record actual
 invocation/submission in the [criterion trial](criterion-trial.md) before claiming
 the packaged workflow displayed or processed the UI in a fresh Pi session.
+
+## Revision-aware DOCX adapter boundary
+
+The packaged helper `revision-export-route.cjs` preserves the exact requested
+revision ID and its working/approved status across revision resolution, export and
+verification. An adapter must return both identity fields from export and from
+verification; missing or changed values fail instead of falling back to another
+revision. The helper does not implement DOCX conversion or prove a native host run.
+R23 and VE cases remain pending until their separate native evidence is recorded.

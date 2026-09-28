@@ -8,6 +8,12 @@ changes, late files, pending questions, and resumption. Use the
 coherent continuation. These add no approval gates: reuse decisions that already
 apply and return only unresolved prerequisites to their owner.
 
+Use [visual assets and Word fidelity](visual-assets-and-word-fidelity.md) for
+conditional table/figure decisions, actual outline previews, source states and
+export checks. This preserves both analysis and detailed-outline approval and the
+existing post-draft review: deliver the complete section in chat, ask for approval,
+and wait before proceeding to the next section.
+
 For adopted durable work, [persistent work tracking](work-tracking.md) stores or
 references this same semantic state. Criterion IDs retain original source
 locators and extraction limits; each maps to affected work items. Tracking
@@ -19,9 +25,9 @@ unread rubric pages remain gaps even if the plan file was successfully saved.
 
 Follow the [language policy](language-policy.md): authored analysis, outlines, reports, and generated/exported artifacts default to English. Use Vietnamese or another language only when explicitly requested by the user for the relevant output. Conversation or source language does not override this default. Record the resolved language in scope and carry it through drafting, labels, placeholders, review, and export.
 
-Chat, Q&A, explanations, requirement analysis presentations, progress updates, and user questions must follow the user's conversational language (e.g. Vietnamese). Authored deliverables (the outline, report content, drafts, and exported files) default to English.
+Chat explanations, questions, summaries, and requirement analysis follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence. Do not list unexplained keywords, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language.
 
-**Strict negative constraint on interleaved bilingual text:** Never interleave bilingual translations or explanations directly into chat blocks (e.g. forbidden: dumping `[Bản tiếng Anh nộp bài]` alongside `[Giải thích tiếng Việt]`). The conversational discussion is in the user's language, and the authored deliverable is in English. Deliver clean, non-interleaved content.
+**Strict negative constraint on interleaved bilingual text:** Never interleave bilingual translations or explanations directly into chat blocks. The conversational discussion is in the user's current language, and the authored deliverable is in the locked submission language. Deliver clean, non-interleaved content.
 
 ## 1. Activation and stopping points
 
@@ -35,6 +41,8 @@ Apply when the requested operation concerns understanding criteria, outlining, d
 
 Do not activate approval gates merely because a prompt contains “report” or “thesis”. Typo fixes, wording-only edits, layout changes, format conversion, spreadsheet operations, and presentation operations keep their existing workflows. Omit the optional template sections entirely for those tasks.
 
+An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. Return the intake map before treating that question as answered: source locators, each criterion mapped to the work the source requires, failure constraints, contradictions left unresolved, and only the decisions the source does not already settle.
+
 | task_mode | Requested operation | Authorized output and stopping point |
 |---|---|---|
 | analyze | Read, interpret, or explain criteria and their scope | Return the interpretation, obligations, evidence needs, and material open questions. Stop at analysis. Do not produce an unsolicited outline or full draft, or demand approval for an unrequested next stage. |
@@ -43,6 +51,13 @@ Do not activate approval gates merely because a prompt contains “report” or 
 | revise | Change existing content | Read the source and honor the requested changes and preserve-list. Bounded wording edits do not reopen approval gates. Material scope, argument, or structural changes require confirmation of affected scope/outline unless already authorized or waived. Stop after the requested revision and its review/verification. |
 
 An explicit new request can change the mode. Responding to a question, correcting an outline, or approving its structure must not be treated as permission for an unrelated operation. In an already authorized drafting task, outline approval permits continuation within its scope without asking again whether to write.
+
+For continuation or substantive revision, requirement analysis must state the
+continuity profile, preserve-list, adjacent argument, evidence needs, and any
+unresolved terminology/person/scenario conflict before asking for analysis review.
+When an outline applies, its first point must specify the bridge from the prior
+section at the actual insertion seam. These are handoff details inside the
+existing two-stop workflow, not a new user-facing approval gate.
 
 ## Criterion-level analysis and two stops
 
@@ -85,12 +100,16 @@ values, not an established BTEC standard or verified benchmark. Record the actua
 answer and its scope; illustrative permission does not approve the analysis or
 outline and never turns assumptions into measured project facts.
 
+After a structured question card returns, summarize the selections in the language of the user's current message and ask the user to confirm or correct them in chat. A card selection is not locked until the user confirms that summary. The host question schema has no back parameter and the card has no Back control. This is a host gap. Do not invent a Back button. Do not invent numbers.
+
+If the required facts are sufficient and more than one valid interpretation remains, invoke `brainstorming` before presenting the requirement analysis. Present 2–3 options, recommend one, and stop. The user chooses. Do not select one and write the analysis. Do not use brainstorming to pick a side in an unresolved source contradiction.
+
 **First stop — requirement analysis.** Read the original criterion and relevant rubric context before proposing scope. Resolve the evidence interview above only when its conditions apply, then present a rigorous, clear analysis report directly in chat:
-- **Keywords, Command Verbs & Cognitive Depth:** Accurately extract the primary keywords and command verbs (e.g. identify, describe, explain, compare, contrast, analyze, evaluate, critique, justify). Explicitly classify and explain the cognitive demand:
-  * *Pure Theoretical / Descriptive (Lý thuyết nền tảng)*: describe, identify, explain principles. Focus on theoretical foundations, definitions, mechanisms, lifecycles, and phases without jumping into comparisons, critiques, or premature project decisions.
-  * *Comparative / Analytical (So sánh đối chiếu)*: compare, contrast, analyze differences/similarities. Establish formal multi-dimensional comparison criteria and comparison matrices.
-  * *Critical Evaluation / Critique (Đánh giá, phản biện)*: evaluate, assess, critique. Deliver a balanced examination of strengths, limitations, failure modes, risks, and real-world tradeoffs.
-  * *Justification / Decision Defense (Biện minh, bảo vệ lựa chọn)*: justify, defend. Provide rigorous arguments defending a chosen lifecycle, architecture, or methodology based on concrete project scenario constraints.
+- **Keywords, Command Verbs & Cognitive Depth:** Accurately extract the primary keywords and command verbs (e.g. identify, describe, explain, compare, contrast, analyze, evaluate, critique, justify). Explain each necessary term in the same sentence in the language of the user's current message. Do not dump an unexplained keyword list, and do not attach a parallel translation. Explicitly classify and explain the cognitive demand:
+  * *Pure theoretical / descriptive*: describe, identify, explain principles. Focus on theoretical foundations, definitions, mechanisms, lifecycles, and phases without jumping into comparisons, critiques, or premature project decisions.
+  * *Comparative / analytical*: compare, contrast, analyze differences and similarities. Establish formal multi-dimensional comparison criteria and comparison matrices.
+  * *Critical evaluation / critique*: evaluate, assess, critique. Deliver a balanced examination of strengths, limitations, failure modes, risks, and real-world tradeoffs.
+  * *Justification / decision defense*: justify, defend. Provide rigorous arguments defending a chosen lifecycle, architecture, or methodology based on concrete project scenario constraints.
 - **Scope Boundaries (In-Scope vs Out-of-Scope):** Detail exactly what must be covered and what must be excluded to prevent scope creep. Delineate strictly whether the section is pure general academic theory (e.g. general SDLC definitions) or applied to the project scenario (e.g. selecting a model for the project), preventing overlap with adjacent criteria (such as M1 or D1).
 - **Evidence, Diagrams & Citations:** Identify needed data, project facts, measurements, screenshots, examples, process diagrams, comparison tables and citations. Inspect available inputs. If required support is missing, use `scoping-the-brief` to ask the user for specific inputs before preparing the outline. Wait for inspected inputs or explicit scoped permission for illustrative data; neither analysis approval nor an unanswered question resolves the gap. Record `evidence_readiness` and any permission in the existing brief/conversation.
 - **STOP and await user approval in chat** before preparing any detailed outline.
@@ -114,14 +133,22 @@ Record this analysis within `criteria` and `scope`, using `scope_status: pending
 - **Strictly grounded in approved analysis:** The outline must directly derive from the approved scope boundaries, keywords, and cognitive demands established in Stop 1. Every heading and point must fulfill an identified in-scope requirement.
 - **Hierarchical headings (H1, H2, H3):** Default to `1`, `1.x`, `1.x.x`, unless an alternative structure is explicitly requested. Heading 1 copies the original criterion/requirement title verbatim; Heading 2 contains main points and Heading 3 supporting subpoints. Preserve source identifiers, punctuation and language. Do not paraphrase or translate the protected title.
 - **Key arguments and content per heading:** Concrete bullet points detailing the specific points to be developed in each paragraph, never empty heading placeholders.
+- **Continuity bridge:** For a continuation, show the sentence-level or paragraph-level bridge from the immediately preceding content, the inherited project/terminology decisions, and the evidence that supports the new contribution. Do not outline a standalone mini-report.
+
+The outline shows about 30–40% of the detailed content the complete section will contain. The complete draft adds the remaining 60–70%. Do not reverse these ratios. Do not turn either ratio into a word-count quota or invent content to satisfy a ratio. If several valid organizations remain, invoke `brainstorming`, present 2–3 outlines, recommend one, and stop. The user chooses. Do not select one and write the section.
 - **Visuals and tables specification:** Explicitly specify any proposed tables (name, columns/criteria) or diagrams (name, process flow).
 - **STOP and await user approval in chat** before drafting paragraphs.
 
 **Third stage — Drafting and in-chat delivery.**
 - Only after explicit outline approval can paragraph drafting proceed.
-- **Strictly grounded in approved outline:** Drafting must directly translate and expand the approved detailed outline heading by heading, point by point. It must maintain strict argument coherence and factual fidelity—never drifting into unapproved topics, dropping planned points, or inventing unstated metrics.
+- **Strictly grounded in approved outline:** Drafting must directly translate and expand the approved detailed outline heading by heading, point by point. It must maintain strict argument coherence and factual fidelity. Do not drift into unapproved topics, drop planned points, or invent unstated metrics. Do not add a deliverable that belongs to a later assignment, such as a functional prototype, or scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it.
 - **Full in-chat text delivery:** The complete drafted text for the section must be output directly into the chat response so the user can read, review, and evaluate it immediately. Do not hide text behind a file path or merely say "saved to file". Even if saved locally into the dedicated project folder for persistence, the complete drafted content must appear in chat.
-- **STOP after delivering the section draft:** Never automatically jump to the next section or start analyzing the next criterion in the same message. Wait for the user to review the drafted section and confirm or provide feedback before moving on.
+- **STOP after delivering the section draft:** Ask whether the delivered section is approved. Do not start the next section or analyze the next criterion in the same message. Ending at the last paragraph without that question is not a stop. When citations are required, include in-text citations and a References list. Do not invent page numbers, publishers, or unchecked bibliographic details.
+
+The existing prose contract's PEEL and lead-and-list checks remain qualitative:
+four to five sentences is a development benchmark, not a sentence-count quota.
+A complete short definition or transition may remain short; reviewers inspect
+argument completeness, evidence, and continuity rather than padding paragraphs.
 
 **Internal discipline — No process leakage or meta-announcements.**
 These stops and gates are strictly internal behavioral rules for the agent, not a script or labels to display to the user. Follow the natural collaborative style of **obra/superpowers**:

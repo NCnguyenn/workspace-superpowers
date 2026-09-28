@@ -30,10 +30,16 @@ If no convention is established:
 
 ## Invariants & Honesty (§15)
 
-* **Zero fabrication:** Never invent author names, publication years, titles, DOIs, URLs, or page numbers.
+Apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md):
+distinguish proposed sources, verified sources and sources actually cited, including
+figure/table attribution. Check reuse/license conditions independently of citation
+formatting. Harvard is a fallback; the resolved style above controls. Outline
+candidate lists are labeled as proposed and are separate from final References.
+
+* **Zero fabrication:** Never invent author names, publication years, titles, DOIs, URLs, page numbers, publishers, or other bibliographic details that have not been checked against an inspected source.
 * **Claim–source correspondence:** An in-text citation must directly ground the sentence or paragraph it accompanies. Do not cite a source for claims it did not establish.
 * **Bidirectional completeness:** Every citation in the body text must match an entry in the reference list. Every entry in the reference list must be cited in the text.
-* **Each delivery is self-contained:** Every cited section delivered in chat must end with `## References` (or the required style's equivalent), even when only one section is drafted this turn. Any saved report must also have its reference list updated before handoff. Never defer references to the final chapter or substitute a promise to add them later.
+* **Each delivery is self-contained:** Every cited section delivered in chat must end with `## References` (or the required style's equivalent), even when only one section is drafted this turn. Any saved report must also have its reference list updated before handoff. Never defer references to the final chapter or substitute a promise to add them later. Do not start the next section in the same turn.
 * **Verified metadata:** Check author, year, title, edition, publisher and other style-required fields against inspected sources. Do not copy a sample bibliography as verified evidence or guess missing fields to complete an entry.
 
 ## Procedure

@@ -40,3 +40,16 @@ test('every SKILL.md has Use-when description and valid frontmatter', async (t) 
     );
   }
 });
+
+test('document brainstorming is a catalog skill and not a software-design copy', async () => {
+  const text = await readUtf8('skills/brainstorming/SKILL.md');
+  const parsed = parseFrontmatter(text);
+  assert.equal(parsed.fm.name, 'brainstorming');
+  assert.match(parsed.fm.description, /^Use when/);
+  assert.match(text, /not a software-design skill/i);
+  assert.match(text, /do not copy/i);
+  assert.doesNotMatch(text, /implementation plan/i);
+  for (const name of ['using-workspace-superpowers', 'scoping-the-brief', 'analyzing-artifacts', 'planning-work']) {
+    assert.match(text, new RegExp(name), name);
+  }
+});

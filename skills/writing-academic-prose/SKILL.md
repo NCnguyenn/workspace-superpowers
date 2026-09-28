@@ -30,8 +30,8 @@ Cite these rule IDs in self-check and in review findings. Do not force every par
 
 | Group | IDs | Obligation |
 |---|---|---|
-| Paragraphs | P1–P3 | Use PEEL (Point, Explanation, Evidence/Example, Link); develop analytical paragraphs to a 4–5-sentence benchmark without filler. Inspect short stubs for missing support or interpretation. |
-| Lists | L1–L6 | Core analytical sections need at least 65% discursive prose under L6's counting scope and format exceptions. Bullets hold atomic parallel items; tables accompany reasoning. Explain objectives, scope and constraint tradeoffs in paragraphs. |
+| Paragraphs | P1–P3 | Use PEEL (Point, Explanation, Evidence/Example, Link); develop analytical paragraphs to a 4–5-sentence benchmark without filler. An analytical subsection that is only one lead sentence followed by a list is not finished prose. Do not apply a rendered-line quota. Inspect short stubs for missing support or interpretation. |
+| Lists | L1–L6 | Core analytical sections need at least 65% discursive prose under L6's counting scope and format exceptions. Bullets and numbered lists remain allowed for parallel items, parameters, or sequence. Explain objectives, scope and constraint tradeoffs in paragraphs. Do not abuse lists to avoid paragraphs. |
 | Register | R1–R4 | Name subject, action, conditions, and result; stay in scope; calibrate certainty; use plain academic language. |
 | Evidence | E1–E4 | Trace claims; handle gaps through the contract; synthesize; reconcile numbers with source artifacts. |
 | Cadence | S1–S3 | Vary sentence shape by function; replace casual dash-chained definitions with complete sentences or grammatical clauses. Word-count bands and burstiness scores are not acceptance tests. |
@@ -42,9 +42,9 @@ Cite these rule IDs in self-check and in review findings. Do not force every par
 
 ## Prerequisite and anti-hallucination constraints
 
-Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"), consulting roles, business context, budgets, SLAs, latency targets, or operational metrics without explicit confirmation. If unstated, ask the user or mark as a blocking gap.
+Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"), consulting roles, business context, budgets, SLAs, latency targets, or operational metrics without explicit confirmation. Do not add a deliverable that belongs to a later assignment, such as a functional prototype, or scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it. If unstated, ask the user or mark as a blocking gap.
 
-Conversational interaction follows the user's conversational language (e.g. Vietnamese); authored deliverables default to English without dumping interleaved bilingual text in chat.
+Chat explanations follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language without interleaved bilingual text.
 
 ## Procedure
 

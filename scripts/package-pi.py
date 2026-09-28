@@ -84,6 +84,12 @@ def collect(root):
     files['package.json'] = json_bytes({'name': 'workspace-superpowers-pi', 'version': version,
                                        'private': True, 'type': 'commonjs'})
     files['main.js'] = source_bytes(root, 'adapters/pi/main.cjs')
+    # Small executable adapter helpers used by the native route boundaries.
+    # Keep them beside main.js so the packaged runtime exercises the same code.
+    for name in ('revision-export-route.cjs', 'tracking-checkpoint.mjs', 'project-survey.mjs'):
+        candidate = root / 'adapters' / 'pi' / name
+        if candidate.is_file():
+            files[f'adapters/pi/{name}'] = source_bytes(root, f'adapters/pi/{name}')
     files['LICENSE'] = source_bytes(root, 'LICENSE')
     for name in ('bootstrap.md', 'tools.md', 'install.md', 'dogfood.md', 'criterion-trial.md', 'routing-trial.md'):
         files[f'adapters/pi/{name}'] = source_bytes(root, f'adapters/pi/{name}')

@@ -1,0 +1,437 @@
+{
+  "schemaVersion": 1,
+  "evidenceClass": "synthetic-contract-fixtures",
+  "nativeStatus": "PENDING",
+  "sources": [
+    "source-report.md",
+    "group-report.md",
+    "conflicting-note.md"
+  ],
+  "cases": [
+    {
+      "id": "DC01",
+      "topic": "same-role substitution",
+      "operation": "review",
+      "request": "Review only the role name in this proposed sentence. Preserve the source file.",
+      "candidate": "The professor Mei will assess the planned evaluation.",
+      "expected": [
+        {
+          "rule": "terminology",
+          "disposition": "flag",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "1 Project context and terminology",
+              "quote": "Lecturer Mei assesses this report at College North."
+            }
+          ],
+          "candidateEvidence": "The professor Mei",
+          "explanation": "Mei is the same assessor whom the source calls Lecturer Mei; changing the title is unsupported."
+        }
+      ]
+    },
+    {
+      "id": "DC02",
+      "topic": "adopted role retained",
+      "operation": "review",
+      "request": "Review only the role name in this proposed sentence. Preserve the source file.",
+      "candidate": "The lecturer Mei will assess the planned evaluation.",
+      "expected": [
+        {
+          "rule": "terminology",
+          "disposition": "preserve",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "1 Project context and terminology",
+              "quote": "Lecturer Mei assesses this report at College North."
+            }
+          ],
+          "candidateEvidence": "The lecturer Mei",
+          "explanation": "This retains the established term for the same assessment role."
+        }
+      ]
+    },
+    {
+      "id": "DC03",
+      "topic": "different roles and source wording",
+      "operation": "review",
+      "request": "Review only terminology and authorial person in this supplied excerpt; do not rewrite it.",
+      "candidate": "The lecturer Mei assesses the report; the teacher Rao represents Partner School South, while the professor Vale leads a department at University West. The author quotes N2: \"We asked the professor to review the lesson.\" The reference title remains Teacher and professor feedback [N2].",
+      "expected": [
+        {
+          "rule": "distinct-roles",
+          "disposition": "preserve",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "1 Project context and terminology",
+              "quote": "Lecturer Mei assesses this report at College North."
+            },
+            {
+              "file": "source-report.md",
+              "heading": "1 Project context and terminology",
+              "quote": "Rao supplies classroom requirements at Partner School South."
+            },
+            {
+              "file": "source-report.md",
+              "heading": "1 Project context and terminology",
+              "quote": "Professor Vale is a department head at University West and has no assessment role in this project."
+            }
+          ],
+          "candidateEvidence": "the teacher Rao represents Partner School South, while the professor Vale",
+          "explanation": "The three titles refer to different people and institutions, so their co-occurrence is valid."
+        },
+        {
+          "rule": "quoted-source-terms",
+          "disposition": "preserve",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "Appendix A Source wording and illustration",
+              "quote": "\"We asked the professor to review the lesson.\""
+            }
+          ],
+          "candidateEvidence": "\"We asked the professor to review the lesson.\"",
+          "explanation": "We is quoted source authorship and professor is source terminology, not report voice or a renamed assessor."
+        },
+        {
+          "rule": "reference-terms",
+          "disposition": "preserve",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "References",
+              "quote": "[N2] Teacher and professor feedback. Synthetic internal teaching note, revision 1."
+            }
+          ],
+          "candidateEvidence": "Teacher and professor feedback [N2]",
+          "explanation": "Citation and reference wording must not be normalized to lecturer."
+        }
+      ]
+    },
+    {
+      "id": "DC04",
+      "topic": "individual voice drifts to group",
+      "operation": "review",
+      "request": "Review only authorial person in the proposed continuation sentence.",
+      "candidate": "We will evaluate the indexed configuration in repeated trials.",
+      "expected": [
+        {
+          "rule": "narrative-person",
+          "disposition": "flag",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "1 Project context and terminology",
+              "quote": "The author evaluates the catalogue search service on a staging environment."
+            }
+          ],
+          "candidateEvidence": "We will evaluate",
+          "explanation": "The individual report establishes the author; unexplained group authorship is a scoped inconsistency."
+        }
+      ]
+    },
+    {
+      "id": "DC05",
+      "topic": "group voice must not become individual",
+      "operation": "review",
+      "request": "Review only authorial person using group-report.md as the existing document.",
+      "candidate": "I will evaluate the indexed configuration in repeated trials.",
+      "expected": [
+        {
+          "rule": "group-person",
+          "disposition": "flag",
+          "sourceEvidence": [
+            {
+              "file": "group-report.md",
+              "heading": "1 Adopted group voice",
+              "quote": "We selected the indexed configuration for evaluation on the staging catalogue."
+            }
+          ],
+          "candidateEvidence": "I will evaluate",
+          "explanation": "The adopted group authorship must not be silently converted to an individual author."
+        }
+      ]
+    },
+    {
+      "id": "DC06",
+      "topic": "scenario technology module and metric drift",
+      "operation": "review",
+      "request": "Review the proposed Section 2.3 against the actual project scope and evidence. Do not edit prior sections.",
+      "candidate": "## 2.3 Further evaluation\n\nThe production payment module now uses Redis caching. Its CPU usage fell by 80%, proving that the cache should replace the indexed configuration.",
+      "expected": [
+        {
+          "rule": "project-scenario",
+          "disposition": "flag",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "1 Project context and terminology",
+              "quote": "The implementation uses PostgreSQL and compares a baseline configuration with an indexed configuration."
+            },
+            {
+              "file": "source-report.md",
+              "heading": "1 Project context and terminology",
+              "quote": "The scope excludes production deployment, payments and caching modules."
+            }
+          ],
+          "candidateEvidence": "The production payment module now uses Redis caching.",
+          "explanation": "The candidate changes environment, technology and scope without support."
+        },
+        {
+          "rule": "evidence-status",
+          "disposition": "flag",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "2.2 Limits and next contribution",
+              "quote": "CPU usage and p95 latency were not measured. Repeated trials remain planned work."
+            }
+          ],
+          "candidateEvidence": "Its CPU usage fell by 80%",
+          "explanation": "The source explicitly lacks CPU measurements; planned work cannot become a result."
+        },
+        {
+          "rule": "terminology",
+          "disposition": "flag",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "2.1 Recorded observation",
+              "quote": "The adopted labels are `baseline configuration` and `indexed configuration`, not `cache`."
+            }
+          ],
+          "candidateEvidence": "the cache should replace the indexed configuration",
+          "explanation": "The candidate substitutes an unsupported cache concept for the established comparison."
+        }
+      ]
+    },
+    {
+      "id": "DC07",
+      "topic": "conflict stays visible",
+      "operation": "analyze",
+      "request": "Use the report and conflicting-note.md to analyze the next section. Resolve only what the sources support; do not choose a scenario on my behalf.",
+      "candidate": "The report uses PostgreSQL on staging and excludes payments, whereas the handoff names MySQL in production with a payment module. These claims conflict and the handoff has no adopted revision. The scenario decision remains unresolved; the dependent comparison needs clarification before an outline can choose either environment.",
+      "expected": [
+        {
+          "rule": "material-conflict",
+          "disposition": "preserve",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "1 Project context and terminology",
+              "quote": "The implementation uses PostgreSQL and compares a baseline configuration with an indexed configuration."
+            },
+            {
+              "file": "conflicting-note.md",
+              "heading": "1 Conflicting scenario",
+              "quote": "The catalogue search service runs on MySQL in production."
+            }
+          ],
+          "candidateEvidence": "The scenario decision remains unresolved",
+          "explanation": "Keep both source locations and block silent reconciliation; analysis does not select the more convenient scenario."
+        }
+      ]
+    },
+    {
+      "id": "DC08",
+      "topic": "connector without a real seam",
+      "operation": "review",
+      "request": "Review only whether the opening of Section 2.3 connects to the end of Section 2.2.",
+      "candidate": "## 2.3 Further evaluation\n\nFurthermore, database technology is important in modern organizations. Information systems support many business activities. Databases have evolved over time.",
+      "expected": [
+        {
+          "rule": "seam-bridge",
+          "disposition": "flag",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "2.2 Limits and next contribution",
+              "quote": "The next section, 2.3, must therefore explain how further evaluation would address these gaps before any production recommendation can be supported."
+            }
+          ],
+          "candidateEvidence": "Furthermore, database technology is important in modern organizations.",
+          "explanation": "The connector does not connect the specific missing CPU/p95 evidence to the next contribution. Keyword presence alone is insufficient."
+        }
+      ]
+    },
+    {
+      "id": "DC09",
+      "topic": "short complete seam",
+      "operation": "review",
+      "request": "Review only this two-sentence opening transition, not a complete analytical subsection.",
+      "candidate": "## 2.3 Further evaluation\n\nBecause Section 2.2 leaves CPU usage and p95 latency unmeasured, the next evaluation would collect both for the baseline and indexed configurations. These measurements would address the stated gaps before a production recommendation is made.",
+      "expected": [
+        {
+          "rule": "seam-bridge",
+          "disposition": "preserve",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "2.2 Limits and next contribution",
+              "quote": "CPU usage and p95 latency were not measured. Repeated trials remain planned work."
+            }
+          ],
+          "candidateEvidence": "Because Section 2.2 leaves CPU usage and p95 latency unmeasured",
+          "explanation": "The opening connects the actual preceding limit to the requested next contribution."
+        },
+        {
+          "rule": "qualitative-peel",
+          "disposition": "preserve",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "2.2 Limits and next contribution",
+              "quote": "The next section, 2.3, must therefore explain how further evaluation would address these gaps before any production recommendation can be supported."
+            }
+          ],
+          "candidateEvidence": "These measurements would address the stated gaps before a production recommendation is made.",
+          "explanation": "A complete transition may remain two sentences; do not pad it to a four-to-five-sentence quota."
+        }
+      ]
+    },
+    {
+      "id": "DC10",
+      "topic": "lead and list analytical stub",
+      "operation": "review",
+      "request": "Review this as the complete analytical subsection, not as an outline or parameter checklist.",
+      "candidate": "## 2.3 Further evaluation\n\nThe evaluation has several considerations.\n\n- CPU usage.\n- p95 latency.\n- Repeated trials.",
+      "expected": [
+        {
+          "rule": "qualitative-peel",
+          "disposition": "flag",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "2.2 Limits and next contribution",
+              "quote": "CPU usage and p95 latency were not measured. Repeated trials remain planned work."
+            }
+          ],
+          "candidateEvidence": "The evaluation has several considerations.",
+          "explanation": "A lead and list names missing variables but does not explain measurement conditions, evidence limits or implications. The defect is undeveloped reasoning, not sentence count."
+        }
+      ]
+    },
+    {
+      "id": "DC11",
+      "topic": "narrow completed-work read-back",
+      "operation": "read-back",
+      "request": "Read and remember source-report.md. Tell me what the completed document contains; do not continue or revise it.",
+      "candidate": "The document is Catalogue Search Evaluation, revision report-r1, an individual report in English. Section 1 establishes the staging PostgreSQL comparison and three distinct institutional roles. Section 2.1 records the supplied mean-latency observation, while Section 2.2 states the missing CPU and p95 evidence. Appendix A preserves a source quotation and a hypothetical illustration; neither is a project measurement. The project thread remains the staging catalogue comparison, with production conclusions still unsupported.",
+      "expected": [
+        {
+          "rule": "read-back-boundary",
+          "disposition": "stop",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "1 Project context and terminology",
+              "quote": "The author evaluates the catalogue search service on a staging environment."
+            },
+            {
+              "file": "source-report.md",
+              "heading": "2.2 Limits and next contribution",
+              "quote": "CPU usage and p95 latency were not measured. Repeated trials remain planned work."
+            }
+          ],
+          "candidateEvidence": "The project thread remains the staging catalogue comparison, with production conclusions still unsupported.",
+          "explanation": "Return the source-grounded read-back and stop; do not open a new intake map, enforce a voice rewrite, create tracking files or start drafting."
+        }
+      ]
+    },
+    {
+      "id": "DC12",
+      "topic": "profile is not approval or verified measurement",
+      "operation": "analyze",
+      "request": "Extract continuity findings for Section 2.3. I have not approved its analysis or outline and have supplied no new measurements.",
+      "candidate": "The continuity profile is complete, so Section 2.3 is approved and the project results are independently verified. Drafting may begin immediately.",
+      "expected": [
+        {
+          "rule": "state-separation",
+          "disposition": "flag",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "2.2 Limits and next contribution",
+              "quote": "CPU usage and p95 latency were not measured. Repeated trials remain planned work."
+            }
+          ],
+          "candidateEvidence": "Section 2.3 is approved and the project results are independently verified",
+          "explanation": "Profile extraction grants no analysis, outline or content approval and verifies no result; the explicit pending decisions remain pending."
+        }
+      ]
+    },
+    {
+      "id": "DC13",
+      "topic": "illustration promoted to result",
+      "operation": "review",
+      "request": "Review whether the conclusion preserves the evidence status in Appendix A.",
+      "candidate": "The evaluation achieved an 80% CPU reduction, confirming the project benefit.",
+      "expected": [
+        {
+          "rule": "illustrative-status",
+          "disposition": "flag",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "Appendix A Source wording and illustration",
+              "quote": "Hypothetical illustration, not a measured project result: an 80% CPU reduction would warrant investigation if a future comparable test observed it."
+            }
+          ],
+          "candidateEvidence": "The evaluation achieved an 80% CPU reduction",
+          "explanation": "The source marks the quantity hypothetical and unobserved; it cannot become a measured result in a conclusion."
+        }
+      ]
+    },
+    {
+      "id": "DC14",
+      "topic": "tense changes by function are valid",
+      "operation": "review",
+      "request": "Review only tense and evidence status in this passage.",
+      "candidate": "The author inspected the recorded staging comparison in N1. The current evidence does not cover CPU usage. Further trials would measure CPU usage and p95 latency under comparable conditions.",
+      "expected": [
+        {
+          "rule": "tense-function",
+          "disposition": "preserve",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "2.1 Recorded observation",
+              "quote": "The author inspected synthetic run N1"
+            },
+            {
+              "file": "source-report.md",
+              "heading": "2.2 Limits and next contribution",
+              "quote": "CPU usage and p95 latency were not measured. Repeated trials remain planned work."
+            }
+          ],
+          "candidateEvidence": "The author inspected the recorded staging comparison in N1. The current evidence does not cover CPU usage. Further trials would measure",
+          "explanation": "Past observation, current limit and prospective method legitimately use different tenses without changing the adopted narrative person."
+        }
+      ]
+    },
+    {
+      "id": "DC15",
+      "topic": "cited authored sentence remains in scope",
+      "operation": "review",
+      "request": "Review authorial person in this authored sentence; the citation is attribution for evidence, not a quotation.",
+      "candidate": "We evaluate the indexed configuration under the stated staging limits (N1).",
+      "expected": [
+        {
+          "rule": "narrative-person-citation",
+          "disposition": "flag",
+          "sourceEvidence": [
+            {
+              "file": "source-report.md",
+              "heading": "1 Project context and terminology",
+              "quote": "The author evaluates the catalogue search service on a staging environment."
+            }
+          ],
+          "candidateEvidence": "We evaluate the indexed configuration under the stated staging limits (N1).",
+          "explanation": "This is the report's own sentence, so an in-text citation does not exempt its unexplained shift from the established individual voice."
+        }
+      ]
+    }
+  ]
+}

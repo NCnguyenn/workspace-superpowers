@@ -6,10 +6,19 @@ The path to the completed or modified artifact, the deliverable contract, and fo
 ## Job
 
 For [persistent work tracking](../references/work-tracking.md), receive work/item
-identity and candidate revision. Inspect actual deliverables, then the saved plan
-links and export-source revisions. Return failures and stale checks explicitly;
+identity and candidate revision. Inspect actual deliverables, then any affected
+designated project context, then the saved plan links and export-source revisions.
+Re-read every affected context and plan record to check shared change references
+and source/output revisions against actual saved artifacts.
+If the context is absent or unaffected, record that it was intentionally skipped.
+Return failures and stale checks explicitly;
 an approved label does not prove bytes match the approved snapshot. Verification
 does not grant acceptance or authorize writing an independent plan.
+
+For survey-derived context, verify the exact `context_file` and its recorded
+`placement_authority` before accepting a handoff. A raw survey with no
+authorized output must remain read-only; an adopted context must be refreshed
+through the designated editor, with the reopened bytes checked after saving.
 
 Re-open and re-inspect the real artifact directly (or render preview where capability exists) to verify structural integrity, layout, formula correctness, and contract conformance.
 

@@ -40,6 +40,20 @@ evidence/table/figure decision. During drafting and export, retain the approved
 hierarchy and protected title; bullets are supporting notes, not replacements
 for the required numbered headings.
 
+
+## Preview depth
+
+Apply [visual assets and Word fidelity](visual-assets-and-word-fidelity.md): show
+actual available figure previews and reviewable Markdown tables with supported
+content, captions and sources under the relevant outline point. Specifications
+alone do not replace an available preview. Record unavailable previews honestly;
+the evidence prerequisite below still governs missing required material.
+
+The outline shows about 30–40% of the detailed content the complete section will contain: the claim of each paragraph, the evidence or example it will use, and the limit or implication it will reach. The complete draft adds the remaining 60–70% by developing those points into connected prose and integrating verified evidence. Do not reverse these ratios. Do not turn either ratio into a word-count quota, and do not invent content to satisfy a ratio.
+
+Chat framing follows the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not add a line-by-line translation. The outline intended for submission follows the locked submission language.
+
+If several valid organizations of sections, evidence, tables, or diagrams remain, invoke `brainstorming`. Present 2–3 outlines, recommend one, and stop. The user chooses which outline to revise or adopt. Do not select one and write the section.
 ## Evidence before outline
 
 During requirement analysis, determine whether the target needs numbers,

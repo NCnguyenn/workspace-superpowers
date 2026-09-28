@@ -389,3 +389,18 @@ test(
     }
   },
 );
+
+test(
+  'router wires document brainstorming without forcing it on every task',
+  { skip },
+  async () => {
+    const text = await readSkill('using-workspace-superpowers');
+    assert.match(text, /brainstorming/);
+    assert.match(text, /not a software-design skill/i);
+    const analyze = text.split('\n').find((line) => line.includes('| `analyze` |'));
+    const outline = text.split('\n').find((line) => line.includes('| `outline` |'));
+    assert.match(analyze, /brainstorming/);
+    assert.match(outline, /brainstorming/);
+    assert.doesNotMatch(analyze, /drafting-prose/);
+  },
+);

@@ -4,6 +4,17 @@ Applies to a folder path, a detailed description already in that folder, or both
 Use the [workflow continuity contract](workflow-continuity.md) and the existing
 brief/evidence register. This procedure does not authorize implementation work.
 
+## Canonical context identity and provenance
+
+Use at most one designated `project-context.md` for a concrete project and
+reuse its recorded identity, path and source revision across continuations. The
+context is a derived evidence record, never a second progress tracker; without
+a concrete project and explicit setup authority, do not create one. Record
+whether each claim is planned/intended, user-provided or user-described,
+source-inspected, runtime-observed, tested/test evidence, or unknown/unverified.
+Keep readiness explicit (`ready`, `gap`, `blocked` or `unknown`) and separate
+it from content progress, approval and verification.
+
 ## Acquire and inspect
 
 With an accessible path, list and read all files needed for the relevant slice;
@@ -21,6 +32,8 @@ their provenance, revision/environment and what each establishes. Never silently
 override one with another. Runtime observations may concern a different deployment.
 
 ## Survey authority and software handoff
+
+Survey does not permit changes to code, configuration, schema, Git state or data.
 
 Read-only survey permits necessary reading and looking at an app/database,
 including read-only queries and screenshots. It does **not** permit changes to
@@ -54,13 +67,19 @@ sections. Do not generate new measurements through prohibited commands.
 
 ## One derived context file
 
-Survey authority permits creating or updating **one** designated derived Markdown
-file inside the source project, such as `project-context.md`. Record its exact
-`context_file` path in the existing checkpoint; reuse that context file across
-continuations. Do not create a new file per session, skill, chapter or reviewer.
-If no context file exists, choose an unused Markdown path without overwriting an
-original README, rubric or other source document. If multiple candidates exist,
-use the recorded identity or resolve the ambiguous choice before writing.
+Use at most one designated derived Markdown file for a concrete project, such as
+`project-context.md`. A new context is placed in the approved report workspace or
+other authorized output location by default. An existing adopted context may stay
+inside the source project only when that exact source-project path was explicitly
+authorized and recorded. An explicitly authorized new source-project path is
+also a valid placement override; it grants no other repository writes. Survey
+authority alone must not choose a new path inside the source project. Record the
+exact `context_file` path and placement authority in the existing
+checkpoint and reuse it across continuations. Do not create a new file per
+session, skill, chapter or reviewer. If no authorized location is available,
+return the missing output-location decision rather than selecting an arbitrary
+source-project path. If multiple candidates exist, use the recorded identity or
+resolve the ambiguity before writing.
 
 Label it derived. Store only inspected paths, source locators/revisions, coverage,
 structure mapping, conflicts, unread areas and check limits; exclude secrets.
@@ -75,15 +94,29 @@ update of this one record. Reading and analysis return grounded content without
 writing; the router coordinates without writing. This bounded persistence task
 also works when no new outline or report draft is requested. Honor any explicit
 no-write instruction, and verify the actual record after writing. Do not generate
-a report or a second checkpoint file as a side effect.
+a report or a second checkpoint file as a side effect. A first write uses the
+authorized output location and context-creation scope; if a work plan is adopted,
+reuse its tracking consent and placement decision. A survey-only context does
+not require creating a work plan. Prior authorization for an existing context
+is reused without another setup interview.
 
-This is the only project-folder write authorized by survey. Store requested
-report outputs, temporary files and screenshots outside that source folder in an
-authorized output location, unless the user explicitly permits additional writes
-there. Do not clean up, rename, copy into or reorganize the source project during
-packaging. If no output write is authorized, retain observations in conversation
-and return the missing output-location decision. Read/reinspect the context file
-after an authorized update; never claim a write based on a proposed change list.
+The assistant detects external changes only when it can access and inspect the
+relevant source; it does not provide continuous or background monitoring between
+turns. Record the last checked revision and inspection coverage. A commit alone
+does not prove that uncommitted changes are absent, so inspect relevant diffs or
+other available revision evidence before reusing a claim.
+
+When the exact context path is explicitly authorized inside the source project,
+creation or update of that one designated derived context is the only permitted
+context write there. This permission comes from that path-specific authorization,
+not survey authority alone. Other new contexts and requested report outputs,
+temporary files and screenshots belong outside the source folder in an authorized
+output location, unless the user explicitly permits the exact additional write.
+Do not create duplicate context records under either placement. Do not clean up,
+rename, copy into or reorganize the source project during packaging. If no output
+write is authorized, retain observations in conversation and return the missing
+output-location decision. Read/reinspect the context file after an authorized
+update; never claim a write based on a proposed change list.
 
 When a work plan is adopted, apply [persistent work tracking](work-tracking.md)
 to bind `project_id`, source root and this exact `context_file` to the relevant

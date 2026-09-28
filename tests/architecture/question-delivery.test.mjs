@@ -55,3 +55,14 @@ test('approval-card exceptions agree across shared and PI guidance', async () =>
   assert.match(adapter, /approval cards require an\s+explicit user request/i);
   assert.match(adapter, /host cannot[\s\S]*end with the proposal and review question/i);
 });
+
+test('a question card has no Back control and its answer is not locked', async () => {
+  for (const file of ['references/guided-questions.md', 'adapters/pi/tools.md', 'skills/scoping-the-brief/SKILL.md', 'adapters/pi/bootstrap.md']) {
+    const text = await readUtf8(file);
+    assert.match(text, /no back parameter/i, file);
+    assert.match(text, /host gap/i, file);
+    assert.match(text, /do not invent a Back button/i, file);
+    assert.match(text, /not locked until the user confirms/i, file);
+    assert.match(text, /confirm or correct/i, file);
+  }
+});

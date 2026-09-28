@@ -11,9 +11,20 @@ For sustained work, use [persistent work tracking](../../references/work-trackin
 inspect an existing plan before asking for requirements already recorded. Offer
 agent-managed persistence when warranted, without requiring user file management.
 For an initial supplied brief, rubric, or graded guide with no named section or narrower requested operation, present the intake map before any setup question. On continuation, reuse the existing intake map; inspect changed inputs and focus on the named section instead of repeating intake. Confirm only identity fields that the source or map does not already settle, and only before creating tracking or project files. Do not ask grade target, report language, or which assignment when the source or language policy already settles them.
+
+An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. The first reply is still the intake map: source locators, each criterion mapped to the work the source requires, failure constraints, contradictions left unresolved, and only the decisions the source does not already settle. A narrower operation is a named section, a specific comparison, or a continuation that can reuse the existing intake map. When the user supplies a completed assignment/report, reading or remembering it requires a completed-assignment read-back; comparing it with a later guide identifies the remaining criteria and uses a narrow comparison, not a new intake map.
 Extract source requirements separately from proposals/unknowns; retain rubric
 coverage gaps. Tracking consent does not approve the scope or outline. Return
 the brief and decisions to planning/editor for the same adopted record.
+
+For tracked work, hand the existing `plan_file`, stable `work_id` and affected
+item/revision to planning or editing; do not create a second brief, tracker or
+project context. Setup consent, scope confirmation and content approval remain
+separate. Create or update `project-context.md` only when a concrete project,
+designated path and applicable setup authority exist; a description or read-only
+source survey alone is not implementation or runtime evidence. A new prompt may
+change only the affected scope, and a proposal or comparison never changes the
+adopted decision without a clear decision.
 
 Apply the [workflow continuity contract](../../references/workflow-continuity.md).
 Consume partial answers without discarding other context. If the user asks a side
@@ -101,20 +112,24 @@ delivery; do not replace it with a confirmation card or a scope-only summary.
 
 Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"),
 consulting roles, business context, budgets (e.g. "$15,000"), SLAs, latency targets,
-or operational metrics without interviewing and confirming with the user. If unstated
-in source documents or prompt, ask the user or record a blocking gap; never fabricate
-project facts.
+or operational metrics without interviewing and confirming with the user. Do not add
+a deliverable that belongs to a later assignment, such as a functional prototype, or
+scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it. If unstated in source documents or prompt, ask the user or record a
+blocking gap; never fabricate project facts.
 
-Conversational exchanges, requirement analysis presentations, questions, and
-explanations follow the user's conversational language (e.g., Vietnamese). Authored
-deliverables default to English. Never interleave bilingual translations or
-explanations into chat blocks.
+Chat explanations, questions, summaries, and requirement analysis follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence. Do not list unexplained keywords, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language. Never interleave bilingual translations into chat blocks.
 
 1. Extract criteria and section requirements from chat, supplied instructions, or artifacts already read. Record `task_mode`, original `criteria` with source/locator, obligations, and included/excluded `scope` in the [brief](../../templates/brief.md) or conversation state. Do not ask users to enter internal fields.
 2. Inspect available evidence first. Maintain `evidence_register` and `blocking_gaps`: identify what is missing, which claim it supports, and what resolves the gap. Apply the contract's Missing Evidence Protocol; block dependent assertions while continuing authorized independent work.
 3. Separate clarification from confirmation. Ask questions only about material unknowns. Reuse applicable `scope_status` values of `confirmed` or `waived` and their `approval_record`; do not interview again. If confirmation is required and unresolved, summarize scope, set `pending`, and await the user's decision. Silence or an unavailable response is not approval.
 4. For `analyze`, deliver interpretation, obligations, scope, and evidence needs, then stop. Do not request approval of an unrequested outline. For `outline`, pass sufficiently clear scope to `planning-work` only after applicable analysis approval and the evidence prerequisite are resolved: required evidence is inspected or illustrative use is explicitly authorized. These are separate decisions; do not impose an unrelated drafting gate. For `draft` or substantive `revise`, resolve applicable scope and evidence prerequisites, then hand off outline decisions to `planning-work`.
 5. Preserve unaffected decisions when scope changes. Confirm only the affected scope when not already authorized; never treat an earlier approval as covering a new experimental comparison. Project claims require actual evidence; a README is not proof of implementation. Software-engineering inspection belongs to the Coding workflow and does not authorize code changes.
+
+### Confirm card selections before they are locked
+
+After a structured question card returns, summarize the selections in the language of the user's current message and ask the user to confirm or correct them in chat. A card selection is not locked until the user confirms that summary. The host question schema has no back parameter and the card has no Back control. This is a host gap. Do not invent a Back button. Correction happens in chat. Do not invent numbers.
+
+If required facts are now sufficient and more than one valid interpretation remains, invoke `brainstorming` before presenting the requirement analysis. Present 2–3 options, recommend one, and stop. The user chooses. Do not select one and write the analysis.
 
 ## Procedure
 
@@ -143,7 +158,7 @@ an additional artifact capability or a tool supplied by this skill pack.
 ## Dependencies
 
 - Preceded by `reading-artifacts` and `analyzing-artifacts` when source files or rubrics exist.
-- Leads to `planning-work` for requested outlines, applicable criteria-writing outline prerequisites, or complex work needing a plan. Analysis-only requests stop at analysis.
+- Leads to `brainstorming` when several valid interpretations remain, and to `planning-work` for requested outlines, applicable criteria-writing outline prerequisites, or complex work needing a plan. Analysis-only requests stop at analysis.
 
 ## Fallback
 

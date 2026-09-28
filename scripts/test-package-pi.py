@@ -75,17 +75,22 @@ main({ on(event, handler) { hook = handler; } });
                 names = set(package.namelist())
                 self.assertIn('references/guided-questions.md', names)
                 self.assertIn('references/outline-structure.md', names)
+                self.assertIn('adapters/pi/revision-export-route.cjs', names)
+                self.assertIn('adapters/pi/project-survey.mjs', names)
+                if (ROOT / 'adapters/pi/tracking-checkpoint.mjs').is_file():
+                    self.assertIn('adapters/pi/tracking-checkpoint.mjs', names)
                 self.assertEqual(package.read('dogfood/criterion-trial.md'),
                                  package.read('adapters/pi/criterion-trial.md'))
                 self.assertEqual(package.read('dogfood/routing-trial.md'),
                                  package.read('adapters/pi/routing-trial.md'))
                 self.assertTrue(all(i.compress_type == zipfile.ZIP_STORED for i in package.infolist()))
                 manifest = json.loads(package.read('manifest.json'))
+                plugin = out / manifest['id']
                 self.assertEqual(manifest['id'], 'local.workspace-superpowers')
                 self.assertEqual(manifest['permissions'], ['agent.prompt.inject'])
                 skills = manifest['contributes']['skills']
-                self.assertEqual(len(skills), 23)
-                self.assertEqual(len({s['id'] for s in skills}), 23)
+                self.assertEqual(len(skills), 24)
+                self.assertEqual(len({s['id'] for s in skills}), 24)
                 router = next(s for s in skills if s['id'] == 'using-workspace-superpowers')
                 for trigger in ['continues', 'changes', 'approves', 'resumes']:
                     self.assertIn(trigger, router['description'])
@@ -103,6 +108,32 @@ main({ on(event, handler) { hook = handler; } });
                     self.assertFalse(any(part in {'.git', '.tmp', 'tests', 'node_modules', '__pycache__'} for part in Path(name).parts))
                     self.assertNotIn('..', Path(name).parts)
                     self.assertEqual(package.read(name), (out / manifest['id'] / name).read_bytes())
+                route_probe = r'''
+const assert = require('node:assert/strict');
+const { routeRevisionExport } = require(process.argv[2]);
+(async () => {
+  const revisions = new Map([
+    ['approved-r1', { revisionId: 'approved-r1', status: 'approved' }],
+    ['working-r2', { revisionId: 'working-r2', status: 'working/unapproved' }],
+  ]);
+  const result = await routeRevisionExport({ requestedRevisionId: 'working-r2' }, {
+    resolveRevision(id) { return revisions.get(id); },
+    async exportRevision(revision) {
+      return { outputId: 'working-r2.docx', sourceRevisionId: revision.revisionId, sourceStatus: revision.status };
+    },
+    async verifyExport(output, expected) {
+      return { verified: true, outputId: output.outputId,
+        sourceRevisionId: expected.revisionId, sourceStatus: expected.status };
+    },
+  });
+  assert.deepEqual(result, { requestedRevisionId: 'working-r2', requestedStatus: 'working/unapproved', outputId: 'working-r2.docx', verified: true });
+})().catch((error) => { console.error(error); process.exitCode = 1; });
+'''
+                route_probe_path = Path(temp) / 'route-probe.cjs'
+                route_probe_path.write_text(route_probe, encoding='utf-8')
+                runtime = subprocess.run(['node', str(route_probe_path), str(plugin / 'adapters/pi/revision-export-route.cjs')],
+                                         text=True, capture_output=True, check=False)
+                self.assertEqual(runtime.returncode, 0, runtime.stderr)
                 for name in names:
                     if not name.endswith('.md'):
                         continue

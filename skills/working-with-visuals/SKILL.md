@@ -26,6 +26,12 @@ Creating or editing standalone images (PNG, JPG, WEBP), authoring or adjusting v
 
 ## Visual invariants (§10, §14, §17)
 
+Apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md)
+for selection, provenance, reuse conditions, actual previews and unavailable-host
+fallbacks. Return the inspected or prepared asset to its calling analysis,
+outline or drafting operation. An available preview must be shown there; asset
+preparation does not authorize starting the next writing stage.
+
 * **Vector preservation rule:** Never unintentionally rasterize vector graphics (SVG). Keep SVG text elements editable, preserve vector coordinates and viewBox attributes, and ensure scalable fidelity across zoom levels.
 * **Layered graphic contract (PSD/PSB) (§10, §17):** Only attempt layered modifications when the harness exposes explicit layered capabilities (`inspect_layered_image`, `edit_layered_image`). Without layered capabilities, report the limitation transparently and fall back to producing flattened visual previews. Never claim an editable layered edit was performed if only a flattened raster was produced.
 * **Aspect ratio & resolution integrity:** Preserve original aspect ratios to avoid horizontal/vertical stretching or squishing. Validate visual resolution against destination medium (minimum 300 DPI for print deliverables, 72–150 DPI for web/screen presentation).

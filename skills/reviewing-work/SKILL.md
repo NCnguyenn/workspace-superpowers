@@ -13,6 +13,12 @@ references. Check requirement-to-item coverage, unsupported completion claims
 and project material outside its mapped scope. Return findings and affected
 items to the editor; review findings are not user acceptance or plan mutations.
 
+Review receives the canonical `plan_file`, stable item/revision identity and any
+designated `context_file`. Check synchronization only for affected items and
+dependencies, preserving approval records tied to earlier revisions. Reviewers
+return findings; they do not edit the work plan, infer approval, create private
+logs or claim that an uninspected source is current.
+
 Use the [workflow continuity contract](../../references/workflow-continuity.md)
 to review the current scope and artifact revision after user changes. For prose
 continuation, apply the [document continuity contract](../../references/document-continuity.md):

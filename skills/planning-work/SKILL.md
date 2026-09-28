@@ -16,6 +16,13 @@ for the one persistent write and `verifying-artifacts` for readback. Missing
 criteria allow a clearly provisional plan, not invented mandatory requirements.
 Project references attach only to items that need them, not every heading.
 
+Planning owns the whole-report plan and stable item mapping, but it does not
+persist the record itself. Carry the adopted `plan_file`, `work_id`, item IDs,
+target revision and applicable `context_file` to `editing-documents`. Revise only
+affected items and dependencies; preserve prior approvals by version and keep
+project-dependent work waiting when no authorized concrete project exists. A
+saved next action is a checkpoint, not permission to override the current prompt.
+
 Apply the [workflow continuity contract](../../references/workflow-continuity.md)
 to feedback, side questions, and late files. Update only affected outline sections;
 retain valid decisions and resolve new evidence before dependent planning.
@@ -58,6 +65,12 @@ handoff. Plan required evidence without authorizing new tests, builds or mutatio
 
 ## Criteria-based outline
 
+Use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md)
+for actual preview delivery and source/asset identity. Call `working-with-visuals`
+when an asset needs inspection or preparation, and `citing-sources` for required
+attribution. Return to the current outline; these dependencies do not authorize
+drafting. Keep candidate sources separate from the outline's actually cited list.
+
 Apply [outline structure and evidence readiness](../../references/outline-structure.md)
 before generating any headings. Check `source_title`, `source_locator` and
 `evidence_readiness`. If the exact title or required evidence is missing, invoke
@@ -68,8 +81,8 @@ Reuse supplied evidence or explicit scoped permission for hypothetical examples.
 Apply [criterion-level analysis and two stops](../../references/criteria-writing-contract.md#criterion-level-analysis-and-two-stops).
 The two-stop rule applies to all sections, chapters, parts, and criteria of deliverables (e.g. “Section 1: Project Overview”, “Introduction”, or “P1”).
 For a section or criterion draft, inspect the actual analysis decision before outlining. A master outline naming section headings does not supply detailed approval. If analysis is pending, return to scoping without presenting the detailed outline. Once approved/waived, prepare and present the detailed outline directly in chat.
-Never invent project names (e.g. fictitious apps/companies), consulting roles, business context, budgets, SLAs, latency targets, or operational metrics as real facts. If unstated in source documents or prompt, ask the user or mark as a blocking gap. Explicitly authorized hypothetical examples may use illustrative values within that permission, labeled locally and never presented as actual evidence.
-Conversational questions follow the user's conversational language (e.g. Vietnamese); the authored outline defaults to English. Never interleave bilingual translations or explanations into chat blocks.
+Never invent project names (e.g. fictitious apps/companies), consulting roles, business context, budgets, SLAs, latency targets, or operational metrics as real facts. Do not add a deliverable that belongs to a later assignment, such as a functional prototype, or scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it. If unstated in source documents or prompt, ask the user or mark as a blocking gap. Explicitly authorized hypothetical examples may use illustrative values within that permission, labeled locally and never presented as actual evidence.
+Explain the outline in the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not produce a line-by-line translation. The outline intended for submission follows the locked submission language.
 
 Planning owns outline creation, revisions, and receipt of approval under the contract. Scope confirmation belongs to `scoping-the-brief`; drafting only consumes these decisions.
 Apply the [guided questions](../../references/guided-questions.md) visible delivery and recovery
@@ -83,6 +96,8 @@ delivery or approval.
 4. Record `outline_status`, `outline_version`, and `approval_record`, including the decision's applicable sections and explicit waivers. Follow [guided questions](../../references/guided-questions.md), present the detailed outline directly in chat and STOP to await user approval before drafting. Silence is not approval; preserve already approved or waived decisions within their scope. When persisting files, co-locate tracking and deliverable files in a dedicated common project directory created by AI with user consent.
 5. On feedback, set `revision_requested`, apply the requested change, identify the revised version, and return affected sections as pending when further approval is needed. Explicit “change this, then write” authorizes the clear revised section and continuation; do not ask again. Preserve unaffected approvals.
 6. For an outline-only request, present the outline and stop. Outline approval alone does not authorize drafting. In an already authorized draft or substantive revision task, applicable outline approval permits continuation to `drafting-prose` without another request to write; evidence prerequisites still apply.
+
+The outline shows about 30–40% of the detailed content the complete section will contain. The complete draft adds the remaining 60–70%. Do not reverse these ratios. Do not turn either ratio into a word-count quota or invent content to satisfy a ratio. If several valid organizations of sections, evidence, tables, or diagrams remain, invoke `brainstorming`. Present 2–3 outlines, recommend one, and stop. The user chooses. Do not select one and write the section.
 
 ## Procedure
 
@@ -109,7 +124,7 @@ Abstract capability names, resolved by the harness adapter. Never a tool name.
 
 ## Dependencies
 
-- Follows `scoping-the-brief` (for complex briefs) or `analyzing-artifacts` (when starting from existing files).
+- Follows `scoping-the-brief` when scope is unresolved, `analyzing-artifacts` when starting from existing files, and `brainstorming` when several valid organizations remain.
 - Precedes drafting, formatting, and subsequent `reviewing-work`.
 
 ## Fallback

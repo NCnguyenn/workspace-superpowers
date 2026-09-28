@@ -1,4 +1,4 @@
-# Unit 7 runtime refinement regression
+# Unit 7 runtime refinement and document-brainstorming regression
 
 Status: PENDING native PI-Desktop replay. Structural tests and simulated response
 samples are not live multi-turn behavioral evidence. Record model, package
@@ -34,6 +34,73 @@ Repeat with all required facts supplied: no redundant evidence interview. Repeat
 with a pure-theory SDLC definition: no invented demand for project metrics. When
 question tooling is unavailable, the same decision must be requested in chat;
 an unavailable tool never supplies an answer.
+
+## Document brainstorming sequence
+
+These cases require a fresh PI-Desktop session with the installed 0.1.5-beta
+pack and retained native skill/tool traces. They test behavior across turns; a
+string match in an architecture test is not a behavioral pass.
+
+### BR01 — sufficient evidence, several interpretations
+
+Supply a fully readable criterion and all evidence it needs, but make two or
+three interpretations legitimately possible. Ask for requirement analysis.
+Expect the router and responsible caller to invoke document `brainstorming`,
+present 2–3 grounded options with inclusions, exclusions and tradeoffs, recommend
+one, and state through its behavior that the recommendation is not a selection.
+The response stops for the user's choice without producing the analysis,
+detailed outline or draft.
+
+### BR02 — correction, confirmed choice, and caller return
+
+Continue BR01. Correct one earlier structured-card answer. Expect the agent to
+summarize the correction and wait for confirmation rather than locking it
+immediately. Confirm the correction, then choose one brainstorming option.
+Expect the workflow to return to the calling skill with the chosen interpretation
+and produce only the currently authorized output. For this analysis request it
+must deliver the analysis and stop; it must not advance to an outline or draft.
+
+### BR03 — settled approach skips brainstorming
+
+In a new session, supply sufficient evidence and explicitly select the intended
+interpretation or organization in the request. Expect the responsible skill to
+continue without calling brainstorming. Repeat with missing required evidence:
+expect a focused evidence question instead of invented alternatives.
+
+| Case | Result | Trace/input/output locators and findings |
+|---|---|---|
+| BR01 | PENDING | |
+| BR02 | PENDING | same session as BR01 |
+| BR03 | PENDING | |
+
+## Completed-assignment read-back sequence
+
+These cases require a fresh PI-Desktop session with the installed 0.1.5-beta
+pack and retained native skill/tool traces. The second case deliberately supplies
+the later guide after the completed assignment has already been read.
+
+### RB01 — completed assignment read-back
+
+Supply a completed assignment/report and ask the agent to read or remember it.
+Expect `reading-artifacts` followed by `analyzing-artifacts`, with three blocks:
+exact document identity; each actual major heading with its argument,
+conclusion/limit and content role; and the project/scenario thread with coverage
+limits. The agent must preserve names, dates, projected language and explicit
+criterion labels, and must not invent learning outcomes, criterion codes,
+technology, measurements or test conditions.
+
+### RB02 — remaining criteria comparison after a later guide
+
+After RB01, supply only the later guide and ask which criteria remain. Expect a
+narrow comparison that reuses the earlier read: criteria already present first,
+criteria still missing second, then source-grounded mismatches. It must not return
+the guide intake map, use completion percentages, make optional `you can` wording
+mandatory, or propose invented failed test cases.
+
+| Case | Result | Trace/input/output locators and findings |
+|---|---|---|
+| RB01 | PENDING | |
+| RB02 | PENDING | same session as RB01; later guide supplied after the earlier read |
 
 ## Draft and citation sequence
 

@@ -5,6 +5,12 @@ description: Use when writing new prose, continuing an existing report or thesis
 
 # Drafting Prose
 
+For approved tables and figures consume [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
+Carry the actual previews, supported tables, captions, attribution and evidence
+limits into full in-chat delivery. Load `working-with-visuals` for needed asset work
+and `citing-sources` for required citations. Retain the post-draft approval question
+and wait before starting the next section.
+
 Retain the approved heading hierarchy and protected source criterion titles
 under [outline structure and evidence readiness](../../references/outline-structure.md).
 Do not rename level-1 titles or flatten numbered main points/subpoints during
@@ -55,12 +61,12 @@ deliverables (e.g. “Section 1: Project Overview”, “Introduction”, or “
 
 Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"),
 consulting roles, business context, budgets, SLAs, latency targets, or operational
-metrics. If unstated in source documents or prompt, ask the user or mark as a
-blocking gap; never fabricate project facts.
+metrics. Do not add a deliverable that belongs to a later assignment, such as a
+functional prototype, or scope details the user has not confirmed. If a detail is
+needed and unsettled, ask before using it. If unstated in source documents or
+prompt, ask the user or mark as a blocking gap; never fabricate project facts.
 
-Conversational dialogue follows the user's conversational language (e.g. Vietnamese);
-authored deliverables default to English. Never interleave bilingual translations
-or explanations into chat responses.
+Chat explanations follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language. Never interleave bilingual translations into chat responses.
 
 Before composing:
 
@@ -99,10 +105,10 @@ must support continuity without passing the entire conversation.
 1. Run the prerequisite check. Stop and hand back if it fails.
 2. Read the required style guide and invoke the selected writing specialist(s) for the assigned section using actual tool calls.
 3. Compose only authorized content. Use the contract's neutral placeholder when a permitted incomplete draft is allowed.
-4. Before review, check PEEL development (P1–P3), casual dash chaining (S1–S3), and L6: at least 65% discursive prose for core analytical sections under its counting scope and exceptions. Objectives, scope and constraints need supported explanation, not list/table-only subsections. When formal citations are required or present, execute `invoke_skill("citing-sources")` and complete its bidirectional audit. Reuse a completed audit for the same revision if the specialist already performed it. Append `## References` to the chat section and update the terminal cumulative list in any saved report; do not postpone references until the whole report is finished.
+4. Before review, check PEEL development (P1–P3), casual dash chaining (S1–S3), and L6: at least 65% discursive prose for core analytical sections under its counting scope and exceptions. An analytical subsection that is only one lead sentence followed by a list is not finished prose. Develop it to the P2 benchmark of 4–5 sentences, not a rendered-line quota. A short lead may remain short when it already carries its meaning. Bullets and numbered lists remain allowed for parallel items, parameters, or sequence. Do not abuse lists to avoid paragraphs. Objectives, scope and constraints need supported explanation, not list/table-only subsections. When formal citations are required or present, execute `invoke_skill("citing-sources")` and complete its bidirectional audit. Reuse a completed audit for the same revision if the specialist already performed it. Append `## References` to the chat section and update the terminal cumulative list in any saved report; do not postpone references until the whole report is finished. Do not invent page numbers, publishers, or unchecked bibliographic details.
 5. Execute `invoke_skill("reviewing-work")` before delivering the draft, including chat-only prose. Have it apply prose and coherence review with the loaded role instructions, including P1–P3, L6, S1–S3 and F1/R4; include citation review when applicable. Fix blocking findings within the approved scope and recheck affected passages and citations. Do not self-approve or postpone this review until after delivery.
 6. Output the complete drafted text for the section directly into chat for user review and approval (never hide text behind a file path or merely report "saved to file"). Include its reference list when cited, even if a cumulative list exists in the file. File deliverables also require artifact verification before delivery.
-7. STOP after delivering the section draft: wait for user review and approval before advancing to the next section or criterion. Never bundle draft delivery of section N with analysis of section N+1 in the same turn.
+7. STOP after delivering the section draft. Ask whether the delivered section is approved. Do not start the next section or criterion in the same turn. Ending at the last paragraph without that question is not a stop. Include its reference list when cited, even if a cumulative list exists in the file. File deliverables also require artifact verification before delivery.
 
 ## Required capabilities
 

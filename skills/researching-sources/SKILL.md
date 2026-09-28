@@ -24,6 +24,14 @@ Only when the user explicitly requests finding reference materials, external res
 
 ## Absolute honesty rule (§15)
 
+For visual sources apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
+Search results establish discovery, not source provenance, credibility, permission
+to reuse or claim support. Inspect the original source and relevant reuse terms;
+return metadata/claim support and reuse status separately to the calling skill.
+Reuse inspected user-supplied sources when sufficient. Required citations alone
+do not require a new web search; apply the existing authorization boundary above
+when a new external search is needed.
+
 * **Zero fabrication:** Never invent authors, journal titles, publication years, DOIs, URLs, or page numbers.
 * **Unverified sources:** If a source cannot be retrieved or verified through accessible search capabilities, state clearly that it is unverified, or omit the claim. Never guess bibliographic metadata.
 

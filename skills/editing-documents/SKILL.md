@@ -11,9 +11,10 @@ For [persistent work tracking](../../references/work-tracking.md), create or
 update the adopted plan as the single writer after receiving content from its
 owners. This is a bounded creation exception alongside project-context creation.
 Check that a new path is unused; preserve existing user notes and decisions.
-Save/check artifacts first, then update exact working/approved/export identities
-and the affected checkpoint. Re-read the saved plan; a chat change list is not a
-saved update. Preserve approved artifact snapshots before subsequent file edits.
+Save/check artifacts first, then update the affected designated context when it
+exists and is affected, and update exact working/approved/export identities and
+the plan checkpoint last. Re-read every touched record; a chat change list is not
+a saved update. Preserve approved artifact snapshots before subsequent file edits.
 
 Word mathematics follows the [native Equation contract](../../references/math-in-documents.md)
 for paste and in-file edits: preserve OMML and mathematical content, use the
@@ -33,13 +34,27 @@ authorized scope. A chat suggestion does not modify the source file.
 Typo or wording corrections, insertion, deletion, rewriting, restructuring, or full redesign of an existing document. The preserve-list does not decide whether this skill loads.
 
 Also create or update the one designated `context_file` under the
-[project grounding contract](../../references/project-grounding.md). Consume
+[project grounding contract](../../references/project-grounding.md). A new
+context uses the approved report-workspace/output placement by default. Reuse an
+existing adopted source-project path when its exact location was authorized and
+recorded; explicit permission for a new exact source-project path is a valid
+override. Survey authority alone grants no such write. Consume
 inspected content, provenance and conflicts from reading/analysis; preserve the
 recorded file identity. First creation is a narrow exception to the existing-file
 rule below: confirm the selected path is unused and never overwrite an original
 project document. Re-read an existing context record before updating it, label
-notes derived, and verify the actual file afterward. This persistence operation
+notes derived, preserve the exact `placement_authority` alongside `context_file`,
+and verify the reopened bytes afterward. This persistence operation
 does not require a new report outline or authorize any other project write.
+
+Before each checkpoint write, compare that target's current revision with the
+one handed off (and reread the adopted plan when present); detect concurrent changes and
+preserve unrelated user edits. Save and reopen the requested deliverable first,
+then update and reopen the affected project context, then only the affected
+work-plan entries and checkpoint through this single writer. Skip an absent or unaffected context;
+never create one for transaction symmetry. If any write fails, report exact
+saved and unsaved portions as a split result and reconcile them on resumption;
+do not create a recovery tracker.
 
 ## When not to use
 
@@ -53,6 +68,11 @@ Create-from-blank deliverables other than an adopted work plan or designated pro
 4. After substantial edits, hand off to `reviewing-work` and apply corrections. For modified files, finish with `verifying-artifacts`; for text returned in chat, review that text without claiming a file was changed.
 
 ## Factual fidelity
+
+For in-file table/image insertion or preservation use
+[visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
+Apply the same selected-revision, content, caption/source and placement checks as
+conversion, preserving unrelated template content and native Word equations.
 
 An instruction to edit or rewrite does not authorize inventing facts. For an
 underspecified edit, improve wording while preserving factual claims, numbers,
