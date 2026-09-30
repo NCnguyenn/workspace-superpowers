@@ -19,6 +19,8 @@
   "scripts": {
     "test": "node tests/run.mjs",
     "package:pi": "python scripts/package-pi.py",
-    "test:package": "python scripts/test-package-pi.py"
+    "package:antigravity": "python scripts/package-antigravity.py",
+    "test:package": "python scripts/test-package-pi.py",
+    "test:package:antigravity": "python scripts/test-package-antigravity.py"
   }
 }

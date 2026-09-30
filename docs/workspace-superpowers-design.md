@@ -1011,15 +1011,16 @@ Superpowers is installed on Pi.
 
 ## 19. Future Harness Adapters
 
-`adapters/codex/` now contains bounded local capability probes and their detection
-record; it is not a complete host integration or a Pi plugin. Other proposed
-`adapters/antigravity/` and `adapters/claude/` directories
-would begin as stubs with `unverified` mappings. Adding a
-harness means: detect its skill / plugin mechanism, delegation mechanism, and
-document capabilities; fill the three mapping files; write `install.md` so the
-skill pack can be installed there the same way Superpowers is. No skill-pack
-file should need modification. This remains a design requirement to validate
-when an adapter is implemented; current structural tests do not prove it.
+`adapters/codex/` contains bounded local capability probes and their detection
+record; it is not a complete host integration or a Pi plugin.
+`adapters/antigravity/` is a directory-plugin adapter.
+`scripts/package-antigravity.py` copies the skill pack into a plugin directory
+that `agy plugin validate` can check. That build does not install the plugin,
+does not register subagents, and does not prove that a model applied a skill.
+`adapters/claude/` is not implemented. Adding a harness still means detecting
+its skill mechanism and keeping mappings in the adapter. No skill-pack source
+file should need modification. Structural tests do not prove host runtime
+behavior.
 
 
 ## 20. Repository Structure
@@ -1065,7 +1066,7 @@ workspace-superpowers/
 │   └── capabilities.md           # abstractions only
 ├── adapters/
 │   ├── pi/
-│   ├── antigravity/              # stub
+│   ├── antigravity/              # directory plugin; not installed
 │   ├── claude/                   # stub
 │   └── codex/                    # stub
 ├── references/

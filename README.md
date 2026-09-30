@@ -62,6 +62,20 @@ their natural chat approval question. If the user cannot see the content, the
 agent presents it before asking again; an evidence card does not request later
 approval popups. See [guided questions](references/guided-questions.md).
 
+## Antigravity directory package
+
+Build a plugin directory for Antigravity CLI `agy` without installing it:
+
+```powershell
+python scripts/package-antigravity.py --out dist/antigravity
+```
+
+The builder runs `agy plugin validate` on the new directory and refuses an
+existing output directory. It does not run `agy plugin install` and does not
+copy the plugin into the Antigravity config. See
+[installation notes](adapters/antigravity/install.md). Validation is not
+evidence that a model applied a skill.
+
 ## Skill catalog
 
 The current package contains 24 skills. Availability of actual artifact operations depends on the host's capabilities.
