@@ -1,6 +1,6 @@
 ---
 name: working-with-visuals
-description: Use when inspecting, generating, modifying, optimizing, or verifying static images, vector graphics, diagrams, and layered visual assets without unintended rasterization.
+description: Use when inspecting screenshots, DOCX figures, or other static images, or when generating, modifying, or verifying vector graphics, diagrams, and layered visual assets.
 ---
 
 # Working with Visuals
@@ -12,6 +12,13 @@ Carry the parent document's terminology, scenario, evidence, and visual conventi
 into requested assets. An image supplied for inspection is not permission to edit
 it; return inspected facts and limitations to the parent task. Never present an
 illustrative generated image as evidence of an actual project result.
+Before any inspection conclusion, apply [visual evidence boundary](../../references/visual-evidence-boundary.md).
+
+A media filename is not a relationship ID. Report the `r:embed` ID, its relationship target, the counting scope, and whether the index is 0-based or 1-based.
+Do not convert a PNG width into a CSS viewport, including by assuming DPR is 1.
+Copy every visible line. Keep an ellipsis only when the pixels show it. If a control covers part of a row, say that row is partly covered and do not reduce the visible marks.
+Keep `media opened`, `original image legible`, `rendered document legible`, `supports a claim`, and `criterion satisfied` separate. XML size is a risk, not rendered readability.
+Paste the unedited tool result. If it is absent, say tool execution is unverified. Render each caption once.
 
 ## When to use
 

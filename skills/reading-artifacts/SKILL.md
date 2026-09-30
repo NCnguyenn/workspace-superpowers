@@ -70,6 +70,7 @@ criterion labels, and the inspected or unread coverage. Preserve names, dates,
 heading wording and projected-versus-observed language exactly as found. This
 is an extraction handoff, not permission for the reading step to interpret or
 rewrite the document.
+For an embedded DOCX image, also hand the `r:embed` ID, the resolved relationship target, the counting scope, and whether the index is 0-based or 1-based. A media filename is not a relationship ID. Apply [visual evidence boundary](../../references/visual-evidence-boundary.md). Label extracted sentences as document text, not as runtime results.
 
 When a completed assignment is compared with a later guide, hand analysis the
 two source roles separately: the earlier document's actual headings/content and

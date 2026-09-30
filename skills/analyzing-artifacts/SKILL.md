@@ -83,6 +83,7 @@ source-grounded read-back in three blocks:
 3. **Project and scenario thread:** identify where each project/scenario first
    appears, where the document changes it, and whether the conclusion returns to
    it. State unread or unverified images/schema explicitly.
+Label each read-back finding `document-stated`, `visually-observed`, `source-inspected`, `runtime-observed`, or `unverified`, using [visual evidence boundary](../../references/visual-evidence-boundary.md). Do not turn a document-stated test result, implementation name, or measurement into an independent result.
 
 Do not invent learning outcomes, P/M/D labels, project names, technologies,
 measurements or test conditions. Do not normalize names or dates, turn projected

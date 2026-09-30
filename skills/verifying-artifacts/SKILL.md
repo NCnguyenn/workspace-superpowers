@@ -59,6 +59,7 @@ Compare actual table cells, media identity, captions, sources and placement with
 the requested revision, its approval status and rubric/template. Separate structural and rendered checks;
 missing checks remain unverified. Source/package or DOCX success cannot establish
 native PI-Desktop acceptance.
+Apply [visual evidence boundary](../../references/visual-evidence-boundary.md). XML extent does not establish rendered readability. Do not claim a tool ran unless its unedited tool result is retained.
 
 1. Reopen or re-read the actual file.
 2. Compare against the deliverable contract and the preserve-list.

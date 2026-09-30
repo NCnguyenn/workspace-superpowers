@@ -25,6 +25,12 @@ that installed root, never from the user's project directory. Do not assume a
 working directory is the package root. Preserve prior user decisions and
 approval state; the router and specialists own all document gates, evidence,
 language, citation, continuity and verification details.
+Before an image, screenshot, or DOCX-media claim, call
+`local.workspace-superpowers/working-with-visuals` and apply
+`references/visual-evidence-boundary.md` in the package root. Visible pixels
+are not database, runtime, device, CSS-viewport, or criterion proof. A media
+filename is not an `r:embed` ID. Copy only punctuation the pixels show. A
+retold log is not a tool result.
 
 If a required skill or native capability is unavailable, state the precise
 limitation, continue independent authorized work, and do not claim it ran or
