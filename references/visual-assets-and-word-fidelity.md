@@ -16,8 +16,8 @@ No universal international standard is established by this contract.
 For each applicable heading, decide whether a table or figure is **Not needed**,
 required by the actual rubric/brief, or useful for its explanatory value in making
 a comparison, relationship, process, or evidence clearer. A visual is not mandatory just
-because a section exists. The 30–40% outline guidance concerns substantive depth,
-never an asset quota.
+because a section exists. The 40–50% outline guidance concerns substantive depth,
+never an asset quota. Choose the source before creating the asset: cite a stable public source for standard theory; ask the user for project screenshots and internal numbers; search and cite published facts; treat a social post as a lead unless the user asked to use that inspected post; generate an image or invent a number only after explicit permission for that gap. Silence is not permission.
 
 When a visual is used, record a stable `asset_id`, type, purpose, intended
 position, source/data, preparer, status, and any evidence or permission gap. For a
@@ -51,6 +51,8 @@ blocked unless the existing evidence contract records a specifically authorized
 alternative.
 
 Do not reduce an available preview to specifications alone or defer it to drafting.
+Do not download a web image, including a Google image, to supply a missing preview. A named diagram or table that is not rendered in the same message is not a decision. Use `Not needed` or show an original explanatory diagram or table there. Label that diagram as explanatory, not as a project screenshot.
+Screenshot and embedded-figure claims follow [visual evidence boundary](visual-evidence-boundary.md). Visible pixels are not runtime, database, device, or criterion proof.
 An unknown table value stays unknown, not zero, an assumed improvement or an
 invented measurement. Follow the existing evidence-before-outline prerequisite;
 a blank table is not a way around required evidence. Do not fabricate values,

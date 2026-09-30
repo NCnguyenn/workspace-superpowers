@@ -218,6 +218,8 @@ Use the [criteria-writing contract](../../references/criteria-writing-contract.m
 | `revise` | Execute `invoke_skill("editing-documents")`, then `invoke_skill("drafting-prose")` for substantive report/thesis rewrites under the contract; it must invoke prose specialists, followed by `invoke_skill("reviewing-work")` before delivery. Typo or wording-only edits stay in `editing-documents`; format-only edits use `formatting-layout`, without writing approval gates. |
 
 Scoping owns scope confirmation; planning owns outline decisions. Drafting checks prerequisites without approving them. Reuse applicable decisions and explicit waivers; ask only about unresolved requirements or decisions. An explicit request to write after an outline can change the authorized operation under the contract.
+A user message that only asks for the outline, including `làm dàn ý`, is not analysis approval. If that analysis has not been displayed and approved or explicitly waived, the authorized output is the analysis alone. Do not append the outline.
+Before an image, screenshot, or DOCX-figure claim, execute `invoke_skill("working-with-visuals")` and apply [visual evidence boundary](../../references/visual-evidence-boundary.md). A completed-document read-back keeps document-stated claims separate from visually-observed and runtime-observed claims.
 
 For chat-only outputs, review the requested content without claiming file verification or creation. For file deliverables, retain `verifying-artifacts` → `packaging-deliverables`. Spreadsheet, presentation, conversion, and other unrelated routes remain unchanged.
 

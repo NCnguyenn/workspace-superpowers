@@ -65,6 +65,7 @@ metrics. Do not add a deliverable that belongs to a later assignment, such as a
 functional prototype, or scope details the user has not confirmed. If a detail is
 needed and unsettled, ask before using it. If unstated in source documents or
 prompt, ask the user or mark as a blocking gap; never fabricate project facts.
+The complete draft adds prose only. Do not add a table, figure, or number absent from the approved outline.
 
 Chat explanations follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language. Never interleave bilingual translations into chat responses.
 

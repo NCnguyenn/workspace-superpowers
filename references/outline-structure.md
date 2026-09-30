@@ -49,7 +49,29 @@ content, captions and sources under the relevant outline point. Specifications
 alone do not replace an available preview. Record unavailable previews honestly;
 the evidence prerequisite below still governs missing required material.
 
-The outline shows about 30–40% of the detailed content the complete section will contain: the claim of each paragraph, the evidence or example it will use, and the limit or implication it will reach. The complete draft adds the remaining 60–70% by developing those points into connected prose and integrating verified evidence. Do not reverse these ratios. Do not turn either ratio into a word-count quota, and do not invent content to satisfy a ratio.
+The outline shows about 40–50% of the detailed content the complete section will contain: the heading tree, the claim of each paragraph, the evidence or example it will use, the limit or implication it will reach, and every table, figure, and number the draft will use. The complete draft adds the remaining 50–60% by developing those approved points into connected prose. It does not add a new table, figure, or number. Do not reverse these ratios. Do not turn either ratio into a word-count quota, and do not invent content to satisfy a ratio.
+
+Each main point uses these slots, in this order. A topic label is not an outline point.
+
+- **Claim:** the sentence that point will defend.
+- **Reason:** why that claim holds here.
+- **Limit:** what that point will not claim.
+- **Visual:** `Not needed`, or the diagram rendered in the same message.
+- **Table:** `Not needed`, or the table rendered in the same message.
+
+Naming a diagram or table is not showing it. Do not download a web image to fill either slot. An original explanatory diagram is labeled as explanatory, not as a project screenshot. Do not add an audience, unstated technology, or an operating commitment the user did not state. Those additions are not depth.
+
+## Asset source decision
+
+Decide the source before showing the outline. Do not invent a stand-in and continue.
+
+| Need | Source | Do not |
+|---|---|---|
+| Standard theory, cycle, architecture, or public concept diagram | Search a stable public source and cite it in the outline. If none is usable, ask before redrawing or generating. | Hotlink an unstable result, or generate an image without permission. |
+| Comparison or criteria table | Full table rendered in the same message. Cells from inspected user data or a cited public source. | Fill an unknown cell with an assumed number. |
+| Project screenshot, internal metric, budget, timeline, or case photo | Ask the user and wait. | Use a web image, social post, or generated image as the user's project. |
+| Published public fact | Search and cite. A social post is only a lead unless the user asked to use that inspected post. | Treat an uninspected post as verified evidence. |
+| Hypothetical number or generated image | Only after explicit permission for that gap. Label it hypothetical. | Treat silence, "continue", or analysis approval as permission. Silence is not permission. |
 
 Chat framing follows the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not add a line-by-line translation. The outline intended for submission follows the locked submission language.
 

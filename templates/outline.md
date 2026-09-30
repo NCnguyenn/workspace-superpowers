@@ -30,9 +30,11 @@ around the missing-evidence prerequisite. Supporting notes do not replace headin
 
 ## 1.1 [Main point]
 
-* **Key Arguments / Points:** [Concrete arguments within the approved scope]
-* **Evidence / Sources:** [Inspected source/locator or explicitly authorized illustration]
-* **Visuals / Tables:** [Not needed, or the relevant asset specification]
+* **Claim:** [Sentence this point will defend]
+* **Reason:** [Why that claim holds here]
+* **Limit:** [What this point will not claim]
+* **Visual:** [`Not needed`, or the diagram rendered in the same message]
+* **Table:** [`Not needed`, or the table rendered in the same message]
 
 ### 1.1.1 [Supporting subpoint]
 

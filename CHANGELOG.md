@@ -28,6 +28,9 @@ commits or tags for those builds.
 - Add executable adapter and native loader boundary checks. Full model/skill
   acceptance and rendered Office fidelity are separate, unverified claims.
   See [release notes](docs/releases/0.1.6-beta.md).
+- Close the outline loophole that let a topic list, a named diagram and a named table pass as a detailed outline. Each point now needs Claim, Reason and Limit. A visual or table is `Not needed` or rendered in the same message. Asking for the outline, including `làm dàn ý`, is not analysis approval. Do not add unstated technology or download a web image to imitate depth.
+- Raise the outline preview to about 40–50%. The complete draft adds the remaining 50–60% as prose only and does not add a new table, figure, or number. Choose the asset source before outlining: cite a stable public source for standard theory, ask the user for project images and internal numbers, and invent a number or generate an image only after explicit permission for that gap. Silence is not permission.
+- Add the visual and document evidence boundary. Visible pixels are not database, runtime, device, CSS-viewport, or criterion proof. A media filename is not an `r:embed` ID. Transcription keeps only visible punctuation. Read-back findings carry a provenance label. A retold log is not a tool result, and XML size is not rendered readability.
 
 ## 0.1.5-beta — 2026-09-23
 

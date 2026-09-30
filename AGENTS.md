@@ -89,16 +89,16 @@ Project Overview”, “Introduction”, or “P1”) under the [criteria-writin
 - **Second stop — detailed outline.** Once analysis is approved, present the detailed outline directly in chat:
   * Strictly grounded in approved analysis: directly derive all headings, points, and scope from the approved analysis.
   * Default to Heading 1/2/3 numbered `1`, `1.x`, `1.x.x` unless the user explicitly requests another structure. Heading 1 copies the criterion/requirement title verbatim from the supplied source, without paraphrase, translation or invented wording; 1.x holds main points and 1.x.x supporting subpoints. Preserve explicitly adopted existing numbering. Follow [outline structure and evidence readiness](references/outline-structure.md), including its prerequisite for outline-only requests.
-  * Concrete arguments for each heading, detailed enough to show about 30–40% of the content the complete section will contain. The complete draft adds the remaining 60–70%. Do not reverse these ratios, and do not turn them into a word-count quota.
-  * Visuals and tables specifications (names, comparison criteria, columns, process flow). If several valid organizations remain, present 2–3 options, recommend one, and stop. The user chooses. Do not select one and write the section.
+  * Concrete arguments for each heading: Claim, Reason and Limit, enough to show about 40–50% of the content the complete section will contain. A topic label is not an outline point. Keep the full heading tree; do not collapse it into one continuous bullet list. The complete draft adds the remaining 50–60% as connected prose only and does not add a new table, figure, or number. Do not reverse these ratios, and do not turn them into a word-count quota. Do not add unstated technology, audience or operating commitments to imitate depth.
+  * Visuals and tables: `Not needed`, or the diagram or table rendered in the same message. A name or column list alone is not that decision. Do not download a web image to fill the slot. Cite a stable public source for standard theory. Ask the user for a project screenshot or internal number and wait. Search and cite a published fact. A social post is only a lead unless the user asked to use that inspected post. Generate an image or invent a number only after explicit permission for that gap. Silence is not permission. If several valid organizations remain, present 2–3 options, recommend one, and stop. The user chooses. Do not select one and write the section.
   * STOP and await user approval in chat before drafting.
 - **Drafting & Full In-Chat Delivery:**
   * Only after detailed outline approval can paragraph drafting proceed.
-  * Strictly grounded in approved outline: directly expand the approved outline point by point, maintaining strict coherence (Analysis → Outline → Report).
+  * Strictly grounded in approved outline: directly expand the approved outline point by point, maintaining strict coherence (Analysis → Outline → Report). Do not add a table, figure, or number absent from the approved outline.
   * Deliver full drafted text directly in chat for immediate reading and review. Do not hide text behind a file path or merely state "saved to file". Even if saved locally into the project directory for persistence, the complete drafted content must appear in chat.
   * STOP after delivering the section draft. Ask whether the delivered section is approved. Do not start the next section in the same turn. When citations are required, include in-text citations and a References list. Do not invent page numbers, publishers, or unchecked bibliographic details.
 
-Prompts asking to write immediately (e.g. “viết Section 1”, “làm Section 1”, “viết ngay”) do not waive these stops. An approved master outline is not detailed outline approval.
+Prompts asking to write immediately (e.g. “viết Section 1”, “làm Section 1”, “viết ngay”, “làm dàn ý”) do not waive these stops. Asking for the outline, including `làm dàn ý`, is not analysis approval. An approved master outline is not detailed outline approval.
 
 Strictly follow the natural collaborative dialogue of **obra/superpowers** without robotic meta-commentary:
 - The two stops are INTERNAL BEHAVIORAL DISCIPLINE for the agent behind the scenes, NOT scripts or labels to print to the user.
@@ -107,6 +107,7 @@ Strictly follow the natural collaborative dialogue of **obra/superpowers** witho
 - Simply present the analysis or outline in the language of the user's current message. Do not default that language to Vietnamese. End with a natural review question in that same language. A sample question in these instructions is not required wording.
 
 Never invent project names, consulting roles, business context, budgets, SLAs, or operational metrics. Do not add a deliverable that belongs to a later assignment, such as a functional prototype, or scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it.
+Image, screenshot, and DOCX-figure claims follow [visual evidence boundary](references/visual-evidence-boundary.md). Visible pixels are not database, runtime, device, CSS-viewport, or criterion proof. A media filename is not a relationship ID.
 
 Interact through natural collaborative dialogue in chat like obra/superpowers. Present the full analysis or outline directly in chat for comfortable reading. Do NOT abuse modal question tools (like `asktool`) to obstruct the user's reading; ask for approval naturally at the end of the chat message, and let the user review and respond in chat. Ask only when necessary.
 

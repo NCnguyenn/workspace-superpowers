@@ -37,11 +37,44 @@ test('outline owner carries heading and evidence prerequisites', async () => {
 test('outline depth previews content without becoming a word quota', async () => {
   for (const file of ['references/outline-structure.md', 'skills/planning-work/SKILL.md']) {
     const text = await readUtf8(file);
-    assert.match(text, /30–40%/, file);
-    assert.match(text, /60–70%/, file);
+    assert.match(text, /40–50%/, file);
+    assert.match(text, /50–60%/, file);
     assert.match(text, /do not reverse/i, file);
     assert.match(text, /word-count quota/i, file);
     assert.match(text, /brainstorming/, file);
     assert.match(text, /user chooses/i, file);
   }
+});
+
+test('outline points use argument slots and a shown asset or Not needed', async () => {
+  const structure = await readUtf8('references/outline-structure.md');
+  assert.match(structure, /Claim:/);
+  assert.match(structure, /Reason:/);
+  assert.match(structure, /Limit:/);
+  assert.match(structure, /topic label is not an outline point/i);
+  assert.match(structure, /same message/);
+  assert.match(structure, /Not needed/);
+  assert.match(structure, /unstated technology/);
+  assert.match(structure, /Ask the user and wait/);
+  assert.match(structure, /Silence is not permission/);
+
+  for (const file of ['skills/planning-work/SKILL.md', 'templates/outline.md',
+    'references/criteria-writing-contract.md', 'AGENTS.md']) {
+    const text = await readUtf8(file);
+    assert.match(text, /same message/, file);
+    assert.match(text, /Not needed/, file);
+    assert.doesNotMatch(text, /Visuals and tables specification/i, file);
+    assert.doesNotMatch(text, /asset specification/i, file);
+  }
+
+  for (const file of ['skills/planning-work/SKILL.md',
+    'skills/using-workspace-superpowers/SKILL.md',
+    'references/criteria-writing-contract.md', 'AGENTS.md']) {
+    const text = await readUtf8(file);
+    assert.match(text, /làm dàn ý/, file);
+    assert.match(text, /not analysis approval/i, file);
+  }
+
+  const visual = await readUtf8('references/visual-assets-and-word-fidelity.md');
+  assert.match(visual, /Do not download a web image/);
 });
