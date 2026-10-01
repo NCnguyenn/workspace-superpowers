@@ -51,15 +51,15 @@ the evidence prerequisite below still governs missing required material.
 
 The outline shows about 40–50% of the detailed content the complete section will contain: the heading tree, the claim of each paragraph, the evidence or example it will use, the limit or implication it will reach, and every table, figure, and number the draft will use. The complete draft adds the remaining 50–60% by developing those approved points into connected prose. It does not add a new table, figure, or number. Do not reverse these ratios. Do not turn either ratio into a word-count quota, and do not invent content to satisfy a ratio.
 
-Each main point uses these slots, in this order. A topic label is not an outline point.
+Write each section in the form that section needs. A topic label is not an outline point. Do not print Claim:, Reason:, Limit:, Visual:, Table:, Bảng, Hình, or Not needed. Those words are planning notes, not the outline.
 
-- **Claim:** the sentence that point will defend.
-- **Reason:** why that claim holds here.
-- **Limit:** what that point will not claim.
-- **Visual:** `Not needed`, or the downloaded image displayed in the same message.
-- **Table:** `Not needed`, or the table rendered in the same message.
+A definition section is two or three academic sentences: what it is, how it works here, and the boundary. A model section is four to six academic sentences covering mechanism, fit, and limit, then the image only if that model has one. A comparison section is one framing sentence and the filled table. A conclusion is a paragraph. Do not reuse one field list under every heading.
 
-Naming a diagram or table is not showing it. For a requested illustration, search Google or another public platform, download an existing image, and display that image in the same chat message with the source citation directly under it. Display means the user can see the pixels. Embed the downloaded file. A filename, a search-results link, or a later-insert promise is not display. Do not create, generate, or code-draw a substitute. Code drawing is allowed only when the user asks for it or agrees after you ask. Silence is not agreement. Silence is not permission. An external image is not a project screenshot. Do not add an audience, unstated technology, or an operating commitment the user did not state. Those additions are not depth.
+If a section has no image, omit the image. If it has no table, omit the table. Do not write Không cần.
+
+About 40–50% means those sentences already contain the argument, example, and boundary the finished section will use. One label line is not 50%. The finished draft adds transitions and citations to those sentences. It does not turn each label into a new paragraph.
+
+For a requested illustration, search Google or another public platform, download an existing image, convert it to a PNG about 900 px wide, and embed the pixels in the same chat message as a data URI beginning with data:image/png;base64. Put the page title and URL on the next line. A file path, a file link, an SVG, and image markdown whose target is a path are links, not images. Do not emit them. Do not create, generate, or code-draw a substitute. Code drawing is allowed only when the user asks for it or agrees after you ask. Silence is not agreement. Silence is not permission. An external image is not a project screenshot. Do not add an audience, unstated technology, or an operating commitment the user did not state. Those additions are not depth.
 
 ## Asset source decision
 
@@ -67,7 +67,7 @@ Decide the source before showing the outline. Do not invent a stand-in and conti
 
 | Need | Source | Do not |
 |---|---|---|
-| Requested illustration, standard theory, cycle, architecture, or public concept diagram | Search Google or another public platform, download an existing image, and display it in the same chat message with page title and URL under the image. | Create, generate, or code-draw a substitute. A filename or search-results link is not the image. |
+| Requested illustration, standard theory, cycle, architecture, or public concept diagram | Search Google or another public platform, download an existing image, convert it to PNG, and embed a data URI beginning with data:image/png;base64 in the same chat message. Cite page title and URL under the image. | Create, generate, or code-draw a substitute. A file path or SVG is not the image. |
 | Comparison or criteria table | Full table rendered in the same message. Cells from inspected user data or a cited public source. | Fill an unknown cell with an assumed number. |
 | Project screenshot, internal metric, budget, timeline, or case photo | Ask the user and wait. Show the supplied file. | Use a web image, social post, or generated image as the user's project. |
 | Published public fact | Search and cite. A social post is only a lead unless the user asked to use that inspected post. | Treat an uninspected post as verified evidence. |

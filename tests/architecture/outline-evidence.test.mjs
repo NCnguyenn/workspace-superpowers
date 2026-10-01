@@ -51,6 +51,9 @@ test('outline points use argument slots and a shown asset or Not needed', async 
   assert.match(structure, /Claim:/);
   assert.match(structure, /Reason:/);
   assert.match(structure, /Limit:/);
+  assert.match(structure, /Do not print Claim/);
+  assert.match(structure, /data:image\/png;base64/);
+  assert.match(structure, /A file path/);
   assert.match(structure, /topic label is not an outline point/i);
   assert.match(structure, /same message/);
   assert.match(structure, /Not needed/);

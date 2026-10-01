@@ -48,7 +48,7 @@ preparation does not authorize starting the next writing stage.
 
 1. **Inspect visual asset:** For an existing image or graphic, use `inspect_image(file)` or `inspect_layered_image(file)` to check dimensions, aspect ratio, color space (RGB/CMYK), layer structure, and vector elements.
 2. **Determine visual pathway:**
-   - *Requested illustration:* If the user asked to see an image and did not ask to draw one, do not author SVG, Mermaid, HTML, or a generated image. Search Google or another public platform, download an existing image, and return that file so the calling message can display the pixels with the source citation under the image. Code-draw only if the user asked for a drawing or agreed after being asked.
+   - *Requested illustration:* If the user asked to see an image and did not ask to draw one, do not author SVG, Mermaid, HTML, or a generated image. Search Google or another public platform, download an existing image, convert it to a PNG about 900 px wide, and return the PNG so the calling message can embed a data URI beginning with data:image/png;base64. A file path is not an image. Code-draw only if the user asked for a drawing or agreed after being asked.
    - *Vector/Diagram:* Author or adjust declarative vector code (SVG, Mermaid) only when that drawing was requested or agreed. Preserve viewports and vector paths.
    - *Raster image:* Crop, resize, or optimize an existing image using `edit_image(file, ...)` while preserving aspect ratio. Do not generate a new illustration to replace a requested source image.
    - *Layered asset:* Modify layers, canvas, or masks via `edit_layered_image(file, ...)` when supported.

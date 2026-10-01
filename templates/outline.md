@@ -114,7 +114,7 @@ outline citations and figure/table attribution only.
 |---|---|---|---|---|---|
 | [Figure/table name; diagram, screenshot, chart, or table] | [Criterion or point it explains/supports] | [Heading and placement relative to the argument] | [Confirmed source/data or specific missing input] | [User supplies / executing role creates] | [Available / requested / to create / blocked by missing evidence] |
 
-If no visual/table is needed, omit the asset rows and write **Not needed**. If an asset belongs to a child heading, the parent may refer to it instead of requesting it twice. Do not add visuals solely to populate this field.
+If no visual or table is needed, omit the asset rows. Do not copy Claim, Reason, Limit, Visual, Table, or Not needed into the chat outline. Chat outline sections use their own academic form. If an asset belongs to a child heading, the parent may refer to it instead of requesting it twice. Do not add visuals solely to populate this field.
 
 For tables, describe intended columns, comparisons, or measures in Name / Type and Purpose. For figures, distinguish actual screenshots, diagrams from confirmed information, and explicitly authorized hypothetical illustrations. Charts of results require data; a generated screenshot is not operational evidence.
 
