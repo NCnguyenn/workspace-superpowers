@@ -32,6 +32,8 @@ are not database, runtime, device, CSS-viewport, or criterion proof. A media
 filename is not an `r:embed` ID. Copy only punctuation the pixels show. A
 retold log is not a tool result.
 
+Illustration default, including outline delivery: when an image should be shown, search Google or another public platform, download an existing image file, and display that image in the same chat message with the source citation directly under it. Display means the user can see the pixels. A filename, a Google results link, or a promise to insert the image later is not display. Do not create, generate, or code-draw a substitute. Code drawing is allowed only when the user asks for it or agrees after you ask. Silence is not agreement. Show a user-supplied image as supplied. Do not replace a project screenshot or internal photo with a web image.
+
 If a required skill or native capability is unavailable, state the precise
 limitation, continue independent authorized work, and do not claim it ran or
 that its affected operation was completed.

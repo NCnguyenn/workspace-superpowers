@@ -17,7 +17,7 @@ For each applicable heading, decide whether a table or figure is **Not needed**,
 required by the actual rubric/brief, or useful for its explanatory value in making
 a comparison, relationship, process, or evidence clearer. A visual is not mandatory just
 because a section exists. The 40–50% outline guidance concerns substantive depth,
-never an asset quota. Choose the source before creating the asset: cite a stable public source for standard theory; ask the user for project screenshots and internal numbers; search and cite published facts; treat a social post as a lead unless the user asked to use that inspected post; generate an image or invent a number only after explicit permission for that gap. Silence is not permission.
+never an asset quota. For a requested illustration, search Google or another public platform, download an existing image, and display that image in the same chat message with the source citation under it. Do not create or code-draw a substitute unless the user asks for that drawing or agrees after you ask. Silence is not agreement. Ask the user for a project screenshot or internal number and wait. Search and cite a published fact. A social post is a lead unless the user asked to use that inspected post. Invent a number only after explicit permission for that gap.
 
 When a visual is used, record a stable `asset_id`, type, purpose, intended
 position, source/data, preparer, status, and any evidence or permission gap. For a
@@ -37,8 +37,8 @@ The asset provenance class must be one of:
 
 Search discovery does not establish provenance, credibility, permission to reuse,
 or claim support. Record the inspected source and relevant license/reuse condition.
-An unknown license is not permission to copy. Prefer an authorized asset or an
-original explanatory diagram when reuse is not established.
+An unknown license is not permission to copy. For a requested illustration, download and display an existing public image with its source citation. Do not redraw it unless the user asks for a drawing or agrees after you ask.
+A user-supplied image is shown as supplied. A web image is not the user's project screenshot.
 Redrawing or adapting a protected figure does not automatically resolve its reuse
 conditions. Independently explain supported ideas rather than copy its composition.
 
@@ -51,7 +51,7 @@ blocked unless the existing evidence contract records a specifically authorized
 alternative.
 
 Do not reduce an available preview to specifications alone or defer it to drafting.
-Do not download a web image, including a Google image, to supply a missing preview. A named diagram or table that is not rendered in the same message is not a decision. Use `Not needed` or show an original explanatory diagram or table there. Label that diagram as explanatory, not as a project screenshot.
+A named diagram or table that is not rendered in the same message is not a decision. For a requested illustration, download an existing public image and display it in that message with its source citation. Use `Not needed` only when no illustration is required. Do not create, generate, or code-draw a substitute unless the user asks for that drawing or agrees after you ask. Label a permitted drawing as a drawing, not as a found source image or a project screenshot.
 Screenshot and embedded-figure claims follow [visual evidence boundary](visual-evidence-boundary.md). Visible pixels are not runtime, database, device, or criterion proof.
 An unknown table value stays unknown, not zero, an assumed improvement or an
 invented measurement. Follow the existing evidence-before-outline prerequisite;

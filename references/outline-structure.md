@@ -56,10 +56,10 @@ Each main point uses these slots, in this order. A topic label is not an outline
 - **Claim:** the sentence that point will defend.
 - **Reason:** why that claim holds here.
 - **Limit:** what that point will not claim.
-- **Visual:** `Not needed`, or the diagram rendered in the same message.
+- **Visual:** `Not needed`, or the downloaded image displayed in the same message.
 - **Table:** `Not needed`, or the table rendered in the same message.
 
-Naming a diagram or table is not showing it. Do not download a web image to fill either slot. An original explanatory diagram is labeled as explanatory, not as a project screenshot. Do not add an audience, unstated technology, or an operating commitment the user did not state. Those additions are not depth.
+Naming a diagram or table is not showing it. For a requested illustration, search Google or another public platform, download an existing image, and display that image in the same chat message with the source citation directly under it. Display means the user can see the pixels. Embed the downloaded file. A filename, a search-results link, or a later-insert promise is not display. Do not create, generate, or code-draw a substitute. Code drawing is allowed only when the user asks for it or agrees after you ask. Silence is not agreement. Silence is not permission. An external image is not a project screenshot. Do not add an audience, unstated technology, or an operating commitment the user did not state. Those additions are not depth.
 
 ## Asset source decision
 
@@ -67,11 +67,12 @@ Decide the source before showing the outline. Do not invent a stand-in and conti
 
 | Need | Source | Do not |
 |---|---|---|
-| Standard theory, cycle, architecture, or public concept diagram | Search a stable public source and cite it in the outline. If none is usable, ask before redrawing or generating. | Hotlink an unstable result, or generate an image without permission. |
+| Requested illustration, standard theory, cycle, architecture, or public concept diagram | Search Google or another public platform, download an existing image, and display it in the same chat message with page title and URL under the image. | Create, generate, or code-draw a substitute. A filename or search-results link is not the image. |
 | Comparison or criteria table | Full table rendered in the same message. Cells from inspected user data or a cited public source. | Fill an unknown cell with an assumed number. |
-| Project screenshot, internal metric, budget, timeline, or case photo | Ask the user and wait. | Use a web image, social post, or generated image as the user's project. |
+| Project screenshot, internal metric, budget, timeline, or case photo | Ask the user and wait. Show the supplied file. | Use a web image, social post, or generated image as the user's project. |
 | Published public fact | Search and cite. A social post is only a lead unless the user asked to use that inspected post. | Treat an uninspected post as verified evidence. |
-| Hypothetical number or generated image | Only after explicit permission for that gap. Label it hypothetical. | Treat silence, "continue", or analysis approval as permission. Silence is not permission. |
+| Code-drawn diagram or generated image | Only when the user asks for that drawing, or agrees after you ask. Label it as a drawing, not as a found source image. | Treat silence, "continue", or analysis approval as agreement. |
+| Hypothetical number | Only after explicit permission for that gap. Label it hypothetical. | Treat silence as permission. |
 
 Chat framing follows the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not add a line-by-line translation. The outline intended for submission follows the locked submission language.
 

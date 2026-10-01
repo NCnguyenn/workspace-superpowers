@@ -58,7 +58,7 @@ test('visual decisions are conditional and preserve provenance states', async ()
   ]) assert.match(contract, new RegExp(marker, 'i'), marker);
   assert.match(contract, /preview[\s\S]*unavailable|unavailable[\s\S]*preview/i);
   assert.match(contract, /permission|reuse condition|license/i);
-  assert.match(contract, /30[–-]40%[\s\S]*asset quota|asset quota[\s\S]*30[–-]40%/i);
+  assert.match(contract, /40[–-]50%[\s\S]*asset quota|asset quota[\s\S]*40[–-]50%/i);
 });
 
 test('citation and Word contracts distinguish source states and verification layers', async () => {

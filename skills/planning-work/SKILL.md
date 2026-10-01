@@ -93,14 +93,18 @@ delivery or approval.
 
 1. Reuse applicable scope and outline decisions. Return unresolved applicable analysis approval to scoping, including for a criterion outline-only request. Once that analysis is approved or explicitly waived, sufficient scope and resolved evidence prerequisites permit outlining without another interview. Evidence permission alone does not approve the analysis.
 2. Unless the user explicitly requests another structure, use Heading 1/2/3 numbered `1`, `1.x`, `1.x.x`. Heading 1 copies the source title verbatim. For each main point, fill Claim, Reason and Limit from [outline structure](../../references/outline-structure.md). A topic label is not an outline point. Record length only when the user or source specified it. Do not add an audience, unstated technology or an operating commitment to imitate depth. A small criterion may use a short outline directly in chat.
-3. For each heading, set Visual and Table to `Not needed` or to the diagram or table rendered in the same message. A name, column list or process sentence is not that decision. When an asset is shown, also record name/type, purpose, position, source/data, preparer and status beside it. Those fields do not replace the rendered asset. Do not download a web image to supply the missing preview. Keep the Heading 1/2/3 tree visible; do not collapse the outline into one continuous bullet list.
+3. For each heading, set Visual and Table to `Not needed` or to the asset rendered in the same message. A name, column list, caption, or "Figure 1.1" is not that decision. When an asset is shown, also record name/type, purpose, position, source/data, preparer and status beside it. Those fields do not replace the rendered asset. Keep the Heading 1/2/3 tree visible; do not collapse the outline into one continuous bullet list.
 
-Choose the asset source before showing the outline. Ask and wait when it is not already supplied or inspected:
-- Standard theory, cycle, architecture, or public concept diagram: search a stable public source and cite it. If none is usable, ask before redrawing or generating an image.
+Choose the asset source before showing the outline:
+- User-supplied image: show that file in the same chat message. Do not replace it with a web image or a drawing.
+- Requested illustration, including a standard theory, cycle, architecture, or public concept diagram: search Google or another public platform, download an existing image file, and display that image in the same chat message with the source citation directly under it. Record the page title and URL, and state that it is an external illustration, not the user's project evidence. Do not create, generate, or code-draw a substitute.
 - Comparison or criteria table: render the full table in the same message. Cells come from inspected user data or a cited public source. An unknown cell stays unknown.
-- Project screenshot, internal metric, budget, timeline, or case-specific photo: ask the user and wait. Do not substitute a web image, a social-media post, or a generated image.
+- Project screenshot, internal metric, budget, timeline, or case-specific photo: ask the user and wait. Do not substitute a web image, a social-media post, or a generated image as the user's project.
 - Published public fact: search and cite. A social-media post is a lead, not a verified fact, unless the user asked to use that inspected post.
-- Invented number, fake project result, or generated image: only after the user explicitly permits that specific gap. Silence, "continue", or analysis approval is not permission. Label a permitted illustration as hypothetical, never as project evidence.
+- Code-drawn diagram (SVG, HTML, Mermaid) or a generated image: only when the user explicitly asks for that drawing, or after you ask and the user agrees. Silence, "continue", or analysis approval is not agreement.
+- Invented number or fake project result: only after the user explicitly permits that specific gap. Label a permitted illustration as hypothetical, never as project evidence.
+
+Display means the user can see the image pixels in that chat message. Embed the downloaded file as a Markdown image in that message. A filename, a Google search-results link, a caption, or a promise to insert the image into a document later is not display. If the download or the chat preview fails, say so and ask. Do not draw a replacement unless the user then agrees.
 
 The complete draft later adds prose only. It does not add a new table, figure, or number.
 4. Record `outline_status`, `outline_version`, and `approval_record`, including the decision's applicable sections and explicit waivers. Follow [guided questions](../../references/guided-questions.md), present the detailed outline directly in chat and STOP to await user approval before drafting. Silence is not approval; preserve already approved or waived decisions within their scope. When persisting files, co-locate tracking and deliverable files in a dedicated common project directory created by AI with user consent.
@@ -147,3 +151,9 @@ If file generation is restricted or unnecessary, keep the plan in chat or execut
 * Drafting multi-chapter documents without an agreed outline.
 * Omitting the deliverable contract for multi-artifact deliverables.
 * Over-complicating the plan with unnecessary subagent chains when a single orchestrator suffices.
+
+| Excuse | Reality |
+|---|---|
+| A figure name is enough for the outline | Naming it is not showing it. Display the downloaded image in the same message. |
+| Draw the SVG when writing the DOCX | The outline must show the image now. The later draft adds prose only. |
+| A short instruction says diagrams are code | That does not permit drawing when the user asked for an existing image. Ask first, or draw only after the user agrees. |

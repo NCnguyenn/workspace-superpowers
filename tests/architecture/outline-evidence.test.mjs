@@ -76,5 +76,8 @@ test('outline points use argument slots and a shown asset or Not needed', async 
   }
 
   const visual = await readUtf8('references/visual-assets-and-word-fidelity.md');
-  assert.match(visual, /Do not download a web image/);
+  assert.match(visual, /download an existing public image/);
+  assert.match(visual, /source citation/);
+  assert.match(visual, /Do not create, generate, or code-draw/);
+  assert.doesNotMatch(visual, /Do not download a web image/);
 });
