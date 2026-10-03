@@ -48,7 +48,7 @@ model-driven SCL acceptance is claimed by that probe.
 ## Package handoff
 
 Archive: `dist/pi-phase4-0.1.7-beta/local.workspace-superpowers-0.1.7-beta.piplug`.
-SHA-256: `fcdb93aa6060de474029a2d265e5059904889564dcf87ac2ef17806b9cf25d11`.
+SHA-256: `ec0b1127c7c1d0509f416d555ee37ee7e9fcc9be91bbaa477c4fd78b6137d453`.
 All 84 archive/unpacked file bytes and CRC were reopened and checked; 24 distinct
 skills are packaged. Raw SDK probe records are in
 `dist/pi-phase4-0.1.7-beta/native-sdk-probe.json`.

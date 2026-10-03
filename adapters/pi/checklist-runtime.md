@@ -42,4 +42,3 @@ The 0.16.0 host projects each retained tool result to at most 8,000 characters.
 Long or history-rich receipts may therefore be unavailable after restart even
 when the conversation remains present. Report that loss; do not reconstruct
 completion from a truncated receipt or the assistant's explanation.
-
