@@ -2,10 +2,13 @@
 
 Status: **READY FOR OPERATOR CAMPAIGN — Phase 4 remains BLOCKED**
 
-Prepared: 2026-10-03  
-Release branch: `codex/phase5-release-20261003`  
-Release commit: `d275249`  
-Package: `local.workspace-superpowers-0.1.6-beta.piplug`  
+Prepared: 2026-10-03
+
+Release branch: `codex/phase5-release-20261003`
+
+Release commit: `d275249`
+
+Package: `local.workspace-superpowers-0.1.6-beta.piplug`
 Package SHA-256: `42fa6ece04ae6a6b5893d15552ba9743a90a7674af46fdfffdbef536c12a0ff5`
 
 ## Host already prepared
