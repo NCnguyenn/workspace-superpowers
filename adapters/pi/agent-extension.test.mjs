@@ -28,22 +28,38 @@ test('native agent extension exposes a default export for the desktop sidecar lo
 
 test('desktop plugin lifecycle does not register an ineffective notification hook', async () => {
   const registrations = [];
-  await main.onLoad({ events: { on(name) { registrations.push(name); } } });
+  await main.onLoad({ events: { on(name) { registrations.push(name); } },
+    agent: { async registerTool() {}, async unregisterTool() {} },
+    commands: { async register() {}, async unregister() {} },
+    ui: { async openPanel() {}, async closePanel() {} },
+    session: { async getLlmContext() { return { messages: [] }; } },
+  });
   assert.deepEqual(registrations, []);
+  await main.onUnload();
 });
 
 test('native agent extension returns a prompt without mutating the host event', async () => {
   const { api, handlers } = host();
   extension(api);
   extension(api);
-  assert.equal(handlers.size, 1);
+  assert.equal(handlers.size, 2);
   const event = Object.freeze({ systemPrompt: 'Project custom constraints.' });
   const result = await handlers.get('before_agent_start')(event);
   assert.ok(result.systemPrompt.startsWith(event.systemPrompt));
   assert.ok(result.systemPrompt.includes('local.workspace-superpowers/using-workspace-superpowers'));
   assert.match(result.systemPrompt, /Package root: .*[\\/]workspace-superpowers/);
-  assert.ok(result.systemPrompt.length < 6000, 'only the thin bootstrap is injected');
+  assert.ok(result.systemPrompt.length < 6000, 'only the bounded bootstrap is injected');
   assert.equal(event.systemPrompt, 'Project custom constraints.');
+});
+
+test('native owner prevents the model from creating a competing TodoWrite mirror', async () => {
+  const { api, handlers } = host();
+  api.getAllTools = () => [{ name: 'plugin_local_workspace_superpowers_workspace_checklist' }];
+  extension(api);
+  assert.equal(typeof handlers.get('tool_call'), 'function');
+  const result = await handlers.get('tool_call')({ toolName: 'TodoWrite', input: { todos: [] } });
+  assert.equal(result.block, true);
+  assert.match(result.reason, /workspace_checklist/);
 });
 
 test('native bootstrap requires minimal meaning-preserving edits for only requests', async () => {

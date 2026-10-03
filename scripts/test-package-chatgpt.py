@@ -8,6 +8,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+VERSION = json.loads((ROOT / 'package.json').read_text(encoding='utf-8'))['version']
 
 
 class PackageTests(unittest.TestCase):
@@ -27,7 +28,7 @@ class PackageTests(unittest.TestCase):
             manifest = json.loads((plugin / 'plugin.json').read_text(encoding='utf-8'))
             self.assertEqual(manifest['$schema'], 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json')
             self.assertEqual(manifest['name'], 'workspace-superpowers')
-            self.assertEqual(manifest['version'], '0.1.6-beta')
+            self.assertEqual(manifest['version'], VERSION)
             self.assertEqual(len(list((plugin / 'skills').glob('*/SKILL.md'))), 24)
             self.assertTrue((plugin / 'mcp.json').is_file())
             mcp = json.loads((plugin / 'mcp.json').read_text(encoding='utf-8'))
@@ -45,7 +46,7 @@ class PackageTests(unittest.TestCase):
             record = json.loads((out / 'build-record.json').read_text(encoding='utf-8'))
             self.assertFalse(record['installed'])
             self.assertEqual(record['skillCount'], 24)
-            archive = out / 'workspace-superpowers-0.1.6-beta.zip'
+            archive = out / f'workspace-superpowers-{VERSION}.zip'
             with zipfile.ZipFile(archive) as package:
                 self.assertEqual(package.read('plugin.json'), (plugin / 'plugin.json').read_bytes())
                 self.assertNotIn('marketplace.json', package.namelist())

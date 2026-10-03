@@ -42,7 +42,7 @@ const assert = require('node:assert/strict');
 const extension = require(process.argv[1]);
 assert.equal(extension.default, extension, 'sidecar loader requires the default export');
 let hook;
-extension({ on(event, handler) { assert.equal(event, 'before_agent_start'); hook = handler; } });
+extension({ on(event, handler) { assert.ok(['before_agent_start', 'tool_call'].includes(event)); if (event === 'before_agent_start') hook = handler; } });
 (async () => {
   const result = await hook({ systemPrompt: '## Workspace Superpowers\nLegacy project rules.' });
   assert.ok(result, 'legacy heading must not suppress current routing');
@@ -98,7 +98,11 @@ extension({ on(event, handler) { assert.equal(event, 'before_agent_start'); hook
                 manifest = json.loads(package.read('manifest.json'))
                 plugin = out / manifest['id']
                 self.assertEqual(manifest['id'], 'local.workspace-superpowers')
-                self.assertEqual(manifest['permissions'], ['agent.prompt.inject', 'agent.extension'])
+                self.assertEqual(manifest['permissions'], ['agent.prompt.inject', 'agent.extension', 'agent.tool.register', 'ui.panel', 'session.read'])
+                self.assertIn('adapters/pi/checklist-bridge.cjs', names)
+                self.assertIn('adapters/pi/checklist-panel.html', names)
+                self.assertIn('adapters/pi/checklist-panel.js', names)
+                self.assertEqual(manifest['ui']['panel'], 'adapters/pi/checklist-panel.html')
                 skills = manifest['contributes']['skills']
                 self.assertEqual(len(skills), 24)
                 self.assertEqual(len({s['id'] for s in skills}), 24)

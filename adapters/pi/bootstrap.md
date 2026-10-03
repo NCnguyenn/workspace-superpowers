@@ -40,7 +40,14 @@ If a required skill or native capability is unavailable, state the precise
 limitation, continue other authorized work, and do not claim the affected
 operation completed.
 
-### PI-Desktop native checklist mirror
+### Native checklist
+
+For meaningful multi-stage work, read `adapters/pi/checklist-runtime.md` first.
+Use `plugin_local_workspace_superpowers_workspace_checklist` when available:
+read status and mutate stable IDs/revisions; its native panel owns the state.
+Do not create a competing TodoWrite list. No checklist for direct Q&A or edits.
+
+### Legacy TodoWrite fallback
 
 When `references/session-progress.md` activates a checklist, use `TodoWrite`
 only when it is in the current agent catalog. It mirrors canonical Markdown:
@@ -55,9 +62,7 @@ mirrored content, expose only the first lossy row as native
 `pending`. Rebuild the complete list after replace, cancel, reopen, compaction,
 or restart; if state is uncertain, use the Markdown fallback.
 
-Do not register a second checklist tool or call internal `tools.execute`.
-`adapters/pi/native-checklist.cjs` is a pure mapping/validation specification;
-the model's host-owned `TodoWrite` call remains runtime-controlled and the
-helper owns no state or host call. If `TodoWrite` is unavailable, keep the
-portable Markdown fallback without claiming native presentation.
+Do not call internal `tools.execute` or write a separate checklist database.
+The legacy `native-checklist.cjs` helper owns no state or host call. Without
+TodoWrite, keep the Markdown fallback without claiming native presentation.
 <!-- workspace-superpowers:end -->

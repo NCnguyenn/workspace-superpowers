@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="pi-plugin-chrome" content="v2">
+  <title>Workspace Checklist</title>
+  <style>
+    :root { color-scheme: light dark; font: 14px/1.5 system-ui, sans-serif; }
+    body { margin: 0; padding: calc(var(--pi-plugin-titlebar-height, 46px) + 16px) 20px 20px; background: Canvas; color: CanvasText; }
+    h1 { margin: 0 0 8px; font-size: 20px; }
+    p { margin: 8px 0; }
+    select, input, textarea, button { font: inherit; color: inherit; }
+    select, input, textarea { box-sizing: border-box; width: 100%; padding: 8px; margin: 5px 0; }
+    button { padding: 7px 12px; border: 1px solid GrayText; border-radius: 6px; background: ButtonFace; cursor: pointer; }
+    button:disabled { opacity: .5; cursor: default; }
+    nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+    ol { padding: 0; list-style: none; }
+    li { margin: 8px 0; padding: 12px; border: 1px solid GrayText; border-radius: 8px; }
+    li[data-status="completed"] { border-color: #359969; }
+    li[data-status="blocked"], li[data-status="awaiting_user"] { border-color: #b28a36; }
+    li[data-status="cancelled"] { opacity: .65; }
+    label.task { display: flex; gap: 8px; align-items: start; }
+    label.task input { width: auto; margin-top: 5px; }
+    small { display: block; opacity: .75; overflow-wrap: anywhere; }
+    #error { color: #cf5555; white-space: pre-wrap; }
+    #limitation { border-left: 3px solid #b28a36; padding-left: 10px; }
+    textarea { min-height: 80px; }
+  </style>
+</head>
+<body>
+  <h1 id="title">Workspace Checklist</h1>
+  <label>Session <select id="session" aria-label="Checklist session"></select></label>
+  <p id="counts" aria-live="polite">Waiting for checklist…</p>
+  <p id="lifecycle"></p>
+  <p id="limitation" hidden></p>
+  <nav aria-label="Checklist actions">
+    <button data-action="hide">Hide</button>
+    <button data-action="pause">Pause</button>
+    <button data-action="resume">Resume</button>
+    <button data-action="cancel">Cancel remaining</button>
+    <button data-action="reopen">Reopen selected</button>
+    <button id="trace">Download trace</button>
+  </nav>
+  <ol id="tasks"></ol>
+  <label>Reason for cancellation, omission, replacement or reopening
+    <input id="reason" maxlength="2000" placeholder="Describe the change or scope decision">
+  </label>
+  <details>
+    <summary>Replace workflow</summary>
+    <label>New workflow title <input id="replacement-title" maxlength="200"></label>
+    <label>New tasks, one per line <textarea id="replacement-tasks"></textarea></label>
+    <button data-action="replace">Replace with these tasks</button>
+  </details>
+  <details><summary>History</summary><div id="history"></div></details>
+  <p id="error" role="alert"></p>
+  <script src="checklist-panel.js"></script>
+</body>
+</html>

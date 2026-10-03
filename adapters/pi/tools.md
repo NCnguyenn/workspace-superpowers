@@ -1,6 +1,6 @@
 # PI-Desktop capability mapping
 
-Target for native prompt lifecycle and checklist mirror: PI-Desktop 0.16.0 on
+Target for native prompt lifecycle and checklist bridge: PI-Desktop 0.16.0 on
 Windows, inspected read-only on 2026-10-03. Earlier tool/UI observations below
 retain their original version and date.
 
@@ -67,9 +67,45 @@ of `skills/<name>/SKILL.md` would produce the same `skill` ID for every entry on
 the inspected host. The generated adapter note is not written back to portable
 source skills.
 
-The declared permissions are `agent.prompt.inject` for the catalog and
-`agent.extension` for the native runtime bootstrap. PI-Desktop owns both grants.
-The new extension permission is not granted by building or installing source files.
+The declared permissions are `agent.prompt.inject`, `agent.extension`,
+`agent.tool.register`, `ui.panel` and `session.read`. PI-Desktop owns all grants;
+declaring them in an archive does not grant them.
+
+## Native checklist owner (0.1.7-beta)
+
+The plugin SDK loads `main.js` with `globalThis.pi`, registers
+`plugin_local_workspace_superpowers_workspace_checklist`, and supplies its
+execution context with host `sessionId` and `turnId`. The state owner is
+`ChecklistStore` in `checklist-bridge.cjs`, scoped by that host session identity.
+It retains request, checklist and task IDs across turns and side questions.
+Counts derive from task rows; cancelled work never becomes completed work.
+
+The manifest's `ui.panel` points to `checklist-panel.html`. The native host opens
+the panel and exposes `pluginBridge.invoke`; the local renderer displays exact
+statuses, counts, approval/blocker reasons and next actions. Panel callbacks use
+session, checklist, revision and binding identities, and reject stale actions.
+Show/hide only change visibility. Pause retains unresolved approvals and evidence.
+Replace archives the old checklist and creates a separate identity. Reopen
+invalidates only affected tasks and their dependents. Omission requires an
+explicit reason and dependency rescoping before downstream work can advance.
+
+Each mutation emits `workspace.checklist.transition` with an ISO timestamp,
+correlation ID, source, input payload and before/after snapshots. Native tool
+transitions also use the SDK log. The panel exports up to 256 retained transitions
+with a dropped-record count. State is transient in the plugin process; this
+adapter writes no session database or independent task store.
+
+Recovery uses `pi.session.getLlmContext()` only during an authorized native tool
+invocation. It accepts the exact tool's same-session, hash-validated JSON
+receipts, not user text or assistant summaries. Restart may lose panel changes
+after the last receipt; advancement requires explicit user confirmation. Missing
+or compacted receipts produce an unavailable-state limitation. A recovered
+snapshot is not proof of full compaction or restart acceptance.
+
+When the native owner is in the runtime catalog, the extension rejects
+competing `TodoWrite` calls. The older mirror remains available only when the
+native owner is absent. Package and SDK tests are separate from live-host
+permission, rendering and lifecycle verification.
 
 ## PI-Desktop 0.16.0 native checklist source evidence
 
@@ -89,8 +125,8 @@ available; it is not live SCL acceptance and does not admit PI-Desktop to Phase
   500 Unicode characters with a warning.
 - The sidecar routes tool execution through its host-owned
   `tools.execute` call with `sessionId`, `turnId`, and `toolCallId`. The
-  extension must not call that internal route or register a second checklist
-  tool. The pure mapper is packaged for contract testing and documentation; the
+  extension must not call that internal route. The legacy pure mapper is
+  packaged for contract testing and documentation; the
   model's host-owned call is not programmatically intercepted by the extension.
 - The sidecar exposes `session_before_compact`, `session_compact`, and related
   lifecycle event names. Their presence does not prove checklist state

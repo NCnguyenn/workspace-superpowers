@@ -8,6 +8,7 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+VERSION = json.loads((ROOT / 'package.json').read_text(encoding='utf-8'))['version']
 CONFIG_PLUGIN = Path.home() / '.gemini' / 'config' / 'plugins' / 'workspace-superpowers'
 
 
@@ -30,7 +31,7 @@ class PackageTests(unittest.TestCase):
             self.assertFalse(raw.startswith(b'\xef\xbb\xbf'))
             manifest = json.loads(raw)
             self.assertEqual(manifest['name'], 'workspace-superpowers')
-            self.assertEqual(manifest['version'], '0.1.6-beta')
+            self.assertEqual(manifest['version'], VERSION)
             self.assertTrue(manifest['disabled'])
             skills = list(plugin.glob('skills/*/SKILL.md'))
             self.assertEqual(len(skills), 24)
@@ -48,7 +49,7 @@ class PackageTests(unittest.TestCase):
             record = json.loads((out / 'build-record.json').read_text(encoding='utf-8'))
             self.assertFalse(record['installed'])
             self.assertIn('skills      : 24 processed', record['validateOutput'])
-            archive = out / 'workspace-superpowers-0.1.6-beta.zip'
+            archive = out / f'workspace-superpowers-{VERSION}.zip'
             with zipfile.ZipFile(archive) as package:
                 self.assertIn('plugin.json', package.namelist())
                 self.assertEqual(package.read('plugin.json'), raw)

@@ -3,6 +3,7 @@
 const { readFileSync } = require('node:fs');
 const path = require('node:path');
 const { mergeBootstrap } = require('./bootstrap-runtime.cjs');
+const { HOST_TOOL_NAME } = require('./checklist-bridge.cjs');
 const registered = new WeakSet();
 
 // Packaged as .js: PI-Desktop's native extension loader does not accept .cjs.
@@ -23,6 +24,13 @@ module.exports = function workspaceBootstrap(pi) {
     const base = typeof event?.systemPrompt === 'string' ? event.systemPrompt : '';
     const systemPrompt = mergeBootstrap(base, content);
     return systemPrompt === base ? undefined : { systemPrompt };
+  });
+  // The native owner must not compete with the built-in four-state mirror.
+  // Leave TodoWrite available as a fallback when the plugin tool was not granted.
+  pi.on('tool_call', (event) => {
+    if (event?.toolName !== 'TodoWrite') return;
+    const available = pi.getAllTools?.().some(tool => tool.name === HOST_TOOL_NAME);
+    if (available) return { block: true, reason: 'Use plugin_local_workspace_superpowers_workspace_checklist: workspace_checklist owns this workflow and its native panel. Do not create a competing TodoWrite list.' };
   });
   registered.add(pi);
 };

@@ -1,5 +1,12 @@
 # PI-Desktop Phase 4 readiness evidence pack
 
+Implementation update (2026-10-03): the `0.1.7-beta` candidate now includes the
+native state owner, SDK tool, panel and action return path described in
+[the bridge verification record](../../../../../docs/verification/pi-desktop-phase4-bridge.md).
+This pack describes the earlier prompt/mirror campaign, not live acceptance of
+the new candidate. Its old implementation observations do not describe current
+code; missing live permission, UI and lifecycle evidence has not been fabricated.
+
 Campaign: `session-checklist-phase2-pi-desktop-20261003/phase4-readiness`  
 Prepared date: 2026-10-03  
 Source revision (base): `a7ad6c8c19835f2b0bfc7010e9e48c23ecf70998`; adapter/evidence updates are uncommitted working-tree changes.  

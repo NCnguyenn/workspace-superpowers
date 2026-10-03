@@ -47,7 +47,7 @@ def collect(root):
                     relative = (Path(directory) / name).relative_to(root).as_posix()
                     files[relative] = source_bytes(root, relative)
     manifest = json.loads(source_bytes(root, 'adapters/pi/manifest.json'))
-    if manifest['id'] != PLUGIN_ID or manifest['permissions'] != ['agent.prompt.inject', 'agent.extension']:
+    if manifest['id'] != PLUGIN_ID or manifest['permissions'] != ['agent.prompt.inject', 'agent.extension', 'agent.tool.register', 'ui.panel', 'session.read']:
         raise ValueError('Unexpected plugin identity or permissions')
     if manifest.get('contributes') != {'agentExtensions': ['adapters/pi/agent-extension.js']}:
         raise ValueError('Expected the native PI-Desktop bootstrap extension')
@@ -91,6 +91,8 @@ def collect(root):
     files['main.js'] = source_bytes(root, 'adapters/pi/main.cjs')
     files['adapters/pi/agent-extension.js'] = source_bytes(root, 'adapters/pi/agent-extension.cjs')
     files['adapters/pi/bootstrap-runtime.cjs'] = source_bytes(root, 'adapters/pi/bootstrap-runtime.cjs')
+    for name in ('checklist-bridge.cjs', 'checklist-panel.html', 'checklist-panel.js'):
+        files[f'adapters/pi/{name}'] = source_bytes(root, f'adapters/pi/{name}')
     # Small executable adapter helpers used by the native route boundaries.
     # Keep them beside main.js so the packaged runtime exercises the same code.
     for name in ('native-checklist.cjs', 'revision-export-route.cjs', 'tracking-checkpoint.mjs', 'project-survey.mjs'):
@@ -98,7 +100,7 @@ def collect(root):
         if candidate.is_file():
             files[f'adapters/pi/{name}'] = source_bytes(root, f'adapters/pi/{name}')
     files['LICENSE'] = source_bytes(root, 'LICENSE')
-    for name in ('bootstrap.md', 'tools.md', 'install.md', 'dogfood.md', 'criterion-trial.md', 'routing-trial.md'):
+    for name in ('bootstrap.md', 'checklist-runtime.md', 'tools.md', 'install.md', 'dogfood.md', 'criterion-trial.md', 'routing-trial.md'):
         files[f'adapters/pi/{name}'] = source_bytes(root, f'adapters/pi/{name}')
     files['dogfood/AGENTS.md'] = files['adapters/pi/bootstrap.md']
     files['dogfood/README.md'] = source_bytes(root, 'adapters/pi/dogfood.md')
