@@ -1,7 +1,8 @@
 # PI-Desktop capability mapping
 
-Target for native prompt lifecycle: PI-Desktop 0.15.9 on Windows, 2026-09-28.
-Earlier tool/UI observations below retain their original version and date.
+Target for native prompt lifecycle and checklist mirror: PI-Desktop 0.16.0 on
+Windows, inspected read-only on 2026-10-03. Earlier tool/UI observations below
+retain their original version and date.
 
 The skill pack names conceptual operations. They are not executable tool names.
 
@@ -69,6 +70,37 @@ source skills.
 The declared permissions are `agent.prompt.inject` for the catalog and
 `agent.extension` for the native runtime bootstrap. PI-Desktop owns both grants.
 The new extension permission is not granted by building or installing source files.
+
+## PI-Desktop 0.16.0 native checklist source evidence
+
+A read-only inspection of the installed runtime found the following narrow
+native surface. It is recorded here so the adapter can use the host tool when
+available; it is not live SCL acceptance and does not admit PI-Desktop to Phase
+4.
+
+- Installed executable: `C:\Users\CHI NGUYEN\AppData\Local\Programs\PI-Desktop\PI-Desktop.exe`, file version `0.16.0`, product version `0.16.0.0`.
+- Installed sidecar: `resources/agent-runtime/sidecar.js`, SHA-256 `1BB83AFC0059F8BDB167F0DC6DD9D3C9AB5916848D7A564558B858E5BF96BB47`.
+- `TodoWrite` is included in the agent-mode built-in tool catalog. Its source
+  schema accepts `todos[]`, with `content`, `status` in
+  `pending|in_progress|completed|cancelled`, optional priority in
+  `high|medium|low`, and a maximum of 50 items.
+- The host description states that each call replaces the full display-order
+  list, allows only one `in_progress` item, and truncates content longer than
+  500 Unicode characters with a warning.
+- The sidecar routes tool execution through its host-owned
+  `tools.execute` call with `sessionId`, `turnId`, and `toolCallId`. The
+  extension must not call that internal route or register a second checklist
+  tool. The pure mapper is packaged for contract testing and documentation; the
+  model's host-owned call is not programmatically intercepted by the extension.
+- The sidecar exposes `session_before_compact`, `session_compact`, and related
+  lifecycle event names. Their presence does not prove checklist state
+  restoration, renderer ownership, action callbacks, or request scoping.
+
+The source observation supports a **native mirror path** in the PI adapter. It
+does not prove that a live model invoked `TodoWrite`, that a native panel owns
+the visible rows/counts, that permissions are granted for this package, or
+that any Phase 4 SCL case passed independent review. Those claims remain
+evidence-gated in the readiness pack.
 
 ## Question UI capability boundary
 

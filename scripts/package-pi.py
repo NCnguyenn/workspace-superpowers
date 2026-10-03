@@ -93,7 +93,7 @@ def collect(root):
     files['adapters/pi/bootstrap-runtime.cjs'] = source_bytes(root, 'adapters/pi/bootstrap-runtime.cjs')
     # Small executable adapter helpers used by the native route boundaries.
     # Keep them beside main.js so the packaged runtime exercises the same code.
-    for name in ('revision-export-route.cjs', 'tracking-checkpoint.mjs', 'project-survey.mjs'):
+    for name in ('native-checklist.cjs', 'revision-export-route.cjs', 'tracking-checkpoint.mjs', 'project-survey.mjs'):
         candidate = root / 'adapters' / 'pi' / name
         if candidate.is_file():
             files[f'adapters/pi/{name}'] = source_bytes(root, f'adapters/pi/{name}')

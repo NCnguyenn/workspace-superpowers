@@ -1,6 +1,10 @@
 # Antigravity capability mapping
 
-Target: Antigravity CLI `agy` 1.2.2, probed on Windows. These are conceptual mappings for this package. They are not a claim that a model applied them.
+Target: Antigravity Desktop plugin contract observed locally on Windows, with `agy` CLI
+1.2.2. This is not evidence of compatibility with Antigravity Desktop 2.19.1;
+run `python scripts/probe-antigravity-desktop.py` and the desktop smoke test after
+that target version is installed. These are conceptual mappings for this package.
+They are not a claim that a model applied them.
 
 | Concept | Host mapping |
 |---|---|

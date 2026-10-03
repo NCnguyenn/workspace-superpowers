@@ -49,17 +49,31 @@ content, captions and sources under the relevant outline point. Specifications
 alone do not replace an available preview. Record unavailable previews honestly;
 the evidence prerequisite below still governs missing required material.
 
-The outline shows about 40–50% of the detailed content the complete section will contain: the heading tree, the claim of each paragraph, the evidence or example it will use, the limit or implication it will reach, and every table, figure, and number the draft will use. The complete draft adds the remaining 50–60% by developing those approved points into connected prose. It does not add a new table, figure, or number. Do not reverse these ratios. Do not turn either ratio into a word-count quota, and do not invent content to satisfy a ratio.
+The outline and the finished section use the same blocks in the same order. About 40–50% means those blocks are already written, shorter, with the argument, example, and boundary. The finished draft adds the remaining 50–60% inside those same blocks: fuller sentences, transitions, and citations. It does not add or remove a paragraph, list, table, figure, or number. Do not reverse these ratios. Do not turn either ratio into a word-count quota.
 
 Write each section in the form that section needs. A topic label is not an outline point. Do not print Claim:, Reason:, Limit:, Visual:, Table:, Bảng, Hình, or Not needed. Those words are planning notes, not the outline.
 
-A definition section is two or three academic sentences: what it is, how it works here, and the boundary. A model section is four to six academic sentences covering mechanism, fit, and limit, then the image only if that model has one. A comparison section is one framing sentence and the filled table. A conclusion is a paragraph. Do not reuse one field list under every heading.
+One paragraph per heading is not an outline of a multi-part heading. If the heading has two or three arguments, the outline already has two or three short paragraphs. If it has one argument and parallel items, the outline already has that paragraph and a short bullet or numbered list. Bullets are only for parallel items. Do not write one label line per point, and do not turn the whole heading into a list.
+
+Bad shape: one finished academic paragraph, then a source line whose URL is a wiki File page. Good shape, when the heading needs two arguments, three parallel limits, and a diagram:
+
+[Short paragraph: what this block will defend, the example it will use, and the boundary it will not cross.]
+
+[Short paragraph: the second argument, still shorter than the finished paragraph.]
+
+- [Parallel limit or comparison item]
+- [Next parallel item]
+- [Next parallel item]
+
+![Short description](https://upload.wikimedia.org/...direct-image-bytes...)
+
+Source: page title, source page URL, external public illustration, not the user's project. The image URL above is a shape, not a real file. Resolve a real upload.wikimedia.org URL. Do not invent an upload path.
+
+The finished section keeps that order: two paragraphs, that list, then that image. It fills the paragraphs. It does not merge them into one paragraph per heading, and it does not add a new block.
 
 If a section has no image, omit the image. If it has no table, omit the table. Do not write Không cần.
 
-About 40–50% means those sentences already contain the argument, example, and boundary the finished section will use. One label line is not 50%. The finished draft adds transitions and citations to those sentences. It does not turn each label into a new paragraph.
-
-For a requested illustration, search Google or another public platform, download an existing image, convert it to a PNG about 900 px wide, and embed the pixels in the same chat message as a data URI beginning with data:image/png;base64. Put the page title and URL on the next line. A file path, a file link, an SVG, and image markdown whose target is a path are links, not images. Do not emit them. Do not create, generate, or code-draw a substitute. Code drawing is allowed only when the user asks for it or agrees after you ask. Silence is not agreement. Silence is not permission. An external image is not a project screenshot. Do not add an audience, unstated technology, or an operating commitment the user did not state. Those additions are not depth.
+For a requested illustration, embed a direct HTTPS image URL in image markdown in the same message. The URL must return the image bytes, such as an upload.wikimedia.org file, not a wiki page, a Google results page, a file path, or a long base64 blob. A commons File page such as `https://commons.wikimedia.org/wiki/File:Name.png` is a page. Resolve the final upload.wikimedia.org URL before embedding, for example by following `https://commons.wikimedia.org/wiki/Special:FilePath/Name.png` to the upload URL, then use that upload URL in the image markdown. A long base64 blob wrapped in Pi chat and dumped raw text. A source line without the image markdown is not the image. Put the page title and source page URL on the next line. Do not create, generate, or code-draw a substitute. Code drawing is allowed only when the user asks for it or agrees after you ask. Silence is not agreement. Silence is not permission. An external image is not a project screenshot. Do not add an audience, unstated technology, or an operating commitment the user did not state. Those additions are not depth. Skill examples such as BTEC, P1, M1, D1, and a named unit are not this assignment. If the user did not write them, do not put them in a question option and do not open a programme card.
 
 ## Asset source decision
 
@@ -67,7 +81,7 @@ Decide the source before showing the outline. Do not invent a stand-in and conti
 
 | Need | Source | Do not |
 |---|---|---|
-| Requested illustration, standard theory, cycle, architecture, or public concept diagram | Search Google or another public platform, download an existing image, convert it to PNG, and embed a data URI beginning with data:image/png;base64 in the same chat message. Cite page title and URL under the image. | Create, generate, or code-draw a substitute. A file path or SVG is not the image. |
+| Requested illustration, standard theory, cycle, architecture, or public concept diagram | Embed image markdown with a direct HTTPS image URL that returns the image bytes, such as an upload.wikimedia.org file, in the same chat message. Cite page title and source page URL under the image. | Use a wiki File page, a bare URL, a source line without the image markdown, a file path, or a long base64 blob. Create or code-draw a substitute. |
 | Comparison or criteria table | Full table rendered in the same message. Cells from inspected user data or a cited public source. | Fill an unknown cell with an assumed number. |
 | Project screenshot, internal metric, budget, timeline, or case photo | Ask the user and wait. Show the supplied file. | Use a web image, social post, or generated image as the user's project. |
 | Published public fact | Search and cite. A social post is only a lead unless the user asked to use that inspected post. | Treat an uninspected post as verified evidence. |

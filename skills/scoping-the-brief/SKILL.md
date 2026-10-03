@@ -112,10 +112,11 @@ delivery; do not replace it with a confirmation card or a scope-only summary.
 
 Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"),
 consulting roles, business context, budgets (e.g. "$15,000"), SLAs, latency targets,
-or operational metrics without interviewing and confirming with the user. Do not add
+or operational metrics without interviewing and confirming with the user. Skill examples such as P1, M1, D1, BTEC, and a named unit are examples. They are not this user's assignment. Do not put a programme, unit, or criterion set the user did not write into a question option. If the user asked for a general report and did not mention a rubric, do not open a rubric card. Do not add
 a deliverable that belongs to a later assignment, such as a functional prototype, or
 scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it. If unstated in source documents or prompt, ask the user or record a
 blocking gap; never fabricate project facts.
+A missing programme is not a gap to fill from skill examples. Do not ask which framework applies, and do not offer options such as "BTEC HND Computing (Unit 9: SDLC)" or "P1-P4, M1-M2, D1-D2", unless the user already wrote those words. If the user did not write a rubric, write the general academic report they asked for. Do not open a programme card.
 
 Chat explanations, questions, summaries, and requirement analysis follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence. Do not list unexplained keywords, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language. Never interleave bilingual translations into chat blocks.
 

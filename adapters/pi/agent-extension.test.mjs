@@ -22,6 +22,10 @@ test('desktop manifest uses the actual native agent extension permission and ent
   assert.deepEqual(manifest.contributes?.agentExtensions, ['adapters/pi/agent-extension.js']);
 });
 
+test('native agent extension exposes a default export for the desktop sidecar loader', () => {
+  assert.equal(extension.default, extension);
+});
+
 test('desktop plugin lifecycle does not register an ineffective notification hook', async () => {
   const registrations = [];
   await main.onLoad({ events: { on(name) { registrations.push(name); } } });
@@ -40,6 +44,27 @@ test('native agent extension returns a prompt without mutating the host event', 
   assert.match(result.systemPrompt, /Package root: .*[\\/]workspace-superpowers/);
   assert.ok(result.systemPrompt.length < 6000, 'only the thin bootstrap is injected');
   assert.equal(event.systemPrompt, 'Project custom constraints.');
+});
+
+test('native bootstrap requires minimal meaning-preserving edits for only requests', async () => {
+  const { api, handlers } = host();
+  extension(api);
+  const result = await handlers.get('before_agent_start')({ systemPrompt: 'Base' });
+  assert.match(result.systemPrompt, /minimal meaning-preserving edit/);
+  assert.match(result.systemPrompt, /preserve\s+grammar,\s+tense,\s+number,\s+and\s+punctuation/);
+  assert.match(result.systemPrompt, /return\s+only\s+edited\s+text/);
+  assert.match(result.systemPrompt, /do not relabel supplied values/);
+});
+
+test('native bootstrap documents the PI-Desktop TodoWrite checklist mirror boundary', async () => {
+  const { api, handlers } = host();
+  extension(api);
+  const result = await handlers.get('before_agent_start')({ systemPrompt: 'Base' });
+  assert.match(result.systemPrompt, /TodoWrite/);
+  assert.match(result.systemPrompt, /replaces the full list/i);
+  assert.match(result.systemPrompt, /at most one item may be in_progress/i);
+  assert.match(result.systemPrompt, /awaiting_user|blocked|paused/);
+  assert.match(result.systemPrompt, /Markdown fallback/i);
 });
 
 test('each rebuilt native system prompt receives bootstrap, including after compaction', async () => {

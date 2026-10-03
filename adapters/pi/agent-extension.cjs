@@ -26,3 +26,8 @@ module.exports = function workspaceBootstrap(pi) {
   });
   registered.add(pi);
 };
+
+// PI-Desktop's sidecar loader resolves CommonJS extensions through their
+// default export. Keep the direct CommonJS export for local tests and older
+// loaders, while exposing the same function for the native loader.
+module.exports.default = module.exports;

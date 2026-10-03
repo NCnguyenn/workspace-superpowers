@@ -1,4 +1,16 @@
-# Antigravity package
+# Antigravity Desktop plugin package
+
+This package targets the locally observed Antigravity Desktop plugin contract.
+The detected installation is 2.18.1; it is **not** a claim that the package has
+been accepted by the requested 2.19.1 build. Before installing in 2.19.1, run:
+
+```powershell
+python scripts/probe-antigravity-desktop.py
+```
+
+The probe is read-only: it reports registered Desktop versions, the `agy` CLI,
+and bundled plugin-contract documents. It does not alter a plugin, desktop app,
+or user configuration.
 
 Build a directory plugin. This command does not install it and does not copy it into the Antigravity config.
 

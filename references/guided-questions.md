@@ -10,6 +10,7 @@ For a missing fact, ask one focused question after checking the supplied sources
 and previous answers. Explain briefly which current decision needs the answer.
 Use two or three meaningful options when they help, and accept free text. Ask
 the next question only if the previous answer leaves another material gap.
+Do not ask which programme, unit, or grade band the user did not name. Skill examples such as BTEC, P1, M1, D1, and a unit number are not options. If the user did not write a rubric, do not open a programme card. A general report request is a general academic report.
 
 For approval, deliver the complete analysis or detailed outline in the same chat response
 as its natural review question, with the content first and the question last.

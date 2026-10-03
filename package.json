@@ -20,7 +20,15 @@
     "test": "node tests/run.mjs",
     "package:pi": "python scripts/package-pi.py",
     "package:antigravity": "python scripts/package-antigravity.py",
+    "package:chatgpt": "python scripts/package-chatgpt.py",
+    "probe:antigravity": "python scripts/probe-antigravity-desktop.py",
+    "mcp": "node adapters/mcp/server.mjs",
     "test:package": "python scripts/test-package-pi.py",
-    "test:package:antigravity": "python scripts/test-package-antigravity.py"
+    "test:package:antigravity": "python scripts/test-package-antigravity.py",
+    "test:package:chatgpt": "python scripts/test-package-chatgpt.py"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.31.0",
+    "zod": "^4.6.5"
   }
 }

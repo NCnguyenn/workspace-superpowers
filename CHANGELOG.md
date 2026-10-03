@@ -12,7 +12,24 @@ consolidated source update; this changelog does not imply separate historical
 commits or tags for those builds.
 
 
-## 0.1.6-beta — 2026-09-28
+## Unreleased
+
+- Add the PI-Desktop 0.16.0 `TodoWrite` native checklist mirror adapter with
+  portable-state mapping, host-limit validation, package inclusion, and a
+  read-only source evidence record. Full Phase 4 admission remains blocked
+  until live traces and independent review are retained.
+- Add a deterministic ChatGPT Desktop local-marketplace package containing the 24
+  skills, host guidance, and a conservative read-only MCP service. The builder
+  verifies archive/directory bytes and never installs a plugin, enables Developer
+  Mode, starts a connection, or stores credentials.
+- Add a separate ChatGPT acceptance matrix for normal conversations and Work;
+  neither surface is claimed supported until its own desktop/Developer Mode trial
+  is recorded.
+- Clarify that local Antigravity Desktop 2.18.1 and `agy` 1.2.2 observations do
+  not certify the requested Desktop 2.19.1. Add a read-only version and plugin
+  contract probe; the existing builder remains non-installing and validates only
+  the package directory.
+
 
 - Replace the ineffective plugin-process notification hook with a native
   PI-Desktop agent extension, requiring `agent.extension` as well as the existing

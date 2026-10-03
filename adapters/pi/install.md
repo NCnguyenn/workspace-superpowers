@@ -39,7 +39,10 @@ Each Workspace turn still loads the router, then the appropriate specialists,
 using the actual native `Skill` catalog IDs. Skill bodies own document workflow,
 approval and evidence rules; the bootstrap does not duplicate those procedures.
 The extension registers no tools and does not install document-rendering engines.
-See [host mappings](tools.md).
+On PI-Desktop 0.16.0, the bootstrap may instruct the model to mirror an
+activated portable checklist through the host-owned `TodoWrite` tool. That
+mirror is optional, lossy for `awaiting_user`/`blocked`/`paused`, and never a
+second state store. See [host mappings](tools.md).
 
 ## Fallback and legacy project instructions
 
@@ -59,7 +62,9 @@ Check actual router and specialist tool results with the [routing trial](routing
 and [criterion trial](criterion-trial.md). Record fresh sessions, approvals,
 side questions, continuation and post-compaction turns. Catalog discovery,
 bootstrap injection, successful Skill calls and correct skill application are
-separate claims. Model-level native acceptance remains PENDING until traced.
+separate claims. The TodoWrite source observation does not prove a live
+checklist invocation, renderer/action ownership, or lifecycle acceptance;
+those remain BLOCKED until traced and independently reviewed.
 
 An optional read-only test executes the generated candidate through the pinned
 PI-Desktop 0.15.9 loader and prompt method:

@@ -30,11 +30,13 @@ around the missing-evidence prerequisite. Supporting notes do not replace headin
 
 ## 1.1 [Main point]
 
-* **Claim:** [Sentence this point will defend]
-* **Reason:** [Why that claim holds here]
-* **Limit:** [What this point will not claim]
-* **Visual:** [`Not needed`, or the diagram rendered in the same message]
-* **Table:** [`Not needed`, or the table rendered in the same message]
+Write the blocks this heading will keep. One paragraph per heading is not an outline of a multi-part heading. Example shape, not text to copy:
+
+[First short paragraph: the argument this block will defend, the example it will use, and the boundary.]
+
+[Second short paragraph, only when this heading has a second argument.]
+
+- [Parallel item, only when the items are parallel. Do not turn the whole heading into one label per line.]
 
 ### 1.1.1 [Supporting subpoint]
 
@@ -114,7 +116,7 @@ outline citations and figure/table attribution only.
 |---|---|---|---|---|---|
 | [Figure/table name; diagram, screenshot, chart, or table] | [Criterion or point it explains/supports] | [Heading and placement relative to the argument] | [Confirmed source/data or specific missing input] | [User supplies / executing role creates] | [Available / requested / to create / blocked by missing evidence] |
 
-If no visual or table is needed, omit the asset rows. Do not copy Claim, Reason, Limit, Visual, Table, or Not needed into the chat outline. Chat outline sections use their own academic form. If an asset belongs to a child heading, the parent may refer to it instead of requesting it twice. Do not add visuals solely to populate this field.
+If no visual or table is needed, omit the asset rows. Do not copy Claim, Reason, Limit, Visual, Table, or Not needed into the chat outline. Show a needed image or table in the same message, in the place the finished section will keep it. The chat outline and the finished section use the same blocks in the same order. If an asset belongs to a child heading, the parent may refer to it instead of requesting it twice. Do not add visuals solely to populate this field.
 
 For tables, describe intended columns, comparisons, or measures in Name / Type and Purpose. For figures, distinguish actual screenshots, diagrams from confirmed information, and explicitly authorized hypothetical illustrations. Charts of results require data; a generated screenshot is not operational evidence.
 

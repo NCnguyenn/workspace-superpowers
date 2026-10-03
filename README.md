@@ -6,6 +6,8 @@ It is not a coding framework, not a UI plugin, and not a document-generator libr
 
 Core lifecycle: **route → read supplied sources → analyze → scope when needed → plan → draft/edit → review → verify → package**. Stages follow the requested operation; without supplied sources, scope material unknowns first. Trivial file edits skip ceremony, never final file verification; chat-only content does not require a generated file.
 
+For genuinely multi-stage Workspace work, the router may show a transient **Session Checklist** in normal chat responses. It is outcome-based and request-scoped, stays hidden for simple operations, and does not replace the durable `work-plan.md` record. The portable contract remains host-independent and has no native state store. The PI-Desktop adapter can mirror an activated checklist through the host's built-in `TodoWrite` tool when that tool is present, while preserving Markdown as the canonical state and fallback. Full native Phase 4 acceptance remains **BLOCKED** until retained lifecycle traces and independent review exist. See [the session progress contract](references/session-progress.md) and the PI-Desktop mapping in [adapters/pi/tools.md](adapters/pi/tools.md).
+
 The root `package.json` `"pi"` field registers the Pi CLI extension and skills. PI-Desktop uses its separate generated manifest. Portable skills depend on neither host API.
 
 Deliverables and repository content default to English, even when the user communicates in Vietnamese. Use another language only on an explicit user request. See the [language policy](references/language-policy.md).
@@ -62,19 +64,49 @@ their natural chat approval question. If the user cannot see the content, the
 agent presents it before asking again; an evidence card does not request later
 approval popups. See [guided questions](references/guided-questions.md).
 
-## Antigravity directory package
+## Antigravity Desktop local preview
 
-Build a plugin directory for Antigravity CLI `agy` without installing it:
+The repository contains an Antigravity directory plugin builder. The local machine
+currently exposes Antigravity Desktop **2.18.1** and `agy` CLI **1.2.2**; neither
+observation proves compatibility with the requested Desktop 2.19.1. Inspect the
+installed host without changing it:
 
 ```powershell
+python scripts/probe-antigravity-desktop.py
+python scripts/test-package-antigravity.py
 python scripts/package-antigravity.py --out dist/antigravity
 ```
 
-The builder runs `agy plugin validate` on the new directory and refuses an
-existing output directory. It does not run `agy plugin install` and does not
-copy the plugin into the Antigravity config. See
-[installation notes](adapters/antigravity/install.md). Validation is not
-evidence that a model applied a skill.
+The builder validates the generated directory with `agy plugin validate`, but does
+not install or enable it. Desktop activation, optional MCP configuration, model
+skill use, and artifact operations require separate smoke-test evidence. See
+[Antigravity installation notes](adapters/antigravity/install.md).
+
+## ChatGPT Desktop local preview
+
+Build the local-marketplace plugin and its read-only MCP service:
+
+```powershell
+npm test
+python scripts/test-package-chatgpt.py
+python scripts/package-chatgpt.py --out dist/chatgpt
+node adapters/mcp/server.mjs
+```
+
+The generated output is a local marketplace root: keep `marketplace.json` beside
+`plugins/workspace-superpowers/` and add that directory with
+`codex plugin marketplace add`. The accompanying versioned ZIP is a standalone
+plugin archive for hosts that offer ZIP upload. The MCP endpoint is localhost for
+development and must be exposed through an authorized HTTPS tunnel or deployed
+HTTPS endpoint before ChatGPT can connect. No credentials, tunnel tokens, plugin
+installation, or configuration changes are performed by the build.
+
+The packaged MCP service exposes only the Workspace Superpowers skill catalogue,
+exact skill retrieval, and read-only reference/template retrieval. Test normal
+Chat and Work separately; Work availability is not inferred from normal-chat
+success. See [ChatGPT installation notes](adapters/chatgpt/install.md) and the
+[acceptance matrix](adapters/chatgpt/acceptance.md).
+
 
 ## Skill catalog
 

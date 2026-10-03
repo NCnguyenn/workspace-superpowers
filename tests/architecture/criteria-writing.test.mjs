@@ -121,7 +121,10 @@ test('router selects prose skills by operation and preserves stopping boundaries
   assert.match(modes.get('revise'), /formatting-layout/);
   const capabilities = section(text, 'Allowed Router Capabilities');
   assert.deepEqual([...capabilities.matchAll(CALL)].map((m) => m[1]).sort(),
-    ['delegate', 'invoke_skill', 'list_files'], 'router must remain coordination-only');
+    ['delegate', 'invoke_skill', 'list_files', 'read_file'],
+    'router may read only its shared checklist contract while remaining coordination-only');
+  assert.match(capabilities, /read_file\(path\).*Session Checklist contract/i);
+  assert.match(capabilities, /substantive artifact content remains delegated to specialists/i);
 });
 
 test('scoping separates clarification from applicable scope confirmation', async () => {

@@ -52,8 +52,10 @@ test('outline points use argument slots and a shown asset or Not needed', async 
   assert.match(structure, /Reason:/);
   assert.match(structure, /Limit:/);
   assert.match(structure, /Do not print Claim/);
-  assert.match(structure, /data:image\/png;base64/);
-  assert.match(structure, /A file path/);
+  assert.match(structure, /direct HTTPS image URL/);
+  assert.match(structure, /long base64/);
+  assert.match(structure, /same blocks/);
+  assert.match(structure, /file path/);
   assert.match(structure, /topic label is not an outline point/i);
   assert.match(structure, /same message/);
   assert.match(structure, /Not needed/);
@@ -83,4 +85,33 @@ test('outline points use argument slots and a shown asset or Not needed', async 
   assert.match(visual, /source citation/);
   assert.match(visual, /Do not create, generate, or code-draw/);
   assert.doesNotMatch(visual, /Do not download a web image/);
+});
+
+test('outline display rules reject one paragraph per heading, link-only images, and invented rubrics', async () => {
+  const structure = await readUtf8('references/outline-structure.md');
+  assert.match(structure, /one paragraph per heading/i);
+  assert.match(structure, /50–60%/);
+  assert.match(structure, /source line without/);
+  assert.match(structure, /upload\.wikimedia\.org/);
+  assert.match(structure, /parallel items/);
+  assert.match(structure, /did not write/);
+  assert.doesNotMatch(structure, /two or three academic sentences/i);
+  assert.doesNotMatch(structure, /data:image\/png;base64/);
+
+  const planning = await readUtf8('skills/planning-work/SKILL.md');
+  assert.match(planning, /one paragraph per heading/i);
+  assert.match(planning, /50–60%/);
+  assert.match(planning, /source line without/);
+
+  const bootstrap = await readUtf8('adapters/pi/bootstrap.md');
+  assert.match(bootstrap, /one paragraph per heading/i);
+  assert.match(bootstrap, /image bytes/);
+  assert.match(bootstrap, /did not write/);
+  assert.match(bootstrap, /question option/);
+  assert.doesNotMatch(bootstrap, /data:image\/png;base64/);
+  assert.ok(bootstrap.length <= 4096, `bootstrap is ${bootstrap.length} characters`);
+
+  const agents = await readUtf8('AGENTS.md');
+  assert.match(agents, /one paragraph per heading/i);
+  assert.match(agents, /did not write/);
 });

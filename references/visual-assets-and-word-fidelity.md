@@ -37,7 +37,7 @@ The asset provenance class must be one of:
 
 Search discovery does not establish provenance, credibility, permission to reuse,
 or claim support. Record the inspected source and relevant license/reuse condition.
-An unknown license is not permission to copy. For a requested illustration, download and display an existing public image with its source citation. Do not redraw it unless the user asks for a drawing or agrees after you ask.
+An unknown license is not permission to copy. For a requested illustration, download an existing public image and display it with its source citation. Do not redraw it unless the user asks for a drawing or agrees after you ask.
 A user-supplied image is shown as supplied. A web image is not the user's project screenshot.
 Redrawing or adapting a protected figure does not automatically resolve its reuse
 conditions. Independently explain supported ideas rather than copy its composition.
@@ -51,7 +51,7 @@ blocked unless the existing evidence contract records a specifically authorized
 alternative.
 
 Do not reduce an available preview to specifications alone or defer it to drafting.
-A named diagram or table that is not rendered in the same message is not a decision. For a requested illustration, download an existing public image, convert it to PNG, and embed a data URI beginning with data:image/png;base64 in that message with its source citation. A file path is not an image. Omit the image when none is required. Do not print Not needed. Do not create, generate, or code-draw a substitute unless the user asks for that drawing or agrees after you ask. Label a permitted drawing as a drawing, not as a found source image or a project screenshot.
+A named diagram or table that is not rendered in the same message is not a decision. For a requested illustration, embed image markdown with a direct HTTPS image URL that returns the image bytes, such as an upload.wikimedia.org file, with its source citation on the next line. A wiki File page, a bare URL, a source line without the image markdown, a file path, and a long base64 blob are not images. Resolve the final upload URL. Do not invent an upload path. Omit the image when none is required. Do not print Not needed. Do not create, generate, or code-draw a substitute unless the user asks for that drawing or agrees after you ask. Label a permitted drawing as a drawing, not as a found source image or a project screenshot.
 Screenshot and embedded-figure claims follow [visual evidence boundary](visual-evidence-boundary.md). Visible pixels are not runtime, database, device, or criterion proof.
 An unknown table value stays unknown, not zero, an assumed improvement or an
 invented measurement. Follow the existing evidence-before-outline prerequisite;

@@ -72,9 +72,14 @@ These are optional checkpoint fields, not new approval gates or parallel registe
 
 For transient work, keep a proportional checkpoint in conversation state or the
 [working brief](../templates/brief.md); no extra file, service, or user form is
-required. For sustained work, offer persistence under the tracking contract and
-use its adopted plan when accepted. For a one-step task, a short note is
-sufficient. For sustained work retain:
+required. For a genuinely multi-stage request, the [Session Checklist](session-progress.md)
+is a non-persistent execution view scoped to that request. A side question preserves
+the active checklist; a pause retains its return point; a replacement closes the old
+checklist before a new one is created; and a changed result reopens only affected
+dependent review, export, or verification tasks. A checklist is rendered only at
+normal response boundaries in the MVP, not as claimed realtime host monitoring.
+For sustained work, offer persistence under the tracking contract and use its adopted
+plan when accepted. For a one-step task, a short note is sufficient. For sustained work retain:
 
 - Goal and currently authorized operation; target artifact/section and stopping point.
 - Constraints, preserve-list, deliverable language, and applicable scope/outline decisions.

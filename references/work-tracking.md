@@ -16,7 +16,10 @@ project context owns project identity, project evidence and observed source
 state. The work plan must not become a project specification, and the project
 context must not become a progress tracker. Do not create or maintain a third,
 extra or parallel tracker, recovery log, migration register or private agent
-progress file.
+progress file. The [Session Checklist](session-progress.md) is a transient
+conversation view for one multi-stage request, not a management record: it
+creates no file, database, state store, or durable progress register and never
+replaces this plan.
 Do not create a third tracker or management record.
 
 Keep new records in the approved dedicated common project directory or other

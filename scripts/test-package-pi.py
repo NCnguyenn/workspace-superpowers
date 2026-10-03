@@ -40,6 +40,7 @@ class PackageTests(unittest.TestCase):
             probe = r'''
 const assert = require('node:assert/strict');
 const extension = require(process.argv[1]);
+assert.equal(extension.default, extension, 'sidecar loader requires the default export');
 let hook;
 extension({ on(event, handler) { assert.equal(event, 'before_agent_start'); hook = handler; } });
 (async () => {
@@ -85,6 +86,7 @@ extension({ on(event, handler) { assert.equal(event, 'before_agent_start'); hook
                 self.assertIn('references/guided-questions.md', names)
                 self.assertIn('references/outline-structure.md', names)
                 self.assertIn('adapters/pi/revision-export-route.cjs', names)
+                self.assertIn('adapters/pi/native-checklist.cjs', names)
                 self.assertIn('adapters/pi/project-survey.mjs', names)
                 if (ROOT / 'adapters/pi/tracking-checkpoint.mjs').is_file():
                     self.assertIn('adapters/pi/tracking-checkpoint.mjs', names)
