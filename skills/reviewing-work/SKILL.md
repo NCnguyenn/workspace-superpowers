@@ -5,141 +5,71 @@ description: Use when a drafted or assembled workspace deliverable needs quality
 
 # Reviewing Work
 
-Coordinate quality review within the workspace lifecycle. The workspace entry router retains ownership of the overall workflow.
+## Job
 
-For [persistent work tracking](../../references/work-tracking.md), reviewers
-receive the target plan/item identity, candidate revision and criterion/decision
-references. Check requirement-to-item coverage, unsupported completion claims
-and project material outside its mapped scope. Return findings and affected
-items to the editor; review findings are not user acceptance or plan mutations.
+`reviewing-work` is a **review router**. It selects independent review dimensions, gives each reviewer only the relevant source and constraints, consolidates findings, and returns them to the author or editor. It must never silently rewrite the deliverable wholesale, approve work on the user’s behalf, or substitute content review for file verification.
 
-Review receives the canonical `plan_file`, stable item/revision identity and any
-designated `context_file`. Check synchronization only for affected items and
-dependencies, preserving approval records tied to earlier revisions. Reviewers
-return findings; they do not edit the work plan, infer approval, create private
-logs or claim that an uninspected source is current.
+Use [workflow continuity](../../references/workflow-continuity.md) to review the current scope and revision. For sustained work, retain the plan/item identity, target revision, evidence and decision references under [persistent work tracking](../../references/work-tracking.md). Findings are not plan mutations, user acceptance, or proof that an uninspected source is current.
 
-Use the [workflow continuity contract](../../references/workflow-continuity.md)
-to review the current scope and artifact revision after user changes. For prose
-continuation, apply the [document continuity contract](../../references/document-continuity.md):
-provide reviewers the relevant profile, adjacent excerpts, and evidence locators.
-Check the insertion boundary and dependent conclusions, not just standalone
-fluency. Route continuity defects to coherence, prose, requirement, or evidence
-review by their cause; recheck affected passages after correction.
+## Select review dimensions
 
-For criteria-based writing, follow the [criteria-writing contract](../../references/criteria-writing-contract.md) for applicable decisions, evidence gaps, and delivery status. Apply the [language policy](../../references/language-policy.md) to findings and suggested wording.
-
-## When to use
-
-Substantial drafted, revised, or assembled content, including chat-only text, documents, reports, presentations, theses, and data packages.
-
-## When not to use
-
-Trivial or mechanical fixes (e.g. typos, formatting tweaks) that require only `verifying-artifacts`. File opening, layout rendering, and export integrity checks (those belong to `verifying-artifacts`).
-
-## Review router contract
-
-`reviewing-work` is a **review router**. It does not perform every check itself. It inspects the task and deliverable, selects the applicable review dimensions, and invokes the matching review skills or roles.
-
-| Dimension | Role | Owns |
+| Dimension | Primary reviewer | Checks |
 |---|---|---|
-| requirement | `reviewer-requirement` | Assigned criteria, approved scope, in-force outline, required components |
-| coherence | `reviewer-coherence` | Argument flow, chapter/section structure, terminology and notation consistency |
-| citation | `reviewer-citation` | Claim support, source traceability, and evidence limits for academic and internal sources |
-| prose | `reviewer-prose` | Paragraph and sentence style, lists, clichés, cadence; style-guide Rule IDs |
-| mathematics | `reviewer-mathematics` | Assumptions, derivation validity, numerical/symbolic evidence and limits under the [mathematics check contract](../../references/mathematics-checks.md) |
-| visual | `reviewer-visual` | Visual quality in inspected representations; final artifact integrity remains with `verifying-artifacts` |
+| Requirement | `reviewer-requirement` | criterion obligations, scope, outline, required components |
+| argument/coherence (`reviewer-coherence`) | `reviewer-coherence` | progression, structure, terminology, transitions, and contradictions |
+| Citation and evidence | `reviewer-citation` | claim support, source traceability, evidence limits, and reference consistency |
+| Prose | `reviewer-prose` | paragraph development, register, lists, cadence, and style-guide rules |
+| Mathematics | `reviewer-mathematics` | assumptions, derivations, calculations, and check evidence |
+| Visual | `reviewer-visual` | visual quality in inspected representations and evidence boundaries |
 
-| Deliverable | Review dimensions |
-|---|---|
-| Thesis / Dissertation | Requirement, argument/coherence (`reviewer-coherence`), prose (`reviewer-prose`), citation, formatting, artifact integrity |
-| Business / Technical Report | Requirement, content, coherence (`reviewer-coherence`), prose (`reviewer-prose`), citation (where applicable), formatting |
-| Essay / Assignment | Rubric, argument/coherence (`reviewer-coherence`), prose (`reviewer-prose`), citation, formatting |
-| Literature Review | Source coverage, claim–evidence mapping, citation integrity, synthesis quality, coherence, prose (`reviewer-prose`) |
-| Excel / Data Deliverable | Data quality, formulas, calculations, charts, workbook integrity |
-| PPTX Deck | Narrative arc, slide content, visual hierarchy, layout consistency, visual QA |
-| PDF output | Pagination, clipping, fonts, links, table and figure integrity |
-| PSD / design | Design intent, layer integrity, export correctness |
-| Translation / rewrite | Fidelity to source, register, terminology consistency, target-language naturalness |
+Use citation/evidence review whenever factual, empirical, or internally logged claims need support, even without a bibliography. Use prose review for substantial rewritten text. Use mathematics review for substantive mathematical content or a requested correctness check, not merely for formatting an unchanged equation. Use visual review for visual claims, but reserve structural and rendered file checks for `verifying-artifacts`.
 
-Select citation/evidence review whenever factual or empirical claims need support, even with no bibliography. Use prose review for substantial rewritten text; choose other dimensions by content. Cross-dimension defects retain one primary owner and supporting findings; do not drop them between roles or count the same defect twice.
+## Severity Contract
 
-Select mathematics review for substantive mathematical content or requested
-correctness checks, separate from its authoring pass. Do not activate it for
-unchanged mathematics during a purely presentational edit. For Word, review
-against the [Equation contract](../../references/math-in-documents.md); final
-native structure and edit/save/reopen evidence belongs to `verifying-artifacts`.
-Wrong assumptions, invalid proofs and fabricated computation evidence are Critical.
+- **Critical:** blocks final completion. Examples: fabricated evidence, contradicted required criterion, unsupported empirical result, invalid proof, or an unauthorized scope change.
+- **Important:** must be fixed unless a clear recorded justification allows deferral.
+- **Minor:** fix when low risk and proportionate to the task.
+- **Suggestion:** optional improvement.
 
-## Severity contract
+A permitted incomplete draft remains `draft_incomplete` while required evidence is missing. Authorized hypothetical material must remain locally labeled and cannot become a measured result. Smooth prose is not a pass for unsupported content.
 
-Findings must be classified into one of four explicit severity levels:
+## Method
 
-* **Critical:** Must fix before final completion (e.g. fabricated source, contradicted rubric requirement, broken formula). An allowed incomplete draft is not final completion.
-* **Important:** Must fix unless a clear, recorded justification permits deferral.
-* **Minor:** Fix when low risk and time permits.
-* **Suggestion:** Optional enhancement for future iterations.
+1. **Set the review target.** Identify the exact candidate revision, requested result, source coverage, approved scope and outline, evidence register, and unresolved gaps.
+2. **Read what is necessary.** Inspect the candidate and relevant source representation. For a continuation, provide reviewers the relevant profile, adjacent excerpts, and evidence locators under the [document continuity contract](../../references/document-continuity.md). Route continuity defects to coherence, prose, requirement, or evidence review by their cause.
+3. **Select independent dimensions.** Assign each defect one primary owner. Do not duplicate a finding across roles merely to inflate severity.
+4. **Run the selected reviews.** Give each reviewer only its assignment, source excerpts, locators, decisions, evidence limits, and requested output shape. Never provide orchestrator session history.
+5. **Consolidate findings.** Use `Severity · Location · Problem · Suggested Fix` and the [review findings template](../../templates/review-findings.md). Reconcile disagreements against inspected requirements and evidence.
+6. **Return Critical and Important findings to the author or editor. Recheck affected passages,** dependent claims, tables, figures, citations, and seams after corrections.
+7. **Finish at the right boundary.** Deliver reviewed chat-only content without claiming a file exists. Send every file deliverable, including an authorized incomplete draft, to `verifying-artifacts` after content review.
 
-## Blocking defects
+For criteria-based writing, apply the [criteria-writing contract](../../references/criteria-writing-contract.md). Review routine wording changes within approved scope without reopening user approval; return material scope or outline changes only to the affected decision owner.
 
-Treat the following as **Critical** (blocking):
+## Fallback when delegation is unavailable
 
-* Fabricated numbers, measurements, or data.
-* Unsupported or contradicted empirical result claims, including assertions used to satisfy an empirical criterion.
-* Content that violates the applicable approved scope or a required scope/outline decision.
+Load the applicable role instructions before reviewing. For substantial report or thesis prose, use `read_file("../../agents/reviewer-prose.md")` and `read_file("../../agents/reviewer-coherence.md")` before delivering the content, then read the prose role’s linked style guide. Apply the roles sequentially, report findings by role, and recheck corrections. This fallback is not permission to skip `reviewing-work` or replace it with generic self-review.
 
-A draft still missing required evidence must remain `draft_incomplete`. Smooth prose does not make it complete. Neutral placeholders in a permitted incomplete draft are not fabricated results; record the missing evidence and affected criteria. Locally labeled, authorized hypothetical examples are not project measurements. Neither satisfies a criterion requiring real results. Permission to deliver an incomplete draft never permits fabricated or unsupported result assertions.
+## Visual, Word, and mathematics boundaries
 
-## Execution handoff
-
-Reviewers produce findings only: `Severity · Location · Problem · Suggested Fix`, using the [review findings template](../../templates/review-findings.md). They **never silently rewrite the deliverable wholesale** or edit it in place. Suggested wording belongs in findings; the author/editor applies corrections to affected passages and dependent claims, tables, or conclusions.
-
-Wording fixes within approved scope do **not** require renewed approval. Material scope, argument, or outline changes follow the contract's affected-decision rules: reuse existing authorization, otherwise return only the unresolved decision to scoping/planning. A review suggestion is not user approval.
-
-## Procedure
-
-1. Read the candidate text or inspected artifact representation. Compare it with the brief and applicable decisions; for criteria writing include the outline version, approval/waiver record, evidence register, and unresolved gaps.
-2. Select the necessary review dimensions and obtain missing artifact representations through the appropriate reading or domain skill. A byte stream alone is not an inspection.
-3. Dispatch the matching roles or skills with only the assigned content and relevant constraints, decisions, evidence, and locators. Never pass orchestrator session history. This skill does not perform every dimension itself.
-4. If the harness has no subagent mechanism, run the same roles sequentially in the orchestrator using each role's criteria and output shape.
-5. Consolidate findings, resolve severity/ownership disagreements against the actual requirements and evidence, and retain unresolved blockers. An uninspected source cannot be reported as verified.
-6. Return Critical and Important findings to the author/editor. Recheck affected passages and dependent claims after fixes; retain any permitted Important deferral with its recorded justification.
-7. Keep `draft_incomplete` while mandatory evidence/content is missing. Deliver an incomplete draft only when authorized, with remaining gaps stated; final completion requires closing all blocking findings.
-8. Hand every file being delivered, including an authorized incomplete draft, to `verifying-artifacts`. Return reviewed chat-only content without inventing a file or claiming file verification. File integrity does not resolve missing content or evidence.
+Use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md) and the [visual evidence boundary](../../references/visual-evidence-boundary.md) for images, figures, captions, and visual claims. Use the [native Equation contract](../../references/math-in-documents.md) and [mathematics check contract](../../references/mathematics-checks.md) for mathematics. A reviewer can identify a defect; final native structure, render, edit/save/reopen, and file integrity checks remain with verification.
 
 ## Required capabilities
 
-Abstract capability names, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-- `read_file(path)` — for text-bearing artifacts and review checklists.
-- `inspect_document(file)` — inspect supported document content and structure.
-- `invoke_skill(name)` — load review, reading, or domain skills for other artifact representations.
-- `delegate(role, context)` — optional; to delegate to review roles (`reviewer-requirement`, `reviewer-coherence`, `reviewer-citation`, `reviewer-visual`, `reviewer-prose`, `reviewer-mathematics`).
+- `read_file(path)` — source text, role instructions, and review checklists.
+- `inspect_document(file)` — supported document structure and content.
+- `invoke_skill(name)` — load a required domain or review skill.
+- `delegate(role, context)` — optionally dispatch a compatible review role.
 
-## Dependencies
+## Completion and fallback
 
-- Follows authoring, drafting, or substantial document editing.
-- Precedes `verifying-artifacts` for file deliverables. Chat-only content completes with content review.
-
-## Fallback
-
-If delegation is unavailable, the orchestrator must first load the applicable
-role instructions through actual file-reading calls, then apply their criteria
-sequentially before draft delivery. For substantial report or thesis prose,
-execute `read_file("../../agents/reviewer-prose.md")` and
-`read_file("../../agents/reviewer-coherence.md")`, resolving both paths from this
-skill's directory, and read the prose role's linked style guide. Return findings
-by role and recheck corrections before delivering the text. This is a fallback
-for missing delegation, never permission to skip loading `reviewing-work` or
-substitute a generic self-review. If a required source or representation cannot
-be inspected, report the limitation and keep affected claims unresolved; do not
-substitute assumptions for verification.
+A review is complete when the selected dimensions have returned traceable findings, Critical findings are fixed or explicitly blocking, Important deferrals are recorded, and affected corrections were rechecked. If a required source or representation is unavailable, state the limitation and leave affected claims unresolved.
 
 ## Common mistakes
 
-* Silently rewriting the entire document during review instead of reporting findings.
-* Confusing review (critique, coherence, argument, citation, prose) with verification (file opening, format parsing, render checks).
-* Skipping citation verification on academic or evidence-based deliverables, including internal logs and benchmark tables.
-* Approving an incomplete draft because the prose reads smoothly.
-* Conflating minor stylistic suggestions with critical blockers.
-* Asking the user to re-approve wording fixes that stay inside the already-approved scope.
+- Reviewing only fluency while ignoring requirement coverage, evidence, or the actual seam.
+- Treating a check on one revision as a check on a later revised artifact.
+- Letting reviewers silently rewrite the deliverable instead of returning findings.
+- Treating file opening or a render check as a substitute for content review.
+- Marking an incomplete or fabricated-evidence draft as complete.

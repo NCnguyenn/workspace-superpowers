@@ -5,122 +5,59 @@ description: Use when editing text or documents, persisting an adopted work plan
 
 # Editing Documents
 
-Modify existing text or document content at the depth requested.
+## Job
 
-For [persistent work tracking](../../references/work-tracking.md), create or
-update the adopted plan as the single writer after receiving content from its
-owners. This is a bounded creation exception alongside project-context creation.
-Check that a new path is unused; preserve existing user notes and decisions.
-Save/check artifacts first, then update the affected designated context when it
-exists and is affected, and update exact working/approved/export identities and
-the plan checkpoint last. Re-read every touched record; a chat change list is not
-a saved update. Preserve approved artifact snapshots before subsequent file edits.
+Apply authorized content changes to an existing text or document artifact while preserving scope, facts, and unrelated user content. This skill is also the single persistent writer for an adopted `work-plan.md` and the one designated `context_file` when their creation or update is authorized.
 
-Word mathematics follows the [native Equation contract](../../references/math-in-documents.md)
-for paste and in-file edits: preserve OMML and mathematical content, use the
-latest adopted Word source, and verify affected equations after edit/save/reopen.
-Substantive math changes use `working-with-mathematics` through the existing
-authoring route. Formatting-only work must not change a proof or expression.
+Use [workflow continuity](../../references/workflow-continuity.md) and [persistent work tracking](../../references/work-tracking.md). Before each persistent write, compare the current revision with the handed-off revision. Preserve user changes, approved snapshots, source identity, and the exact checkpoint order; do not create a parallel tracker.
 
-Apply the [workflow continuity contract](../../references/workflow-continuity.md)
-to changed requests and new artifacts. For insertion, continuation, or substantive
-revision, use the [document continuity contract](../../references/document-continuity.md)
-to preserve the existing argument, scenario, terminology, and presentation.
-Check adjacent passages after insertion; update related text only within the
-authorized scope. A chat suggestion does not modify the source file.
+## Route by change type
 
-## When to use
+| Requested change | Route | Boundary |
+|---|---|---|
+| Typo or wording-only correction that preserves facts and structure | Edit directly after reading | No criteria-writing approval gate. |
+| Substantive report or thesis rewrite / re-argument | `drafting-prose` with `writing-reports` or `writing-academic-prose`, then this skill applies the file edit | Read, analyze, review, and verify. |
+| Other substantive document content change | Read, analyze, edit, review, and verify | Preserve the requested scope. |
+| Layout, TOC, captions, pagination, or style only | `formatting-layout` | Never rewrite content. |
+| Format transformation or export | `converting-artifacts` | Verify the generated output separately. |
 
-Typo or wording corrections, insertion, deletion, rewriting, restructuring, or full redesign of an existing document. The preserve-list does not decide whether this skill loads.
+Pasted text is an input, not a file prerequisite: inspect the supplied text directly and analyze a substantive change without requiring an attachment.
 
-Also create or update the one designated `context_file` under the
-[project grounding contract](../../references/project-grounding.md). A new
-context uses the approved report-workspace/output placement by default. Reuse an
-existing adopted source-project path when its exact location was authorized and
-recorded; explicit permission for a new exact source-project path is a valid
-override. Survey authority alone grants no such write. Consume
-inspected content, provenance and conflicts from reading/analysis; preserve the
-recorded file identity. First creation is a narrow exception to the existing-file
-rule below: confirm the selected path is unused and never overwrite an original
-project document. Re-read an existing context record before updating it, label
-notes derived, preserve the exact `placement_authority` alongside `context_file`,
-and verify the reopened bytes afterward. This persistence operation
-does not require a new report outline or authorize any other project write.
+## Method
 
-Before each checkpoint write, compare that target's current revision with the
-one handed off (and reread the adopted plan when present); detect concurrent changes and
-preserve unrelated user edits. Save and reopen the requested deliverable first,
-then update and reopen the affected project context, then only the affected
-work-plan entries and checkpoint through this single writer. Skip an absent or unaffected context;
-never create one for transaction symmetry. If any write fails, report exact
-saved and unsaved portions as a split result and reconcile them on resumption;
-do not create a recovery tracker.
+1. **Read the current source.** For existing files, use `reading-artifacts` first; use `analyzing-artifacts` for non-trivial changes. Identify the target revision, insertion point, preserve-list, and relevant adjacent text.
+2. **Confirm the operation.** Separate content changes from layout, conversion, or evidence work. A request to rewrite wording does not authorize a factual rewrite.
+3. **Prepare the change.** For a substantive report or thesis rewrite, load `drafting-prose` and its selected writer under the [criteria-writing contract](../../references/criteria-writing-contract.md). For a continuation, apply the [document continuity contract](../../references/document-continuity.md).
+4. **Apply only authorized edits.** Preserve numbers, direction of change, uncertainty, source wording, protected titles, and user content unless replacement facts or an explicit change are supplied.
+5. **Checkpoint persistent records correctly.** Save and reopen the deliverable first. Update an affected authorized `context_file` second. Update affected plan entries and the checkpoint last. Re-read every touched record and report a split result if any write fails.
+6. **Review and verify.** Substantial edits go through `reviewing-work`; every modified file goes through `verifying-artifacts`. Chat-only edits are reviewed without claiming a file changed.
 
-## When not to use
+## Project context and tracking
 
-Create-from-blank deliverables other than an adopted work plan or designated project context record. Read-only analysis with no authorized persistence. Verify-only. Spreadsheets, presentations, images and PDFs belong to their own artifact families.
+Use [project grounding](../../references/project-grounding.md). Create or update a `context_file` only when its exact placement and creation/update authority are recorded. A read-only survey does not authorize a project write. The first creation must use an unused authorized path and must never overwrite an original project document. Keep project context derived, source-grounded, and separate from work progress.
 
-## Procedure
+## Factual fidelity and special content
 
-1. For existing files, use `reading-artifacts` first and `analyzing-artifacts` for non-trivial modifications. For pasted content, inspect the supplied text directly and analyze substantive changes without requiring a file. Mechanical corrections can proceed directly after reading.
-2. Establish the requested changes and preserve-list. For substantive report/thesis rewrites or re-argument, use `drafting-prose` to check applicable prerequisites and select writing specialists under the [criteria-writing contract](../../references/criteria-writing-contract.md). Preserve the authorized `revise` operation; do not restart as a new report.
-3. Apply the authorized edits. Typo, wording-only, and format-only changes do not activate criteria-writing approval gates. Route formatting and conversion to their specialists.
-4. After substantial edits, hand off to `reviewing-work` and apply corrections. For modified files, finish with `verifying-artifacts`; for text returned in chat, review that text without claiming a file was changed.
+Never invent evidence while editing. If a preliminary decline is the source fact, do not rewrite it as confirmed growth. If a required fact is unknown, preserve the existing claim, make only a meaning-preserving edit, or identify the gap.
 
-## Factual fidelity
-
-For in-file table/image insertion or preservation use
-[visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
-Apply the same selected-revision, content, caption/source and placement checks as
-conversion, preserving unrelated template content and native Word equations.
-
-An instruction to edit or rewrite does not authorize inventing facts. For an
-underspecified edit, improve wording while preserving factual claims, numbers,
-direction and magnitude of changes, causes, and uncertainty. Change those only
-when the user supplies the replacement facts or supporting evidence.
-
-For example, a preliminary decline cannot become confirmed growth merely to make
-a paragraph sound better. If a necessary clarification cannot be obtained, keep
-the original facts and make only a meaning-preserving edit, or explain the
-unresolved requirement. An unavailable answer is not permission to guess.
+For tables, figures, and Word content, apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md). For Word mathematics, apply the [native Equation contract](../../references/math-in-documents.md): preserve OMML, notation, and meaning; substantive mathematics returns to `working-with-mathematics`.
 
 ## Required capabilities
 
-Abstract capability names, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-- `edit_document(file, change)` for text and document artifacts.
-- `read_file(path)` / `write_file(path, content)` when no typed edit capability exists.
+- `edit_document(file, change)` — edit supported text and document artifacts.
+- `read_file(path)` and `write_file(path, content)` — safe text operations when typed document editing is unavailable.
 
-Typed edit capabilities for other families — spreadsheet, presentation, image, layered image — belong to those families' skills, not here.
+## Completion and fallback
 
-## Specialists
-
-Select the route by the requested change, not the document's title.
-
-| Trigger | Route to |
-|---|---|
-| Typo or wording-only correction preserving claims and structure | this skill directly; no criteria-writing approval gates |
-| Substantive report/thesis rewrite or re-argument | `drafting-prose` checks prerequisites and selects `writing-reports` / `writing-academic-prose` by section; this skill applies document edits |
-| Other substantive document content change | this skill with `analyzing-artifacts` for existing files, then `reviewing-work` |
-| Layout, style, TOC, captions or pagination only, content unchanged | `formatting-layout` |
-| Export or format conversion across file types (e.g. DOCX → PDF) | `converting-artifacts` |
-
-## Dependencies
-
-- For existing files, `reading-artifacts` is required before editing and `analyzing-artifacts` for non-trivial modifications. Pasted text is inspected and analyzed directly.
-- `drafting-prose` — prerequisite check and prose specialist selection for substantive report/thesis rewrites, without replacing this skill's document editing responsibility.
-- `reviewing-work` — required after a substantial (non-mechanical) edit, before `verifying-artifacts`.
-- `verifying-artifacts` — required for modified files before file success is claimed. Chat-only text receives content review without a file-verification claim.
-
-## Fallback
-
-If in-file edit is unavailable, emit a structured change list. Never claim the file changed.
+A file edit is complete only after the requested change is saved, re-opened, and verified. If in-file editing is unavailable, provide a structured change list with exact insertion or replacement locations; do not claim the file changed.
 
 ## Common mistakes
 
-- Editing before reading, or making substantive changes without analysis.
-- Changing something on the preserve-list.
-- Claiming the file changed when only a change-list was produced.
-- Treating an unrelated create-from-blank deliverable as an edit.
-- Rewriting content when only layout or style was requested.
-- Changing facts or removing uncertainty during a wording-only or unspecified edit.
+- Editing before reading or making a non-trivial change without analysis.
+- Treating a preserve-list as an optional suggestion.
+- Rewriting facts during a wording-only task.
+- Writing a work plan or project context without its explicit authority.
+- Using an edit route for layout-only work or a conversion route for in-place content changes.
+- Claiming a file update when only a proposed change list exists.

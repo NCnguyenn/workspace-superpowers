@@ -5,66 +5,59 @@ description: Use when inspecting, cleaning, analyzing, updating data, or creatin
 
 # Working with Spreadsheets
 
-Inspect, manipulate, analyze, and format spreadsheet workbooks while strictly maintaining formula integrity and data types.
+## Job
 
-Apply the [workflow continuity contract](../../references/workflow-continuity.md).
-When a workbook supplies evidence for another task, return relevant sheet/cell
-locators, values, units, formulas, and calculation limits to analysis, then resume
-that task. Inspection/analysis alone does not authorize data cleaning, formula
-repairs, chart creation, or saving changes to the source workbook.
+Inspect, update, clean, analyze, format, or chart tabular data while preserving workbook structure, data types, and live calculations. Workbook changes must remain traceable by sheet, range, and formula behavior.
 
-## When to use
+Use [workflow continuity](../../references/workflow-continuity.md) to retain the target workbook revision, sheet/range locators, and requested operation. A workbook used as evidence for another task is read and returned to that task; inspection alone does not authorize a save.
 
-Inspecting sheets and named ranges, cleaning raw tabular data, updating numbers or labels, building summary views, creating charts, or modifying workbooks (XLSX, XLS, CSV).
+## Non-negotiable rule
 
-## When not to use
+**Never overwrite calculated formulas with static values.** Preserve live formula relationships unless the user explicitly asks to freeze, paste values, or replace the calculation with a fixed constant.
 
-* Free-form document drafting or narrative reports (use document or prose skills).
-* Deep formula debugging, circular reference resolution, or calculation auditing (route to `auditing-formulas`).
+## Inputs and output
 
-## Formula preservation rule (§10)
+**Inputs:** workbook path, target sheets/ranges, intended data or formatting changes, formula constraints, chart request, and known data-quality issues.
 
-**Never overwrite calculated formulas with static values.**
+**Output:** an updated or analyzed workbook with changed range locators, formula-preservation evidence, recalculation results, and unresolved data or calculation issues.
 
-Unless the user explicitly asks to freeze, paste-as-values, or replace a calculation with a fixed constant, all formula relationships must remain live and dynamic. Overwriting formulas with static numbers destroys the workbook's integrity and auditability.
+## Method
 
-## Procedure
+1. **Inspect workbook architecture.** Identify sheets, ranges, tables, named ranges, headers, data types, formulas, calculation mode, validation rules, and existing charts.
+2. **Profile the data before editing.** Check headers, missing values, duplicate records, date/number formats, units, and outliers against the requested purpose. Preserve raw data when a transformation must be reproducible.
+3. **Make scoped updates.** Change only approved cells, rows, columns, formulas, labels, or styles. Preserve sheet names, references, tables, and number formats unless restructuring is requested.
+4. **Protect formula dependencies.** Before deleting or moving data, identify formulas that reference it. Use `auditing-formulas` for `#REF!`, `#VALUE!`, `#DIV/0!`, circular dependencies, unexpected calculation results, or complex precedent/dependent analysis.
+5. **Recalculate and inspect.** Recalculate after changes and check for faults, changed formulas, data-type drift, and unexpected downstream values.
+6. **Create charts only from supported data.** Use clear series names, axes, units, legends, and source ranges. Do not make a chart imply a result that the data do not support.
+7. **Verify the saved workbook.** Send a modified workbook to `verifying-artifacts`; reopen it and confirm sheets, formulas, data, charts, and calculation state.
 
-1. **Inspect workbook architecture:** Use `inspect_spreadsheet` to discover sheet names, dimensions, named ranges, data types, header rows, calculation mode, and existing charts.
-2. **Preserve data structure:** Keep original sheet names, table layouts, and cell formatting (currency, percentages, dates, integers) intact unless the user explicitly requested restructuring.
-3. **Apply updates or cleaning:**
-   - Use `edit_spreadsheet` to update data rows, insert columns, or apply transformations.
-   - Respect data types: never store numbers or dates as raw unformatted strings.
-4. **Recalculate & validate:** Invoke `recalculate_spreadsheet` to ensure formula engines update properly without producing calculation faults.
-5. **Add visuals when requested:** Use `create_chart_spreadsheet` to generate charts with clear series names, axes, and legends.
-6. **Route complex formula issues:** If formulas return errors (`#REF!`, `#VALUE!`, `#DIV/0!`) or circular dependencies emerge, invoke `auditing-formulas`.
-7. **Verify workbook:** Hand off to `verifying-artifacts` to confirm file validity and absence of calculation errors.
+## Formula and data checks
+
+- Numbers remain numeric; dates remain dates; percentages, currency, units, and display formats remain meaningful.
+- Formula fills follow the intended row or column pattern.
+- Referenced rows or columns are not deleted without an intentional formula update.
+- A formula audit distinguishes an intentional missing-value marker from an actual calculation fault.
+- Workbook calculations and chart labels agree with their source ranges.
 
 ## Required capabilities
 
-Abstract capability names from §11, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-- `inspect_spreadsheet(file)` — to discover sheets, ranges, formulas, and chart objects.
-- `edit_spreadsheet(file, ...)` — to update values, formulas, or formatting.
-- `recalculate_spreadsheet(file)` — to recalculate workbook formulas.
-- `create_chart_spreadsheet(..)` — to generate charts from data ranges.
-- `verify_artifact(file)` — to verify output workbook integrity.
-- `read_file(path)` / `write_file(path, content)` — basic file operations.
+- `inspect_spreadsheet(file)` — sheets, ranges, formulas, types, and charts.
+- `edit_spreadsheet(file, ...)` — scoped values, formulas, and formatting changes.
+- `recalculate_spreadsheet(file)` — recalculate workbook formulas.
+- `create_chart_spreadsheet(...)` — chart creation from explicit ranges.
+- `verify_artifact(file)` — saved workbook integrity.
+- `read_file(path)` and `write_file(path, content)` — text/CSV support.
 
-## Dependencies
+## Completion and fallback
 
-- Follows `reading-artifacts` and `analyzing-artifacts`.
-- Composes with `auditing-formulas` when calculations need diagnostic review.
-- Precedes `verifying-artifacts`.
-
-## Fallback
-
-If native XLSX editing is unsupported, output clean CSV files or emit an explicit formula modification matrix with cell coordinates and target formulas. Never claim an XLSX file was updated if only CSV was exported.
+A modified workbook is complete only after recalculation and verification. If native workbook editing is unavailable, return a coordinate-based change matrix or a clean CSV export that clearly states it is not an updated XLSX. Do not claim an XLSX change if only a text representation was produced.
 
 ## Common mistakes
 
-* Replacing dynamic formula cells with static numbers.
-* Converting numeric or date fields into plain text strings.
-* Breaking formula references by deleting referenced rows or columns.
-* Failing to trigger recalculation after updating underlying data.
-* Omitting sheet names when referencing cells across multiple worksheets.
+- Replacing formulas with numbers to make a workbook “look correct.”
+- Turning dates, percentages, or numbers into plain text.
+- Deleting a referenced range without checking downstream formulas.
+- Creating charts with unspecified units or misleading series labels.
+- Treating a successful save as evidence that formulas recalculated correctly.

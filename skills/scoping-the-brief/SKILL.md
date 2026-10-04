@@ -5,172 +5,90 @@ description: Use when material workspace requirements are unclear, report or the
 
 # Scoping the Brief
 
-Resolve blocking ambiguity and establish an actionable working brief for substantial workspace tasks.
+## Job
 
-For sustained work, use [persistent work tracking](../../references/work-tracking.md):
-inspect an existing plan before asking for requirements already recorded. Offer
-agent-managed persistence when warranted, without requiring user file management.
-For an initial supplied brief, rubric, or graded guide with no named section or narrower requested operation, present the intake map before any setup question. On continuation, reuse the existing intake map; inspect changed inputs and focus on the named section instead of repeating intake. Confirm only identity fields that the source or map does not already settle, and only before creating tracking or project files. Do not ask grade target, report language, or which assignment when the source or language policy already settles them.
+Turn inspected requirements into an actionable, bounded brief. This skill identifies what is already known, what is missing, and which decision must come from the user. It does not invent facts, approve an outline, or begin drafting.
 
-An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. The first reply is still the intake map: source locators, each criterion mapped to the work the source requires, failure constraints, contradictions left unresolved, and only the decisions the source does not already settle. A narrower operation is a named section, a specific comparison, or a continuation that can reuse the existing intake map. When the user supplies a completed assignment/report, reading or remembering it requires a completed-assignment read-back; comparing it with a later guide identifies the remaining criteria and uses a narrow comparison, not a new intake map.
-Extract source requirements separately from proposals/unknowns; retain rubric
-coverage gaps. Tracking consent does not approve the scope or outline. Return
-the brief and decisions to planning/editor for the same adopted record.
+Use the [workflow continuity contract](../../references/workflow-continuity.md). For sustained work, inspect an adopted plan under [persistent work tracking](../../references/work-tracking.md) before asking for information that is already recorded.
 
-For tracked work, hand the existing `plan_file`, stable `work_id` and affected
-item/revision to planning or editing; do not create a second brief, tracker or
-project context. Setup consent, scope confirmation and content approval remain
-separate. Create or update `project-context.md` only when a concrete project,
-designated path and applicable setup authority exist; a description or read-only
-source survey alone is not implementation or runtime evidence. A new prompt may
-change only the affected scope, and a proposal or comparison never changes the
-adopted decision without a clear decision.
+## Use when
 
-Apply the [workflow continuity contract](../../references/workflow-continuity.md).
-Consume partial answers without discarding other context. If the user asks a side
-question or supplies a file instead of answering, route that request and keep only
-the still-relevant question pending. Reuse facts and decisions already established.
+Load this skill for a material ambiguity that changes the deliverable: an unclear objective, audience, criterion, evidence need, target format, scope boundary, or approval state. Use it for requested criteria analysis and applicable scope confirmation under the [criteria-writing contract](../../references/criteria-writing-contract.md).
 
-## When to use
+Do not load it for a typo, a small wording correction, a direct formatting change, or a fully specified task with valid recorded decisions. Do not reopen an applicable confirmed or waived decision.
 
-Folder-based reports use [project grounding](../../references/project-grounding.md).
-An accessible folder or existing detailed description is sufficient to begin
-inspection; do not require the user to restate the tree. Retain the one designated
-context-file identity and survey limits in the existing brief. This does not
-authorize project tests/builds or introduce an extra scope gate.
+## Inputs and output
 
-Under-specified, complex, multi-stage, or graded tasks (e.g. assignments, research syntheses, client reports, presentations) where missing facts would materially alter the deliverable.
+**Inputs:** the current request, inspected source artifacts, prior decisions, evidence locators, existing plan checkpoint, and any named target section.
 
-Also use for requested criteria analysis or unresolved scope confirmation under the [criteria-writing contract](../../references/criteria-writing-contract.md), even when the supplied facts are clear.
+**Output:** a concise working brief or scoped analysis handoff containing known constraints, unresolved material questions, evidence readiness, source locators, and the exact next authorized operation.
 
-## When not to use
+## Method
 
-Trivial or mechanical work (e.g. typo-fixes, single-cell corrections, straightforward formatting adjustments). Fully specified work needs no interview; do not reopen an applicable confirmed or waived scope decision.
+1. **Inspect before asking.** If files, a rubric, template, or prior brief exist, use `reading-artifacts` and `analyzing-artifacts` first. Do not ask for a fact already available in an accessible source.
+2. **Classify the gap.** Separate source requirements, user decisions, AI proposals, and unknowns. Ask only when an answer changes content, evidence, format, scope, or a required decision.
+3. **Ask one focused question.** Explain the current decision and offer real choices when useful. Keep questions about missing evidence separate from approval of visible content.
+4. **Record a usable brief.** Capture purpose, audience, deliverable form, source title and locator, preserved constraints, evidence status, blocking gaps, and the resolved deliverable language. English is the default under the [language policy](../../references/language-policy.md) unless the user explicitly requests another deliverable language. Chat explanations follow the language of the user's current message; do not default that language to Vietnamese. Explain any necessary source term in the same sentence; do not produce a line-by-line translation.
+5. **Hand off at the correct boundary.** Analysis-only work ends with analysis. A requested outline goes to `planning-work` only after applicable evidence and analysis requirements are resolved. A draft or substantive revision retains its requested outcome but waits at unresolved prerequisites.
 
-## Adaptive ceremony
+### Evidence decision
 
-* **Trivial fixes:** No interview. Proceed immediately through the core loop.
-* **Inspect first:** When input files exist, run `reading-artifacts` and `analyzing-artifacts` first. Do not ask the user for information already present in the rubric, template, or draft.
-* **Ask only what is material:** Inquire only about decisions that change the deliverable: audience, purpose, language, deliverable format(s), length/page constraints, rubric obligations, source location, and output location. Resolve citation conventions from [citation style rules](../../references/citation-styles.md); reuse established conventions and use Harvard only when citations are required and no convention is specified. Resolve deliverable language under the [shared language policy](../../references/language-policy.md): English unless the user explicitly requests another language. Do not infer it from conversation/source language or ask merely because language was omitted.
-* **User says "just do it" / "decide for me":** Skip optional clarification and record safe working assumptions. Resolve material conflicts and evidence gaps; do not invent a house citation style. For criteria writing, record only the approval gates the user explicitly waived. Review and applicable file verification remain required.
+```text
+Does the current requirement need a missing fact, metric, screenshot, result, or source?
+  no  -> record evidence_readiness: not_required; continue the applicable route
+  yes -> identify the precise claim and missing input
+         -> ask for real data or scoped illustrative permission
+         -> keep evidence_readiness: pending until the answer is confirmed
+```
+
+## Initial guides, completed work, and continuity
+
+For an initial supplied brief, rubric, or graded guide with **no named section** or narrower operation, prepare an intake map before any setup interview. An opening question about the parts, criteria, or structure of a guide is not Simple Q&A and not a narrower operation. Map deliverables, each criterion’s required work, failure constraints, source locators, contradictions, and only decisions the source does not settle.
+
+For a named section, continuation, or narrow comparison, reuse the intake map and inspect only the affected material. A completed assignment read-back stays a read-back. When comparing completed work with a later guide, identify remaining criteria through a narrow comparison rather than restarting intake.
 
 ## Criteria-based writing
 
-Apply [outline structure and evidence readiness](../../references/outline-structure.md).
-Capture the exact `source_title` and its locator. During analysis, check required
-data and support; set `evidence_readiness` before handing off to planning. If
-required evidence is missing, interview the user with targeted questions and
-wait before preparing the outline. Explicit permission for illustrative data
-may resolve the planning prerequisite only within its recorded scope; never
-invent real measurements or citations. Analysis approval alone does not resolve
-a missing-evidence question.
+Apply [outline structure and evidence readiness](../../references/outline-structure.md) and [criterion-level analysis and two stops](../../references/criteria-writing-contract.md#criterion-level-analysis-and-two-stops). The two approvals apply to each requested section or criterion, but they are not extra ceremonies for mechanical work. Reuse a `scope_status` that is `confirmed` or `waived` when its recorded scope applies; silence is not approval.
 
-### Interview missing scenario metrics before analysis delivery
+Maintain these fields in the existing brief or conversation state; do not ask the user to fill internal labels:
 
-This is not a mandatory interview for every section. Ask only about missing data
-or evidence necessary to the current requirement or claim after inspecting inputs.
-A theoretical explanation does not need a project-data interview; record
-`not_required` when no evidence gap affects it and continue the applicable steps.
-Do not block it on metrics needed only by a later section. Required academic
-citations remain applicable without demanding empirical project evidence.
+- `task_mode`, `criteria`, `scope`, `scope_status`, and `approval_record`;
+- `evidence_register` and `blocking_gaps` with source locators and limits;
+- `source_title`, `source_locator`, and `evidence_readiness`.
 
-Inspect supplied sources and prior answers before presenting the requirement analysis.
-If an applied scenario requires absent budget, timeline, scale, concurrency or
-other factual bounds, ask one focused evidence question and wait before delivering
-the completed analysis for approval. Never place a generated package of numbers
-inside that analysis and ask whether the user wants to adjust it afterward.
+### Requirement analysis
 
-Offer a choice between supplying real data and explicitly authorizing illustrative
-assumptions for the named gaps. Use the host's structured question interface when
-available and permitted for evidence clarification; otherwise ask in chat. For example:
-“Do you have budget, delivery timeline and target scale in your brief, or may I
-propose hypothetical values for these missing constraints?” A proposed numeric
-option must be labeled optional and hypothetical, not a standard BTEC benchmark.
-Do not mark illustrative data as the recommended choice without a task-specific reason.
+Before presenting the requirement analysis, inspect the original wording, available sources, and prior answers. Identify command verbs, cognitive depth, in-scope and out-of-scope boundaries, general theory versus scenario application, required evidence, visuals, and citations. Explain necessary source terms in the same sentence as the analysis.
 
-Record the answer and scoped permission in the existing conversation or brief.
-Set `provided` only after inspecting sufficient supplied inputs; set
-`illustrative_authorized` only for gaps the user explicitly allows you to model.
-A preselected option, skipped question, timeout, general “continue”, or partial
-answer leaves unresolved gaps `pending`. Reuse permission already granted; do not
-ask again. No metric interview is needed for pure theory or nonessential numbers.
-An analysis-only diagnosis may explain missing evidence without inventing it.
-Safe working assumptions about presentation never authorize invented project facts.
+This is **not a mandatory interview for every section**. A theoretical requirement can record `not_required` and continue without metrics. Do not hold it for evidence required only by a later section. If the current target needs absent scenario evidence, ask whether the user can supply **real data** or explicitly authorize an **illustrative** example for the named gap. Ask this before presenting the requirement analysis. A preselected option, silence, partial answer, cancellation, or general approval leaves the state pending. Any optional number is hypothetical, not a BTEC standard or benchmark.
 
-### Section decisions
+When evidence is pending, return a gap diagnosis and targeted questions, not a completed analysis for approval. Apply the contract’s **Missing Evidence Protocol**. Do not make up a project name, business domain, budget, SLA, performance result, citation, or a later assignment such as a functional prototype. If a fact is needed and unsettled, ask before using it.
 
-Apply [criterion-level analysis and two stops](../../references/criteria-writing-contract.md#criterion-level-analysis-and-two-stops).
-The two-stop rule applies to all sections, chapters, parts, and criteria of
-deliverables (e.g. “Section 1: Project Overview”, “Introduction”, or “P1”).
-For a section or criterion draft, show the original wording/locator, extract primary keywords and command verbs, and classify the exact cognitive demand (pure theoretical description vs comparative matrix vs critical evaluation/tradeoffs vs justification). Delineate strict scope boundaries (In-Scope vs Out-of-Scope, general theory vs scenario application), required diagrams, and academic citations.
-Identify the analysis revision and request its approval in chat before producing the
-detailed outline. “Do Section 1” or “Do P1” and approval of master headings are
-not that decision. Follow [guided questions](../../references/guided-questions.md) and conduct review naturally in chat without modal popup spam.
-Apply its visible delivery and recovery rules: complete analysis first, natural
-review question last. If the user did not see the analysis, return to visible
-delivery; do not replace it with a confirmation card or a scope-only summary.
+If the facts are sufficient and two or more interpretations remain, load `brainstorming`, compare 2–3 options, recommend one, and wait for the user’s choice. Do not use brainstorming to resolve a source contradiction.
 
-Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"),
-consulting roles, business context, budgets (e.g. "$15,000"), SLAs, latency targets,
-or operational metrics without interviewing and confirming with the user. Skill examples such as P1, M1, D1, BTEC, and a named unit are examples. They are not this user's assignment. Do not put a programme, unit, or criterion set the user did not write into a question option. If the user asked for a general report and did not mention a rubric, do not open a rubric card. Do not add
-a deliverable that belongs to a later assignment, such as a functional prototype, or
-scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it. If unstated in source documents or prompt, ask the user or record a
-blocking gap; never fabricate project facts.
-A missing programme is not a gap to fill from skill examples. Do not ask which framework applies, and do not offer options such as "BTEC HND Computing (Unit 9: SDLC)" or "P1-P4, M1-M2, D1-D2", unless the user already wrote those words. If the user did not write a rubric, write the general academic report they asked for. Do not open a programme card.
+After completing the analysis, display it in chat and wait for approval before preparing a detailed outline. Silence is not approval. Use [guided questions](../../references/guided-questions.md) for visible delivery and recovery; a question card has no back parameter and no Back control. This is a host gap: do not invent a Back button. A card selection is not locked until the user confirms; summarize the selection and ask the user to confirm or correct it in chat.
 
-Chat explanations, questions, summaries, and requirement analysis follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence. Do not list unexplained keywords, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language. Never interleave bilingual translations into chat blocks.
+## Project-folder boundary
 
-1. Extract criteria and section requirements from chat, supplied instructions, or artifacts already read. Record `task_mode`, original `criteria` with source/locator, obligations, and included/excluded `scope` in the [brief](../../templates/brief.md) or conversation state. Do not ask users to enter internal fields.
-2. Inspect available evidence first. Maintain `evidence_register` and `blocking_gaps`: identify what is missing, which claim it supports, and what resolves the gap. Apply the contract's Missing Evidence Protocol; block dependent assertions while continuing authorized independent work.
-3. Separate clarification from confirmation. Ask questions only about material unknowns. Reuse applicable `scope_status` values of `confirmed` or `waived` and their `approval_record`; do not interview again. If confirmation is required and unresolved, summarize scope, set `pending`, and await the user's decision. Silence or an unavailable response is not approval.
-4. For `analyze`, deliver interpretation, obligations, scope, and evidence needs, then stop. Do not request approval of an unrequested outline. For `outline`, pass sufficiently clear scope to `planning-work` only after applicable analysis approval and the evidence prerequisite are resolved: required evidence is inspected or illustrative use is explicitly authorized. These are separate decisions; do not impose an unrelated drafting gate. For `draft` or substantive `revise`, resolve applicable scope and evidence prerequisites, then hand off outline decisions to `planning-work`.
-5. Preserve unaffected decisions when scope changes. Confirm only the affected scope when not already authorized; never treat an earlier approval as covering a new experimental comparison. Project claims require actual evidence; a README is not proof of implementation. Software-engineering inspection belongs to the Coding workflow and does not authorize code changes.
-
-### Confirm card selections before they are locked
-
-After a structured question card returns, summarize the selections in the language of the user's current message and ask the user to confirm or correct them in chat. A card selection is not locked until the user confirms that summary. The host question schema has no back parameter and the card has no Back control. This is a host gap. Do not invent a Back button. Correction happens in chat. Do not invent numbers.
-
-If required facts are now sufficient and more than one valid interpretation remains, invoke `brainstorming` before presenting the requirement analysis. Present 2–3 options, recommend one, and stop. The user chooses. Do not select one and write the analysis.
-
-## Procedure
-
-1. Inspect existing input artifacts, rubrics, and instructions before formulating questions.
-2. Determine whether unresolved ambiguities would change the deliverable.
-3. If material ambiguity remains and user input is accessible, ask focused, targeted questions.
-4. Establish the working brief (`templates/brief.md`) recording:
-   - Target audience, core purpose, and deliverable language (English by default, with any explicit user override recorded).
-   - Required deliverable formats, length, and constraints.
-   - Applicable rubric/template obligations and citation style, if the brief or discipline requires one.
-   - Explicit working assumptions and preserved elements.
-5. Apply the criteria-based stopping points above when activated. Otherwise hand off to `planning-work` when complexity warrants a plan, or proceed to the selected specialists. Review remains required for substantial outputs; verify files before claiming file completion.
+For a folder-based report, follow [project grounding](../../references/project-grounding.md). An accessible path is enough to begin read-only inspection; it does not authorize code changes, tests, builds, migrations, or project writes. Preserve the designated `context_file` identity when one exists.
 
 ## Required capabilities
 
-Abstract capability names, resolved by the harness adapter. Never a tool name.
+Abstract capability names are resolved by the host adapter.
 
-- `read_file(path)` — to examine existing text-bearing rubrics, templates, or instructions.
-- `invoke_skill(name)` — to load `reading-artifacts` / `analyzing-artifacts` when source files exist.
-
-Interactive questions use the host's available structured question interface
-when permitted, following the [guided questions](../../references/guided-questions.md) reference and adapter. Otherwise
-ask a concise choice in chat and wait. They are conversation interactions, not
-an additional artifact capability or a tool supplied by this skill pack.
-
-## Dependencies
-
-- Preceded by `reading-artifacts` and `analyzing-artifacts` when source files or rubrics exist.
-- Leads to `brainstorming` when several valid interpretations remain, and to `planning-work` for requested outlines, applicable criteria-writing outline prerequisites, or complex work needing a plan. Analysis-only requests stop at analysis.
+- `read_file(path)` — inspect text-bearing requirements and recorded decisions.
+- `invoke_skill(name)` — load reading, analysis, planning, or brainstorming at the appropriate handoff.
 
 ## Fallback
 
-For criteria writing, the criteria-writing contract controls fallback: an unavailable answer never confirms scope, approves an outline, or resolves missing evidence. While the evidence interview is pending, return a gap diagnosis and targeted questions, not a completed analysis for approval or a provisional outline. An analysis-only diagnosis can identify gaps without filling them. For other tasks, disclose safe working assumptions and proceed only with supported work. Do not invent sources.
+For criteria writing, the criteria-writing contract controls fallback. An unavailable answer never confirms scope, approves an outline, or resolves missing evidence. Keep the dependent work pending and state the precise gap. For other tasks, make only safe, clearly labeled working assumptions and proceed with independent supported work.
 
 ## Common mistakes
 
-* Asking questions on a trivial edit or typo fix.
-* Asking for information already specified in the prompt or rubric.
-* Asking endless open-ended questions instead of offering a focused evidence choice.
-* Treating optional illustrative numbers as accepted defaults before the user's answer.
-* Treating "decide for me" as a reason for optional interviews, or as a waiver of every approval and evidence requirement.
-* Forgetting to record established constraints in a working brief.
-* Reopening an established citation convention or asking solely because the documented Harvard fallback applies.
+- Interviewing by default instead of inspecting accessible sources first.
+- Asking many generic questions rather than one decision that changes the deliverable.
+- Treating “decide for me” as permission to invent evidence or waive every approval.
+- Confusing evidence permission with analysis or outline approval.
+- Treating a completed assignment as a new assignment intake.
+- Turning the conversation language into a deliverable-language instruction without an explicit request.

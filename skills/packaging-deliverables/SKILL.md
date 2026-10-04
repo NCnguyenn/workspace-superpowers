@@ -5,81 +5,53 @@ description: Use when verified workspace artifacts are ready to be named, organi
 
 # Packaging Deliverables
 
-Assemble, organize, and produce the final delivery report for verified workspace artifacts.
+## Job
 
-For [persistent work tracking](../../references/work-tracking.md), report the
-exact delivered revision and whether it is working or user-approved. Preserve
-approved snapshots and linked evidence during cleanup. After an authorized move
-or rename, send new paths to the plan's editor and recheck links before delivery;
-do not leave the next session pointing at an obsolete path. A new export returns
-through conversion/verification rather than being marked current by packaging.
+Assemble the verified files the user requested and report exactly what is being delivered. Packaging organizes and describes a verified set; it does not create missing content, treat an unverified export as current, or conceal a limitation.
 
-For Word mathematics, apply the [Equation completion boundary](../../references/math-in-documents.md):
-do not package an unverified native Equation requirement as complete. An explicitly
-accepted limited handoff retains its limitations. During project surveys, the
-[project write boundary](../../references/project-grounding.md) also governs packaging:
-no source-project cleanup, output copies or extra evidence files beyond the one
-designated context file without explicit permission for those writes.
+Use [workflow continuity](../../references/workflow-continuity.md) to respond to changed delivery scope. For durable work, preserve output revision and working/approved status under [persistent work tracking](../../references/work-tracking.md). A packaging action never grants content approval or changes a plan record by itself.
 
-Apply the [workflow continuity contract](../../references/workflow-continuity.md)
-to the current requested output set. If the user changes the deliverable during
-packaging, route the affected work to its specialist and verification first.
+## Inputs and output
 
-## When to use
+**Inputs:** requested delivery set, verified artifact paths and revisions, source/export relationships, naming or directory constraints, and known limitations.
 
-Concluding any workspace task where artifacts were created, modified, converted, or reviewed, and final delivery is being made to the user.
+**Output:** a concise final delivery report with exact paths, changes, verification evidence, unsupported checks, and remaining blockers or limits.
 
-## When not to use
+## Preconditions
 
-Before verification is complete. `verifying-artifacts` must verify the final files
-before packaging begins. Do not include unrequested intermediate or scratch files.
-An explicitly requested incomplete draft may be delivered after file verification,
-with its incomplete content/evidence status retained; it is not a finished report.
+Every delivered file must have completed `verifying-artifacts` on its latest requested revision. An explicitly requested incomplete draft can be delivered only with its incomplete evidence or content status retained; it is not a completed report. Do not include scratch, temporary, cache, or unrequested intermediate files.
 
-## Mandatory reporting invariants
+For Word mathematics, apply the [native Equation contract](../../references/math-in-documents.md): do not package a failed or unverified native Equation requirement as complete. For project-folder work, apply [project grounding](../../references/project-grounding.md): do not clean, rename, copy into, or reorganize source projects without explicit permission.
 
-The final delivery report (following `templates/final-report.md`) must explicitly state:
+## Method
 
-1. **Artifact Paths:** Exact locations of all deliverable files, distinguishing source/editable artifacts from rendered/exported files and supporting data.
-2. **Changes Made:** Clear summary of what was added, modified, or preserved.
-3. **Checks Performed:** Exact verification checks that succeeded on the actual files.
-4. **Unsupported Checks & Limitations:** Transparent statement of any checks that could not be run (e.g. missing visual renderer, missing OCR engine) and any residual limitations.
-
-Never omit limitations. Never claim an unverified artifact was verified.
-
-## Procedure
-
-1. Verify that all artifacts declared in the deliverable contract have passed `verifying-artifacts`.
-2. Clean up temporary scratch scripts and intermediate cache files.
-3. Organize files into clear deliverable directories if requested (e.g. `output/`, `figures/`).
-4. Ensure standard, clear file naming and versioning.
-5. Generate the final delivery report covering:
-   - Summary of completed deliverables and paths.
-   - Substantive modifications versus preserved elements.
-   - Verified integrity checks.
-   - Transparent disclosure of residual limitations and unsupported checks.
-6. Present the final summary to the user.
+1. **Confirm the delivery set.** List the exact files and their role: editable source, export, supporting data, or asset. Confirm that each has a current verification result.
+2. **Check identities and relationships.** Keep working and approved revisions distinct. Confirm each export’s source revision and settings; a new export returns to conversion and verification.
+3. **Organize only as authorized.** Apply requested naming or destination rules. Do not move a file merely to make a neater package, and do not introduce a new archive or report file unless requested.
+4. **Report the outcome.** Follow the [final report template](../../templates/final-report.md) proportionately. Include:
+   - exact artifact paths and roles;
+   - substantive changes and preserved elements;
+   - verification checks performed on actual files;
+   - unsupported checks, remaining limitations, and incomplete status where applicable.
+5. **Present the final summary.** Make it possible for the user or downstream owner to find and understand every delivered file.
 
 ## Required capabilities
 
-Abstract capability names, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-- `read_file(path)` — to confirm deliverable existence and inspect verification status.
-- `write_file(path, content)` — to generate the final packaging report.
-- `list_files(dir)` — to locate verified artifacts in their working locations.
-- `export_artifact(file, format)` / `convert_artifact(src, format)` — if an export is still required, hand it to `converting-artifacts`, then `verifying-artifacts` for the new output before resuming packaging. Source verification never verifies a new export.
+- `list_files(dir)` — locate requested verified files.
+- `read_file(path)` — inspect delivery and verification records.
+- `write_file(path, content)` — create a requested packaging report.
+- `export_artifact(file, format)` and `convert_artifact(src, format)` — only when a requested export still needs the `converting-artifacts` and `verifying-artifacts` route.
 
-## Dependencies
+## Completion and fallback
 
-- Requires `verifying-artifacts` to have completed successfully for all delivered artifacts.
-
-## Fallback
-
-If directory restructuring or archiving tools are unavailable, deliver the verified artifacts in their current working locations, providing exact absolute paths in the final report.
+If directory restructuring or archiving is unavailable or unauthorized, deliver verified files in their current paths and state that choice. If a required artifact has no current verification, return it to `verifying-artifacts` rather than calling the package complete.
 
 ## Common mistakes
 
-* Packaging artifacts before `verifying-artifacts` has confirmed their integrity.
-* Concealing limitations or claiming visual verification when only command exit code 0 was observed.
-* Leaving scratch files and debugging scripts scattered in deliverable folders.
-* Failing to provide clear, actionable file paths to the user.
+- Packaging before the final artifact is re-opened and verified.
+- Including scratch files or silently omitting a requested deliverable.
+- Presenting an export as current without checking its selected source revision.
+- Hiding a missing visual, native Equation, OCR, or rendering check.
+- Reporting a working draft as approved or complete.

@@ -5,103 +5,65 @@ description: Use when any artifact has been created, edited, converted, or expor
 
 # Verifying Artifacts
 
-Re-open the real artifact before claiming success.
+## Job
 
-For [persistent work tracking](../../references/work-tracking.md), verify the
-saved deliverable revision, then re-read the affected designated context when
-present and affected, followed by the updated plan's paths, revision
-identities, approval references and export-source relationships. Distinguish
-working from approved artifacts and unreadable/missing checks from completion.
-Report a saved artifact with failed checkpoint update as a split result. Return
-check evidence to the single editor; never invent an approval or repair content
-silently as part of verification.
+Reopen the actual current artifact and check the result against the requested revision and deliverable contract. Verification establishes file integrity and format-specific evidence; it does not replace content review, invent a missing rendering capability, or silently repair the artifact.
 
-Reopen the actual artifact, the affected designated context (if any), and the
-adopted tracking record identified by `plan_file`, `work_id` and target revision.
-Confirm that changed links, affected items, shared change reference and approval
-scope agree, while retaining any incomplete or unsynchronized state for recovery.
-For a project survey handoff, also confirm the exact `context_file` and its
-`placement_authority`; an adopted context is updated only by the designated
-editor, then reopened and compared byte-for-byte with the saved content.
-Verification cannot establish background monitoring, native
-PI execution or rendered fidelity without the corresponding trace or artifact.
+**Command success is not artifact success.**
 
-For Word mathematics, enforce the [native Equation contract](../../references/math-in-documents.md).
-Record content, OMML structure, rendered appearance and native edit/save/reopen
-checks separately, with target revision and Word environment. Missing required
-Equation checks block Word completion even when generic opening/rendering passes.
+**A check on an earlier generation is stale after another write or conversion.**
 
-Apply the [workflow continuity contract](../../references/workflow-continuity.md)
-when resuming or receiving changed files. Verify the current target version;
-do not reuse a check invalidated by an intervening write, insertion, or export.
-For a substantive continuation or revision, also apply the [document continuity
-contract](../../references/document-continuity.md): recheck the final text against
-the inspected profile and preserve/change lists at the actual seam. Compare role
-names and terminology, narrative person and tense by function, project/scenario
-identity and technical decisions, factual claims/metrics/evidence status and
-citations, paragraph/register and lead-and-list defects, headings/cross-references,
-and the transition between existing and new content. Return content findings to
-review/editor; do not silently rewrite unrelated earlier sections. Reuse the
-existing Word/table/image/caption/placement/render checks for DOCX work.
+Use [workflow continuity](../../references/workflow-continuity.md) to identify the latest target. For sustained work, use [persistent work tracking](../../references/work-tracking.md) to compare the saved artifact, affected `context_file`, and plan references with the handed-off revision. Report a split save or unsynchronized checkpoint honestly.
 
-## When to use
+## Inputs and output
 
-Any created, edited, converted, or exported file is about to be reported as done.
+**Inputs:** actual output paths, target revision, preserve-list, deliverable contract, expected checks, and any source/export relationship.
 
-## When not to use
+**Output:** a verification record stating what was reopened, which checks passed, what was unverified or blocked, and whether the artifact is ready for packaging or must return to its owner.
 
-No artifact was produced or changed.
+## Method
 
-## Procedure
+1. **Locate the latest target.** Confirm the exact source, working or approved revision, export relationship, and intended output path. Do not verify a stale path or an earlier generation.
+2. **Reopen the real artifact.** Use a type-appropriate representation rather than a raw binary stream. Verify that it exists, opens, and exposes the expected structure.
+3. **Compare requested content and preservation.** Check changed areas against the approved/requested scope, preserve-list, template or rubric, and expected cross-artifact values.
+4. **Run format-specific checks.** Use [artifact verification criteria](references/artifact-verification.md), preserving the distinction between structural and rendered checks. Render where a rendering capability exists; record a missing renderer as unverified.
+5. **Check generated outputs independently.** Verify the editable source and every export separately. A source pass does not verify a PDF, image, workbook export, or converted document.
+6. **Record limits and hand off.** State paths, revision identities, passed checks, missing checks, and residual limitations. Return defects to the responsible editor, converter, or specialist. Package only after verification passes for the requested delivery set.
 
-For tables and figures apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
-Compare actual table cells, media identity, captions, sources and placement with
-the requested revision, its approval status and rubric/template. Separate structural and rendered checks;
-missing checks remain unverified. Source/package or DOCX success cannot establish
-native PI-Desktop acceptance.
-Apply [visual evidence boundary](../../references/visual-evidence-boundary.md). XML extent does not establish rendered readability. Do not claim a tool ran unless its unedited tool result is retained.
+## Format-specific checks
 
-1. Reopen or re-read the actual file.
-2. Compare against the deliverable contract and the preserve-list.
-3. Run the format-specific checks for that type: `references/artifact-verification.md`.
-4. Render where a render capability exists; say so when it does not.
-5. Record what was checked and what could not be checked.
-6. Only then report success.
+- **DOCX and rich text:** structure, headings, tables, links, citations, fields, figures, captions, page setup, and render where available.
+- **PDF:** page count, text, fonts, tables, figures, clipping, and render where available.
+- **Presentations:** slide count, theme, asset presence, speaker notes, text overflow, and rendered slides where available.
+- **Workbooks:** sheet structure, formulas, references, recalculation faults, charts, and data types.
+- **Images and vectors:** dimensions, format, aspect ratio, editability where required, clipping, and rendered appearance.
+- **Mixed sets:** each artifact plus cross-artifact consistency.
 
-Command success is not artifact success.
+For tables and figures, apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md) and the [visual evidence boundary](../../references/visual-evidence-boundary.md). Compare actual table cells, media identity, captions, sources, placement, and template/rubric requirements. Separate structural and rendered checks. XML extent or a media count cannot establish visual readability.
 
-A check on an earlier generation is stale after another write or conversion.
-Inspect the latest file before reporting. Do not regenerate a failed export
-unless a different converter exists; if you regenerate, verify the new file.
+For a continuation or substantive revision, apply the [document continuity contract](../../references/document-continuity.md). Recheck the actual seam, role names, narrative person, tense by function, technical decisions, evidence status, citations, lead-and-list defects, headings, and cross-references. Do not silently rewrite unrelated earlier sections. Verification cannot establish native PI-Desktop acceptance without the corresponding retained trace.
 
-If render or visual check is unavailable, say so. Never treat a command exit code as proof the artifact is correct.
+## Word mathematics
 
-An export is verified separately from its source: check both.
-
-The report must state which artifacts exist at which paths, which checks passed, which checks were impossible — for a missing capability or an undefined criterion — and any residual limitation.
+Apply the [native Equation contract](../../references/math-in-documents.md). Record formula locators, mathematical content, OMML structure, rendered appearance, and native edit/save/reopen checks separately. An unavailable required check is unverified, not a pass; native Equation completion remains blocked until all required checks exist.
 
 ## Required capabilities
 
-Abstract capability names, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-- `verify_artifact(file)` plus the typed inspection capability for that artifact.
-- `render_document(file)`, `render_presentation(file)`, `render_image(file)` where visual QA is possible.
-- `recalculate_spreadsheet(file)`, `audit_spreadsheet(file)` for workbooks.
-- `read_file(path)` for text-bearing artifacts only; a byte stream from a binary format is not a re-open.
+- `verify_artifact(file)` — file integrity and type-specific verification.
+- `read_file(path)` — text-bearing artifacts only.
+- `render_document(file)`, `render_presentation(file)`, and `render_image(file)` — visual verification when available.
+- `recalculate_spreadsheet(file)` and `audit_spreadsheet(file)` — workbook checks when available.
 
-## Dependencies
+## Completion and fallback
 
-- `reading-artifacts` — required background; verification is a re-read of the real file.
-- Any skill or role that created or modified the artifact — whatever produced the file lands here before success is claimed. `editing-documents` is one producer, not the only one.
-
-## Fallback
-
-If the file cannot be re-opened, do not claim success. Disclose the limitation.
+Report success only after reopening the current artifact. If a file cannot be reopened, a check is unavailable, or the artifact is corrupt, do not claim success. State the exact failed or unverified check and return the artifact to its owner. A later conversion, write, insertion, or export requires verification again.
 
 ## Common mistakes
 
-- Treating exit code 0 as proof the artifact is correct.
-- Verifying the source but not the export, or the export but not the source.
-- Claiming a render or visual QA that was never performed.
-- Omitting artifact paths from the final report.
-- Reporting success when the file could not be re-opened.
+- Treating an exit code, generated filename, or successful save as proof of a valid artifact.
+- Verifying the source but not its export, or the export but not its source.
+- Claiming a render, visual review, native Equation check, or native acceptance that did not occur.
+- Ignoring an intervening write that made previous evidence stale.
+- Omitting exact artifact paths and residual limitations from the final delivery.

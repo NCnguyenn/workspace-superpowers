@@ -5,80 +5,62 @@ description: Use when planning slide-by-slide narrative structure, formulating a
 
 # Storyboarding Slides
 
-Design slide-by-slide blueprints, narrative arcs, and action headlines before presentation deck construction.
+## Job
 
-Apply the [workflow continuity contract](../../references/workflow-continuity.md).
-Preserve the source report's argument, terms, scenario, and evidence limits while
-adapting its presentation to slides. A storyboard-only request stops with the
-storyboard; approving it alone does not request deck construction.
+Turn a brief, report, or evidence set into a slide-by-slide narrative blueprint before deck construction. A storyboard establishes the audience journey, action headlines, visual evidence, and speaker notes; it does not claim that a presentation file has been built.
 
-## When to use
+Use [workflow continuity](../../references/workflow-continuity.md) to preserve source argument, terminology, scenario, evidence limits, and the requested stopping point. A storyboard-only request ends with the storyboard; its approval alone does not request deck authoring.
 
-Transforming complex reports, research documents, or briefs into structured presentation plans; defining narrative progression across slides; formulating assertive action headlines; establishing visual-verbal balance; and writing slide blueprints before generating or editing a slide deck.
+## Inputs and output
 
-## When not to use
+**Inputs:** source report or brief, audience, presentation purpose and duration, available evidence, required decisions, existing deck conventions, and known visual constraints.
 
-* Constructing, styling, or formatting final presentation files (belongs to `working-with-presentations`).
-* Drafting long-form written reports, theses, or prose essays (belongs to `planning-work` or `drafting-prose`).
-* Generating standalone image or vector assets (belongs to `working-with-visuals`).
+**Output:** a slide blueprint with action headline, audience takeaway, content blocks, visual/data need, evidence source, speaker notes, and narrative relationship to surrounding slides.
 
-## Storyboard principles (§7.5, §10, §23)
+## Method
 
-* **Action headlines over topic labels:** Every slide must have an assertive takeaway headline that communicates the core conclusion of the slide (e.g. *"Q3 Operating Margin Rose to 24% Driven by Automation"* instead of *"Financial Results"* or *"Operating Margin"*).
-* **Narrative progression:** Sequence slides in a deliberate dramatic arc:
-  1. *Context & Hook:* Current state, urgency, problem statement.
-  2. *Evidence & Analysis:* Supporting data points, key findings, strategic alternatives.
-  3. *Resolution & Call to Action:* Proposed solution, decision required, milestones, and next steps.
-* **Visual-verbal balance:** Limit slide bullets to 3–5 concise points. Designate slides for visual dominance (full-bleed chart, comparison diagram, architecture map) rather than walls of text.
-* **Speaker notes drafting:** Every storyboard entry must include clear speaking points and background evidence to offload dense explanations from the slide canvas.
+1. **Read the source material.** Use `reading-artifacts` and `analyzing-artifacts` for source files; inspect pasted content directly. Extract only evidence actually available and preserve its limits.
+2. **Define the audience decision.** State what the audience must understand, decide, or do by the end of the deck. Set slide count from the requested duration and purpose, not a generic template.
+3. **Build a narrative arc.** Sequence context, problem or question, evidence and comparison, resolution, and next action. Keep each transition purposeful.
+4. **Write an action headline for every slide.** An action headline states the slide’s takeaway, not merely its topic. Prefer “The pilot exposed the two highest-risk bottlenecks” over “Findings.”
+5. **Specify each slide.** Include the core takeaway, concise body content, visual/data element, evidence locator or limitation, and speaker notes.
+6. **Respect the boundary.** Deliver the requested storyboard and stop. If deck construction is already authorized, hand the approved storyboard to `working-with-presentations`.
 
-## Storyboard blueprint shape
-
-A slide storyboard produces a structured specification for each slide:
+## Blueprint
 
 ```markdown
-### Slide [Number]: [Action Headline]
-* **Slide Category:** [Title | Context | Analysis | Comparison | Timeline | Conclusion]
-* **Core Takeaway:** [One sentence summarizing what the audience must understand]
-* **Key Bullets / Content:**
-  - [Assertion 1]
-  - [Assertion 2]
-  - [Assertion 3]
-* **Visual / Data Element:** [Chart type, diagram description, or screenshot mockup]
-* **Speaker Notes:** [Presenter script, data context, and delivery cues]
+### Slide 3 — The pilot exposed the two highest-risk bottlenecks
+- **Purpose:** Explain why the decision is needed now.
+- **Core takeaway:** The evidence identifies two issues that block the target outcome.
+- **On-slide content:** One comparison visual and up to three supporting points.
+- **Visual or data:** Named chart, table, diagram, or user-supplied screenshot with source status.
+- **Speaker notes:** Method, evidence limits, transition to the next slide, and delivery cues.
 ```
 
-## Procedure
+## Practical rules
 
-1. **Analyze source material:** For source files, use `reading-artifacts` and `analyzing-artifacts` to extract key arguments, data points, and constraints. For text pasted in chat, inspect the supplied text directly; do not invent a file-read step or require an attachment. Preserve evidence limits in either case.
-2. **Determine deck scope & length:** Align slide count with the intended presentation duration and audience format (e.g. 5-slide executive briefing vs 15-slide technical review).
-3. **Draft the narrative arc:** Outline the progression from context to problem, evidence, and conclusion.
-4. **Author slide blueprints:** Write assertive action headlines, select visual elements, and draft speaker notes for every slide.
-5. **Respect the requested stopping point:** Deliver a requested storyboard and stop. If deck production is already authorized, pass the finalized storyboard, source locators, and retained constraints to `working-with-presentations` for assembly.
+- Use **action headlines** and a deliberate **narrative arc** rather than topic labels.
+- Keep bullets concise and reserve detailed explanation for speaker notes.
+- Do not invent results, metrics, or visuals to fill a slide.
+- Put a data-rich table or chart only where the slide’s takeaway depends on it.
+- Use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md) when an asset’s provenance, preview, or attribution matters.
 
 ## Required capabilities
 
-Abstract capability names from §11, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-* `read_file(path)` — read source reports, briefs, and reference materials.
-* `write_file(path, content)` — write the storyboard document.
-* `inspect_document(file)` — inspect source text documents when adapting them into a presentation.
-* `inspect_presentation(file)` — inspect existing presentation decks when restructuring narrative flow.
+- `read_file(path)` — source reports, briefs, and notes.
+- `write_file(path, content)` — an authorized storyboard file.
+- `inspect_document(file)` — source-document inspection.
+- `inspect_presentation(file)` — existing deck inspection.
 
-## Dependencies
+## Completion and fallback
 
-* Follows `scoping-the-brief` or `planning-work` during the planning lifecycle stage.
-* Precedes `working-with-presentations`.
-
-## Fallback
-
-If template tools or dedicated planning canvases are unavailable, produce a clean
-Markdown storyboard following the blueprint above. Deliver it directly in chat
-when that is the requested output; create a file only when authorized.
+A storyboard is complete when every slide has a purpose, action headline, evidence-aware content shape, visual decision, and speaker notes, with a coherent narrative progression. If file writing is unavailable or unnecessary, deliver the storyboard in chat. Hand approved deck construction to `working-with-presentations`.
 
 ## Common mistakes
 
-* Writing vague topic titles ("Overview", "Background", "Discussion") instead of assertive action headlines.
-* Overcrowding slides with more than 5 bullets or writing entire paragraphs in slide body text.
-* Failing to provide speaker notes, forcing presenter script onto the visual canvas.
-* Jumping directly into deck authoring in PPTX without aligning on slide narrative and order first.
+- Using “Overview,” “Background,” or “Discussion” as action headlines.
+- Turning every slide into a wall of text.
+- Omitting speaker notes and forcing narration onto the slide canvas.
+- Jumping into deck authoring before the narrative and visual evidence are settled.

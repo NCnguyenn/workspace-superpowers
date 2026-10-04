@@ -5,129 +5,76 @@ description: Use when already-read artifacts need interpretation, comparison, sy
 
 # Analyzing Artifacts
 
-Interpret completed reads for the requested analysis, continuation, or revision.
-Does not edit. Apply the [workflow continuity contract](../../references/workflow-continuity.md)
-when new inputs or changed requests require updating earlier findings.
+## Job
 
-For [persistent work tracking](../../references/work-tracking.md), compare the
-read plan with relevant artifact revisions, map source obligations to stable
-work-item IDs and identify affected gaps/decisions. Match project context only
-to items needing its evidence. Return proposed checkpoint changes to the editor;
-do not infer acceptance from newer files or write an analysis-specific tracker.
+Interpret inspected material for the requested question. Analysis turns observations into traceable findings, comparisons, criteria mappings, or a continuity profile. It does not edit an artifact or infer approval from a recommendation.
 
-For a project folder, apply [project grounding](../../references/project-grounding.md):
-classify the inspected inventory, retain source revisions/conflicts and produce
-`structure_map` for planning. Descriptions and observations are different evidence
-classes; do not silently reconcile contradictions. Return context updates to the
-router/editor; analysis does not create another evidence file. Mathematical
-interpretation may invoke `working-with-mathematics` for a bounded question.
+Never analyze an unread file. Use [workflow continuity](../../references/workflow-continuity.md) to preserve source roles, revisions, conflicts, and the current operation. For durable work, return bounded findings to the owner identified by [persistent work tracking](../../references/work-tracking.md); do not create a parallel analysis record.
 
-For tracked work, map findings to the stable `work_id`, item IDs, artifact
-revisions and affected dependencies, and distinguish progress from readiness,
-approval and verification. Return a bounded change list to the plan owner or
-editor; do not mutate records, infer a decision from a recommendation, or mark
-unaffected items for review. External and uncommitted differences are evidence
-only when the relevant sources were inspected.
+## Inputs and output
 
-## When to use
+**Inputs:** extraction handoff from `reading-artifacts`, requested question or change, relevant decisions, source coverage, and any target section or claim.
 
-`reading-artifacts` has already opened the file and a type-appropriate representation exists.
+**Output:** source-grounded findings with locators, evidence status, conflicts, preserve-list, change-list where editing is authorized, and the next required handoff.
 
-## When not to use
+## Method
 
-The file has not been read. Do not analyze from guessed or raw-byte-only input.
+1. **Set the analytical question.** Identify what must be explained, compared, diagnosed, or mapped. Keep source roles distinct: requirement, draft, evidence, template, completed work, or later guide.
+2. **Map evidence to claims.** For each finding, distinguish document-stated text, user-provided information, source-inspected evidence, inference, planned work, observed result, and missing support.
+3. **Compare on shared dimensions.** When sources differ, retain units, conditions, dates, versions, and disagreement. Synthesize supported conclusions; do not concatenate summaries or silently select a favorable source.
+4. **Build an actionable handoff.** Return source locators, relevant excerpts, coverage limits, preserve-list, requested changes, and blockers. An analysis-only task returns findings and stops.
+5. **Keep decisions separate.** A recommendation is not user approval; a preserve-list is not an edit instruction; a later source is not automatically authoritative.
 
-## Procedure
+A glance table is not coverage. State the inspected range and any unread pages, cells, slides, images, or source regions.
 
-1. Identify the requested question or operation, source roles, inspected coverage,
-   structure, content, and layout. Analysis-only work does not require an edit list.
-2. Extract relevant findings with source locators. Map evidence to claims or criteria;
-   distinguish user assertions, observed data, inference, plans, and missing support.
-3. Compare sources by topic/claim; retain disagreement, units, conditions, and version
-   differences. Synthesize supported findings rather than concatenate summaries.
-4. For continuation or substantive revision, build the profile and adjacent context
-   in the [document continuity contract](../../references/document-continuity.md).
-   Identify the argument already established and the target section's contribution.
-   Lock terminology only for the same established role or concept; preserve
-   distinct roles, quotations, citations and source terminology. Lock narrative
-   person only when established and surface scoped authorial drift. Carry forward
-   project/scenario identity, technology, metrics and decisions, while retaining
-   material conflicts instead of choosing silently. Identify the bridge required
-   at the actual continuation seam.
-5. Record a preserve-list and requested change-list when changes are authorized.
-   Pass findings, evidence locators, coverage limits, continuity profile, and gaps
-   to the selected planner/writer/editor. Return analysis-only findings and stop
-   when analysis is the requested outcome.
+## Criteria and guide analysis
 
-The continuity profile is source-grounded context, not approval, verification, or
-evidence of a measured result. A completed-work read-back remains a read-back:
-do not trigger drafting, style enforcement, or a new intake map merely because the
-artifact was read.
+For initial intake of a brief, rubric, or graded guide with no named section, return an intake map in this order:
 
+1. deliverables and submission rules with locators;
+2. each criterion mapped to the concrete work it requires;
+3. failure constraints and material contradictions left unresolved;
+4. decisions the source does not settle.
 
-For initial intake of an assignment brief, rubric, or graded guide with no named section or narrower requested operation, return an intake map in this order: deliverables and submission rules with locators; each graded criterion mapped to the work the source requires, not only its code; failure constraints; contradictions left unresolved; decisions the source does not already settle. A contents list or glance table is not coverage. Do not choose a side in a contradiction. On continuation, reuse the existing intake map and update only findings affected by new inputs. Named-section analysis, outlining and narrow comparisons stay within their requested scope; they do not restart whole-guide intake.
+An opening question about the parts, criteria, or structure of a supplied guide is not Simple Q&A and not a narrower operation. Reuse the intake map for a named section rather than rebuilding it. If sufficient evidence leaves 2–3 valid readings, load `brainstorming`; the user chooses before the next stage.
 
-An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. Answer it inside the intake map, not instead of the map. On continuation, reuse the existing intake map. If several valid readings remain and the source does not contradict itself, invoke `brainstorming`, present 2–3 options, recommend one, and stop. The user chooses. Do not select one and write. Explain necessary source terms in the same sentence in the language of the user's current message. Do not default that language to Vietnamese, and do not produce a line-by-line translation.
+## Continuations and substantive revisions
 
-### Completed-assignment read-back
+Use the [document continuity contract](../../references/document-continuity.md). Build a source-grounded profile from the document/version, target seam, relevant adjacent excerpts, argument relationship, project/scenario identity, evidence, terminology, voice, register, heading structure, and source limits.
 
-When the user asks to read or remember a completed assignment/report, whether it
-arrived in the current turn or is retained from an earlier read, return a
-source-grounded read-back in three blocks:
+Lock terminology only for the same established role or concept; preserve distinct roles, quotations, citations and source terminology. Lock narrative person only when established and surface scoped authorial drift. Retain material contradictions rather than resolving them silently. The profile is context, not approval, verification, or proof of a measured result.
 
-1. **What the document is:** preserve the exact identity, names, dates and
-   whether it is a submitted work or a guide.
-2. **What each major part does:** follow the artifact's actual headings and
-   explain its argument, its stated conclusion or limit, and whether it is
-   general theory, a scenario, a prototype/trial, or an implemented product.
-3. **Project and scenario thread:** identify where each project/scenario first
-   appears, where the document changes it, and whether the conclusion returns to
-   it. State unread or unverified images/schema explicitly.
-Label each read-back finding `document-stated`, `visually-observed`, `source-inspected`, `runtime-observed`, or `unverified`, using [visual evidence boundary](../../references/visual-evidence-boundary.md). Do not turn a document-stated test result, implementation name, or measurement into an independent result.
+For project folders, apply [project grounding](../../references/project-grounding.md). Produce a `structure_map` of inspected paths, roles, locators, coverage, and limits for `planning-work`; a folder does not become a chapter by default. Mathematical interpretation may use `working-with-mathematics` for a bounded question.
 
-Do not invent learning outcomes, P/M/D labels, project names, technologies,
-measurements or test conditions. Do not normalize names or dates, turn projected
-results into observed experiments, treat a grading-grid cell as written content,
-or expose the internal skill/tool route. Do not praise the submission or start a
-new criterion analysis, outline or draft unless the user separately asks for it.
+## Completed-assignment read-back
+
+A completed-work read-back remains a read-back: do not trigger drafting, style enforcement, or a new intake map merely because the artifact was read. Return three blocks:
+
+1. **What the document is:** exact identity, names, dates, and whether it is submitted work or a guide.
+2. **What each major part does:** actual headings, arguments, conclusions or limits, and whether each part is theory, scenario, proposal, trial, or implemented product.
+3. **Project and scenario thread:** where it appears, how it changes, and whether the conclusion returns to it.
+
+Label each finding `document-stated`, `visually-observed`, `source-inspected`, `runtime-observed`, or `unverified` under the [visual evidence boundary](../../references/visual-evidence-boundary.md). Do not invent learning outcomes. Do not normalize names or dates. Do not turn projected work into observed results.
 
 ### Completed work versus a later guide
 
-When a later guide is supplied with, or follows in context after, a completed
-assignment and the user asks what remains, use a narrow comparison rather than
-the initial intake map. The first result must state the criteria already present
-in the earlier document; the next
-must state the criteria still missing; only then report mismatches, ambiguity and
-evidence limits. A criterion explicitly present in the earlier document, such as
-P7 when the source names it, must be reported as present rather than moved into
-the missing list without evidence.
-
-Do not open with formatting, use completion percentages, attach a criterion code
-that the source does not establish, turn optional wording such as `you can` into
-a mandatory requirement, or propose invented figures or failed test cases.
-The sentence `quality assurance` or another incidental phrase is not a criterion
-section unless the source gives it that criterion identity.
-
-Per-type inspection fields: `references/artifact-inspection.md`.
+Use a narrow comparison. First identify criteria already present, then criteria still missing, then mismatches, ambiguity, and evidence limits. Do not use completion percentages, treat a grading-grid cell as written content, turn optional wording such as `you can` into a requirement, or introduce invented figures or failed test cases. A criterion explicitly present, such as P7 when the source names it, remains present.
 
 ## Required capabilities
 
-Abstract capability names, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-- `inspect_document(file)`, `inspect_pdf(file)`, `inspect_presentation(file)`, `inspect_spreadsheet(file)`, `inspect_image(file)`, `inspect_layered_image(file)` to re-query structure on demand.
-- `read_file(path)` for text, Markdown, and CSV-style artifacts.
+- `read_file(path)` — text, Markdown, CSV, and extracted source content.
+- `inspect_document(file)`, `inspect_pdf(file)`, `inspect_presentation(file)`, `inspect_spreadsheet(file)`, `inspect_image(file)`, and `inspect_layered_image(file)` — re-query a required representation when available.
 
-## Dependencies
+## Handoffs and fallback
 
-- `reading-artifacts` — required; never analyze an unread file. `brainstorming` — when several valid readings remain. `editing-documents` and `verifying-artifacts` — downstream consumers of the preserve-list.
-
-## Fallback
-
-If layout or a typed representation is unavailable, analyze from the accessible representation and declare what could not be observed. Never invent structure.
+Pass editing requests to `editing-documents`, outlines to `planning-work`, and file completion checks to `verifying-artifacts`. If a needed representation is unavailable, analyze the accessible representation and declare the limit. Never invent unseen structure, a project result, or an approval state.
 
 ## Common mistakes
 
-- Analyzing from guessed or raw-byte-only input.
-- Producing a change-list with no preserve-list.
-- Inventing structure the artifact does not expose.
-- Treating the preserve-list as the trigger for an edit skill — it only names what must not change.
+- Analyzing guessed, raw-byte-only, or unread content.
+- Losing conflicting conditions, units, or source versions during synthesis.
+- Treating user-provided notes as independently verified measurements.
+- Sending an edit list without a preserve-list for a substantive revision.
+- Treating a completed document as permission to draft or re-open intake.

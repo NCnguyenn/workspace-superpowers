@@ -5,71 +5,64 @@ description: Use when inspecting, extracting content, splitting, merging, annota
 
 # Working with PDF
 
-Inspect, extract, manipulate, and verify PDF documents while respecting structure and source authority.
+## Job
 
-Apply the [workflow continuity contract](../../references/workflow-continuity.md).
-For a PDF supplied as evidence during writing, inspect/extract only the requested
-content and return page locators and access limits to analysis. Page manipulation
-and form edits run only when requested; extraction does not authorize them.
+Inspect, extract, or make an explicitly requested PDF change while respecting PDF structure and the authority of its editable source. A PDF is often a rendered output; its visual appearance and its internal text representation must be checked separately.
 
-## When to use
+Use [workflow continuity](../../references/workflow-continuity.md) to preserve the requested pages, source revision, and return point. Extraction does not authorize page manipulation, annotation, or a rewrite.
 
-Inspecting PDF properties, extracting formatted text, extracting tabular data, extracting images, splitting, merging, annotating, or filling interactive forms in existing PDF artifacts.
+## Source priority
 
-## When not to use
+**Prefer editing the source over patching the PDF.** If an editable DOCX, Markdown, HTML, LaTeX, or presentation source exists, change that source through the relevant skill and export a new PDF. Direct PDF patching is reserved for explicitly requested page operations, annotations, form filling, or cases with no usable source.
 
-* Generating new formatted reports or documents from scratch (author in an editable source format such as DOCX or Markdown, then convert to PDF).
-* Substantive text rewriting when the original source document (DOCX, LaTeX, Markdown, HTML) is accessible.
+## Inputs and output
 
-## Source priority rule (§10, §14)
+**Inputs:** source PDF, requested pages or operation, available source files, intended result, and required evidence or layout checks.
 
-**Prefer editing the source over patching the PDF.**
+**Output:** extracted text, tables, images, or a changed PDF with page-level locators, coverage limits, and verification results.
 
-Direct binary patching of a compiled PDF is fragile and risks destroying reflow, font embeddings, and layout grids. When the source file (e.g. DOCX, LaTeX, Markdown) exists or can be produced, apply edits to the source and re-export to PDF, rather than attempting binary modification of the PDF itself.
+## Method
 
-## Procedure
+1. **Inspect the PDF.** Determine page count, text layer, font embedding, metadata, security restrictions, reading order, and whether pages are scans.
+2. **Read the right representation.** Extract text, tables, or images with page locators. Treat a scan as unreadable until OCR or visual inspection establishes its content.
+3. **Preserve structure.** Keep table rows and columns, page ranges, bookmarks, form fields, and asset quality intact. A flat text dump is not a table extraction.
+4. **Apply only the requested operation.** Merge, split, annotate, or fill forms only when the user asks. Never use a PDF operation to invent, summarize, or rewrite content.
+5. **Verify output.** Any created or modified PDF goes to `verifying-artifacts`; check page count, ordering, text and figure presence, font behavior, clipping, and rendered pages where available.
 
-1. **Inspect PDF representation:** Use `inspect_pdf` to check page count, text layers, embedded fonts, metadata, security restrictions, and whether the artifact is a raster scan.
-2. **Handle scans:** If pages are scanned images, invoke `ocr_scanned_document` if available; otherwise, report unreadable pages as a capability limitation.
-3. **Extract content cleanly:**
-   - Text: use `extract_pdf_text` to extract reading order text.
-   - Tables: use `extract_pdf_tables` to capture row/column boundaries into structured Markdown or CSV.
-   - Images: use `extract_pdf_images` to extract figures without quality loss.
-4. **Manipulate pages or forms:**
-   - Merging: use `merge_pdfs` ensuring page order and bookmarks are preserved.
-   - Splitting: use `split_pdf` specifying exact page ranges.
-   - Annotating / Form-filling: use `annotate_pdf` to insert highlights, comments, or form data without corrupting form field dictionaries.
-5. **Verify output:** Hand off created or modified PDFs to `verifying-artifacts` to check page count, font embedding, table structure, and absence of clipping.
+## Common PDF operations
+
+| Need | Approach | Required check |
+|---|---|---|
+| Read an existing PDF | inspect text layer, pages, and requested content | page locator and unread/OCR limits |
+| Extract a table | preserve rows, columns, headers, units, and page source | compare extracted structure with the page |
+| Extract a figure | retain resolution and source page | distinguish image content from runtime evidence |
+| Split or merge pages | specify exact page ranges and target order | page count, order, bookmarks where relevant |
+| Annotate or fill a form | preserve existing fields and document integrity | reopen form or annotations in the output |
+| Correct report content | edit the editable source, then convert | verify source and new PDF separately |
+
+## Evidence and fidelity boundaries
+
+Apply [visual evidence boundary](../../references/visual-evidence-boundary.md) before making screenshot or figure claims. Visible pixels establish only what is visible, not data provenance or runtime behavior. For PDF figures and tables, use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md) when they are part of a document delivery chain.
 
 ## Required capabilities
 
-Abstract capability names from §11, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-- `inspect_pdf(file)` — to discover pages, text layers, fonts, and scan status.
-- `extract_pdf_text(file)` — to extract textual content.
-- `extract_pdf_tables(file)` — to extract structured tables.
-- `extract_pdf_images(file)` — to extract embedded raster/vector images.
-- `ocr_scanned_document(file)` — to perform optical character recognition on scanned pages.
-- `annotate_pdf(file)` — to add annotations or fill form fields.
-- `merge_pdfs(files)` — to combine multiple PDFs.
-- `split_pdf(file)` — to extract designated page subsets.
-- `verify_artifact(file)` — to check output integrity.
-- `read_file(path)` / `write_file(path, content)` — basic file operations.
+- `inspect_pdf(file)` — pages, text layers, fonts, metadata, and scan status.
+- `extract_pdf_text(file)`, `extract_pdf_tables(file)`, and `extract_pdf_images(file)` — requested content extraction.
+- `ocr_scanned_document(file)` — scan OCR when available.
+- `annotate_pdf(file)`, `merge_pdfs(files)`, and `split_pdf(file)` — explicit PDF operations.
+- `verify_artifact(file)` — output integrity check.
+- `read_file(path)` and `write_file(path, content)` — text-level support.
 
-## Dependencies
+## Completion and fallback
 
-- Follows `reading-artifacts` and `analyzing-artifacts` when diagnosing an existing PDF.
-- Created or modified files require `verifying-artifacts` before file completion is reported. Read-only extraction returned in chat reports inspected coverage and limits.
-
-## Fallback
-
-* **No OCR capability:** Clearly report that scanned pages could not be extracted; never invent or guess text from unread images.
-* **No PDF render capability:** Verify page counts, text extractability, and file headers, then explicitly report that visual pixel QA was not performed.
-* **No direct PDF editor:** Extract text and tables to editable formats (Markdown, CSV, DOCX) and deliver the extracted content.
+A read-only extraction is complete when it reports page locators and coverage limits. A changed PDF is complete only after reopening and verifying the final output. If OCR, rendering, or editing is unavailable, state which pages or checks remain unavailable; never guess scanned text or claim a visual check was performed.
 
 ## Common mistakes
 
-* Patching complex PDF text directly instead of editing the underlying source file.
-* Claiming a corrupted or unrendered PDF succeeded merely because a command exited with code 0.
-* Losing column structure by treating table extractions as flat unformatted text.
-* Concealing OCR limitations on scanned documents.
+- Patching complex PDF content when an editable source exists.
+- Treating a command exit code as proof that the PDF is readable or unclipped.
+- Flattening a table into unstructured text without reporting the loss.
+- Claiming OCR coverage for unread scan pages.
+- Treating a figure as proof of a runtime or database claim.

@@ -3,59 +3,74 @@ name: brainstorming
 description: Use when several valid document interpretations, organizations, evidence placements, or visuals remain and the user has not chosen one.
 ---
 
-# Document brainstorming
+# Document Brainstorming
 
-Choose among valid document approaches. This is not a software-design skill. Do not copy a coding brainstorming skill, and do not design software, APIs, data models, or code. It does not write a technical specification or an implementation sequence.
+Choose among genuinely viable document approaches without writing the downstream analysis, outline, or content. This is a document-decision skill, not a software-design skill: never design software, APIs, data models, or code. Do not copy a software-design brainstorming procedure into document work. It does not write a technical specification or an implementation sequence.
+`using-workspace-superpowers` selects this skill only after it identifies an unsettled document decision. It returns the user’s choice to `scoping-the-brief`, `analyzing-artifacts`, or `planning-work`; it does not replace any of them.
 
-Selected by `using-workspace-superpowers` when more than one valid document approach remains. It does not replace `scoping-the-brief`, `analyzing-artifacts`, or `planning-work`, and it does not authorize analysis, an outline, or a draft by itself.
+## Use when
 
-## When to use
+Load this skill only when all required facts for the current decision are available and at least two valid document approaches remain. Typical decisions include:
 
-- After an evidence interview, once the required facts are sufficient and before requirement analysis, when more than one valid interpretation remains.
-- During `analyzing-artifacts`, when the same inspected source supports more than one reading and the source does not contradict itself.
-- During `planning-work`, when more than one valid way to organize sections, evidence, tables, or diagrams remains.
+- interpreting an otherwise consistent requirement in more than one defensible way;
+- organizing sections, evidence, tables, or diagrams;
+- choosing whether a visual belongs at one of several valid locations.
 
-## When not to use
+Do not use it for missing evidence, an unresolved contradiction, a settled structure, a mechanical edit, a named continuation with an approved structure, Simple Q&A, or Coding work. Missing evidence returns to `scoping-the-brief`; a source contradiction remains unresolved rather than being voted away.
 
-- Required evidence is still missing. Return to `scoping-the-brief` and wait.
-- The source or the user has already settled the approach.
-- The request is one mechanical edit, a named continuation with an approved structure, or Simple Q&A.
-- An unresolved contradiction inside a source. Do not pick a side. Leave it unresolved.
-- Software design, architecture, or coding.
+## Method
 
-## Procedure
+1. **Name the decision.** State the exact choice that is open, the requested stopping point, and the constraints already settled. Separate source requirements, user decisions, proposals, and unknowns.
+2. **Build comparable options.** Present 2–3 real options only. Evaluate every option using the same relevant criteria: requirement coverage, evidence fit, continuity with existing material, reader clarity, effort, and risk. For each option state what it includes, what it excludes, and its main trade-off.
+3. **Recommend, do not decide.** Recommend one option with reasons tied to the criteria. A recommendation is not the user's selection.
+4. **Stop for the choice.** Ask the user to choose or correct the options. Do not create the analysis, detailed outline, draft, asset, or file while the choice is pending.
+5. **Return the decision.** After the user chooses, summarize the selected option, scope, exclusions, and any correction. Hand that decision and its source locators to the calling skill. If a structured question card was used, confirm its selection in chat before treating it as locked.
 
-1. State the open decision and the constraints already settled. Do not invent metrics, citations, a later-assignment deliverable, or scope details the user has not confirmed.
-2. Present 2–3 valid options in the language of the user's current message. For each option, say what it includes, what it excludes, and the tradeoff against the criterion. Explain any necessary source term in the same sentence. Do not produce a line-by-line translation.
-3. Recommend one option and say why. A recommendation is not a selection.
-4. Stop. The user chooses. Do not select one and write the analysis, outline, or section.
-5. If the user corrects an earlier card choice, summarize the correction in chat and wait for confirmation. A card selection is not locked until the user confirms that summary.
+### Decision flow
 
-The host question card has no Back control, and its schema has no back parameter. This is a host gap. Do not invent a Back button. Correction happens in chat.
+```text
+Several approaches remain?
+  no  -> return to the calling skill; do not invent another option
+  yes -> compare 2–3 options using the same criteria
+          -> recommend one
+          -> wait for the user's choice
+          -> return the chosen scope to the calling skill
+```
 
-Follow the [workflow continuity contract](../../references/workflow-continuity.md), the [language policy](../../references/language-policy.md), [guided questions](../../references/guided-questions.md), and [outline structure](../../references/outline-structure.md). Scope and evidence rules remain in the [criteria-writing contract](../../references/criteria-writing-contract.md).
+## Example
+
+**Open decision:** A supplied report supports either a chronological structure or a theme-based comparison; all required evidence is already inspected.
+
+- **Chronological:** follows the source sequence; easier continuity, but comparisons are spread across sections.
+- **Theme-based:** compares each option under shared criteria; clearer judgment, but requires more cross-references.
+
+Recommendation: theme-based, because the requirement asks for comparison under common dimensions. The user still chooses; no outline is written yet.
+
+## Handoffs and boundaries
+
+Follow the [workflow continuity contract](../../references/workflow-continuity.md), [language policy](../../references/language-policy.md), [guided questions](../../references/guided-questions.md), and [outline structure](../../references/outline-structure.md). Scope and evidence rules remain in the [criteria-writing contract](../../references/criteria-writing-contract.md).
+
+- Return to `scoping-the-brief` when a required fact or evidence item is missing.
+- Return to `analyzing-artifacts` when the decision depends on interpreting a source.
+- Return to `planning-work` when the user chooses an organization, evidence placement, or visual plan.
+- Do not precede drafting or treat outline approval as drafting authorization.
 
 ## Required capabilities
 
-Abstract capability names, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter; their names do not imply that a particular tool is available.
 
-- `read_file(path)` — inspect the settled brief, source locators, and approved constraints.
-- `invoke_skill(name)` — return to `scoping-the-brief`, `analyzing-artifacts`, or `planning-work` after the user chooses.
-
-## Dependencies
-
-- Follows sufficient evidence from `scoping-the-brief`, or an inspected reading from `analyzing-artifacts`.
-- Hands the user's choice to `planning-work` when the open decision is organization, evidence placement, or visuals.
-- Does not precede drafting. Outline approval remains a separate decision.
+- `read_file(path)` — inspect settled constraints, source locators, and prior decisions.
+- `invoke_skill(name)` — return to the appropriate calling skill after the user chooses.
 
 ## Fallback
 
-If fewer than two valid approaches exist, say so and return to the calling skill. Do not invent a second option to fill the set. If the user does not choose, keep the decision pending.
+If fewer than two defensible approaches exist, report that the approach is settled and return to the caller. If the user does not choose, keep the decision pending. Never invent a second option merely to fill a template.
 
 ## Common mistakes
 
-- Copying a software-design brainstorming procedure into a document task.
-- Treating the recommendation as the user's choice.
-- Writing the analysis, outline, or section before the user chooses.
-- Inventing a Back button for the host question card.
-- Using brainstorming to resolve a contradiction the source leaves open.
+- Treating a recommendation as a user decision.
+- Comparing options with different criteria or hiding their exclusions.
+- Using brainstorming to resolve a source contradiction or missing evidence.
+- Designing software instead of choosing a document approach.
+- Writing the next stage before the user chooses.
+- Inventing a Back button for a host question card; the host schema has no back parameter and no Back control.

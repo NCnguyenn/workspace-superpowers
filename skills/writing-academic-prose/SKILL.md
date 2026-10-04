@@ -1,85 +1,72 @@
 ---
 name: writing-academic-prose
-description: Use when authoring scholarly, analytical, or thesis prose requiring rigorous claim-evidence integration, calibrated epistemic hedging, and natural academic cadence.
+description: Use when authoring scholarly, analytical, or thesis prose that requires rigorous claim-evidence integration, calibrated certainty, and natural academic cadence.
 ---
 
 # Writing Academic Prose
 
-Specialist for scholarly and thesis prose: claim, warrant, evidence, interpretation, and calibrated certainty. Write like a capable final-year student in the discipline, not like a template.
+## Job
 
-Honor the [workflow continuity contract](../../references/workflow-continuity.md)
-and the [document continuity contract](../../references/document-continuity.md).
-Ground a continuation in actual neighboring passages and the source profile.
-Keep the argument, terminology, register, and presentation coherent across
-sections; adapt tense and paragraph form to the section's function. Generic
-academic phrasing alone does not establish continuity with the user's document.
+Write scholarly prose that develops a defensible argument through claims, explanation, evidence, interpretation, and calibrated limits. This skill is selected by `drafting-prose`; it does not create approvals, solve missing evidence, or use an academic tone to disguise unsupported claims.
 
-Apply the [academic writing style guide](../../references/academic-writing-style.md) by rule ID. Honor the [criteria-writing contract](../../references/criteria-writing-contract.md) for evidence and authorization. Honor the [language policy](../../references/language-policy.md) for output language.
+Use [workflow continuity](../../references/workflow-continuity.md), [document continuity](../../references/document-continuity.md), [criteria-writing contract](../../references/criteria-writing-contract.md), [academic writing style guide](../../references/academic-writing-style.md), and [language policy](../../references/language-policy.md). Continue an existing document from actual adjacent passages and its source-grounded profile, not from a generic style label.
 
-## When to use
+## Inputs and output
 
-Analytical chapters, literature discussion, thesis sections, or other scholarly prose that must integrate claims with evidence and hedge beyond the data.
+**Inputs:** approved outline blocks, target claim or criterion, evidence and locators, established terminology and voice, continuity seam, citation needs, and unresolved gaps.
 
-## When not to use
+**Output:** a review-ready scholarly section with developed paragraphs, claim-to-evidence links, appropriate certainty, preserved terminology, and explicit evidence limits.
 
-Report sections whose main job is separating method from measured results (`writing-reports`). Mechanical wording or format edits. Citation-only formatting (`citing-sources`).
+## Core writing method
 
-## Style obligations
+1. **State the point.** Open the paragraph with the claim or analytical focus required by the approved block.
+2. **Explain the reasoning.** Show why the point matters, how the mechanism works, or which comparison dimension applies.
+3. **Integrate evidence.** Use inspected sources, data, examples, or clearly bounded user-provided material. If support is absent, follow the Missing Evidence Protocol rather than inventing a citation.
+4. **Interpret within limits.** Distinguish observation from inference, correlation from causation, and a narrow sample from a general conclusion. Use calibrated language where evidence is incomplete.
+5. **Link or stop.** End only when the paragraph adds a supported implication, limit, or necessary transition. Do not add ceremonial conclusions.
 
-Cite these rule IDs in self-check and in review findings. Do not force every paragraph into the same sentence count.
+This applies PEEL (Point, Explanation, Evidence/Example, Link) naturally; do not print PEEL labels in delivered prose.
 
-| Group | IDs | Obligation |
-|---|---|---|
-| Paragraphs | P1–P3 | Use PEEL (Point, Explanation, Evidence/Example, Link); develop analytical paragraphs to a 4–5-sentence benchmark without filler. An analytical subsection that is only one lead sentence followed by a list is not finished prose. Do not apply a rendered-line quota. Inspect short stubs for missing support or interpretation. |
-| Lists | L1–L6 | Core analytical sections need at least 65% discursive prose under L6's counting scope and format exceptions. Bullets and numbered lists remain allowed for parallel items, parameters, or sequence. Explain objectives, scope and constraint tradeoffs in paragraphs. Do not abuse lists to avoid paragraphs. |
-| Register | R1–R4 | Name subject, action, conditions, and result; stay in scope; calibrate certainty; use plain academic language. |
-| Evidence | E1–E4 | Trace claims; handle gaps through the contract; synthesize; reconcile numbers with source artifacts. |
-| Cadence | S1–S3 | Vary sentence shape by function; replace casual dash-chained definitions with complete sentences or grammatical clauses. Word-count bands and burstiness scores are not acceptance tests. |
-| Endings | C1–C3 | Cut empty subsection finales; keep a closing sentence only when it adds a result, limit, or needed transition. |
-| Phrasing | F1 | Remove clichés that replace substance; do not run a banned-word lottery. |
-| Language | V1–V3 | Apply Vietnamese or another language only on explicit request; keep the same evidence and integrity standards. |
-| Integrity | I1–I3 | Do not fake errors or personal experience; report observable defects by rule ID; style review cannot approve missing evidence. |
+## Paragraph and style checks
 
-## Prerequisite and anti-hallucination constraints
+- Use developed analytical paragraphs. Four to five sentences is a completeness benchmark, not a quota; a complete short definition or transition may remain short.
+- Core analytical report and assignment sections require at least **65%** discursive prose under the style guide’s counting scope. Do not add filler to satisfy the percentage.
+- An analytical section with one lead sentence followed by a list is incomplete unless the list is the actual requested form. Bullets and numbered lists remain valid for parallel items, parameters, or sequence. Do not use a rendered-line quota or line-count quota.
+- Use precise subjects, actions, conditions, and results. Avoid promotional claims, empty transitions, and generic praise.
+- Vary sentence shape by function (S1) rather than meeting a sentence-length rule. Avoid casual clause chaining; preserve necessary quotations and technical terms.
+- Apply F1 and R4 to remove cliches and inflated claims while preserving supported technical meaning.
 
-Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"), consulting roles, business context, budgets, SLAs, latency targets, or operational metrics without explicit confirmation. Do not add a deliverable that belongs to a later assignment, such as a functional prototype, or scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it. If unstated, ask the user or mark as a blocking gap.
+## Evidence, citations, and continuity
 
-Chat explanations follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language without interleaved bilingual text.
+Do not invent project names, roles, budgets, SLAs, metrics, results, citations, or a later assignment such as a functional prototype. If a required detail is unsettled, ask before using it or leave a precise gap. A hypothetical example must be explicitly authorized and labeled; it can never become project evidence or operational proof.
 
-## Procedure
+If citations are present, requested, or required, load `citing-sources` before handoff. Include the section’s `## References` list in chat delivery and update any saved cumulative list. Preserve the document’s terminology, narrative person, tense by function, evidence status, and transition across the actual seam. A quotation or cited source term is not automatically authorial drift.
 
-1. Develop each analytical paragraph through PEEL (P1–P3), starting with its point and explaining why it matters within the approved argument.
-2. Support it with identified evidence (E1). If the support is missing, stop the assertion and follow the contract protocol (E2).
-3. Interpret only as far as the data allow (R3). Correlation is not causation.
-4. Prefer developed paragraphs over bullet stacks (L1/L6). Check the 65% prose floor and adjacent subsections for list/table-only coverage. Use a list only when L2 or L3 applies; do not add filler to meet the floor.
-5. Stop when the point is complete (C2). Do not applaud the topic.
-6. If citations are required or present, invoke `citing-sources` before handoff to complete the terminal `## References` list and bidirectional audit for chat and any saved report. Return the section to `drafting-prose` for `reviewing-work` with these checks completed.
+## Example
+
+**Unsupported:** “The intervention proved that adoption increased.”
+
+**Bounded:** “The supplied survey responses indicate higher reported adoption within the respondents. The available material does not establish whether the change generalizes beyond that sample.”
+
+The example models calibrated interpretation; it does not establish a real finding.
 
 ## Required capabilities
 
-Abstract capability names, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-- `read_file(path)` — brief, outline, sources, and the style guide.
-- `write_file(path, content)` / `edit_document(file, change)` — compose scholarly prose.
-- `read_reference_documentation(query)` — optional; library or standard documentation named in the brief.
-- `invoke_skill(name)` — load `citing-sources` when formal citations are required or present.
+- `read_file(path)` — brief, outline, source evidence, continuity excerpts, and style guide.
+- `write_file(path, content)` and `edit_document(file, change)` — authorized scholarly composition.
+- `read_reference_documentation(query)` — optional standards or manuals named in the brief.
+- `invoke_skill(name)` — `citing-sources` when citations are applicable.
 
-## Dependencies
+## Completion and fallback
 
-- Selected by `drafting-prose` after contract prerequisites are met.
-- May be combined with `writing-reports` on a project or thesis report, by section.
-- Precedes `reviewing-work`. Requires `citing-sources` when formal citations are required or present; reuse a completed citation check for the same revision rather than duplicating it.
-
-## Fallback
-
-If a source cannot be opened, record the gap and write only what remaining evidence supports. Do not invent a citation, locator, or result.
+Return prose that stays within the approved outline and evidence limits, then send it to `drafting-prose` for review. If a source cannot be opened, write only what remaining evidence supports and mark the gap. Do not invent a citation, locator, result, or claim to make a paragraph sound complete.
 
 ## Common mistakes
 
-- Padding a stub paragraph to hit four sentences without adding meaning (P2).
-- Replacing an argument with a bullet outline (L1).
-- Overclaiming from a narrow sample (R3, EX4).
-- Closing a subsection with “this plays a pivotal role” (C1, F1).
-- Inserting typos to appear human (I1).
-- Inventing fictitious project names, consulting roles, SLAs, budgets, or operational metrics.
-- Interleaving bilingual translations in chat responses.
+- Padding a short paragraph to meet a sentence count without adding reasoning.
+- Replacing analysis with a bullet outline.
+- Treating a narrow observation as a universal causal finding.
+- Ending every subsection with an unsupported statement of importance.
+- Writing polished prose that conceals a missing evidence or approval prerequisite.

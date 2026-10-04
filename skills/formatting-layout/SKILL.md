@@ -5,83 +5,61 @@ description: Use when applying or adjusting document formatting, layout, typogra
 
 # Formatting Layout
 
-Presentation, styling, typographic hierarchy, and page layout for text and document artifacts.
+## Job
 
-For Word formulas apply the layout/preservation sections of the
-[native Equation contract](../../references/math-in-documents.md): retain native
-OMML, meaning, inline/display placement, numbering and references. Adjust spacing
-and line breaks without flattening or rewriting mathematics. Pass the final
-revision to Equation-aware verification; correct appearance alone is insufficient.
+Change presentation without changing meaning. This skill owns typography, style hierarchy, page geometry, tables, captions, headers, footers, page numbering, and table of contents behavior for document artifacts.
 
-Honor the current operation under the [workflow continuity contract](../../references/workflow-continuity.md).
-For inserted sections, carry forward the document's established heading, caption,
-numbering, and style conventions. Return newly requested content changes to the
-editing skill; formatting alone does not authorize rewriting.
+**Never alter substantive content, arguments, numbers, or conclusions.** If a layout problem would require a content rewrite, return that decision to `editing-documents`.
 
-## When to use
+Use [workflow continuity](../../references/workflow-continuity.md) to retain established conventions. For a continuation, preserve the document’s heading, numbering, caption, and visual rules. Formatting alone does not authorize a new argument or a file conversion.
 
-Applying or adjusting typography, font hierarchy, line spacing, margins, section breaks, headers, footers, page numbering, table of contents (TOC), figure/table captions, and table styling in text and document artifacts (DOCX, ODT, RTF, Markdown).
+## Inputs and output
 
-## When not to use
+**Inputs:** inspected source document, template or rubric, target style requirements, preserve-list, and layout problems to correct.
 
-* Substantive content modification, inserting arguments, rewriting claims, or changing numbers (belongs to `editing-documents` or `drafting-prose`).
-* File format conversion or export across formats (belongs to `converting-artifacts`).
-* Non-document artifacts: Spreadsheets, presentations, images, and binary PDFs belong to their respective specialist skills (`working-with-spreadsheets`, `working-with-presentations`, `working-with-visuals`, `working-with-pdf`).
+**Output:** a changed document or a precise formatting specification, plus verification evidence that layout and content integrity were checked.
 
-## Content integrity invariant
+## Method
 
-**Never alter substantive content, arguments, numbers, or conclusions.**
+1. **Inspect before formatting.** Use `reading-artifacts` and `analyzing-artifacts` to identify existing styles, hierarchy, geometry, template rules, and substantive content to preserve.
+2. **Resolve authoritative requirements.** Explicit user instructions and applicable templates or rubrics take precedence. Defaults are examples, not a reason to impose a house font, margin, border, or caption style.
+3. **Apply presentation changes.** Adjust styles, spacing, margins, section breaks, headers, footers, page numbers, table format, captions, and dynamic fields without changing text meaning.
+4. **Maintain structure.** Keep heading nesting monotonic, use paragraph spacing instead of empty returns, refresh the table of contents after structural changes, and preserve repeated table headers where needed.
+5. **Review and verify.** Use `reviewing-work` for substantial layout work, then `verifying-artifacts` to reopen the latest file and inspect structural and rendered results where rendering is available.
 
-Formatting edits are strictly presentational. Never delete text, insert new claims, or rewrite phrasing during a formatting task without explicit instruction. If text length causes overflow or awkward page breaks, adjust typographic properties (margins, spacing, page breaks) or flag the constraint rather than silently rewording the prose.
+## Practical checks
 
-## Typographic and layout standards
+- Heading levels represent document hierarchy, not visual size.
+- Body text uses consistent typography and paragraph spacing appropriate to the template.
+- Section breaks isolate changes in orientation, columns, or header/footer sequences.
+- Captions, table styles, and numbering remain consistent with the source or template.
+- A dynamic TOC reflects final headings and pagination after layout changes.
+- Text does not overflow, overlap, or disappear in a rendered view when rendering is available.
 
-Apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
-Explicit instructions and applicable rubric/template requirements govern; preserve
-established formatting when no change is requested. The examples below are defaults,
-not universal standards. Do not force their font, spacing, borders, shading or
-caption styling over the template. Disclose material authoritative conflicts.
+## Word mathematics and visual fidelity
 
-* **Heading hierarchy:** Enforce strict monotonic nesting (Heading 1 → Heading 2 → Heading 3). Never skip heading levels for visual size.
-* **Body typography:** Consistent font family and proportional line spacing (e.g. 1.15–1.5x); use paragraph spacing after rather than repeated empty returns.
-* **Page setup:** Standard margins (e.g. 1 inch / 25.4mm); use clean section breaks when changing page orientation, header/footer sequences, or column counts.
-* **Headers and footers:** Running header with title or section name; footer with unambiguous page numbering (e.g. "Page X of Y" or standard numerals); different first page for title pages.
-* **Tables and captions:** Consistent table styling, aligned cell content, header rows repeated across page breaks, and standard numbering and placement for table and figure captions.
-* **Table of contents:** Generate or refresh dynamic TOC fields following structural edits so entries and page numbers match the final pagination.
+For Word equations, apply the [native Equation contract](../../references/math-in-documents.md). Preserve OMML, inline/display placement, numbering, references, and mathematical meaning. A spacing fix cannot flatten or rewrite a formula.
 
-## Procedure
-
-1. `reading-artifacts` then `analyzing-artifacts` first to inspect current styles, heading structure, geometry, and the preserve-list.
-2. Establish target formatting specifications from the brief or target style guide.
-3. Apply styling and layout changes via `edit_document(file, change)` or safe file operations without modifying substantive prose.
-4. Generate, refresh, or align structural elements: TOC, headers, footers, page numbers, and captions.
-5. Invoke `reviewing-work` (formatting and layout review) for substantial deliverables before verification.
-6. Conclude with `verifying-artifacts` to reopen the artifact and confirm visual layout, style consistency, and page structure via `render_document(file)` where available.
+For tables and figures, apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md). Keep template and rubric requirements authoritative. Missing render capability is an unavailable or unverified check, not a pass.
 
 ## Required capabilities
 
-Abstract capability names from §11, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-* `inspect_document(file)` — inspect styles, heading hierarchy, margins, and page setup.
-* `edit_document(file, change)` — apply formatting and styling modifications to document artifacts.
-* `render_document(file)` — render pages for visual layout QA when available.
-* `verify_artifact(file)` — confirm structural and layout integrity.
-* `read_file(path)` / `write_file(path, content)` — basic file operations when typed document editing is unavailable.
+- `inspect_document(file)` — styles, hierarchy, geometry, and page setup.
+- `edit_document(file, change)` — document styling and layout changes.
+- `render_document(file)` — visual layout inspection when available.
+- `verify_artifact(file)` — post-edit integrity checks.
+- `read_file(path)` and `write_file(path, content)` — text-level fallback.
 
-## Dependencies
+## Completion and fallback
 
-* `reading-artifacts`, `analyzing-artifacts` — required before formatting.
-* `reviewing-work` — required for substantial deliverables before `verifying-artifacts`.
-* `verifying-artifacts` — mandatory after formatting and before completion is claimed.
-
-## Fallback
-
-If typed document styling capability is unavailable, produce a structured formatting specification or apply safe text-level styling (e.g. Markdown frontmatter or CSS). Never claim styling was applied if the file was not modified and verified.
+Formatting is complete only after the changed artifact is reopened and checked through `verifying-artifacts`. If typed styling is unavailable, provide a structured formatting specification or safe text-level style changes. Do not claim styling was applied unless the artifact was modified and verified.
 
 ## Common mistakes
 
-* Altering or deleting substantive prose while adjusting styling.
-* Skipping heading levels for visual convenience.
-* Inserting blank paragraphs instead of adjusting paragraph spacing.
-* Leaving Table of Contents un-updated after pagination shifts.
-* Claiming layout correctness without reopening and inspecting the file via `verifying-artifacts`.
+- Altering substantive prose while trying to fix pages or spacing.
+- Applying default fonts or margins over an existing template without authorization.
+- Skipping heading levels for visual convenience.
+- Adding blank paragraphs instead of controlling paragraph spacing.
+- Claiming layout correctness without a reopened and, when possible, rendered file.

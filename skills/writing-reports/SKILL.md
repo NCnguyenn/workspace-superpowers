@@ -1,94 +1,75 @@
 ---
 name: writing-reports
-description: Use when structuring, authoring, or evaluating technical, business, or operational reports, ensuring clear separation of problem, methodology, observed results, and evaluation.
+description: Use when structuring, authoring, or evaluating technical, business, or operational reports that must distinguish the problem, method, observed results, and evaluation.
 ---
 
 # Writing Reports
 
-Specialist for technical, business, and operational reports. Map criteria onto headings that fit the assignment. Do not impose a fixed chapter template.
+## Job
 
-For folder-based reports, consume the inspected `structure_map` and provenance
-under [project grounding](../../references/project-grounding.md). Use directory-based
-headings when requested and compatible with the applicable outline; otherwise
-map project content to its adopted headings. Never infer behavior for uninspected
-paths or create measurements through unauthorized tests/builds.
+Write or evaluate report sections in which the reader must be able to distinguish what problem exists, what was planned, what method was used, what was observed, and what can be concluded. This skill is selected by `drafting-prose`; it does not approve scope or outline decisions.
 
-Honor the current operation and handoff under the
-[workflow continuity contract](../../references/workflow-continuity.md).
-For the next criterion or section, follow the
-[document continuity contract](../../references/document-continuity.md): use the
-source profile and adjacent passages, retain the same project context and
-terminology, and extend the existing argument without restarting the introduction.
-Distinguish stylistic consistency from repeating unsupported source claims.
-
-Follow the [criteria-writing contract](../../references/criteria-writing-contract.md) for scope, evidence, and visuals. Follow the [language policy](../../references/language-policy.md) for output language. Follow the [academic writing style guide](../../references/academic-writing-style.md) for prose.
-
-## When to use
-
-Authoring or evaluating a report whose reader must distinguish the problem, the method, what was actually observed, and the evaluation of those observations.
-
-## When not to use
-
-Thesis argument that is primarily claim–warrant–evidence without report structure (`writing-academic-prose`). Typo or layout-only edits. Spreadsheet, slide, or conversion tasks.
+Use [workflow continuity](../../references/workflow-continuity.md), [document continuity](../../references/document-continuity.md), [criteria-writing contract](../../references/criteria-writing-contract.md), [academic writing style guide](../../references/academic-writing-style.md), and [language policy](../../references/language-policy.md). Preserve the established report context, terminology, source limits, and accepted numbering.
 
 ## Report layers
 
-Keep these layers distinct in headings and in sentences. Mixing them is a defect.
+Keep these layers distinct in headings and sentences.
 
-| Layer | Contains | Must not contain |
+| Layer | Includes | Must not become |
 |---|---|---|
-| Problem / objective | Assigned question, criterion, and authorized scope | Results or success claims |
-| Plan | Intended steps, still prospective | Observed measurements written as if already taken |
-| Method | Tools, parameters, datasets, and conditions used | Evaluation of whether the method was “robust” without a test |
-| Observed results | Values, logs, tables, and figures actually inspected | Causes, rankings, or future performance |
-| Evaluation and limits | Interpretation bounded by the observations | New numbers, extra trials, or production claims not in the evidence |
+| Problem / objective | assigned question, target outcome, and authorized scope | an unearned success claim |
+| Plan | intended future steps and decisions | observed results |
+| Method | tools, data, conditions, parameters, and procedure actually used | a claim that the method was effective without evidence |
+| Observed results | inspected measurements, logs, tables, figures, or user-provided results with status | causal explanation or projection beyond evidence |
+| Evaluation and limits | supported interpretation, trade-offs, uncertainty, and next constraints | new results, trials, or metrics |
 
-A planned benchmark is not an observed result. A README is not a passing test. An outline's figure list is not proof the figure was produced.
+A planned benchmark is not an observed result. A README is not a passing test. A proposed figure is not proof that it exists or supports a claim.
 
-## Criteria mapping and visuals
+## Inputs and output
 
-For each heading, state the criterion obligation, the evidence used, and the visual decision. Every table or figure needs a name or type, purpose, position, source, preparer, and status. **Not needed** is valid. Charts that assert results require data. Label hypothetical illustrations at the point of use; never reuse them as measured project results. A conclusion must not reuse illustration numbers as operational proof.
+**Inputs:** approved outline blocks, criterion obligations, evidence register, source locators, project or continuity profile, required visuals, and unresolved gaps.
 
-If evidence required by a criterion is missing, apply the contract Missing Evidence Protocol and keep `delivery_status` as `draft_incomplete` while that gap remains.
-
-Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"), consulting roles, business context, budgets, SLAs, latency targets, or operational metrics without explicit confirmation. Do not add a deliverable that belongs to a later assignment, such as a functional prototype, or scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it. If unstated, ask the user or mark as a blocking gap.
-
-Chat explanations follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language without interleaved bilingual text.
+**Output:** a report section that expands the approved blocks with clear report-layer boundaries, evidence-aware prose, source labels, and honest limits for `drafting-prose` to review.
 
 ## Procedure
 
-Write the report body in developed paragraphs by default (L6). An analytical subsection that is only one lead sentence followed by a list is not finished prose. Develop it to the P2 benchmark of 4–5 sentences, not a rendered-line quota. A short lead may remain short when it already carries its meaning. Bullets and numbered lists remain allowed for parallel items, parameters, or sequence. Do not abuse lists to avoid paragraphs. Fulfil each approved command verb through explanation, comparison or supported judgment, not a list of labels. Keep useful lists and tables where L2–L4 apply and preserve the adopted heading numbering. Check that outline notes became connected prose.
+1. **Map the section’s report job.** Identify which layer or layers each approved block serves. Do not impose a generic chapter sequence when the criterion requires a narrower structure.
+2. **Name the evidence state.** State whether a claim is observed, planned, user-provided, source-inspected, illustrative, or missing. Preserve conditions, units, dates, and source locators.
+3. **Develop paragraphs by default.** Use connected prose for explanation and evaluation. An analytical subsection with one lead sentence followed by a list is not finished reasoning; develop it without padding to a rendered-line quota or line-count quota. Lists remain appropriate for parallel items, parameters, or sequence.
+4. **Integrate visual evidence deliberately.** Place only approved tables and figures where they advance the argument. Explain what they show, their source, scope, and limitation; do not use decorative assets.
+5. **Evaluate without overclaiming.** Link a result to its method and conditions, distinguish correlation from causation, and make uncertainty visible. A conclusion must not reuse hypothetical illustration numbers as operational proof.
+6. **Return a review-ready section.** Hand the candidate to `drafting-prose` for `reviewing-work` before delivering it to the user.
 
-1. Read the authorized outline, criteria mapping, and evidence register for the section.
-2. Maintain strict coherence with the approved outline: directly expand approved arguments point by point into academic prose (Analysis → Outline → Report). Do not add chapters the brief does not require or drop planned points.
-3. Write each layer with named subjects, actions, conditions, and results where known.
-4. Place tables and figures only where the outline or criterion needs them, with source labels.
-5. Return the candidate section to `drafting-prose` for an actual `reviewing-work` invocation and correction of blocking findings before user delivery. After review, deliver the complete section text in chat for user review and approval before advancing. Co-locate persistent files in the dedicated common project directory.
+## Project and evidence boundaries
+
+For folder-based reports, use the inspected `structure_map` under [project grounding](../../references/project-grounding.md). Map paths to the approved headings; do not turn an accessible folder into a report chapter or run unapproved tests, builds, or migrations. A source description, code file, README, or user statement does not by itself establish runtime behavior or measured performance.
+
+Use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md) for visuals and the [native Equation contract](../../references/math-in-documents.md) when mathematical content enters Word. A required screenshot, metric, or test result that is unavailable remains a gap rather than an invented illustration.
+
+## Example
+
+**Weak:** “The revised process improved performance significantly.”
+
+**Evidence-aware:** “The supplied benchmark log records a lower median response time for the tested dataset under the stated conditions. The log does not establish behavior outside that dataset or in production.”
+
+The example demonstrates evidence status; it does not provide a real measurement.
 
 ## Required capabilities
 
-Abstract capability names, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
 - `read_file(path)` — brief, outline, logs, tables, and source notes.
-- `write_file(path, content)` / `edit_document(file, change)` — compose report text.
-- `inspect_document(file)` / `inspect_spreadsheet(file)` — inspect evidence artifacts when present.
+- `write_file(path, content)` and `edit_document(file, change)` — authorized report composition.
+- `inspect_document(file)` and `inspect_spreadsheet(file)` — evidence inspection where available.
 
-## Dependencies
+## Completion and fallback
 
-- Selected by `drafting-prose` after contract prerequisites are met.
-- May be combined with `writing-academic-prose` on a project or thesis report, by section, not by default on every paragraph.
-- Precedes `reviewing-work`.
-
-## Fallback
-
-If typed inspect capabilities are unavailable, read text-bearing evidence with `read_file(path)` and record what could not be opened. Do not invent the missing contents.
+Return a candidate section only within the approved outline and evidence limits. When a required source cannot be opened, preserve the gap and write only what the remaining evidence supports. Do not invent a project name, role, budget, SLA, metric, result, functional prototype, citation, or scope detail; ask before using it.
 
 ## Common mistakes
 
-- Writing a planned method as if it had already been run.
-- Putting evaluation language inside the results layer.
-- Adding decorative tables or a standard thesis skeleton the criterion does not ask for.
-- Filling empty cells with assumed percentages.
-- Treating user-provided notes as independently verified measurements.
-- Inventing fictitious project names, consulting roles, SLAs, budgets, or operational metrics.
-- Interleaving bilingual translations in chat responses.
+- Writing a planned method as if it had already run.
+- Mixing evaluation language into the observed-results layer.
+- Replacing report reasoning with bullet stacks or a table-only section.
+- Treating illustrative figures or user-provided notes as independently verified results.
+- Adding a standard report skeleton, project fact, or operational proof that the approved outline does not support.

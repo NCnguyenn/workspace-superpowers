@@ -5,67 +5,66 @@ description: Use when the user explicitly requests external research, literature
 
 # Researching Sources
 
-Discover, evaluate, and extract verified evidence and bibliographic records from external literature.
+## Job
 
-Apply the [workflow continuity contract](../../references/workflow-continuity.md).
-Keep the assigned question, claim, source locators, and return point so retrieved
-evidence can update the relevant draft or outline. User-supplied files are read
-through `reading-artifacts`; they do not by themselves request an external search.
+Find, assess, and extract external evidence that the user explicitly requested. Research produces traceable evidence cards and verified bibliographic information for a stated question; it does not manufacture authority, begin an unrequested literature search, or turn discovery results into proof.
 
-## When to use
+Use the [workflow continuity contract](../../references/workflow-continuity.md) to retain the research question, target claim, source locators, and calling task. User-supplied material is read through `reading-artifacts`; receiving it does not itself request external research.
 
-Only when the user explicitly requests finding reference materials, external research, literature reviews, or academic source discovery.
+## Use when
 
-## When not to use
+Load this skill only when the user explicitly requests research, a literature search, source discovery, or external reference materials. Do not load it for routine drafting, rewriting, summarizing, or editing from supplied facts. Required citations do not automatically authorize a new external search; use existing inspected sources when sufficient.
 
-* Standard drafting, rewriting, summarizing, or editing from facts already provided in the prompt or existing project files.
-* When the user did not request external research or citations. Do not spontaneously initiate literature searches.
-* When all required factual content is already established.
+## Inputs and output
 
-## Absolute honesty rule (§15)
+**Inputs:** focused research question, claims needing support, domain and date limits, accepted source types, existing evidence, and the target deliverable’s citation needs.
 
-For visual sources apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
-Search results establish discovery, not source provenance, credibility, permission
-to reuse or claim support. Inspect the original source and relevant reuse terms;
-return metadata/claim support and reuse status separately to the calling skill.
-Reuse inspected user-supplied sources when sufficient. Required citations alone
-do not require a new web search; apply the existing authorization boundary above
-when a new external search is needed.
+**Output:** evidence cards with source identity, assessment, exact supporting extract or data, locator, claim mapping, reuse status, and unresolved limitations. `citing-sources` receives only metadata that was checked against the source.
 
-* **Zero fabrication:** Never invent authors, journal titles, publication years, DOIs, URLs, or page numbers.
-* **Unverified sources:** If a source cannot be retrieved or verified through accessible search capabilities, state clearly that it is unverified, or omit the claim. Never guess bibliographic metadata.
+## Method
 
-## Procedure
+1. **Define the evidence need.** State the question, intended claim, required level of authority, recency needs, and boundaries. Do not search broadly when a narrow source would answer the question.
+2. **Search deliberately.** Use scholarly, official, institutional, or primary sources appropriate to the claim. Treat search snippets and social posts as leads, not evidence.
+3. **Open the source.** Inspect the original source before quoting or recording metadata. Verify authorship, publication context, date, method, scope, and relevant rights or reuse conditions.
+4. **Extract traceable support.** Capture the exact finding, data point, or quotation with page, section, figure, table, or stable locator. Record what the source does not establish as well as what it supports.
+5. **Assess fitness.** Compare authority, relevance, methodological quality, currency, and conflict with other sources. Do not use a convenient source for a claim outside its scope.
+6. **Return evidence cards.** Separate proposed sources, verified sources, and sources actually cited. Hand verified evidence to `citing-sources` or the authoring skill; preserve unverified candidates as unverified.
 
-1. **Clarify evidence needs:** Identify specific research questions, claims requiring empirical backing, and boundary conditions.
-2. **Execute targeted search:** Search scholarly or reliable publications using available search capabilities (`search_academic`, `search_web`).
-3. **Evaluate sources:** Assess authority (peer-reviewed journal, institutional report), recency, methodological rigor, and relevance.
-4. **Extract evidence:** Capture verbatim quotes, data points, or findings along with exact page/section locators.
-5. **Record complete metadata:** Catalog Author(s), Year, Title, Journal/Publisher, Volume(Issue), Page range, and DOI or permanent URL.
-6. **Synthesize evidence cards:** Organize findings by thematic argument and prepare for the authoring specialist or `citing-sources`.
+### Evidence card example
+
+```text
+Claim: [specific sentence the source can support]
+Source: [verified author, year, title, permanent URL]
+Locator: [page, section, figure, or table]
+Evidence: [short exact extract or accurately bounded data]
+Limits: [population, date range, method, or uncertainty]
+Reuse status: [known license/terms, unknown, or not applicable]
+```
+
+## Source quality and honesty
+
+Never invent authors, titles, years, journals, DOIs, URLs, page numbers, publishers, quotes, or results. A source that cannot be retrieved or inspected remains unverified. Search ranking does not establish provenance, credibility, permission to reuse, or claim support.
+
+For figures and tables, apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md). Record provenance, attribution, and reuse conditions separately from citation style. An external illustration is not user-project evidence.
 
 ## Required capabilities
 
-Abstract capability names from §11, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-- `search_academic(query)` — to query scholarly databases and repositories.
-- `search_web(query)` — to discover published reports, organizational whitepapers, and authoritative web sources.
-- `read_reference_documentation()` — to access official documentation or manual guidelines.
-- `read_file(path)` — to inspect local literature or downloaded papers.
-- `write_file(path, content)` — to save structured evidence cards.
+- `search_academic(query)` — scholarly databases and repositories when available.
+- `search_web(query)` — official, institutional, and publisher sources when available.
+- `read_reference_documentation()` — official documentation and standards where available.
+- `read_file(path)` — local papers or downloaded source material.
+- `write_file(path, content)` — authorized evidence cards or research notes.
 
-## Dependencies
+## Completion and fallback
 
-- Requires an explicit user request for external research or literature search.
-- Precedes `citing-sources` and authoring specialists (`drafting-prose`, `editing-documents`).
-
-## Fallback
-
-If `search_academic` is unavailable, fall back to `search_web` for reputable institutional domains (.edu, .gov, .org, official publishers). If no search capability exists, stop and clearly report the limitation. Never fabricate literature.
+Research is complete when each returned claim is linked to an inspected source and locator, its limits are clear, and unverified candidates are labeled or excluded. If scholarly search is unavailable, use reputable official or institutional web sources when appropriate. If no safe search or source-reading capability exists, report the limitation instead of fabricating a bibliography.
 
 ## Common mistakes
 
-* Triggering external research spontaneously when the user only asked to draft or edit text from supplied facts.
-* Fabricating DOIs or citations to make text appear authoritative.
-* Citing blog posts or unverified summaries when academic sources are required.
-* Extracting conclusions without recording exact locators (page or section).
+- Researching spontaneously because prose “would look stronger” with citations.
+- Treating a snippet, abstract, social post, or search result as source evidence.
+- Copying unverified metadata into a reference list.
+- Quoting a result without its conditions, population, or page/section locator.
+- Treating citation formatting as proof that a source supports a claim.

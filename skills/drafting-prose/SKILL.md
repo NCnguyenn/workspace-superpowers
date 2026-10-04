@@ -5,145 +5,85 @@ description: Use when writing new prose, continuing an existing report or thesis
 
 # Drafting Prose
 
-For approved tables and figures consume [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md).
-Carry the actual previews, supported tables, captions, attribution and evidence
-limits into full in-chat delivery. Load `working-with-visuals` for needed asset work
-and `citing-sources` for required citations. Retain the post-draft approval question
-and wait before starting the next section.
+## Job
 
-Retain the approved heading hierarchy and protected source criterion titles
-under [outline structure and evidence readiness](../../references/outline-structure.md).
-Do not rename level-1 titles or flatten numbered main points/subpoints during
-drafting. Hypothetical evidence stays labeled and separate from actual results.
+Coordinate the composition of authorized report or thesis prose after the applicable scope, outline, evidence, and continuity prerequisites are satisfied. This skill selects the writing specialist, protects the approved structure, ensures review before delivery, and stops for user feedback after each delivered section.
 
-For adopted [persistent work tracking](../../references/work-tracking.md),
-consume only the assigned item, actual target revision, criteria/decision
-references and relevant source excerpts. Return changed artifact identities,
-coverage and gaps for the editor's checkpoint. Project descriptions belong only
-where that item's requirements call for them. Do not start another tracker or
-promote a draft to the approved baseline.
+It consumes decisions; it cannot infer, create, waive, or approve them. Silence, time passing, a reply to a different question, or a complete prompt is not approval. A request to skip a gate is not a language override, language instruction, or language request.
 
-Family skill for composing new report or thesis content after applicable scope and outline conditions are met. It selects a writing specialist. It does not replace the workspace lifecycle or invent approvals.
+## Required inputs
 
-Apply the [workflow continuity contract](../../references/workflow-continuity.md)
-when the request changes. For continuation or revision, follow the
-[document continuity contract](../../references/document-continuity.md): obtain
-the source profile, insertion point, adjacent excerpts, and evidence before
-composing. Use reading/analysis for missing context, then return here without
-restarting already satisfied gates. New file receipt alone is not permission to write.
+Before composing, collect only the target section and the context needed to write it correctly:
 
-Follow the [criteria-writing contract](../../references/criteria-writing-contract.md), the [language policy](../../references/language-policy.md), and the [academic writing style guide](../../references/academic-writing-style.md).
+- authorized `task_mode`, target section, and stopping point;
+- applicable `scope_status`, `outline_status`, `outline_version`, and `approval_record`;
+- source criterion/title, approved outline blocks, evidence register, and blocking gaps;
+- source profile, insertion point, adjacent excerpts, terminology, and preserve-list for a continuation;
+- selected deliverable language under the [language policy](../../references/language-policy.md), and the [academic writing style guide](../../references/academic-writing-style.md).
 
-Before composing, you MUST execute `read_file("../../references/academic-writing-style.md")`
-through the host adapter, resolving the path from this skill's directory, and
-read the returned guide. A link, remembered summary, or router invocation is not
-a substitute. Apply S1 to vary sentence cadence by function: concise limits,
-clear explanations, and longer sentences only where the reasoning needs them.
-Avoid uniformly long compound sentences; do not impose sentence-length quotas.
-Apply F1/R4 to remove empty AI clichés and inflated promotional language while
-preserving supported technical meaning, accurate quotations, and required names.
-
-## When to use
-
-New sections or full-document prose against criteria, a working brief, and an evidence register, when the authorized operation is draft or a substantive compose.
-
-## When not to use
-
-Analysis-only or outline-only requests. Typo, wording-only, or format-only edits of an existing artifact (`editing-documents`, `formatting-layout`). Spreadsheet, presentation, image, or conversion work.
+Use [workflow continuity](../../references/workflow-continuity.md), [persistent work tracking](../../references/work-tracking.md), [document continuity](../../references/document-continuity.md), and [criteria-writing contract](../../references/criteria-writing-contract.md). Do not create a second tracker or promote a working draft to an approved baseline. Chat explanations follow the language of the current user message; do not default that language to Vietnamese.
 
 ## Prerequisite check
 
-Drafting-prose consumes recorded decisions. It cannot create, waive, or infer user approval. Silence, elapsed time, or a reply to a different question is not approval. Authored content defaults to English unless an explicit language override is recorded.
+Apply [criterion-level analysis and two stops](../../references/criteria-writing-contract.md#criterion-level-analysis-and-two-stops) where criteria-based writing applies.
 
-Apply [criterion-level analysis and two stops](../../references/criteria-writing-contract.md#criterion-level-analysis-and-two-stops).
-The two-stop rule applies to all sections, chapters, parts, and criteria of
-deliverables (e.g. “Section 1: Project Overview”, “Introduction”, or “P1”).
+1. Confirm that the current request authorizes drafting or substantive composition, not analysis-only or outline-only work.
+2. Confirm applicable scope and analysis decision coverage. Return unresolved gaps to `scoping-the-brief`.
+3. Confirm the detailed outline is approved or explicitly waived for this version and section. A master outline is not enough.
+4. Confirm the target evidence is provided, not required, or explicitly authorized as illustrative. Preserve `draft_incomplete` when mandatory evidence is still missing.
+5. For a continuation, confirm that the source profile, insertion point, adjacent excerpts, and evidence before composing are available. Use reading/analysis for missing context rather than guessing.
 
-Never invent project names (e.g. fictitious apps/companies like "SpeedyBite"),
-consulting roles, business context, budgets, SLAs, latency targets, or operational
-metrics. Do not add a deliverable that belongs to a later assignment, such as a
-functional prototype, or scope details the user has not confirmed. If a detail is
-needed and unsettled, ask before using it. If unstated in source documents or
-prompt, ask the user or mark as a blocking gap; never fabricate project facts.
-The complete draft adds the remaining 50–60% inside the approved blocks. It keeps the same paragraphs, lists, tables, and figures in the same order. It does not add a new paragraph, list, table, figure, or number. A heading that was two paragraphs and one short parallel list stays two paragraphs and that list. Do not convert the outline into one paragraph per heading, and do not turn a parallel list into a new heading.
+Never invent project names, roles, business context, budgets, SLAs, performance metrics, citations, or a later assignment such as a functional prototype. If a fact is needed and unsettled, ask before using it. Hypothetical values must remain locally labeled and cannot become operational proof in a later conclusion.
 
-Chat explanations follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language. Never interleave bilingual translations into chat responses.
+## Select the writing specialist
 
-Before composing:
+Before writing, you **MUST** execute `read_file("../../references/academic-writing-style.md")` and read the returned style guide. Apply S1 for functional sentence variation and F1/R4 to remove empty claims and inflated language without changing supported meaning.
 
-1. Confirm `task_mode` is draft or an authorized substantive compose. Stop at analysis or outline if that was the request.
-2. When the scope gate applies, confirm `scope_status` is `confirmed` or `waived`. If it is required and still `pending` or missing, return the gap to `scoping-the-brief`. Do not impose criteria-writing gates on unrelated prose with `not_required` decisions.
-3. Confirm `outline_status` is `approved`, `waived`, or `not_required` under the contract. If `pending`, `not_started`, or `revision_requested`, return to `planning-work`. A complete specification in the prompt is not outline approval; do not compose the section yet.
-4. Inspect the evidence register and `blocking_gaps` for the target section. Follow the contract Missing Evidence Protocol. Do not invent measurements or project results.
+You **MUST** execute `invoke_skill(name)` and read the selected writing specialist before composing:
 
-## Select a writing specialist
-
-You MUST execute `invoke_skill(name)` through the host adapter to load the selected
-writing specialist before composing. Read its result; merely naming the skill or
-applying generic writing knowledge does not satisfy this requirement. Load one
-writing specialist for the section's job. Do not default to both on every paragraph.
-Add optional mathematics support through `working-with-mathematics` only when
-the section needs mathematical interpretation, derivation or checking. It returns
-assumptions, notation, numbered steps and check evidence; the writing specialist
-integrates them without independently rewriting the formulas. Follow the
-[mathematics handoff](../../references/mathematics-checks.md) and, for Word output,
-the [native Equation contract](../../references/math-in-documents.md). Pure Equation
-formatting does not require a new proof or a new outline decision.
-
-| Situation | Specialist |
+| Section need | Specialist |
 |---|---|
-| Technical, business, or operational report structure; problem, method, observed results, and evaluation | `writing-reports` |
-| Scholarly argument, thesis prose, hedging, and claim–evidence cadence | `writing-academic-prose` |
-| Project or thesis report that needs both structure and scholarly argument | both, assigned by section |
+| Technical, business, or operational report structure: problem, method, observed results, and evaluation | `writing-reports` |
+| Scholarly argument, evidence synthesis, hedging, and thesis prose | `writing-academic-prose` |
+| A project or thesis report with both needs | Select one by section; use both only where their responsibilities differ |
 
-Use `invoke_skill(name)` to load the specialist. Pass the target section, applicable
-decisions and version, criteria mapping, evidence register, unresolved gaps, and
-relevant continuity profile with adjacent source excerpts. This bounded context
-must support continuity without passing the entire conversation.
+Optional mathematics support uses `working-with-mathematics` only for an actual mathematical interpretation, derivation, or correctness need. Equation formatting alone does not require a new proof or outline decision; Word output follows the [native Equation contract](../../references/math-in-documents.md).
 
 ## Procedure
 
-1. Run the prerequisite check. Stop and hand back if it fails.
-2. Read the required style guide and invoke the selected writing specialist(s) for the assigned section using actual tool calls.
-3. Compose only authorized content. Use the contract's neutral placeholder when a permitted incomplete draft is allowed.
-4. Before review, check PEEL development (P1–P3), casual dash chaining (S1–S3), and L6: at least 65% discursive prose for core analytical sections under its counting scope and exceptions. Develop an existing analytical paragraph inside its approved block. Do not add a paragraph, list, table, or figure that the approved outline does not already have, and do not delete an approved parallel list to satisfy the prose floor. An analytical subsection that is only one lead sentence followed by a list is not finished prose when the outline itself required a developed paragraph. A short lead may remain short when it already carries its meaning. Bullets and numbered lists remain allowed for parallel items, parameters, or sequence. Do not abuse lists to avoid paragraphs. Objectives, scope and constraints need supported explanation, not list/table-only subsections. When formal citations are required or present, execute `invoke_skill("citing-sources")` and complete its bidirectional audit. Reuse a completed audit for the same revision if the specialist already performed it. Append `## References` to the chat section and update the terminal cumulative list in any saved report; do not postpone references until the whole report is finished. Do not invent page numbers, publishers, or unchecked bibliographic details.
-5. Execute `invoke_skill("reviewing-work")` before delivering the draft, including chat-only prose. Have it apply prose and coherence review with the loaded role instructions, including P1–P3, L6, S1–S3 and F1/R4; include citation review when applicable. Fix blocking findings within the approved scope and recheck affected passages and citations. Do not self-approve or postpone this review until after delivery.
-6. Output the complete drafted text for the section directly into chat for user review and approval (never hide text behind a file path or merely report "saved to file"). Include its reference list when cited, even if a cumulative list exists in the file. File deliverables also require artifact verification before delivery.
-7. STOP after delivering the section draft. Ask whether the delivered section is approved. Do not start the next section or criterion in the same turn. Ending at the last paragraph without that question is not a stop. Include its reference list when cited, even if a cumulative list exists in the file. File deliverables also require artifact verification before delivery.
+1. Run the prerequisite check and stop at the earliest unresolved decision.
+2. Load the style guide and selected writer using the required actual calls.
+3. Compose only the approved section blocks. The final draft expands the existing outline inside the same paragraphs, lists, tables, figures, and numbers; it does not add new blocks.
+4. Develop analytical reasoning through PEEL where appropriate. Core analytical report sections need at least 65% discursive prose under the style guide’s scope; a short lead may remain short when complete, and lists remain valid for parallel items, parameters, or sequence. Do not use a rendered-line quota.
+5. When citations are required or already present, execute `invoke_skill("citing-sources")`, complete the bidirectional audit, include `## References` in the delivered cited section, and update the saved report’s cumulative reference list.
+6. Execute `invoke_skill("reviewing-work")` before delivering, including chat-only prose. Fix blocking findings within the approved scope and recheck affected passages, evidence, citations, and continuity seams.
+7. **Output the complete drafted text** for the authorized section directly in chat. Do not hide it behind a file path. File deliverables also require current artifact verification.
+8. Ask whether the delivered section is approved. Do not start the next section or criterion in the same turn.
+
+## Visuals, citations, and Word content
+
+Carry approved tables, figures, captions, attribution, and evidence limits into the same delivery blocks. Use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md) and load `working-with-visuals` when an asset requires inspection or preparation. Do not introduce an image, table, or number absent from the approved outline.
+
+For citations, `citing-sources` is required when a citation is present, requested, or required. Never invent page numbers, publishers, URLs, or reference metadata. Authored deliverables use the resolved language, and chat discussion follows the current user message without interleaved bilingual delivery.
 
 ## Required capabilities
 
-Abstract capability names, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-- `read_file(path)` — brief, outline, evidence, and source artifacts.
-- `write_file(path, content)` / `edit_document(file, change)` — compose or insert authorized text.
-- `invoke_skill(name)` — load `writing-reports` or `writing-academic-prose`, `citing-sources` when applicable, then `reviewing-work` before delivery.
-- `delegate(role, context)` — optional executing or review roles; do not dispatch the full lifecycle.
+- `read_file(path)` — brief, outline, evidence, source excerpts, and the style guide.
+- `write_file(path, content)` and `edit_document(file, change)` — authorized text composition or insertion.
+- `invoke_skill(name)` — selected writer, citations where applicable, and review before delivery.
+- `delegate(role, context)` — optional bounded writing or review work.
 
-## Dependencies
+## Completion and fallback
 
-- Follows `scoping-the-brief` and `planning-work` when those gates apply.
-- Uses `writing-reports` and/or `writing-academic-prose`.
-- Precedes `reviewing-work`, then `verifying-artifacts` for file deliverables.
-
-## Fallback
-
-If a required writing or review skill cannot be loaded, stop the affected stage
-and report the missing capability; do not compose from generic knowledge or
-claim a review occurred. If file write is unavailable, the loaded specialists
-may compose and review text for chat delivery without claiming a file was created.
+A draft is complete for this turn when it has passed the required content review, is delivered in full at the requested stopping point, includes references when cited, and awaits the user’s section approval. If a required writer or reviewer cannot be loaded, stop the affected stage; do not compose from generic knowledge or claim a review occurred. If file writing is unavailable, deliver reviewed chat text without claiming a file was created.
 
 ## Common mistakes
 
-- Inferring scope or outline approval from silence.
-- Drafting analysis-only or outline-only requests.
-- Inventing benchmark numbers to fill a criterion.
-- Skip-approval or write-now is not a language instruction; conversation language still does not select output.
-- Inventing SLAs, on-call coverage, or tools absent from the supplied facts.
-- Inventing fictitious project names, consulting roles, budgets, or operational metrics.
-- Interleaving bilingual translations or explanations in chat responses.
-- Reusing hypothetical illustration numbers in a conclusion as operational proof.
-- Calling both specialists on every paragraph by default.
-- Hiding drafted text behind a file path without outputting the full text into chat.
-- Continuing to the next section or criterion without stopping for user review of the current section draft.
-- Skipping `reviewing-work` or invoking it only after delivering substantial prose.
+- Drafting before analysis, evidence, or detailed-outline decisions are resolved.
+- Treating a master outline, generic urgency, or silence as approval.
+- Adding new paragraphs, figures, tables, or numbers that were not in the approved outline.
+- Turning illustrative values into project results or operational proof.
+- Hiding section prose behind a file path.
+- Skipping review or starting the next section before the user reviews the current one.

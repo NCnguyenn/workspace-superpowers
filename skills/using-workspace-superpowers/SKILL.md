@@ -1,341 +1,118 @@
 ---
 name: using-workspace-superpowers
-description: Use when any message starts, continues, changes, approves or resumes document, research, office or knowledge work, including new files and mixed requests, before any response or action.
+description: Use when any message starts, continues, changes, approves, or resumes document, research, office, or knowledge work, including new files and mixed requests, before any response or action.
 ---
 
-# using-workspace-superpowers
+# Using Workspace Superpowers
 
-Single entry router for the workspace domain. Classify, compose, and route. Contains no format-specific procedure.
+## Job
 
+This is the workspace entry router. It classifies the current request, loads only the skills needed for the requested operation, and preserves the user’s stopping point. It does not read substantive artifact content, write deliverables, or replace a specialist’s method.
 
-The current message selects the operation. Do not advance the previous workflow because it was last, and do not start the writing pipeline because the message mentions a report, assignment, or file. After this router, call the specialist whose catalog description matches the current operation, then load additional skills for its applicable dependencies as their work begins. The user need not name a skill or follow the last step. A pending approval blocks only its dependent next stage.
+The current message selects the operation. Do not continue the previous workflow merely because it was last, and do not start the writing pipeline because a message mentions a report, assignment, or file. Side questions are handled at their own scope; a pending approval blocks only the stage that depends on it.
 
-For genuinely multi-stage Workspace work, first read the complete portable [session progress contract](../../references/session-progress.md) through an available file-read capability before evaluating activation or creating, mutating, resuming, replacing, reopening, interpreting a checklist control, or rendering a checklist. A link, filename, remembered summary, or earlier router load is not a contract read. If the contract cannot be read, report that limitation and do not claim checklist-contract conformance. After that read, decide whether the requested outcome merits a checklist before choosing ceremony: simple operations stay direct even when they need routine verification or several loaded skills. When activated, create one checklist for the current multi-stage request, manage it in retained conversational state, and render compact Markdown at meaningful response boundaries. Side questions preserve it; replacements create a new checklist; pause, hide, cancel, block, approval, and reopening affect only the relevant checklist. Show only **Loaded skills** after the corresponding skill body has actually been loaded. Checklist visibility is never approval, evidence readiness, verification, or completion. The MVP has no native Todo runtime, background event bridge, database, or realtime panel.
+## Select the correct route
 
+1. Classify the request as Workspace, Coding, Simple Q&A, or the workspace slice of a mixed request.
+2. For Workspace work, identify the requested result, target artifact or section, available inputs, and authorized stopping point.
+3. Resolve the matching catalog entry and load its current body before relying on its method. The user need not name the skill.
+4. Add only the additional skills required as dependencies of the operation. A skill description helps discovery; it never replaces loading the skill body.
+5. Reassess when the user adds evidence, changes scope, pauses, cancels, or asks for a different operation.
 
-If there is even a 1% chance a skill might apply, call it before any response, question, or file action. You do not have a choice. You must use it. The user need not name the skill or follow the previous step. A remembered summary is not a call. If the loaded skill does not fit, stop using it. Do not preload the catalog.
+| Request | Route | Boundary |
+|---|---|---|
+| Coding | Hand off to `using-superpowers` | Do not run Coding work through this workspace router. |
+| Simple Q&A | Answer directly | Do not create an artifact workflow. |
+| Mixed | Route the workspace slice here and the coding slice to `using-superpowers` | Keep the workflows separate. |
+| Existing file needs content interpretation | `reading-artifacts` then `analyzing-artifacts` | Do not infer facts from a filename, raw bytes, or an unread region. |
+| Mechanical document change | `reading-artifacts` then the relevant specialist and `verifying-artifacts` | Do not add planning or prose gates to a typo or formatting-only change. |
+| Substantive artifact change | Read, analyze, edit, review when substantial, then verify | Preserve the requested scope and unrelated user changes. |
 
-| Thought | Reality |
+## Load skills before acting
+
+If there is even a **1% chance a skill might apply**, call it **before any response, question, or file action**. You do not have a choice. A remembered summary is not a call, and “I already know this skill” is not a reason to skip the current instructions. If the loaded skill does not fit, stop using it and select the correct one; do not preload the catalog.
+
+At every stage transition, execute the designated `invoke_skill(name)` as an actual tool call and read the returned instructions before doing that stage. Naming a skill, describing a route, or loading a router on an earlier turn does not satisfy this requirement.
+
+**FORBIDDEN: NEVER draft section prose, generate a detailed outline, or analyze criteria from generic knowledge without first loading the designated specialist skill.** This router coordinates work; it does NOT authorize writing prose directly.
+
+## Session progress
+
+For a genuinely multi-stage Workspace request, first read the complete portable [session progress contract](../../references/session-progress.md) through `read_file(path)` before evaluating activation, creating, mutating, resuming, replacing, reopening, or rendering a checklist. A link, filename, remembered summary, or earlier router load is not a contract read. If the contract cannot be read, report that limitation and do not claim checklist-contract conformance.
+
+Keep simple work lean. A routine save, export, verification call, or several loaded skills does not by itself require a checklist. When the contract’s conditions are met, make one transient checklist for the current request, update it only at meaningful response boundaries, and show **Loaded skills** only after their bodies were actually loaded. Checklist visibility is never approval, evidence readiness, verification, or completion.
+
+## Continuity and durable work
+
+Apply the [workflow continuity contract](../../references/workflow-continuity.md) on every Workspace turn. Keep the current operation, source revisions, pending decisions, blockers, and return point. Reuse still-applicable approvals; invalidate only affected dependencies. Do not turn a recommendation, a new file, a plan’s next action, or a short acknowledgement into authorization.
+
+For sustained work, apply [persistent work tracking](../../references/work-tracking.md). On a fresh or resumed task, locate an adopted or bounded candidate `work-plan.md`, then load `reading-artifacts` to read its identity and current checkpoint before reading linked documents. Planning owns plan content; `editing-documents` is the persistent writer; `verifying-artifacts` reopens saved records. The router owns neither the record nor a parallel state system. Follow the contract’s checkpoint rules and preserve the one designated `context_file` when project evidence is relevant.
+
+For a project folder, apply [project grounding](../../references/project-grounding.md). A survey is read-only unless the user explicitly authorizes a wider action. Do not infer runtime behavior, run tests or builds, change Git state, or create a project context from survey access alone.
+
+For a continuation or substantive revision, obtain a source-grounded profile and adjacent excerpts through `reading-artifacts` and `analyzing-artifacts` under the [document continuity contract](../../references/document-continuity.md). A completed-assignment read-back is a narrow route: use `reading-artifacts` and `analyzing-artifacts`, then skip new intake/scoping unless the user asks for a new task. A comparison with a later guide is a narrow comparison of criteria already present and remaining criteria, not a new intake.
+
+## Criteria-based writing
+
+Use the [criteria-writing contract](../../references/criteria-writing-contract.md) and [outline structure and evidence readiness](../../references/outline-structure.md) for report or thesis criteria. Apply the contract's **criterion-level analysis and two stops**: requirement analysis approval and detailed-outline approval remain separate. Evidence required by the current target must be inspected or explicitly authorized as illustrative before an affected outline is prepared. Never invent project names, business context, budgets, SLAs, operational measurements, citations, or a later-assignment deliverable such as a functional prototype; ask before using an unsettled fact.
+
+An opening question about the parts, criteria, or structure of a newly supplied guide is **not Simple Q&A** and **not a narrower operation**. Read and analyze the guide, return its intake map, and reuse that map for a named section rather than repeating intake.
+
+For a completed assignment, use the completed-assignment read-back route through `reading-artifacts` and `analyzing-artifacts`, then **skip new intake/scoping** unless the user requests a new task. When a later guide follows, identify the remaining criteria through a narrow comparison rather than reopening intake.
+
+If several valid document interpretations or organizations remain after evidence is sufficient, load `brainstorming`. It is **not a software-design skill**: present 2–3 comparable approaches, recommend one, and wait for the user’s choice.
+
+| `task_mode` | Required route and stopping point |
 |---|---|
-| I already know this skill | Load the current body. Memory is not a call. |
-| I'll ask first | Call the matching skill before the question. |
-| The last step comes next | The current message selects the skill. |
-| 1% is too small | 1% means call it. Stop only after the body does not fit. |
+| `analyze` | MUST execute `invoke_skill("scoping-the-brief")`, then `analyzing-artifacts` when substantive source interpretation is needed; use `brainstorming` when valid readings remain, present analysis, and Stop. |
+| `outline` | MUST execute `invoke_skill("planning-work")` after applicable scope, analysis, and evidence prerequisites; use `brainstorming` when valid organizations remain, show the detailed outline, and Stop. |
+| `draft` | MUST execute `invoke_skill("drafting-prose")`, load its selected writer, complete `reviewing-work` before delivering, then provide the authorized section only. |
+| `revise` | Execute `editing-documents`; use `drafting-prose` for substantive report or thesis recomposition and `formatting-layout` for presentation-only changes; review and verify the affected result. |
 
-## Entry and reselection
+A request for an outline alone is not analysis approval. A detailed outline approval is not permission to draft a different scope. A request to skip a gate is not an explicit language request and does not waive evidence, review, or verification. Apply the [language policy](../../references/language-policy.md): chat explanations follow the language of the current user message; do not default that language to Vietnamese.
 
-Load this router on every Workspace turn, including short approvals and
-continuations. Use the current message together with retained context to select
-the next operation; do not mechanically advance the previous workflow. For
-Simple Q&A, answer directly. For Coding, hand off to `using-superpowers`.
-A mixed message may need a direct answer and a separate artifact operation.
+Use `citing-sources` when citations are requested, required, or citations already present in a draft need checking and completion.
 
-Before selecting a specialist, identify the requested result, the target
-artifact or section, and the authorized stopping point. Resolve its name against
-the host's available catalog and load its actual instructions before use.
-Descriptions are discovery cues, not a substitute for the skill body. Match
-meaning and context rather than isolated words such as "report" or "formula".
-Do not preload the catalog or ask the user to name a skill.
-
-Reassess when new evidence, a correction or a different operation appears, even
-within one turn. Reuse still-applicable approvals; invalidate only dependent
-decisions. A skill's next step cannot authorize an unrequested draft, rewrite,
-export or file creation. Keep the return point of temporary switches and honor
-explicit pauses and cancellations. Apply the continuity contract below rather
-than restarting an interview. PI's exact IDs and calls are defined by its host
-adapter; loading the router does not load the specialists.
-
-## Durable work and first-turn discovery
-
-Apply [persistent work tracking](../../references/work-tracking.md) on fresh
-Workspace chats, continuations and sustained work. Locate the adopted plan or
-bounded `work-plan.md` candidates in the task root or dedicated project directory with listing only, then delegate reading to
-`reading-artifacts` before scoping or planning. Reuse its checkpoint and load
-only the relevant source slices. Propose tracking once when justified, with
-zero/one/two record types according to the task; simple edits stay lightweight.
-Tracking files and project deliverable files are co-located in a dedicated common project directory created by AI. Mandatory interview and explicit user approval in chat are required before creating tracking or project markdown files. A supplied brief, rubric, or graded guide is read in full and mapped before that interview. The interview does not replace the intake map.
-Planning owns plan content, editing persists the shared record, and verification
-checks actual paths/revisions. The router does not write a plan or create an
-independent state system. Handoffs carry work/item identity and current targets.
-
-For mathematics entering Word, route the assigned operation under the
-[native Equation contract](../../references/math-in-documents.md). For folder-based
-reports, pass the [project survey contract](../../references/project-grounding.md)
-to reading/analysis/planning and any bounded Coding handoff. The survey's explicit
-read-only limits override generic coding setup/test instructions. These contracts
-add no lifecycle or approval gates; unrelated tasks retain their existing routes.
-When project context must be persisted, hand the grounded context and its single
-designated path to `editing-documents` for creation/update, then verification.
-The router never writes that record itself.
-
-## Ongoing requests and continuity
-
-Apply the [workflow continuity contract](../../references/workflow-continuity.md)
-at every new message and specialist handoff. Select skills from the current
-request plus retained context; the user need not follow a fixed sequence.
-Answer simple side questions directly, process supplied files through reading
-and analysis, and return to the next authorized step. Preserve pending decisions
-without forcing them onto unrelated work. Pause, replace, or cancel only the
-scope the user actually changed.
-
-For report/thesis continuation, obtain the source-grounded profile and relevant
-adjacent excerpts through reading/analysis under the
-[document continuity contract](../../references/document-continuity.md), then
-pass them through planning, drafting/editing, and review. The router coordinates
-this handoff; it does not inspect substantive file content itself.
-
-### Shared tracking handoff
-
-At every lifecycle handoff, apply the intent and propagation rules in
-[workflow continuity](../../references/workflow-continuity.md) and the identity,
-placement and checkpoint rules in [persistent work tracking](../../references/work-tracking.md).
-Carry the canonical `plan_file`, `work_id`, item ID, target revision and (when
-applicable) `context_file`; do not select a record by timestamp or create a
-parallel tracker. A project context is conditional on a concrete project and
-authorized setup, and a read-only survey does not authorize project writes.
-Readers, analyzers, planners, reviewers and agents return bounded findings or
-content; `editing-documents` is the persistent writer. The router must not imply
-continuous monitoring, native host execution or verification that has no trace.
-
-## Responsibilities
-
-1. Verify whether the request belongs to Workspace Superpowers.
-
-   * If the task is primarily software engineering, coding, debugging, refactoring, or build/test automation → hand off to `using-superpowers`.
-   * If the task is mixed → use this router only for the workspace slice.
-2. Determine which workspace lifecycle stages are actually required.
-3. Select and compose the appropriate lifecycle, family, and specialist skills for the requested outcome.
-4. If a requested specialist capability is unavailable:
-
-   * Fall back to a lower-level safe capability when possible.
-   * If no safe fallback exists, stop that unsupported slice and clearly report the capability limitation.
-
-## Deliverable Language
-
-Apply the [shared language policy](../../references/language-policy.md): authored deliverables default to English unless the user explicitly requests another language. Vietnamese conversation or input does not select Vietnamese output. Skipping gates, choosing a layout, or writing immediately is not an explicit language request. Carry the resolved language into the brief and downstream specialists; a missing language instruction does not require an interview.
-Chat explanations follow the language of the user's current message. Do not default that language to Vietnamese.
-
-## Allowed Router Capabilities
-
-This router coordinates workflow only.
-
-It may use:
-
-* `list_files(dir)` — locate or resolve candidate artifacts without reading substantive content.
-* `read_file(path)` — read the Session Checklist contract before a checklist-specific decision; substantive artifact content remains delegated to specialists.
-* `invoke_skill(name)` — load the appropriate lifecycle, family, or specialist skill.
-* `delegate(role, context)` — optional; use only when the harness exposes compatible delegation or subagent roles.
-
-Content reading, substantive interpretation, artifact manipulation, and verification are delegated to specialist skills.
-
-## Mandatory invocation contract
-
-`invoke_skill(name)` means an actual tool call through the host adapter that
-loads the named skill's instructions. It is not internal reasoning, a route
-description, or an announcement. At every stage transition, including a new
-turn after approval, execute the designated skill call and read its result
-before performing that stage. A router call or a specialist loaded upfront on
-an earlier stage does not satisfy this requirement. Keep recorded user approvals;
-skill loading does not require another approval.
-
-FORBIDDEN: You must NEVER draft section prose, generate outlines, or analyze criteria using generic LLM knowledge without first invoking the designated specialist skill. The router (`using-workspace-superpowers`) only classifies and routes; it does NOT authorize writing prose directly.
-
-If the designated skill cannot be loaded, stop the affected stage and report
-the missing capability. A lower-level artifact-tool fallback still requires
-loading the responsible specialist; it does not authorize generic composition.
-Simple Q&A and trivial mechanical edits retain their existing lean routes.
-
-## Core Lifecycle and Domain Composition
-
-Core lifecycle skills may include:
-
-* `scoping-the-brief` — resolve blocking ambiguity and establish an actionable working brief.
-* `reading-artifacts` — open, parse, and extract structure or content from artifacts.
-* `analyzing-artifacts` — evaluate, diagnose, compare, synthesize, or critique substantive content.
-* `planning-work` — construct an execution plan when task complexity warrants one.
-* `reviewing-work` — route quality review across applicable dimensions before verification. Skip only for trivial mechanical fixes.
-* `verifying-artifacts` — validate generated or modified artifacts before completion is claimed.
-* `packaging-deliverables` — name, organize, and report the verified file set. Never before verification.
-
-Additional family and specialist skills are selected according to the task.
-
-Examples include:
-
-* Research & Evidence: `researching-sources` for requested external research or reference materials; `citing-sources` for requested/required citations or citations already present in a draft.
-* Documents & Media: `editing-documents`, `formatting-layout`, `working-with-pdf`, `working-with-spreadsheets`, `auditing-formulas`, `working-with-presentations`, `storyboarding-slides`, `working-with-visuals`
-* Prose: `drafting-prose`, `writing-reports`, `writing-academic-prose`
-* Mathematics: `working-with-mathematics` for optional mathematical support; equation-only layout/conversion remains with document skills, spreadsheet audits with `auditing-formulas`.
-* Document choice: `brainstorming` — when several valid document interpretations or organizations remain, present 2–3 options, recommend one, and stop for the user's choice. This is not a software-design skill.
-* Transform: `converting-artifacts`
-
-The catalog is extensible. These examples are not an exhaustive list.
-
-This router never inlines specialist procedures.
+Before an image, screenshot, or DOCX-figure claim, load `working-with-visuals` and apply the [visual evidence boundary](../../references/visual-evidence-boundary.md). Visible pixels are not runtime, database, device, or criterion proof. Before mathematics enters Word, apply the [native Equation contract](../../references/math-in-documents.md).
 
 ## Mathematics activation
 
-Select from the requested operation, supplied content and retained context,
-without requiring the user to name a skill or explicitly say "mathematics".
-The word alone ("formula", "report", or "thesis") does not choose a route.
-Reassess when a follow-up introduces a derivation, equation or project source;
-preserve the active writing stage and earlier approvals.
+Choose mathematics support from the actual operation, supplied content, and retained context. The word alone “formula,” “report,” or “thesis” does not choose a route.
 
-| Actual need | Selection |
+| Actual need | Route |
 |---|---|
-| Define notation, calculate a result, justify a recurrence, explain a proof, check a discrete-math argument, or revise substantive mathematical content | Add `working-with-mathematics` to the current analysis, writing or review operation; for authored substantial mathematics, include mathematics review |
-| Write a report/thesis containing such content, even if the user asks only to continue the next section | The prose specialist keeps ownership; add mathematics support for the affected section based on its actual content |
-| Paste, create, edit or export equations into Word | Apply the native Equation contract on every path; add mathematics support if meaning, derivation or correctness must be established or changed |
-| Align/resize an existing equation or convert its representation without changing meaning | Document editing/layout/conversion plus native Equation verification; do not force a proof rewrite |
-| Diagnose spreadsheet cell formulas, references or dependencies | `working-with-spreadsheets` / `auditing-formulas`; add mathematics support only for an underlying mathematical claim beyond the cell audit |
-| Report grounded in a project that also contains mathematical reasoning | Compose project survey boundaries with the applicable prose/math/Word routes; neither mathematical checking nor a Coding handoff authorizes project commands |
-| Ordinary wording/typo repair or a simple conversational calculation | Keep the appropriate lightweight edit or Simple Q&A route; do not create an artifact workflow solely because a number appears |
+| Define notation, derive or check a proof, explain a recurrence, or evaluate mathematical reasoning | Add `working-with-mathematics` to the current analysis, writing, or review task. |
+| Author or edit a mathematical expression in Word | Apply the native Equation contract; use mathematics support when meaning or correctness changes. |
+| Format an unchanged equation or convert it without changing meaning | Use the document, layout, or conversion route plus Equation verification. |
+| Diagnose workbook references or formulas | Use `working-with-spreadsheets` or `auditing-formulas`; mathematics support is optional only for the underlying mathematical claim. |
+| Ordinary prose containing a number or a simple conversational calculation | Keep the lightweight route. |
 
-## Criteria-based writing routes
+## Core skill map
 
-Apply [outline structure and evidence readiness](../../references/outline-structure.md):
-default to Heading 1/2/3 numbered `1`, `1.x`, `1.x.x`, retaining the source
-criterion title verbatim at level 1. Before outlining, route missing title or
-required evidence to `scoping-the-brief` for an interview. Wait for supplied
-evidence or explicit scoped permission for illustrative examples. This also
-applies to outline-only requests; do not bypass it with provisional headings.
+- **Scope and evidence:** `scoping-the-brief`, `researching-sources`, `citing-sources`, `brainstorming`.
+- **Artifact understanding:** `reading-artifacts`, `analyzing-artifacts`.
+- **Planning and authoring:** `planning-work`, `drafting-prose`, `writing-reports`, `writing-academic-prose`, `editing-documents`.
+- **Documents and media:** `formatting-layout`, `converting-artifacts`, `working-with-pdf`, `working-with-spreadsheets`, `auditing-formulas`, `working-with-presentations`, `storyboarding-slides`, `working-with-visuals`.
+- **Completion:** `reviewing-work`, `verifying-artifacts`, `packaging-deliverables`.
 
-For “do P1” or another section/chapter draft, enforce the contract's
-[criterion-level analysis and two stops](../../references/criteria-writing-contract.md#criterion-level-analysis-and-two-stops)
-before selecting prose specialists. The two-stop rule applies to all sections,
-chapters, parts, and criteria of deliverables (e.g. “Section 1: Project Overview”,
-“Introduction”, or “P1”). An approved master outline containing only
-headings is not a detailed approval. Route to analysis and
-scope confirmation first; only after that decision route to the detailed outline
-and its separate approval. Preserve valid section-specific decisions/waivers.
-Never invent fictitious project names, roles, SLAs, budgets, or operational metrics.
-An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. Route it through `reading-artifacts` and `analyzing-artifacts`, then return the intake map. On continuation, reuse the existing intake map. This guide-intake rule does not apply when the supplied document is a completed assignment/report: a request to read or remember it uses a completed-assignment read-back, and a request to compare it with a later guide identifies the remaining criteria and uses a narrow comparison.
-Chat explanations, questions, summaries, and requirement analysis follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence. Do not list unexplained keywords, and do not produce a line-by-line translation. Deliverables stay in the locked submission language without interleaved bilingual text.
+## Allowed Router Capabilities
 
-Use the [criteria-writing contract](../../references/criteria-writing-contract.md) for activation, state, and authorization. Infer `task_mode` from the requested operation, not the words “report” or “thesis”. For source files, invoke `reading-artifacts` and applicable `analyzing-artifacts` before scoping; chat criteria need no artificial file step.
+This router coordinates workflow only. Substantive artifact content remains delegated to specialists.
 
-| task_mode | Route and stopping point |
-|---|---|
-| `analyze` | For completed-assignment read-back and remaining-criteria comparison, call `reading-artifacts` and `analyzing-artifacts` as required and skip new intake/scoping; these are source-grounded narrow operations. For criterion analysis, you MUST execute `invoke_skill("scoping-the-brief")` before analysis, and `invoke_skill("analyzing-artifacts")` for substantive artifact interpretation as needed. If several valid interpretations remain after required evidence is sufficient, execute `invoke_skill("brainstorming")`, present 2–3 options, recommend one, and stop for the user's choice. Present interpretation, scope, and evidence needs. Stop at analysis. |
-| `outline` | Invoke `scoping-the-brief` for unresolved scope prerequisites. You MUST execute `invoke_skill("planning-work")` before generating the detailed outline, including criterion, evidence, and visual mapping. If several valid organizations remain, execute `invoke_skill("brainstorming")`, present 2–3 outlines, recommend one, and stop. The user chooses. Do not select one and write. Stop at the outline and wait for feedback; outline approval alone does not authorize drafting. |
-| `draft` | Invoke `scoping-the-brief` / `planning-work` for unresolved contract prerequisites. You MUST physically execute `invoke_skill("drafting-prose")`; it must invoke the selected writing specialist(s). You are forbidden from outputting draft paragraphs without loading `drafting-prose`. Then execute `invoke_skill("reviewing-work")` before delivering the prose. Continue through applicable gates using recorded decisions. |
-| `revise` | Execute `invoke_skill("editing-documents")`, then `invoke_skill("drafting-prose")` for substantive report/thesis rewrites under the contract; it must invoke prose specialists, followed by `invoke_skill("reviewing-work")` before delivery. Typo or wording-only edits stay in `editing-documents`; format-only edits use `formatting-layout`, without writing approval gates. |
+- `list_files(dir)` — locate bounded candidate plans or artifacts.
+- `read_file(path)` — read the Session Checklist contract before a checklist-specific decision.
+- `invoke_skill(name)` — load the required lifecycle, family, or specialist skill.
+- `delegate(role, context)` — optionally use compatible roles when the host supports them.
 
-Scoping owns scope confirmation; planning owns outline decisions. Drafting checks prerequisites without approving them. Reuse applicable decisions and explicit waivers; ask only about unresolved requirements or decisions. An explicit request to write after an outline can change the authorized operation under the contract.
-A user message that only asks for the outline, including `làm dàn ý`, is not analysis approval. If that analysis has not been displayed and approved or explicitly waived, the authorized output is the analysis alone. Do not append the outline.
-Before an image, screenshot, or DOCX-figure claim, execute `invoke_skill("working-with-visuals")` and apply [visual evidence boundary](../../references/visual-evidence-boundary.md). A completed-document read-back keeps document-stated claims separate from visually-observed and runtime-observed claims.
-When an outline or report needs an illustration, embed image markdown with a direct HTTPS image URL that returns the image bytes in the same chat message, with the source citation under it. A wiki File page, a bare URL, a source line without that image markdown, a file path, and a long base64 blob are not images. The outline and the finished section use the same blocks in the same order. One paragraph per heading is not an outline of a multi-part heading. Do not print Claim, Reason, Limit, or Not needed. Skill examples such as BTEC, P1, M1, D1, and a unit number are not this assignment. If the user did not write them, do not put them in a question option and do not open a programme card. Do not create or code-draw a substitute unless the user asks for that drawing or agrees after you ask. Silence is not agreement.
+## Output and completion
 
-For chat-only outputs, review the requested content without claiming file verification or creation. For file deliverables, retain `verifying-artifacts` → `packaging-deliverables`. Spreadsheet, presentation, conversion, and other unrelated routes remain unchanged.
+Return a concise route decision, the loaded skills, the current stopping point, and any real blocker. Before delivering a file result, ensure the responsible specialist routes it through `verifying-artifacts`; package only verified delivery files. Before delivering substantial chat prose, ensure `reviewing-work` has completed. Do not claim a file, native host action, rendered view, or verification that did not occur.
 
-## Procedure
+## Common mistakes
 
-1. **Confirm Workspace Ownership**
-
-   * Determine whether this is Workspace work, Coding work, Simple Q&A, or the workspace slice of a mixed request.
-   * Coding slices belong to `using-superpowers`.
-
-2. **Select Lifecycle Skills**
-
-   * Compose the lifecycle stages appropriate to the task scope, then execute `invoke_skill(name)` for each selected stage before doing its work. A conceptual route alone does not execute it.
-   * Small tasks run lean; substantial tasks execute only the stages required and authorized for the current outcome.
-
-3. **Enforce Hard Dependencies**
-
-   * No file modification before `reading-artifacts` (and `analyzing-artifacts` for non-trivial modifications).
-   * Criteria-based prose follows the contract's applicable scope and outline prerequisites, including small sections. Other complex or multi-artifact prose needs `planning-work`.
-   * No criterion analysis without an actual `scoping-the-brief` invocation, no detailed outline without `planning-work`, and no draft paragraphs without `drafting-prose` and its selected writing specialist. Recheck this at each stage transition, not only on the first turn.
-   * No file completion claim before `verifying-artifacts` re-opens the real deliverable.
-   * No delivery packaging before verification has passed.
-
-4. **Scope When Material Facts Are Missing**
-
-   * You MUST execute `invoke_skill("scoping-the-brief")` before material ambiguity resolution, criteria analysis, or unresolved scope confirmation required by the criteria-writing contract.
-   * Do not interview when the brief is already clear. Clarification and required scope confirmation are separate; reuse confirmed decisions and explicit waivers.
-   * Invoke `researching-sources` for requested research, including applicable requirements the user adopted. Invoke `citing-sources` for requested/required citations or citations already present in a draft, so section-level references are completed before delivery. Preserve a coherent citation convention in an existing document; use Harvard Style only when citations are required and no style is established under the [citation style rules](../../references/citation-styles.md). Citation repair does not authorize unrelated research or unsolicited citations.
-
-5. **Analyze Before Substantive Modification**
-
-   * Invoke `analyzing-artifacts` after `reading-artifacts` for substantive changes to existing files. For pasted text, the selected scoping or editing skill reads and interprets the supplied content directly.
-   * Simple mechanical edits may proceed directly from reading to the relevant editing specialist.
-
-6. **Plan Proportionally to the Task**
-
-   * You MUST execute `invoke_skill("planning-work")` before a requested outline, unresolved criteria-writing outline prerequisites, or multi-stage, high-risk, multi-artifact, or otherwise complex planning work.
-   * A small criterion can use a short outline in chat; no separate plan file is required.
-   * Do not require a planning stage for trivial or mechanical tasks.
-
-7. **Compose Domain Specialists**
-
-   * You MUST execute `invoke_skill(name)` for the family and specialist skills required by the deliverable. For `task_mode: draft`, execute `invoke_skill("drafting-prose")` before any draft paragraphs; it loads the writing specialist and required style references.
-   * Keep lifecycle responsibilities separate from format-specific procedures.
-
-8. **Review Substantial Deliverables**
-
-   * You MUST execute `invoke_skill("reviewing-work")` after composition and before delivering drafted, graded, multi-section, research, or otherwise substantial content, including chat-only drafts. Do not defer review until after the user's review of the delivered draft.
-   * Do not invoke `reviewing-work` for trivial mechanical fixes. Those proceed to `verifying-artifacts`.
-   * Reviewers return findings; they do not rewrite the artifact wholesale. Fix Critical and Important findings before verification.
-
-9. **Mandatory Verification for Created or Modified Artifacts**
-
-   * Every created or modified artifact must conclude with `verifying-artifacts` before completion is claimed.
-   * A successful command, script, export, or exit code is not sufficient evidence of artifact correctness.
-
-10. **Package After Verification**
-
-    * Invoke `packaging-deliverables` after `verifying-artifacts` for the files being delivered.
-    * Report artifact paths, what changed, what was verified, and residual limitations.
-
-## Typical Routes
-
-Mechanical edit:
-
-`reading-artifacts → relevant editing specialist → verifying-artifacts → packaging-deliverables`
-
-Substantive document revision:
-
-`reading-artifacts → analyzing-artifacts → editing-documents → reviewing-work → verifying-artifacts → packaging-deliverables`
-
-Ambiguous complex deliverable:
-
-With supplied sources: `reading-artifacts → analyzing-artifacts → scoping-the-brief when needed → planning-work → relevant specialists → reviewing-work → verifying-artifacts → packaging-deliverables`.
-Without supplied sources, start with `scoping-the-brief` only for material ambiguity.
-These are possible stages, not permission to exceed the requested operation.
-
-Research deliverable:
-
-`scoping-the-brief when needed → researching-sources → citing-sources → relevant authoring specialist → reviewing-work → verifying-artifacts → packaging-deliverables`
-
-Document formatting / layout:
-
-`reading-artifacts → analyzing-artifacts → formatting-layout → reviewing-work (when substantial) → verifying-artifacts → packaging-deliverables`
-
-Report → Presentation deck:
-
-`reading-artifacts → analyzing-artifacts → planning-work → storyboarding-slides → working-with-presentations → reviewing-work → verifying-artifacts → packaging-deliverables`
-
-Artifact conversion / export:
-
-`reading-artifacts (source) → converting-artifacts → verifying-artifacts (output) → packaging-deliverables`
-
-
-Mixed coding/workspace task:
-
-`workspace router handles workspace slice ↔ using-superpowers handles coding slice`
-
-Do not merge their procedures into a single workflow.
-
-## Common Mistakes to Avoid
-
-* **Reading artifact content in this router:** substantive reading belongs to `reading-artifacts`.
-* **Interviewing by default:** clarify only material gaps; required scope confirmation is a separate contract decision, reused when already recorded.
-* **Asking for information already available:** inspect existing context and artifacts first.
-* **Enforcing analysis on trivial fixes:** simple changes may use `reading-artifacts` → editing specialist → `verifying-artifacts`.
-* **Enforcing planning on trivial work:** keep mechanical edits lean; a required criteria outline can be brief and inline.
-* **Skipping verification because a command exited 0:** command success does not prove layout, typography, formulas, citations, structure, or visual correctness.
-* **Skipping `reviewing-work` on a substantial deliverable:** verification of file integrity is not a substitute for requirement, coherence, citation, or visual review.
-* **Packaging before verification:** `packaging-deliverables` runs only after `verifying-artifacts` has confirmed the files being delivered.
-* **Assuming a missing specialist requires total failure:** attempt a safe lower-level fallback first.
-* **Inlining specialist procedures:** Word, Excel, PDF, presentation, research, and visual procedures belong in their respective skills.
-* **Routing coding work into workspace workflows:** software engineering remains with `using-superpowers`.
-* **Invoking research or citations spontaneously:** keep external research within requested/adopted requirements. Do not add unsolicited formal citations; required or existing citations must still be checked and completed through `citing-sources`.
-* **Treating the listed specialist examples as the complete catalog:** the router must remain extensible.
+- Reading substantive artifact content in the router instead of loading `reading-artifacts`.
+- Forcing a full lifecycle for a trivial task or skipping required stages for a substantial one.
+- Treating a plan, previous workflow, or generic “continue” as permission to exceed the current request.
+- Loading a specialist only in thought instead of with an actual call.
+- Treating an export, command exit code, or visible checklist as proof of completion.
+- Routing Coding work through the workspace workflow.

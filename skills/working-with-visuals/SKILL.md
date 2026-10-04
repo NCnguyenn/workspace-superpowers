@@ -5,82 +5,67 @@ description: Use when inspecting screenshots, DOCX figures, or other static imag
 
 # Working with Visuals
 
-Inspect, generate, edit, format, and verify visual assets, vector graphics (SVG), diagrams, and layered graphic formats (PSD, PSB).
+## Job
 
-Apply the [workflow continuity contract](../../references/workflow-continuity.md).
-Carry the parent document's terminology, scenario, evidence, and visual convention
-into requested assets. An image supplied for inspection is not permission to edit
-it; return inspected facts and limitations to the parent task. Never present an
-illustrative generated image as evidence of an actual project result.
-Before any inspection conclusion, apply [visual evidence boundary](../../references/visual-evidence-boundary.md).
+Inspect, prepare, edit, generate when authorized, and verify visual assets while keeping visual evidence, source provenance, vector fidelity, and layered-edit limitations explicit. An image supplied for inspection is not permission to modify it, and an illustrative image is never proof of a project result.
 
-A media filename is not a relationship ID. Report the `r:embed` ID, its relationship target, the counting scope, and whether the index is 0-based or 1-based.
-Do not convert a PNG width into a CSS viewport, including by assuming DPR is 1.
-Copy every visible line. Keep an ellipsis only when the pixels show it. If a control covers part of a row, say that row is partly covered and do not reduce the visible marks.
-Keep `media opened`, `original image legible`, `rendered document legible`, `supports a claim`, and `criterion satisfied` separate. XML size is a risk, not rendered readability.
-Paste the unedited tool result. If it is absent, say tool execution is unverified. Render each caption once.
+Use [workflow continuity](../../references/workflow-continuity.md) to preserve the parent task’s terminology, scenario, visual convention, source revision, and requested stopping point.
 
-## When to use
+## Evidence boundary
 
-Creating or editing standalone images (PNG, JPG, WEBP), authoring or adjusting vector graphics (SVG), generating diagrams (flowcharts, architecture diagrams, charts in Mermaid or SVG), inspecting visual properties (dimensions, aspect ratio, color profile, resolution), and modifying layered graphics.
+Before making any visual conclusion, apply the [visual evidence boundary](../../references/visual-evidence-boundary.md).
 
-## When not to use
+- A media filename is **not a relationship ID**. For DOCX figures, report `r:embed`, the resolved relationship target, the counting scope, and whether the index is 0-based or 1-based.
+- **Do not convert a PNG width into a CSS viewport**, including by assuming device pixel ratio.
+- Distinguish `media opened`, `original image legible`, `rendered document legible`, `supports a claim`, and `criterion satisfied`.
+- Visible pixels can establish visible pixels, not runtime execution, database values, device identity, or criterion completion.
+- Copy requested visible text faithfully; if an element partly covers a row, state that limitation rather than guessing hidden marks.
 
-* Composing multi-slide presentations or decks (belongs to `working-with-presentations`).
-* Formatting Word/text document layout or typographic margins (belongs to `formatting-layout`).
-* Plotting data charts directly inside spreadsheet workbooks (belongs to `working-with-spreadsheets`).
-* Converting images or documents across file formats (belongs to `converting-artifacts`).
+## Inputs and output
 
-## Visual invariants (§10, §14, §17)
+**Inputs:** asset path or source URL, intended use, source/provenance, requested change, destination medium, visual constraints, and whether the task is read-only or authoring.
 
-Apply [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md)
-for selection, provenance, reuse conditions, actual previews and unavailable-host
-fallbacks. Return the inspected or prepared asset to its calling analysis,
-outline or drafting operation. An available preview must be shown there; asset
-preparation does not authorize starting the next writing stage.
+**Output:** inspected visual facts or a verified visual artifact with dimensions, format, aspect ratio, provenance, transformation details, evidence status, and any unsupported check.
 
-* **Vector preservation rule:** Never unintentionally rasterize vector graphics (SVG). Keep SVG text elements editable, preserve vector coordinates and viewBox attributes, and ensure scalable fidelity across zoom levels.
-* **Layered graphic contract (PSD/PSB) (§10, §17):** Only attempt layered modifications when the harness exposes explicit layered capabilities (`inspect_layered_image`, `edit_layered_image`). Without layered capabilities, report the limitation transparently and fall back to producing flattened visual previews. Never claim an editable layered edit was performed if only a flattened raster was produced.
-* **Aspect ratio & resolution integrity:** Preserve original aspect ratios to avoid horizontal/vertical stretching or squishing. Validate visual resolution against destination medium (minimum 300 DPI for print deliverables, 72–150 DPI for web/screen presentation).
-* **Visual QA via rendering:** A file write or script exit code 0 is not proof of visual correctness. Reopen and visually verify rendered output via `render_image(file)` whenever visual rendering capabilities exist.
+## Method
 
-## Procedure
+1. **Inspect the actual asset.** Read pixels, vector markup, layers, metadata, dimensions, aspect ratio, color space, text, and relationship data appropriate to the file type.
+2. **Choose the authorized pathway.**
+   - For a requested existing illustration, locate and display the actual image with a direct HTTPS URL that returns image bytes; do not substitute a drawing or generated image.
+   - For a requested or explicitly approved diagram, create or edit SVG, Mermaid, or another declared visual representation.
+   - For a raster change, crop, resize, or optimize while preserving the intended aspect ratio.
+   - For a layered asset, modify layers only when explicit layered capabilities exist.
+3. **Preserve provenance and meaning.** Record whether the asset is external, original explanatory, adapted, user-project evidence, or an authorized illustration. Keep a generated or original diagram labeled as such.
+4. **Verify the result.** Reopen the target and use `verifying-artifacts`; check format, dimensions, clipping, distortion, readability, and rendering where available.
+5. **Return to the calling task.** Asset preparation does not authorize an outline, draft, or deck unless that operation is already authorized.
 
-1. **Inspect visual asset:** For an existing image or graphic, use `inspect_image(file)` or `inspect_layered_image(file)` to check dimensions, aspect ratio, color space (RGB/CMYK), layer structure, and vector elements.
-2. **Determine visual pathway:**
-   - *Requested illustration:* If the user asked to see an image and did not ask to draw one, do not author SVG, Mermaid, HTML, or a generated image. Return a direct HTTPS image URL that returns the image bytes, preferably the final upload.wikimedia.org URL, so the calling message can embed it as image markdown. A wiki File page, a bare URL, a source line without that image markdown, a file path, and a long base64 blob are not images. Do not invent an upload path. Code-draw only if the user asked for a drawing or agreed after being asked.
-   - *Vector/Diagram:* Author or adjust declarative vector code (SVG, Mermaid) only when that drawing was requested or agreed. Preserve viewports and vector paths.
-   - *Raster image:* Crop, resize, or optimize an existing image using `edit_image(file, ...)` while preserving aspect ratio. Do not generate a new illustration to replace a requested source image.
-   - *Layered asset:* Modify layers, canvas, or masks via `edit_layered_image(file, ...)` when supported.
-3. **Verify visual artifact:** Reopen the resulting artifact with `verifying-artifacts` and `verify_artifact(file)`. Confirm dimensions, file size, absence of clipping or distortion, and render preview via `render_image(file)` where available.
-4. **Disclose limitations:** Transparently report any unverified visual properties or unsupported layered operations in final packaging.
+## Fidelity rules
+
+- **Vector preservation:** do not unintentionally rasterize vector graphics. Keep SVG geometry, viewBox, paths, and editable text where required.
+- **Layered limitation:** without `inspect_layered_image(file)` and `edit_layered_image(file, ...)`, report the layered-edit limitation. A flattened export is not an editable layered change.
+- **Aspect ratio and resolution:** preserve proportions and select resolution appropriate to the requested print or screen use. Do not infer real-world size or device viewport from pixels.
+- **Visual QA:** a file write or script result is not visual proof. Render the actual result when a renderer is available; otherwise mark rendered appearance unverified.
+
+For source selection, attribution, previews, and Word placement, use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md). The shared contract governs whether a visual is required, requested, blocked, or not needed; do not create a decorative asset just because a section exists.
 
 ## Required capabilities
 
-Abstract capability names from §11, resolved by the harness adapter. Never a tool name.
+Abstract capabilities are resolved by the host adapter.
 
-* `inspect_image(file)` — inspect raster image dimensions, color space, DPI, and format metadata.
-* `edit_image(file, ...)` — crop, resize, adjust, or filter raster images.
-* `inspect_layered_image(file)` — inspect layer tree, smart objects, masks, and text layers in PSD/PSB assets.
-* `edit_layered_image(file, ...)` — apply edits to layers, masks, or text in layered graphics.
-* `render_image(file)` — render image preview for visual QA and layout verification.
-* `verify_artifact(file)` — verify image file header, dimensions, and compression health.
-* `read_file(path)` / `write_file(path, content)` — read and write SVG markup, Mermaid source, or raw graphic files.
+- `inspect_image(file)` and `edit_image(file, ...)` — raster inspection and edits.
+- `inspect_layered_image(file)` and `edit_layered_image(file, ...)` — layered files when supported.
+- `render_image(file)` — rendered visual inspection.
+- `verify_artifact(file)` — visual-file integrity.
+- `read_file(path)` and `write_file(path, content)` — SVG, Mermaid, and text visual sources.
 
-## Dependencies
+## Completion and fallback
 
-* Follows `reading-artifacts` and `analyzing-artifacts` when inspecting an existing visual file.
-* Created or modified files conclude with `verifying-artifacts` before file completion is claimed. Read-only visual analysis reports inspected coverage and limits.
-
-## Fallback
-
-* **No native image manipulation tool:** Generate clean, self-contained SVG code or declarative Mermaid diagram code that renders without external binary dependencies.
-* **No layered editor for PSD/PSB:** Inspect available flattened preview, clearly report the inability to edit binary layer trees, and offer to deliver an SVG or high-resolution PNG alternative.
+A changed visual is complete only after reopening and verifying the target through `verifying-artifacts`. If native image manipulation is unavailable, provide a supported declarative SVG or Mermaid diagram only when drawing is authorized. If layered editing is unavailable, provide a flattened preview or another supported alternative and state that the original layer structure was not edited.
 
 ## Common mistakes
 
-* Converting vector SVG graphics into low-resolution raster bitmaps.
-* Silently stretching or squishing images without maintaining proportional aspect ratios.
-* Claiming a PSD layer was updated when only a flattened PNG was exported.
-* Assuming exit code 0 from an image conversion script means the image is visually intact without re-opening it.
-* Producing tiny unreadable diagram labels or clipped SVG viewports.
+- Rasterizing editable vectors without an explicit reason.
+- Stretching images or diagrams to fit a space.
+- Claiming a layered file changed when only a flattened preview was exported.
+- Treating a screenshot as proof of runtime behavior or a PNG width as a CSS viewport.
+- Claiming a visual check from a successful command without reopening or rendering the asset.
