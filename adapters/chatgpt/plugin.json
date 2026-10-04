@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "workspace-superpowers",
-  "version": "0.1.6-beta",
+  "version": "0.1.7-beta",
   "description": "Read-only Workspace Superpowers skills and MCP retrieval service for ChatGPT Desktop."
 }

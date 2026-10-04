@@ -74,7 +74,7 @@ export function listSkills(packageRoot = DEFAULT_PACKAGE_ROOT) {
 }
 
 export function getSkill(id, packageRoot = DEFAULT_PACKAGE_ROOT) {
-  if (!SKILL_ID.test(id) || !listSkills(packageRoot).some((skill) => skill.id === id)) {
+  if (typeof id !== 'string' || !SKILL_ID.test(id) || !listSkills(packageRoot).some((skill) => skill.id === id)) {
     throw new Error('Unknown skill ID');
   }
   const text = readRegularFile(packagePath(packageRoot, 'skills', id, 'SKILL.md'));

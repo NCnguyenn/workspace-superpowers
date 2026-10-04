@@ -1,11 +1,20 @@
 import http from 'node:http';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { z } from 'zod';
 import { capabilityRecord, DEFAULT_PACKAGE_ROOT, getSkill, getStaticContent, listSkills } from './catalog.mjs';
 
-const SERVER_INFO = { name: 'workspace-superpowers', version: '0.1.6-beta' };
+function getPackageVersion(packageRoot) {
+  try {
+    const pkg = JSON.parse(readFileSync(resolve(packageRoot, 'package.json'), 'utf8'));
+    return pkg.version ?? '0.1.7-beta';
+  } catch {
+    return '0.1.7-beta';
+  }
+}
 
 function result(value) {
   return {
@@ -19,7 +28,8 @@ function errorResult(error) {
 }
 
 export function createWorkspaceSuperpowersServer(packageRoot = DEFAULT_PACKAGE_ROOT) {
-  const server = new McpServer(SERVER_INFO);
+  const version = getPackageVersion(packageRoot);
+  const server = new McpServer({ name: 'workspace-superpowers', version });
   server.registerResource('workspace-capabilities', 'workspace-superpowers://capabilities', {
     description: 'Read-only capability and security boundary for this packaged skill service.',
     mimeType: 'application/json',

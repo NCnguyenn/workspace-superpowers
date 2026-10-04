@@ -46,6 +46,9 @@ test('package-level contracts and templates use the static resource route', () =
 test('unknown and traversal-like skill IDs are rejected', () => {
   assert.throws(() => getSkill('../package'), /Unknown skill ID/);
   assert.throws(() => getSkill('not-a-real-skill'), /Unknown skill ID/);
+  assert.throws(() => getSkill(null), /Unknown skill ID/);
+  assert.throws(() => getSkill(undefined), /Unknown skill ID/);
+  assert.throws(() => getSkill(123), /Unknown skill ID/);
 });
 
 
