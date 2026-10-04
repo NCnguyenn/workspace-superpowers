@@ -67,45 +67,46 @@ of `skills/<name>/SKILL.md` would produce the same `skill` ID for every entry on
 the inspected host. The generated adapter note is not written back to portable
 source skills.
 
-The declared permissions are `agent.prompt.inject`, `agent.extension`,
-`agent.tool.register`, `ui.panel` and `session.read`. PI-Desktop owns all grants;
-declaring them in an archive does not grant them.
+The declared permissions are `agent.prompt.inject` and `agent.extension`.
+PI-Desktop owns all grants; declaring them in an archive does not grant them.
 
-## Native checklist owner (0.1.7-beta)
+## Built-in checklist (corrected 0.1.7-beta build)
 
-The plugin SDK loads `main.js` with `globalThis.pi`, registers
-`plugin_local_workspace_superpowers_workspace_checklist`, and supplies its
-execution context with host `sessionId` and `turnId`. The state owner is
-`ChecklistStore` in `checklist-bridge.cjs`, scoped by that host session identity.
-It retains request, checklist and task IDs across turns and side questions.
-Counts derive from task rows; cancelled work never becomes completed work.
+The model uses PI-Desktop's existing `TodoWrite` capability for activated
+multi-stage checklists. The host executes the tool and displays its checklist
+in chat. The bootstrap extension only refreshes its managed system-prompt block;
+it registers no `tool_call` hook and leaves TodoWrite unblocked, even if an old
+plugin checklist tool is present in a catalog. The plugin-process entry does
+not register a checklist tool, show command, panel or callback.
 
-The manifest's `ui.panel` points to `checklist-panel.html`. The native host opens
-the panel and exposes `pluginBridge.invoke`; the local renderer displays exact
-statuses, counts, approval/blocker reasons and next actions. Panel callbacks use
-session, checklist, revision and binding identities, and reject stale actions.
-Show/hide only change visibility. Pause retains unresolved approvals and evidence.
-Replace archives the old checklist and creates a separate identity. Reopen
-invalidates only affected tasks and their dependents. Omission requires an
-explicit reason and dependency rescoping before downstream work can advance.
+Read [the checklist runtime](checklist-runtime.md) for the actual TodoWrite
+schema and portable-state mapping. `native-checklist.cjs` is a pure argument
+mapper, with no host calls or state store. Portable identities, dependencies,
+approvals, blocker evidence and request history stay in retained conversation
+context. The tool receives only content, supported status and optional priority.
+Waiting, blocked and paused rows have explicit content prefixes and remain
+unfinished; cancellation never counts as completion. Reopening invalidates
+affected results and dependent verification. Pause/resume does not clear gates.
 
-Each mutation emits `workspace.checklist.transition` with an ISO timestamp,
-correlation ID, source, input payload and before/after snapshots. Native tool
-transitions also use the SDK log. The panel exports up to 256 retained transitions
-with a dropped-record count. State is transient in the plugin process; this
-adapter writes no session database or independent task store.
+TodoWrite replaces the selected full list. It supplies no plugin lifecycle,
+readback or show/hide API. Hiding suppresses routine progress publication; it
+cannot promise to close a host card. Recovery reuses only evidence-supported
+retained state, with minimum user confirmation when needed. No internal
+`tools.execute` call, session SDK read or database write is used.
 
-Recovery uses `pi.session.getLlmContext()` only during an authorized native tool
-invocation. It accepts the exact tool's same-session, hash-validated JSON
-receipts, not user text or assistant summaries. Restart may lose panel changes
-after the last receipt; advancement requires explicit user confirmation. Missing
-or compacted receipts produce an unavailable-state limitation. A recovered
-snapshot is not proof of full compaction or restart acceptance.
+The old 0.1.7-beta bridge/panel sources and tests remain in the repository as
+historical implementation evidence, but are not imported by the default entry
+or included in the replacement archive. Its five-permission panel probe is
+historical and does not validate the built-in checklist path. The replacement
+requests only the two bootstrap/catalog permissions.
+The original panel archive and corrected archive both say `0.1.7-beta`, at the
+user's request. Distinguish them by archive directory/hash and manifest shape,
+not the version label alone. The corrected archive has no UI contribution.
 
-When the native owner is in the runtime catalog, the extension rejects
-competing `TodoWrite` calls. The older mirror remains available only when the
-native owner is absent. Package and SDK tests are separate from live-host
-permission, rendering and lifecycle verification.
+When TodoWrite is available, do not print a competing routine Markdown task
+list. If it is unavailable or fails, report the limit and use the portable
+Markdown fallback without claiming native UI. Local regression and archive
+checks do not prove a live model call, visible rows or native lifecycle acceptance.
 
 ## PI-Desktop 0.16.0 native checklist source evidence
 
@@ -125,18 +126,25 @@ available; it is not live SCL acceptance and does not admit PI-Desktop to Phase
   500 Unicode characters with a warning.
 - The sidecar routes tool execution through its host-owned
   `tools.execute` call with `sessionId`, `turnId`, and `toolCallId`. The
-  extension must not call that internal route. The legacy pure mapper is
+  extension must not call that internal route. The pure mapper is
   packaged for contract testing and documentation; the
   model's host-owned call is not programmatically intercepted by the extension.
 - The sidecar exposes `session_before_compact`, `session_compact`, and related
   lifecycle event names. Their presence does not prove checklist state
   restoration, renderer ownership, action callbacks, or request scoping.
 
-The source observation supports a **native mirror path** in the PI adapter. It
-does not prove that a live model invoked `TodoWrite`, that a native panel owns
-the visible rows/counts, that permissions are granted for this package, or
-that any Phase 4 SCL case passed independent review. Those claims remain
-evidence-gated in the readiness pack.
+On 2026-10-04 a fresh read-only inspection found installed PI-Desktop `0.16.1`
+(product version `0.16.1.0`). Its `sidecar.js` SHA-256 was
+`77719B37F27130F871C5C0C6148D2D1C74E87BF109FD079DC6CFE9061240959F`.
+The schema definition `Ei` and description `xi` on line 7 preserve the exact
+TodoWrite shape and limits above; the agent catalog still includes TodoWrite.
+This was source inspection only, without application/configuration changes or
+interaction with the running UI.
+
+These source observations support using the **built-in checklist path** in the
+PI adapter. They do not prove a live model invocation, visible checklist
+rows/counts, granted permissions or any live SCL acceptance. A fresh-chat smoke
+check against the installed replacement is still needed.
 
 ## Question UI capability boundary
 

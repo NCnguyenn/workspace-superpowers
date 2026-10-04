@@ -7,6 +7,7 @@ const main = require('./main.cjs');
 const manifest = JSON.parse(readFileSync(new URL('./manifest.json', import.meta.url), 'utf8'));
 const extensionPath = new URL('./agent-extension.cjs', import.meta.url);
 const extension = existsSync(extensionPath) ? require('./agent-extension.cjs') : main;
+const { toTodoWriteArgs } = require('./native-checklist.cjs');
 
 function host() {
   const handlers = new Map();
@@ -18,8 +19,9 @@ function host() {
 }
 
 test('desktop manifest uses the actual native agent extension permission and entry', () => {
-  assert.ok(manifest.permissions.includes('agent.extension'));
+  assert.deepEqual(manifest.permissions, ['agent.prompt.inject', 'agent.extension']);
   assert.deepEqual(manifest.contributes?.agentExtensions, ['adapters/pi/agent-extension.js']);
+  assert.equal(manifest.ui, undefined, 'the built-in checklist needs no plugin panel');
 });
 
 test('native agent extension exposes a default export for the desktop sidecar loader', () => {
@@ -38,11 +40,32 @@ test('desktop plugin lifecycle does not register an ineffective notification hoo
   await main.onUnload();
 });
 
+test('default plugin lifecycle leaves tools, commands, panels and session state to the host', async () => {
+  const calls = [];
+  const record = (name) => async () => { calls.push(name); };
+  await main.onLoad({
+    agent: { registerTool: record('registerTool'), unregisterTool: record('unregisterTool') },
+    commands: { register: record('registerCommand'), unregister: record('unregisterCommand') },
+    ui: { openPanel: record('openPanel'), closePanel: record('closePanel') },
+    session: { getLlmContext: record('getLlmContext') },
+  });
+  await main.onUnload();
+  assert.deepEqual(calls, []);
+  assert.equal(main.onPanelInvoke, undefined, 'no competing renderer callback is exposed');
+});
+
+test('default plugin loads without checklist SDK permissions or capabilities', async () => {
+  await assert.doesNotReject(async () => {
+    await main.onLoad({});
+    await main.onUnload();
+  });
+});
+
 test('native agent extension returns a prompt without mutating the host event', async () => {
   const { api, handlers } = host();
   extension(api);
   extension(api);
-  assert.equal(handlers.size, 2);
+  assert.equal(handlers.size, 1);
   const event = Object.freeze({ systemPrompt: 'Project custom constraints.' });
   const result = await handlers.get('before_agent_start')(event);
   assert.ok(result.systemPrompt.startsWith(event.systemPrompt));
@@ -52,14 +75,28 @@ test('native agent extension returns a prompt without mutating the host event', 
   assert.equal(event.systemPrompt, 'Project custom constraints.');
 });
 
-test('native owner prevents the model from creating a competing TodoWrite mirror', async () => {
-  const { api, handlers } = host();
-  api.getAllTools = () => [{ name: 'plugin_local_workspace_superpowers_workspace_checklist' }];
-  extension(api);
-  assert.equal(typeof handlers.get('tool_call'), 'function');
-  const result = await handlers.get('tool_call')({ toolName: 'TodoWrite', input: { todos: [] } });
-  assert.equal(result.block, true);
-  assert.match(result.reason, /workspace_checklist/);
+test('TodoWrite remains unblocked even with the retired plugin checklist in the catalog', async () => {
+  const input = toTodoWriteArgs([
+    { title: 'Read supplied source', status: 'completed' },
+    { title: 'Approve supported result', status: 'awaiting_user' },
+    { title: 'Supply missing input', status: 'blocked' },
+    { title: 'Paused follow-up', status: 'paused' },
+    { title: 'Omitted export', status: 'cancelled' },
+    { title: 'Reopened review', status: 'pending' },
+  ]);
+  for (const competingTool of [true, false]) {
+    const { api, handlers } = host();
+    api.getAllTools = () => [
+      { name: 'TodoWrite' },
+      ...(competingTool ? [{ name: 'plugin_local_workspace_superpowers_workspace_checklist' }] : []),
+    ];
+    extension(api);
+    const original = structuredClone(input);
+    const result = await handlers.get('tool_call')?.({ toolName: 'TodoWrite', input });
+    assert.notEqual(result?.block, true);
+    assert.deepEqual(input, original, 'the extension must not rewrite host checklist arguments');
+    assert.equal(handlers.has('tool_call'), false, 'bootstrap must not intercept TodoWrite');
+  }
 });
 
 test('native bootstrap requires minimal meaning-preserving edits for only requests', async () => {
@@ -72,15 +109,41 @@ test('native bootstrap requires minimal meaning-preserving edits for only reques
   assert.match(result.systemPrompt, /do not relabel supplied values/);
 });
 
-test('native bootstrap documents the PI-Desktop TodoWrite checklist mirror boundary', async () => {
+test('injected bootstrap selects the built-in checklist and preserves its schema boundary', async () => {
   const { api, handlers } = host();
   extension(api);
   const result = await handlers.get('before_agent_start')({ systemPrompt: 'Base' });
-  assert.match(result.systemPrompt, /TodoWrite/);
+  assert.match(result.systemPrompt, /host's built-in `TodoWrite`/);
   assert.match(result.systemPrompt, /replaces the full list/i);
   assert.match(result.systemPrompt, /at most one item may be in_progress/i);
   assert.match(result.systemPrompt, /awaiting_user|blocked|paused/);
   assert.match(result.systemPrompt, /Markdown fallback/i);
+  assert.doesNotMatch(result.systemPrompt, /plugin_local_workspace_superpowers_workspace_checklist|Legacy TodoWrite|native panel owns/);
+  assert.match(result.systemPrompt, /do not print a second.*Markdown checklist/i);
+});
+
+test('checklist runtime uses the host tool without inventing lifecycle or visibility APIs', () => {
+  const runtime = readFileSync(new URL('./checklist-runtime.md', import.meta.url), 'utf8');
+  assert.match(runtime, /host's built-in `TodoWrite`/);
+  assert.match(runtime, /approvalEvidence|explicit user approval/i);
+  assert.match(runtime, /resolution evidence/i);
+  assert.match(runtime, /cancelled.*not.*completed/i);
+  assert.match(runtime, /reopen[\s\S]{0,120}dependen/i);
+  assert.match(runtime, /no.*show.*hide.*API/i);
+  assert.match(runtime, /Markdown.*not.*native UI/i);
+  assert.doesNotMatch(runtime, /plugin_local_workspace_superpowers_workspace_checklist|checklistId.*expectedRevision|pluginBridge|openPanel/);
+});
+
+test('refreshing a stale managed bootstrap removes TodoWrite suppression', async () => {
+  const { api, handlers } = host();
+  extension(api);
+  const stale = 'Keep project rules.\n<!-- workspace-superpowers:runtime:begin -->\n'
+    + 'Use plugin_local_workspace_superpowers_workspace_checklist instead of TodoWrite.\n'
+    + '<!-- workspace-superpowers:runtime:end -->';
+  const result = await handlers.get('before_agent_start')({ systemPrompt: stale });
+  assert.ok(result.systemPrompt.startsWith('Keep project rules.'));
+  assert.doesNotMatch(result.systemPrompt, /plugin_local_workspace_superpowers_workspace_checklist/);
+  assert.match(result.systemPrompt, /host's built-in `TodoWrite`/);
 });
 
 test('each rebuilt native system prompt receives bootstrap, including after compaction', async () => {

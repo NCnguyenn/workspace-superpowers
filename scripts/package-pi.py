@@ -47,7 +47,7 @@ def collect(root):
                     relative = (Path(directory) / name).relative_to(root).as_posix()
                     files[relative] = source_bytes(root, relative)
     manifest = json.loads(source_bytes(root, 'adapters/pi/manifest.json'))
-    if manifest['id'] != PLUGIN_ID or manifest['permissions'] != ['agent.prompt.inject', 'agent.extension', 'agent.tool.register', 'ui.panel', 'session.read']:
+    if manifest['id'] != PLUGIN_ID or manifest['permissions'] != ['agent.prompt.inject', 'agent.extension']:
         raise ValueError('Unexpected plugin identity or permissions')
     if manifest.get('contributes') != {'agentExtensions': ['adapters/pi/agent-extension.js']}:
         raise ValueError('Expected the native PI-Desktop bootstrap extension')
@@ -78,6 +78,10 @@ def collect(root):
             'For a development-directory load, use the actual plugin path configured in the project bootstrap. '
             'Resolve relative links from this document, not the working project. '
             'Read [the host mapping](../../adapters/pi/tools.md) when mapping conceptual capabilities.\n'
+            'For activated Session Checklists, the PI bootstrap and '
+            '[checklist runtime](../../adapters/pi/checklist-runtime.md) override portable Markdown rendering: '
+            "use the host's built-in `TodoWrite` when available. Markdown is fallback only; "
+            'do not print a competing routine checklist or use a plugin panel.\n'
         )
         files[path] += footer.encode('utf-8')
     if not 1 <= len(skills) <= 32 or not any(s['id'] == 'using-workspace-superpowers' for s in skills):
@@ -91,10 +95,8 @@ def collect(root):
     files['main.js'] = source_bytes(root, 'adapters/pi/main.cjs')
     files['adapters/pi/agent-extension.js'] = source_bytes(root, 'adapters/pi/agent-extension.cjs')
     files['adapters/pi/bootstrap-runtime.cjs'] = source_bytes(root, 'adapters/pi/bootstrap-runtime.cjs')
-    for name in ('checklist-bridge.cjs', 'checklist-panel.html', 'checklist-panel.js'):
-        files[f'adapters/pi/{name}'] = source_bytes(root, f'adapters/pi/{name}')
     # Small executable adapter helpers used by the native route boundaries.
-    # Keep them beside main.js so the packaged runtime exercises the same code.
+    # Keep the pure TodoWrite mapper; the retired competing bridge/panel is not shipped.
     for name in ('native-checklist.cjs', 'revision-export-route.cjs', 'tracking-checkpoint.mjs', 'project-survey.mjs'):
         candidate = root / 'adapters' / 'pi' / name
         if candidate.is_file():

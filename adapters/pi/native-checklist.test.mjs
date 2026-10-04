@@ -75,3 +75,36 @@ test('rejects invalid native TodoWrite cardinality and conflicting active rows',
     /at most 50/
   );
 });
+
+test('native payload excludes portable identities, dependencies and gate evidence', () => {
+  const result = toTodoWriteArgs([
+    { id: 'review', title: 'Approve revision', status: 'awaiting_user', priority: 'high',
+      dependsOn: ['source'], reason: 'Review pending', nextAction: 'Approve revision',
+      approvalEvidence: null, resolutionEvidence: null },
+  ]);
+  assert.deepEqual(result, {
+    todos: [{ content: '[awaiting_user] Approve revision', status: 'in_progress', priority: 'high' }],
+  });
+});
+
+test('full replacements preserve cancellation and show reopened work as unfinished', () => {
+  const tasks = [
+    { title: 'Source analysis', status: 'completed' },
+    { title: 'Optional export', status: 'cancelled' },
+    { title: 'Dependent review', status: 'completed' },
+  ];
+  const original = toTodoWriteArgs(tasks);
+  const reopened = toTodoWriteArgs(tasks.map((task, index) =>
+    index === 0 || index === 2 ? { ...task, status: 'pending' } : task));
+  assert.deepEqual(original.todos.map(t => t.status), ['completed', 'cancelled', 'completed']);
+  assert.deepEqual(reopened.todos.map(t => t.status), ['pending', 'cancelled', 'pending']);
+  assert.deepEqual(reopened.todos.map(t => t.content), original.todos.map(t => t.content));
+});
+
+test('accepts the actual host schema boundary of 50 rows and an empty full replacement', () => {
+  assert.equal(toTodoWriteArgs(Array.from({ length: 50 }, (_, index) =>
+    ({ title: `Milestone ${index + 1}`, status: 'pending' }))).todos.length, 50);
+  assert.deepEqual(toTodoWriteArgs([]), { todos: [] });
+  assert.throws(() => toTodoWriteArgs([{ title: 'Unknown state', status: 'skipped' }]), /Unsupported portable/);
+  assert.throws(() => toTodoWriteArgs([{ title: ' ', status: 'pending' }]), /non-empty/);
+});

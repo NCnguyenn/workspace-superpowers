@@ -6,7 +6,7 @@ It is not a coding framework, not a UI plugin, and not a document-generator libr
 
 Core lifecycle: **route → read supplied sources → analyze → scope when needed → plan → draft/edit → review → verify → package**. Stages follow the requested operation; without supplied sources, scope material unknowns first. Trivial file edits skip ceremony, never final file verification; chat-only content does not require a generated file.
 
-For genuinely multi-stage Workspace work, the router may show a transient **Session Checklist** in normal chat responses. It is outcome-based and request-scoped, stays hidden for simple operations, and does not replace the durable `work-plan.md` record. The portable contract remains host-independent and has no native state store. The PI-Desktop adapter can mirror an activated checklist through the host's built-in `TodoWrite` tool when that tool is present, while preserving Markdown as the canonical state and fallback. Full native Phase 4 acceptance remains **BLOCKED** until retained lifecycle traces and independent review exist. See [the session progress contract](references/session-progress.md) and the PI-Desktop mapping in [adapters/pi/tools.md](adapters/pi/tools.md).
+For multi-stage Workspace work, the router may maintain a transient **Session Checklist**. It is outcome-based and request-scoped, stays hidden for simple operations, and does not replace the durable `work-plan.md` record. The portable contract remains host-independent, with state in retained conversation context. The PI-Desktop 0.1.7-beta adapter uses the host's built-in `TodoWrite` and checklist in chat; it leaves that tool unblocked and ships no competing checklist tool or panel. Markdown remains the fallback when the host capability is unavailable and is not native UI. Portable approval, blocker, cancellation and reopening rules remain intact. Live behavior of the installed replacement requires a fresh-chat smoke check; local tests are not Phase 4 native acceptance. See [the session progress contract](references/session-progress.md) and the PI-Desktop mapping in [adapters/pi/tools.md](adapters/pi/tools.md).
 
 The root `package.json` `"pi"` field registers the Pi CLI extension and skills. PI-Desktop uses its separate generated manifest. Portable skills depend on neither host API.
 
@@ -14,23 +14,23 @@ Deliverables and repository content default to English, even when the user commu
 
 See the [design specification](docs/workspace-superpowers-design.md).
 See [the changelog](CHANGELOG.md) for changes by version, historical build labels,
-and validation limits through 0.1.6-beta.
+and version-specific validation limits.
 
 ## PI-Desktop local preview
 
-Build an installable package for PI-Desktop 0.15.9+ with Python 3.9+ (standard library only):
+Build an installable package for PI-Desktop 0.16.0+ with Python 3.9+ (standard library only):
 
 ```powershell
 python scripts/test-package-pi.py
-python scripts/package-pi.py --out dist/pi-orchestration-0.1.6-beta
+python scripts/package-pi.py --out dist/pi-todowrite-0.1.7-beta-fixed-20261004
 ```
 
-Install the resulting `.piplug` through the Plugins page. Version 0.1.6-beta
+Install the resulting `.piplug` through the Plugins page. Version 0.1.7-beta
 requires `agent.prompt.inject` for the skill catalog and **`agent.extension`** for
 native prompt injection. Review the permission change in PI-Desktop; building
 this repository never grants it. The plugin retains the same ID and 24 skill IDs.
 See [installation and rollback](adapters/pi/install.md) and
-[release notes](docs/releases/0.1.6-beta.md).
+[the compatibility fix](docs/verification/pi-desktop-todowrite-compatibility-20261004.md).
 
 The native extension returns a thin bootstrap from `before_agent_start` on every
 agent turn, including turns after compaction. Managed runtime blocks are refreshed

@@ -1,4 +1,7 @@
-/** Execute a built package through the pinned, installed PI-Desktop SDK loader.
+/** Historical panel-architecture probe through the pinned PI-Desktop 0.16.0 SDK.
+ * This does not validate built-in TodoWrite packages, even with a 0.1.7-beta label.
+ * Use the current
+ * adapter regressions/package checks and an operator-run fresh-chat smoke test.
  * The embedding IPC peer is simulated: this is NOT a live renderer/grant probe.
  * No installed configuration, session database, credentials or network is used.
  */
@@ -15,6 +18,12 @@ const options = Object.fromEntries(process.argv.slice(2).map(arg => {
   return [match[1], match[2]];
 }));
 assert(options.asar && options.plugin, 'Use --asar=PATH --plugin=PATH [--out=PATH]');
+const manifest = JSON.parse(await readFile(join(resolve(options.plugin), 'manifest.json'), 'utf8'));
+assert.equal(manifest.id, 'local.workspace-superpowers');
+assert.equal(manifest.ui?.panel, 'adapters/pi/checklist-panel.html',
+  'This historical panel probe requires retired checklist panel architecture; use current TodoWrite regression/package checks');
+assert.equal(manifest.version, '0.1.7-beta',
+  'This historical panel probe only supports 0.1.7-beta; use current TodoWrite regression/package checks for the replacement');
 const PIN = '17a2993bd28737edf74489ccb444d5ae403eb3b3c65ef10d6dd638ec0d3db2ef';
 const archive = await readFile(resolve(options.asar));
 assert.equal(createHash('sha256').update(archive).digest('hex'), PIN, 'Unknown PI-Desktop ASAR; inspect SDK before probing');
@@ -23,9 +32,6 @@ const base = 8 + archive.readUInt32LE(4);
 let entry = header;
 for (const part of 'out/main/plugin-host-process.js'.split('/')) entry = entry.files[part];
 const sdkSource = archive.subarray(base + Number(entry.offset), base + Number(entry.offset) + entry.size);
-const manifest = JSON.parse(await readFile(join(resolve(options.plugin), 'manifest.json'), 'utf8'));
-assert.equal(manifest.id, 'local.workspace-superpowers');
-assert.equal(manifest.ui.panel, 'adapters/pi/checklist-panel.html');
 await readFile(join(resolve(options.plugin), manifest.ui.panel));
 const temp = await mkdtemp(join(tmpdir(), 'workspace-checklist-sdk-'));
 const sdkFile = join(temp, 'native-plugin-host.mjs');

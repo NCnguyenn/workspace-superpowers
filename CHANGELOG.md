@@ -1,6 +1,7 @@
 # Changelog
 
-Changes are listed newest first. The current package version is **0.1.6-beta**.
+Changes are listed newest first. The current package version is **0.1.7-beta**
+(corrected build retaining the version label at the user's request).
 Historical entries below were reconstructed from retained local package contents,
 the Git history, and the criterion workflow report. They describe implementation
 changes, not proof of publication or successful execution in PI-Desktop.
@@ -11,6 +12,34 @@ releases. The changes after the existing 0.1.1 commit are being published as one
 consolidated source update; this changelog does not imply separate historical
 commits or tags for those builds.
 
+
+## 0.1.7-beta — 2026-10-04, corrected build retaining the version label
+
+- At the user's request, retain `0.1.7-beta` for the TodoWrite compatibility fix.
+  Synchronize active version metadata and package a new archive under
+  `dist/pi-todowrite-0.1.7-beta-fixed-20261004`; preserve the original panel archive
+  and earlier 0.1.8-beta build evidence.
+- Keep TodoWrite unblocked and the competing panel disabled. Retain the existing
+  bootstrap, native mapper, generated PI rendering override and portable rules.
+- Make the historical panel probe reject the built-in architecture before SDK
+  access even when both builds share the `0.1.7-beta` label; add a regression.
+
+## 0.1.8-beta — 2026-10-04, earlier compatibility build label
+
+- Restore PI-Desktop's built-in TodoWrite checklist in chat. Remove the
+  extension's TodoWrite blocker and prompt preference for the plugin checklist.
+- Remove default checklist tool/command/panel registration, renderer callbacks
+  and panel/bridge assets from the PI archive. Request only agent.prompt.inject
+  and agent.extension; preserve the bootstrap and 24 skill IDs.
+- Keep the pure TodoWrite mapper and portable approval, blocker, cancellation,
+  reopening, dependency and conservative recovery rules in conversation context.
+  Markdown is a fallback when TodoWrite is unavailable, not native UI.
+- Add runtime and packaged regressions for unblocked TodoWrite, built-in prompt
+  selection and absence of competing SDK/panel integration. Preserve historical
+  0.1.7-beta source/tests/probe evidence without treating it as live acceptance.
+- Build a replacement in a new directory for operator installation. See
+  [the compatibility record](docs/verification/pi-desktop-todowrite-compatibility-20261004.md)
+  for actual verification results and the focused fresh-chat smoke check.
 
 ## Unreleased
 

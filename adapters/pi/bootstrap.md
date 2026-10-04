@@ -40,29 +40,26 @@ If a required skill or native capability is unavailable, state the precise
 limitation, continue other authorized work, and do not claim the affected
 operation completed.
 
-### Native checklist
+### Built-in checklist
 
-For meaningful multi-stage work, read `adapters/pi/checklist-runtime.md` first.
-Use `plugin_local_workspace_superpowers_workspace_checklist` when available:
-read status and mutate stable IDs/revisions; its native panel owns the state.
-Do not create a competing TodoWrite list. No checklist for direct Q&A or edits.
+Use the host's built-in `TodoWrite` when `references/session-progress.md`
+activates progress and the tool is in the current catalog. Read that contract
+and `adapters/pi/checklist-runtime.md` before transitions. No checklist for
+direct Q&A or isolated edits; do not print a second routine Markdown checklist.
 
-### Legacy TodoWrite fallback
-
-When `references/session-progress.md` activates a checklist, use `TodoWrite`
-only when it is in the current agent catalog. It mirrors canonical Markdown:
+Use the actual host schema: `todos` with `content`, `status`, optional `priority`;
 each call replaces the full list; use `pending`, `in_progress`, `completed`, or
 `cancelled`; keep at most 50 rows, content at most 500 Unicode characters, and
 at most one item may be in_progress. Mark completion only after verification.
 
-Keep portable IDs, dependencies, blockers, and approvals in Markdown.
-`awaiting_user`, `blocked`, and `paused` have no native status: prefix their
-mirrored content, expose only the first lossy row as native
-`in_progress` when no ordinary row is active, and keep other lossy rows
-`pending`. Rebuild the complete list after replace, cancel, reopen, compaction,
-or restart; if state is uncertain, use the Markdown fallback.
+Keep portable IDs, dependencies, blockers and approvals in conversation context.
+Prefix `awaiting_user`, `blocked` and `paused` in content; they have no native
+status. Apply the runtime's lossy mapping without clearing unresolved gates.
+Cancelled work is not completed. Reopen affected results and dependents only.
+Recover evidence-supported state; ask for minimum confirmation if uncertain.
 
-Do not call internal `tools.execute` or write a separate checklist database.
-The legacy `native-checklist.cjs` helper owns no state or host call. Without
-TodoWrite, keep the Markdown fallback without claiming native presentation.
+Never use a plugin checklist tool/panel, internal `tools.execute`, or a separate
+checklist database. `native-checklist.cjs` is a pure mapper with no host call.
+If TodoWrite is unavailable or fails, report the limit and use the Markdown fallback;
+Markdown is not native UI.
 <!-- workspace-superpowers:end -->

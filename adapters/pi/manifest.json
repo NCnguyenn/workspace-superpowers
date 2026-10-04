@@ -7,10 +7,7 @@
   "main": "main.js",
   "permissions": [
     "agent.prompt.inject",
-    "agent.extension",
-    "agent.tool.register",
-    "ui.panel",
-    "session.read"
+    "agent.extension"
   ],
   "contributes": {
     "agentExtensions": [
@@ -26,12 +23,5 @@
   "activationEvents": [
     "onStartup"
   ],
-  "ui": {
-    "panel": "adapters/pi/checklist-panel.html",
-    "title": "Workspace Checklist",
-    "width": 580,
-    "height": 640,
-    "resizable": true
-  },
-  "safetyNotes": "Native prompt bootstrap plus a session-scoped checklist tool and host-loaded panel. agent.tool.register registers workspace_checklist; ui.panel renders it and returns revision-checked lifecycle actions. session.read reads the executing session's retained tool receipts for conservative recovery. Checklist state lives in the plugin process; no separate database, file writes, credentials or network requests are used. Tool and panel state never authorize document drafting or clear missing evidence."
+  "safetyNotes": "Skill catalog and native agent prompt bootstrap only. Activated multi-stage checklists use the host's built-in TodoWrite tool and chat UI. This plugin does not intercept TodoWrite, register a checklist tool or command, open a panel, or read session state through the plugin SDK. Portable approval, blocker, cancellation and reopening rules remain in conversation context; no separate checklist database, file writes, credentials or network requests are used. Tool success and visible progress do not authorize drafting or prove live acceptance."
 }

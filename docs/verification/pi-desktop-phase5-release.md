@@ -1,5 +1,12 @@
 # PI-Desktop Phase 5 release and dogfood record
 
+Historical release/install record. Packaging and installation below do not
+establish Phase 4 native acceptance. The later 0.1.7-beta panel candidate
+interfered with the built-in checklist; the 0.1.8-beta replacement restores the
+TodoWrite path and is handed to the operator for installation. See
+[the compatibility fix](pi-desktop-todowrite-compatibility-20261004.md).
+The earlier package, results and evidence below remain unchanged.
+
 Date: 2026-10-03  
 Release branch: `codex/phase5-release-20261003`  
 Release commit: `28b717e`  

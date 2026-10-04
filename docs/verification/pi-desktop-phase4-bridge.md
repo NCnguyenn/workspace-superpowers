@@ -1,5 +1,12 @@
 # PI-Desktop Phase 4 native checklist bridge
 
+Historical record: the 0.1.7-beta panel candidate below interfered with the
+host's built-in TodoWrite checklist and did not satisfy the requested display
+architecture. Its test/probe/package results do not establish Phase 4 completion.
+Version 0.1.8-beta removes that default tool/panel and restores the built-in path;
+see [the compatibility fix](pi-desktop-todowrite-compatibility-20261004.md).
+The dated results and retained evidence below are preserved as history.
+
 Date: 2026-10-03. Candidate: `0.1.7-beta`, PI-Desktop `0.16.0`.
 
 ## Implementation

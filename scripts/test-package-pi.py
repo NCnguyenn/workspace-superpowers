@@ -42,12 +42,17 @@ const assert = require('node:assert/strict');
 const extension = require(process.argv[1]);
 assert.equal(extension.default, extension, 'sidecar loader requires the default export');
 let hook;
-extension({ on(event, handler) { assert.ok(['before_agent_start', 'tool_call'].includes(event)); if (event === 'before_agent_start') hook = handler; } });
+extension({
+  getAllTools() { return [{ name: 'TodoWrite' }, { name: 'plugin_local_workspace_superpowers_workspace_checklist' }]; },
+  on(event, handler) { assert.equal(event, 'before_agent_start', 'the packaged extension must not intercept TodoWrite'); hook = handler; },
+});
 (async () => {
   const result = await hook({ systemPrompt: '## Workspace Superpowers\nLegacy project rules.' });
   assert.ok(result, 'legacy heading must not suppress current routing');
   assert.ok(result.systemPrompt.startsWith('## Workspace Superpowers\nLegacy project rules.'));
   assert.ok(result.systemPrompt.includes('local.workspace-superpowers/using-workspace-superpowers'));
+  assert.match(result.systemPrompt, /host's built-in `TodoWrite`/);
+  assert.doesNotMatch(result.systemPrompt, /plugin_local_workspace_superpowers_workspace_checklist/);
   assert.ok(result.systemPrompt.includes(process.argv[2]), 'actual package root must be present');
   assert.ok(result.systemPrompt.length < 6000, 'workflow details load from specialists');
   assert.equal(await hook({ systemPrompt: result.systemPrompt }), undefined);
@@ -98,11 +103,11 @@ extension({ on(event, handler) { assert.ok(['before_agent_start', 'tool_call'].i
                 manifest = json.loads(package.read('manifest.json'))
                 plugin = out / manifest['id']
                 self.assertEqual(manifest['id'], 'local.workspace-superpowers')
-                self.assertEqual(manifest['permissions'], ['agent.prompt.inject', 'agent.extension', 'agent.tool.register', 'ui.panel', 'session.read'])
-                self.assertIn('adapters/pi/checklist-bridge.cjs', names)
-                self.assertIn('adapters/pi/checklist-panel.html', names)
-                self.assertIn('adapters/pi/checklist-panel.js', names)
-                self.assertEqual(manifest['ui']['panel'], 'adapters/pi/checklist-panel.html')
+                self.assertEqual(manifest['permissions'], ['agent.prompt.inject', 'agent.extension'])
+                self.assertNotIn('ui', manifest)
+                for retired in ('checklist-bridge.cjs', 'checklist-panel.html', 'checklist-panel.js'):
+                    self.assertNotIn(f'adapters/pi/{retired}', names)
+                self.assertEqual(manifest['version'], json.loads((ROOT / 'package.json').read_text())['version'])
                 skills = manifest['contributes']['skills']
                 self.assertEqual(len(skills), 24)
                 self.assertEqual(len({s['id'] for s in skills}), 24)
@@ -114,6 +119,12 @@ extension({ on(event, handler) { assert.ok(['before_agent_start', 'tool_call'].i
                     self.assertIn(skill['path'], names)
                     self.assertLessEqual(len(package.read(skill['path'])), 128 * 1024)
                     self.assertLessEqual(len(skill['description']), 240)
+                    adapter_note = package.read(skill['path']).decode('utf-8').split(
+                        '## PI-Desktop adapter (generated)', 1)[1]
+                    self.assertIn('override portable Markdown rendering', adapter_note)
+                    self.assertIn("host's built-in `TodoWrite`", adapter_note)
+                    self.assertIn('Markdown is fallback only', adapter_note)
+                    self.assertIn('[checklist runtime](../../adapters/pi/checklist-runtime.md)', adapter_note)
                 for folder in ('skills', 'agents', 'references', 'templates'):
                     for source in (ROOT / folder).rglob('*.md'):
                         relative = source.relative_to(ROOT).as_posix()
@@ -169,6 +180,55 @@ const { routeRevisionExport } = require(process.argv[2]);
                 result = self.build(out)
                 self.assertEqual(result.returncode, 0, result.stderr)
             self.assertEqual(next(outputs[0].glob('*.piplug')).read_bytes(), next(outputs[1].glob('*.piplug')).read_bytes())
+
+    def test_packaged_plugin_never_requests_checklist_apis(self):
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp) / 'output'
+            result = self.build(out)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            plugin = out / 'local.workspace-superpowers'
+            probe = r'''
+const assert = require('node:assert/strict');
+const main = require(process.argv[1]);
+const { toTodoWriteArgs } = require(process.argv[2]);
+const forbidden = new Proxy({}, { get(_, name) { throw new Error(`Unexpected SDK access: ${String(name)}`); } });
+(async () => {
+  await main.onLoad(forbidden);
+  await main.onUnload();
+  assert.equal(main.onPanelInvoke, undefined);
+  assert.deepEqual(toTodoWriteArgs([
+    { title: 'Verified source', status: 'completed' },
+    { title: 'Approval pending', status: 'awaiting_user' },
+    { title: 'Missing evidence', status: 'blocked' },
+    { title: 'Optional export', status: 'cancelled' },
+  ]), { todos: [
+    { content: 'Verified source', status: 'completed' },
+    { content: '[awaiting_user] Approval pending', status: 'in_progress' },
+    { content: '[blocked] Missing evidence', status: 'pending' },
+    { content: 'Optional export', status: 'cancelled' },
+  ] });
+})().catch(error => { console.error(error); process.exitCode = 1; });
+'''
+            runtime = subprocess.run(['node', '-e', probe, str(plugin / 'main.js'),
+                                      str(plugin / 'adapters/pi/native-checklist.cjs')],
+                                     text=True, capture_output=True, check=False)
+            self.assertEqual(runtime.returncode, 0, runtime.stderr)
+
+    def test_historical_panel_probe_rejects_builtin_architecture_with_retained_version(self):
+        with tempfile.TemporaryDirectory() as temp:
+            plugin = Path(temp) / 'local.workspace-superpowers'
+            plugin.mkdir()
+            manifest = json.loads((ROOT / 'adapters/pi/manifest.json').read_text(encoding='utf-8'))
+            manifest['version'] = '0.1.7-beta'
+            self.assertNotIn('ui', manifest)
+            (plugin / 'manifest.json').write_text(json.dumps(manifest), encoding='utf-8')
+            result = subprocess.run([
+                'node', str(ROOT / 'scripts/probe-pi-checklist-sdk.mjs'),
+                '--plugin=' + str(plugin), '--asar=' + str(Path(temp) / 'must-not-open.asar'),
+            ], text=True, capture_output=True, check=False)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('requires retired checklist panel architecture', result.stderr)
+            self.assertNotIn('ENOENT', result.stderr, 'reject before reading or executing the host SDK')
 
     def test_refuses_existing_output_without_modification(self):
         with tempfile.TemporaryDirectory() as temp:

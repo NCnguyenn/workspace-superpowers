@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 import { existsSync } from 'node:fs';
 const require = createRequire(import.meta.url);
+// Historical 0.1.7-beta controller coverage. The default plugin must not load
+// or package this competing panel; these tests do not establish native acceptance.
 const path = new URL('./checklist-bridge.cjs', import.meta.url);
 const { ChecklistStore, createController } = existsSync(path)
   ? require('./checklist-bridge.cjs') : {};
@@ -159,20 +161,9 @@ test('native SDK controller physically opens/closes panel and rejects stale call
   await assert.rejects(controller.panel('checklist.action', { bindingId: 'wrong', sessionId: ctx.sessionId, checklistId: shown.state.checklistId, expectedRevision: shown.state.revision, action: 'cancel' }), /binding/);
 });
 
-test('native plugin entry registers the host tool, show command and callback handler', async () => {
+test('default plugin entry does not expose the retained legacy panel callback', () => {
   const main = require('./main.cjs');
-  const registrations = [], calls = [];
-  const pi = { agent: { async registerTool(tool) { registrations.push(tool); }, async unregisterTool() {} },
-    commands: { async register(command) { calls.push(command); }, async unregister() {} },
-    ui: { async openPanel() {}, async closePanel() {} }, session: { async getLlmContext() { return { sessionId: ctx.sessionId, messages: [] }; } } };
-  await main.onLoad(pi);
-  assert.equal(registrations.length, 1, 'Real plugin tool must be registered');
-  assert.equal(registrations[0].name, 'workspace_checklist');
-  assert.equal(calls[0].id, 'workspace-checklist.show');
-  const result = await registrations[0].execute({ action: 'create', title: 'Report', tasks: plan }, ctx);
-  const snapshot = await main.onPanelInvoke('checklist.snapshot', {});
-  assert.equal(snapshot.state.checklistId, result.state.checklistId);
-  await main.onUnload();
+  assert.equal(main.onPanelInvoke, undefined);
 });
 
 test('omitting a leaf task needs no artificial dependent task', () => {
