@@ -16,6 +16,13 @@ dist/
 build/
 *.zip
 node_modules/
+# Python cache
+__pycache__/
+*.pyc
+
+# Claude Code agent worktrees
+.claude/
+
 # Local-only: keep on disk, do not publish
 tests/scenarios/runs/
 tests/scenarios/reports/report-*

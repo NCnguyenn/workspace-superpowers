@@ -62,10 +62,14 @@ into the installed directory.
 
 ## Live acceptance boundary
 
-The implementation, code review, local tests and package are ready. This run has
-not installed or exercised this candidate in a live PI-Desktop session. Phase 4
-live admission is pending; historical SCL responses are not retrospectively
-marked PASS for this implementation.
+The implementation, code review, local tests and package are ready. The operator
+has supplied an installation UI screenshot showing `0.1.7-beta`, `Everywhere`,
+Panel/Agent extension/Skills capabilities and `Enabled, loads on next prompt`.
+The image and bounded observations are retained in
+[the installation record](../../tests/scenarios/reports/session-checklist-phase2-pi-desktop-20261003/phase4-readiness/native-trace/10-install-0.1.7-beta.md).
+The screenshot does not prove the two collapsed permissions, a live native tool
+call or checklist lifecycle behavior. Phase 4 live admission is pending;
+historical SCL responses are not retrospectively marked PASS for this candidate.
 
 Restart recovery accepts only exact, hash-validated same-session native tool
 receipts and requires confirmation of possible later panel actions. The host's

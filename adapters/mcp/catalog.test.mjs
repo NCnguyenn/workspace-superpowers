@@ -21,15 +21,40 @@ test('skill retrieval returns the exact matched catalogue document', () => {
   assert.equal(skill.sha256, digest(skill.text));
 });
 
+test('skill retrieval returns exact router and specialist documents', () => {
+  for (const id of ['using-workspace-superpowers', 'verifying-artifacts']) {
+    const skill = getSkill(id);
+    assert.equal(skill.id, id);
+    assert.equal(skill.sha256, digest(skill.text));
+    assert.match(skill.text, new RegExp(`^---\\r?\\nname: ${id}\\r?\\n`));
+  }
+});
+
+test('package-level contracts and templates use the static resource route', () => {
+  for (const [area, path] of [
+    ['references', 'criteria-writing-contract.md'],
+    ['templates', 'outline.md'],
+  ]) {
+    const resource = getStaticContent(area, path);
+    assert.equal(resource.area, area);
+    assert.equal(resource.path, path);
+    assert.equal(resource.sha256, digest(resource.text));
+    assert.ok(resource.text.trim(), `${area}/${path} must not be empty`);
+  }
+});
+
 test('unknown and traversal-like skill IDs are rejected', () => {
   assert.throws(() => getSkill('../package'), /Unknown skill ID/);
   assert.throws(() => getSkill('not-a-real-skill'), /Unknown skill ID/);
 });
 
+
 test('only Markdown references and templates can be served', () => {
   const reference = getStaticContent('references', 'work-tracking.md');
   assert.equal(reference.sha256, digest(reference.text));
   assert.throws(() => getStaticContent('skills', 'using-workspace-superpowers/SKILL.md'), /Unknown read-only package resource/);
+  assert.throws(() => getStaticContent('skills', 'analyzing-artifacts/references/artifact-inspection.md'), /Unknown read-only package resource/);
+  assert.throws(() => getStaticContent('unlisted', 'work-tracking.md'), /Unknown read-only package resource/);
   assert.throws(() => getStaticContent('references', '../package.json'), /Unknown read-only package resource/);
   assert.throws(() => getStaticContent('references', 'work-tracking.txt'), /Unknown read-only package resource/);
 });
