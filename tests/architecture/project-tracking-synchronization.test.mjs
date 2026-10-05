@@ -109,14 +109,15 @@ test('the work-plan template leads with readable orientation and whole-report pr
 
 test('progress, readiness, approval and verification remain separate states', async () => {
   const source = await text(TRACKING);
-  assert.match(source, /progress and readiness (?:must remain|are) separate|keep .*progress.*readiness separate/i);
+  assert.match(source, /progress and readiness (?:must remain|are) separate|keep (?:content )?progress separate from readiness, approval, verification, and acceptance/i);
   assert.match(source, /approved.*(?:incomplete|evidence gap|verification limit)[\s\S]{0,180}(?:not|cannot).*?(?:complete|ready)/i);
   assert.match(source, /approval.*(?:version|scope)[\s\S]{0,180}(?:verification|check)/i);
 
-  const complete = { progress: 'approved', readiness: 'ready', verification: 'passed' };
-  const approvedGap = { progress: 'approved', readiness: 'evidence_gap', verification: 'pending' };
-  const isComplete = (item) => item.progress === 'approved'
-    && item.readiness === 'ready' && item.verification === 'passed';
+  // Contract examples only: this predicate does not exercise a live progress tracker.
+  const complete = { progress: 'done', readiness: 'ready', approval: 'accepted', verification: 'passed' };
+  const approvedGap = { ...complete, readiness: 'gap', verification: 'pending' };
+  const isComplete = (item) => item.progress === 'done'
+    && item.readiness === 'ready' && item.approval === 'accepted' && item.verification === 'passed';
   assert.equal(isComplete(complete), true, 'positive state should be complete');
   assert.equal(isComplete(approvedGap), false, 'approval with an evidence gap is incomplete');
 });
@@ -131,8 +132,8 @@ test('stable item identity survives heading changes and locator migration', asyn
 
 test('approval is scoped to a revision and reopening preserves the prior approval', async () => {
   const source = await text(TRACKING);
-  assert.match(source, /approval refers to the identified (?:version|revision) and scope/i);
-  assert.match(source, /approval is (?:revision[- ]scoped|scope[- ]scoped)|(?:revision[- ]scoped|scope[- ]scoped) approval/i);
+  assert.match(source, /approval (?:refers|applies(?: only)?) to the (?:visible )?identified (?:version|revision) and scope/i);
+  assert.match(source, /approval applies only to|approval is (?:revision[- ]scoped|scope[- ]scoped)|(?:revision[- ]scoped|scope[- ]scoped) approval/i);
   assert.match(source, /reopen(?:ed|ing).*?(?:section|item).*?(?:old|previous).*approval|preserve.*previous.*approval.*(?:revision|version)/i);
   assert.match(source, /newly (?:saved|verified).*does not replace.*approved/i);
 });

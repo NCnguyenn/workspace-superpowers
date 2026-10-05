@@ -1,63 +1,67 @@
-# Citation Styles & Bibliographic Reference Guide
+# Citation Styles and Bibliographic Reference Guide
 
-This guide establishes the citation standards for Workspace Superpowers.
+Use this guide when citations are requested, required by an adopted brief/rubric/template, or already present in content being revised. It selects and applies a coherent convention; it does not authorize unsolicited research, invented evidence, or citations that the deliverable does not need.
 
-## Default Citation Style: Harvard Style
+## Select the citation style
 
-Use the style explicitly requested by the user or required by an adopted
-rubric/template. For continuation or revision, otherwise preserve a coherent
-existing document convention. If citations are required and neither applies,
-**Harvard Style** is the package default for in-text citations and reference lists.
-Clarify material conflicts rather than mixing styles or silently reformatting
-unrequested sections. The fallback does not itself require adding citations.
+Use the style explicitly requested by the user or required by an adopted rubric/template. For continuation or revision, preserve a coherent existing document convention unless the user authorizes a change. If citations are required and no convention is established, use **Harvard Style** as the package fallback.
 
-### 1. In-Text Citations (Author-Date System)
+The fallback does not itself require citations. Clarify a material conflict rather than mixing styles or silently reformatting unrequested sections.
 
-In Harvard style, citations are placed in parentheses in the body of the text, giving the author's surname and the year of publication. When quoting directly or citing a specific table or statistic, include the page number.
+## Harvard Style
 
-* **Single author:** (Smith, 2023) or "According to Smith (2023)..."
-* **Two authors:** (Smith and Jones, 2022) or "Smith and Jones (2022) found that..."
-* **Three or more authors:** (Smith et al., 2021) or "Smith et al. (2021) argue..."
-* **Direct quotation or specific statistic:** (Smith, 2023, p. 45) or (Jones and Davis, 2020, pp. 112–114)
-* **Corporate author:** (World Health Organization, 2024)
-* **No author:** Use the title in italics: (*Global Economic Outlook*, 2023)
-* **Multiple works in one citation:** (Brown, 2019; Smith, 2023) — alphabetical by author, separated by semicolons.
+Harvard uses an author-date in-text system with an alphabetized reference list.
 
-### 2. Reference List Formatting (Alphabetical by Author)
+### In-text citations
 
-The reference list appears at the end of the document, arranged alphabetically by the first author's surname.
+| Source type | Form |
+|---|---|
+| Single author | `(Smith, 2023)` or `Smith (2023) argues ...` |
+| Two authors | `(Smith and Jones, 2022)` |
+| Three or more authors | `(Smith et al., 2021)` |
+| Direct quotation or specific statistic | `(Smith, 2023, p. 45)` or `(Jones and Davis, 2020, pp. 112–114)` when the locator is actually verified |
+| Corporate author | `(World Health Organization, 2024)` |
+| No named author | `(*Global Economic Outlook*, 2023)` |
+| Multiple works | `(Brown, 2019; Smith, 2023)` in alphabetical order |
 
-* **Book (Print or eBook):**
-  Author, A.A. (Year) *Title of book: Subtitle*. Edition (if not 1st). Place of publication: Publisher.
-  *Example:* Saunders, M., Lewis, P. and Thornhill, A. (2019) *Research methods for business students*. 8th edn. Harlow: Pearson.
+Do not invent an author, year, page, or locator. If an exact locator is unavailable, paraphrase only what the verified source supports or state the limitation.
 
-* **Journal Article (with DOI):**
-  Author, A.A. and Author, B.B. (Year) 'Title of article: Subtitle', *Title of Journal*, Volume(Issue), pp. Page range. Available at: https://doi.org/xxxx.
-  *Example:* Chen, L. and Williams, K. (2023) 'Evidence synthesis in algorithmic workspaces', *Journal of Office Computing*, 45(2), pp. 189–205. Available at: https://doi.org/10.1016/j.joc.2023.01.004.
+### Reference-list patterns
 
-* **Website / Online Report:**
-  Author or Organization (Year) *Title of webpage or report*. Available at: URL (Accessed: Day Month Year).
-  *Example:* International Energy Agency (2023) *World Energy Outlook 2023*. Available at: https://www.iea.org/reports/world-energy-outlook-2023 (Accessed: 15 January 2024).
+Place the Harvard reference list at the end of the deliverable in alphabetical order by first author/organization.
 
-* **Conference Proceeding:**
-  Author, A.A. (Year) 'Title of paper', in Editor, E.E. (ed.) *Title of Conference Proceedings*. Location, Date of conference. Place of publication: Publisher, pp. Page range.
+- **Book:** `Author, A.A. (Year) *Title of book: Subtitle*. Edition (if not first). Place: Publisher.`
+- **Journal article with DOI:** `Author, A.A. and Author, B.B. (Year) 'Article title', *Journal Title*, Volume(Issue), pp. pages. Available at: https://doi.org/...`.
+- **Website or online report:** `Author or Organization (Year) *Title*. Available at: URL (Accessed: Day Month Year).`
+- **Conference proceeding:** `Author, A.A. (Year) 'Paper title', in Editor, E.E. (ed.) *Proceedings title*. Location, date. Place: Publisher, pp. pages.`
 
----
+The patterns explain arrangement; they are not evidence that the example metadata is correct for a new source.
 
-## Supported Alternative Styles (Upon Request)
+## Alternative styles
 
-When the user specifies an alternative style or the rubric requires it, format references accordingly:
+When requested or required, use the named convention consistently:
 
-1. **APA 7th Edition:** Author-date system; ampersand `&` used before last author; title in sentence case; DOIs formatted as `https://doi.org/...`.
-2. **IEEE:** Numeric system; citations in square brackets `[1]`, numbered sequentially in order of appearance; references listed numerically.
-3. **Chicago (Notes & Bibliography or Author-Date):** Footnotes/endnotes with full bibliography, or author-date.
-4. **MLA 9th Edition:** Author-page system `(Smith 45)`; Works Cited list formatted with core elements and container concepts.
+- **APA 7th:** author-date; ampersand before the last author in parenthetical citations; sentence-case titles; DOI URLs.
+- **IEEE:** numeric citations in square brackets, ordered by first appearance.
+- **Chicago:** apply the specified Notes & Bibliography or Author-Date variant.
+- **MLA 9th:** author-page citations and a Works Cited list using MLA core elements.
 
----
+If the requested style is ambiguous or a document mixes incompatible styles, identify the conflict and ask which convention controls the affected scope.
 
-## Absolute Honesty & Verification Rules (§15)
+## Source integrity and completion checks
 
-1. **Zero Fabrication:** Never invent or hallucinate authors, years, titles, journals, DOIs, URLs, or page numbers.
-2. **Claim–Source Correspondence:** Every in-text citation must directly support the asserted claim. Do not cite a source for claims it does not make.
-3. **Bidirectional Completeness:** Every in-text citation must have an entry in the reference list, and every reference list entry must be cited in the text.
-4. **Unverified Sources:** If a source cannot be verified via available research tools, state explicitly that it is unverified or remove/hedge the claim.
+Every source has separate states:
+
+- **proposed source:** a candidate for a future claim or visual;
+- **verified source:** bibliographic metadata, provenance, and claim–source support have been checked;
+- **actually cited source:** appears in delivered body text or a table/figure attribution.
+
+Before delivery:
+
+1. Check that each in-text citation supports the specific assertion beside it.
+2. Check that every in-text citation has a matching reference-list entry.
+3. Check that every final reference-list entry is actually cited or attributed in the deliverable scope.
+4. Preserve the selected convention across body text, tables, figures, captions, notes, and references.
+5. Mark unavailable metadata or unverified support as unverified; do not guess details.
+
+Never fabricate authors, dates, titles, journals, publishers, URLs, DOIs, page numbers, licenses, measurements, or quoted wording. A document-stated citation, a search-result snippet, or a README does not independently verify a claim. Apply [visual assets and Word fidelity](visual-assets-and-word-fidelity.md) to figure/table attribution, reuse conditions, and final References coverage.

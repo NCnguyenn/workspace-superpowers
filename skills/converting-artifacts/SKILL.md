@@ -36,7 +36,7 @@ A conversion produces a new artifact. Earlier checks are stale after conversion,
 
 Use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md). Preserve native Word tables (`w:tbl`), image relationships and media, inline drawings (`wp:inline`), captions, sources, order, placement, template formatting, and rubric requirements. Structural XML alone does not establish rendered fidelity.
 
-For mathematics entering Word, apply the [native Equation contract](../../references/math-in-documents.md). Detect a math-capable path first, compare source mathematical content with target OMML, and verify native editing after save/reopen. An image or raw markup is not a successful native Equation conversion unless the user explicitly accepts the limited handoff.
+For mathematics entering Word, apply the [native Equation contract](../../references/math-in-documents.md). Detect a math-capable path first, compare source mathematical content with target OMML, and verify native editing after save/reopen. An image or raw markup cannot satisfy the native Equation requirement. If the user explicitly accepts a limited handoff, deliver that alternative with its missing editability or checks stated; keep native fidelity failed or unverified rather than calling it a native Equation PASS.
 
 ## Required capabilities
 

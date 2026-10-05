@@ -13,13 +13,13 @@ Use [workflow continuity](../../references/workflow-continuity.md), [document co
 
 ## Inputs and output
 
-**Inputs:** approved outline blocks, target claim or criterion, evidence and locators, established terminology and voice, continuity seam, citation needs, and unresolved gaps.
+**Inputs:** approved outline blocks, or the authorized brief and structure when the outline is explicitly waived or not required; target claim or criterion, evidence and locators, established terminology and voice, continuity seam, citation needs, and unresolved gaps.
 
 **Output:** a review-ready scholarly section with developed paragraphs, claim-to-evidence links, appropriate certainty, preserved terminology, and explicit evidence limits.
 
 ## Core writing method
 
-1. **State the point.** Open the paragraph with the claim or analytical focus required by the approved block.
+1. **State the point.** Open the paragraph with the claim or analytical focus required by the authorized block. Preserve the approved outline where it applies.
 2. **Explain the reasoning.** Show why the point matters, how the mechanism works, or which comparison dimension applies.
 3. **Integrate evidence.** Use inspected sources, data, examples, or clearly bounded user-provided material. If support is absent, follow the Missing Evidence Protocol rather than inventing a citation.
 4. **Interpret within limits.** Distinguish observation from inference, correlation from causation, and a narrow sample from a general conclusion. Use calibrated language where evidence is incomplete.
@@ -61,7 +61,7 @@ Abstract capabilities are resolved by the host adapter.
 
 ## Completion and fallback
 
-Return prose that stays within the approved outline and evidence limits, then send it to `drafting-prose` for review. If a source cannot be opened, write only what remaining evidence supports and mark the gap. Do not invent a citation, locator, result, or claim to make a paragraph sound complete.
+Return prose within the applicable authorized structure and evidence limits, then send it to `drafting-prose` for review. If a source cannot be opened, write only what remaining evidence supports and mark the gap. If the caller authorized incomplete drafting under the criteria contract, retain neutral placeholders and `draft_incomplete`; do not upgrade the candidate to complete. Do not invent a citation, locator, result, or claim to make a paragraph sound complete.
 
 ## Common mistakes
 

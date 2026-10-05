@@ -1,79 +1,40 @@
-# Native mathematics in Word
+# Native Mathematics in Word
 
-Applies whenever mathematics enters Word through paste, author, edit or export,
-including a formatting-only edit. It adds fidelity requirements to the existing
-lifecycle, not a new approval workflow. Use the [workflow continuity contract](workflow-continuity.md).
+Use this contract whenever a requested paste, authoring, edit, formatting-only change, or export puts mathematics in a Word document. It adds representation and fidelity checks to the existing [workflow continuity contract](workflow-continuity.md); it creates no new approval gate. Check mathematical reasoning separately under [mathematical checks](mathematics-checks.md).
 
-## Required representation and ownership
+## Required representation and source ownership
 
-Every required formula must retain its mathematical content as a native Equation
-(`oMath` / OMML), editable after save/reopen. An image, Unicode lookalike or raw
-LaTeX `$...$` in Word is not an Equation. Ordinary prose symbols need not each
-become a separate Equation; identify the actual mathematical expressions from
-the source and requested scope. Do not replace entire paragraphs with equations.
+Identify the expressions required by the source and the requested operation. Each required formula must retain its mathematical content as a native, editable Word Equation (`oMath` / OMML) in the deliverable after save and reopen. An image, Unicode lookalike, or literal LaTeX `$...$` in the document is not a native Equation. Ordinary prose symbols do not each need a separate Equation, and an entire prose paragraph must not be replaced with math markup.
 
-Use the latest user-designated Word revision when editing. Preserve user edits,
-notation, bookmarks, numbering, references and neighboring content. A newer
-generated source does not automatically override the user's document. Source
-LaTeX is supporting material, not a synchronized master unless explicitly adopted.
+Edit the latest user-designated Word revision. Preserve user edits, notation, bookmarks, numbering, references, other equations, and neighboring content. A newer generated file is not automatically authoritative; source LaTeX is supporting material rather than a synchronized master unless the user adopts it. Establish the source and target revisions before changing formulas.
 
-## Entry paths
+## Entry path: inspect, act, and check
 
-| Entry | Required action |
-|---|---|
-| Paste | Inspect the actual pasted representation. Preserve native OMML; convert supported LaTeX, MathML or mathematical Unicode into equivalent OMML. Reconstruct image input only when transcription is reliable; resolve ambiguous symbols instead of guessing. If clipboard access is absent, say it was not tested. |
-| Author | Establish assumptions/notation with the mathematics specialist when needed; create native Equation through a detected document-edit or conversion capability. Do not assume a plain-text writer can insert equations. |
-| Edit | Inspect existing equation structures and source locations before changing them. Preserve unrelated equations and meaning. Perform editability experiments on a disposable copy, never insert test changes into the user's deliverable. |
-| Export | Compare source expressions with actual target equations. Missing, flattened or altered math fails conversion fidelity even if the output opens. A text converter's success does not establish math support. |
+| Entry | Required action | Stop or disclose when |
+|---|---|---|
+| Paste | Inspect the actual pasted representation. Keep existing native OMML or convert supported LaTeX, MathML, or mathematical Unicode to equivalent OMML. Reconstruct an image only if transcription is reliable. | A symbol or grouping is ambiguous: ask rather than guess. If clipboard access is absent, report that paste was not tested. |
+| Author | Establish assumptions and notation with the mathematics specialist when needed. Detect an actual document-edit or conversion capability before creating native Equations. | A plain-text authoring route cannot create OMML: do not promise editable Word math. |
+| Edit | Inspect existing equation structures and source locations, change only requested math, and preserve unrelated equations and meaning. Use a disposable copy for editability experiments. | Do not place test edits in the deliverable or silently change a mathematical claim to improve formatting. |
+| Export | Compare the source expressions with the actual target equations and inspect their structure and content. | Missing, flattened, or altered math fails fidelity, even if the conversion command succeeds or the file opens. |
 
-Formatting keeps inline/display placement, fraction and matrix height, scalable
-delimiters, limits and subscripts readable. Avoid fixed line heights that clip
-math. Break long equations at meaningful boundaries without changing meaning.
-Use document-native numbering and cross-references; imported formula labels are
-not assumed to survive. Formatting cannot correct a mathematical claim silently.
+Preserve inline/display placement, readable fraction and matrix height, scalable delimiters, limits, and subscripts. Avoid fixed line heights that clip equations. Break long expressions at meaningful boundaries without changing their meaning. Use document-native equation numbering and cross-references where required; imported formula labels are not guaranteed to survive.
 
-## Capability and verification contract
+## Detect capabilities before promising completion
 
-Detect create/convert, inspect, render and edit/save/reopen support separately
-before promising completion. The capability names are abstractions, not proof
-that a host implementation exists. Record unsupported input constructs early.
+Detect creation/conversion, inspection, rendering, and edit/save/reopen support **separately**. These are required capability categories, not assertions that a particular host supplies them. Identify unsupported constructs early. A structural check cannot stand in for a visual or Word editability check.
 
-For each final artifact revision, verification records:
+For each final artifact revision, record and perform the supported checks:
 
-1. Required expression locations/IDs and their source mathematical content.
-2. Native OMML structures at those locations, with no image/text substitutions.
-   Equation counts alone are insufficient; a nonempty `oMath` can contain the
-   wrong expression or merely a literal LaTeX string.
-3. Visual inspection of rendered pages: symbols, grouping, line breaks, clipping,
-   numbering and cross-references. State the actual renderer used.
-4. A native editing round trip on a copy of the final document: open, edit a
-   representative of every used equation structure (and every changed formula),
-   save/reopen, and compare intended content, Equation structure and layout.
-   Check preservation of the untouched formulas too. The delivered original
-   must also reopen unchanged; retain its identity separately from the test copy.
-5. The Word environment (application, version/platform), tested entry paths,
-   output revision, results and limitations. A different renderer is not proof
-   of editing behavior in Microsoft Word. Recheck affected structures and layout
-   after any later edit/export; do not reuse stale verification.
+1. Map every required expression to its source mathematical content and target location/ID. Compare meaning, not just the equation count: a matching count is insufficient to prove fidelity.
+2. Inspect native OMML at those locations. A nonempty `oMath` containing the wrong expression or literal LaTeX does not pass; neither does an image or text substitute.
+3. Inspect rendered pages for symbols, grouping, line breaks, clipping, numbering, and cross-references. Identify the actual renderer; rendering in another application does not prove Microsoft Word editability.
+4. On a **copy** of the final document, open and edit a representative of each used equation structure and every changed formula, save/reopen, and compare intended content, Equation structure, and layout. Check that untouched formulas remain intact. Reopen the delivered original unchanged and keep its identity separate from the test copy.
+5. Record the tested Word application, version/platform, entry paths, output revision, results, and limits. Recheck affected formulas and layout after later edits or exports; old checks do not verify a new revision.
 
-Keep content correctness, native structure, visual fidelity and editability as
-separate checks. An unavailable check remains **unverified**, not a pass. Do not
-claim Word complete when a required Equation capability or check is unavailable.
-Independent authorized work may continue.
+Keep mathematical correctness, native structure, rendered appearance, and editability as separate results. An unavailable check is `unverified`, never a pass. If a required Equation capability or check is unavailable, do not call the Word artifact complete; continue independent authorized work.
 
-## Limited handoff
+## Limited handoff and shared checkpoint
 
-Image/raw LaTeX alternatives require the user's **explicit acceptance** of a
-limited handoff in the current task. Reuse a recorded applicable acceptance; do
-not ask again. Describe exactly what cannot be edited or verified. Such an
-artifact is not completion of the native Equation requirement. Never silently
-flatten equations, even to repair appearance. A source image is allowed as input;
-an image as the final formula is allowed only under this limited-handoff rule.
+An image or raw-LaTeX alternative requires the user's **explicit acceptance** of a limited handoff in this task. Reuse applicable recorded acceptance instead of asking again. Specify exactly what remains uneditable or unverified and do not describe the result as satisfying the native-Equation requirement. A source image can be input without authorizing an image as the final formula. Never flatten an equation silently to repair its appearance.
 
-## Shared checkpoint
-
-Store `word_math_checks` in the existing brief/checkpoint: target revision,
-formula/source locators, entry path, native-structure check, content comparison,
-renderer/visual check, round-trip evidence, Word environment, unresolved limits,
-and limited-handoff acceptance if any. This is optional for nonmath tasks and
-does not create a parallel approval or evidence register.
+Store `word_math_checks` in the existing brief/checkpoint, not a parallel tracker. Include target revision, formula/source locators, entry path, native-structure and content comparisons, renderer/visual result, edit/save/reopen evidence, Word environment, unresolved limits, and any explicit limited-handoff acceptance. Omit this record for tasks without Word mathematics.

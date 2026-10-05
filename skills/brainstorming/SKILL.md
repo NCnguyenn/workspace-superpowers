@@ -41,8 +41,10 @@ Several approaches remain?
 
 **Open decision:** A supplied report supports either a chronological structure or a theme-based comparison; all required evidence is already inspected.
 
-- **Chronological:** follows the source sequence; easier continuity, but comparisons are spread across sections.
-- **Theme-based:** compares each option under shared criteria; clearer judgment, but requires more cross-references.
+| Option | Requirement coverage | Evidence and continuity | Reader clarity / effort |
+|---|---|---|---|
+| Chronological | Covers the comparison through the source sequence. | Keeps the supplied order and evidence together. | Easy to trace events; cross-section comparison takes more reader effort. |
+| Theme-based | Compares alternatives under the requirement's shared dimensions. | Reuses the same evidence, reorganized by theme with source locators preserved. | Easier side-by-side judgment; requires more cross-references. |
 
 Recommendation: theme-based, because the requirement asks for comparison under common dimensions. The user still chooses; no outline is written yet.
 
@@ -53,7 +55,7 @@ Follow the [workflow continuity contract](../../references/workflow-continuity.m
 - Return to `scoping-the-brief` when a required fact or evidence item is missing.
 - Return to `analyzing-artifacts` when the decision depends on interpreting a source.
 - Return to `planning-work` when the user chooses an organization, evidence placement, or visual plan.
-- Do not precede drafting or treat outline approval as drafting authorization.
+- Return the choice to the caller; do not draft within brainstorming. The choice resolves only this decision. Drafting still requires an authorized writing request and applicable scope, outline, and evidence prerequisites; reuse decisions that already apply.
 
 ## Required capabilities
 

@@ -111,8 +111,8 @@ test('math activation follows intent and context across authoring and follow-ups
   }
   const math = await readUtf8('skills/working-with-mathematics/SKILL.md');
   assert.match(math, /without.*nam(?:e|ing).*skill/is);
-  assert.match(math, /chứng minh/);
-  assert.match(math, /tính toán/);
+  assert.match(math, /\bproofs?\b/i);
+  assert.match(math, /\bcalculations?\b/i);
   assert.match(math, /mixed.*project|project.*mixed/is);
   const scenarios = await readUtf8('tests/scenarios/manual/math-project-constraints.md');
   for (let i = 13; i <= 16; i++) assert.ok(scenarios.includes(`MP${i}`));

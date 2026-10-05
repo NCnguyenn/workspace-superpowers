@@ -1,6 +1,6 @@
 ---
 name: drafting-prose
-description: Use when writing new prose, continuing an existing report or thesis section, or substantively recomposing content within the requested scope.
+description: Use when composing, continuing, or substantively rewriting report or thesis prose within an authorized task.
 ---
 
 # Drafting Prose
@@ -17,7 +17,7 @@ Before composing, collect only the target section and the context needed to writ
 
 - authorized `task_mode`, target section, and stopping point;
 - applicable `scope_status`, `outline_status`, `outline_version`, and `approval_record`;
-- source criterion/title, approved outline blocks, evidence register, and blocking gaps;
+- source criterion/title where applicable, approved outline blocks or authorized brief/structure, evidence register, and blocking gaps;
 - source profile, insertion point, adjacent excerpts, terminology, and preserve-list for a continuation;
 - selected deliverable language under the [language policy](../../references/language-policy.md), and the [academic writing style guide](../../references/academic-writing-style.md).
 
@@ -25,13 +25,22 @@ Use [workflow continuity](../../references/workflow-continuity.md), [persistent 
 
 ## Prerequisite check
 
-Apply [criterion-level analysis and two stops](../../references/criteria-writing-contract.md#criterion-level-analysis-and-two-stops) where criteria-based writing applies.
+Apply [criterion-level analysis and two stops](../../references/criteria-writing-contract.md#criterion-level-analysis-and-two-stops) where criteria-based writing applies. For other prose, consume the authorized brief and requested structure; do not introduce criteria-writing gates.
 
 1. Confirm that the current request authorizes drafting or substantive composition, not analysis-only or outline-only work.
 2. Confirm applicable scope and analysis decision coverage. Return unresolved gaps to `scoping-the-brief`.
-3. Confirm the detailed outline is approved or explicitly waived for this version and section. A master outline is not enough.
-4. Confirm the target evidence is provided, not required, or explicitly authorized as illustrative. Preserve `draft_incomplete` when mandatory evidence is still missing.
-5. For a continuation, confirm that the source profile, insertion point, adjacent excerpts, and evidence before composing are available. Use reading/analysis for missing context rather than guessing.
+3. Where an outline decision applies, confirm it is approved or explicitly waived for this version and section. A master outline is not enough.
+4. Choose the evidence route below for the current target, preserving source locators and any unresolved gaps.
+5. For a continuation, inspect the source profile, insertion point, adjacent excerpts, and evidence before composing; record coverage and unresolved gaps. Use reading/analysis for missing context rather than guessing.
+
+| Evidence readiness | Observable condition | Permitted action |
+|---|---|---|
+| `not_required` or `provided` | No required evidence gap affects the target; available sources have been inspected. | Draft within the applicable decisions and retain source limits. |
+| `illustrative_authorized` | The user explicitly permits illustrative material for the named gap. | Draft with local hypothetical labels; keep unmet real-evidence obligations visible. |
+| `pending` | A detailed outline is already approved and the user explicitly permits an incomplete draft for these gaps. | Draft supported blocks, use neutral placeholders at missing claims, and retain `draft_incomplete`. |
+| `pending` | Those incomplete-draft conditions are not met. | Hold dependent drafting and return the gap to `scoping-the-brief`; continue only independent authorized work. |
+
+The incomplete-draft route consumes an existing approved outline. It does not permit preparing a new or affected outline while required evidence is pending, inventing a result, or marking a missing-evidence report `ready_after_review`.
 
 Never invent project names, roles, business context, budgets, SLAs, performance metrics, citations, or a later assignment such as a functional prototype. If a fact is needed and unsettled, ask before using it. Hypothetical values must remain locally labeled and cannot become operational proof in a later conclusion.
 
@@ -53,7 +62,7 @@ Optional mathematics support uses `working-with-mathematics` only for an actual 
 
 1. Run the prerequisite check and stop at the earliest unresolved decision.
 2. Load the style guide and selected writer using the required actual calls.
-3. Compose only the approved section blocks. The final draft expands the existing outline inside the same paragraphs, lists, tables, figures, and numbers; it does not add new blocks.
+3. Compose only the authorized section. When an approved detailed outline applies, expand inside its existing paragraphs, lists, tables, figures, and numbers; do not add new blocks. Otherwise follow the authorized brief and structure.
 4. Develop analytical reasoning through PEEL where appropriate. Core analytical report sections need at least 65% discursive prose under the style guide’s scope; a short lead may remain short when complete, and lists remain valid for parallel items, parameters, or sequence. Do not use a rendered-line quota.
 5. When citations are required or already present, execute `invoke_skill("citing-sources")`, complete the bidirectional audit, include `## References` in the delivered cited section, and update the saved report’s cumulative reference list.
 6. Execute `invoke_skill("reviewing-work")` before delivering, including chat-only prose. Fix blocking findings within the approved scope and recheck affected passages, evidence, citations, and continuity seams.
@@ -62,7 +71,7 @@ Optional mathematics support uses `working-with-mathematics` only for an actual 
 
 ## Visuals, citations, and Word content
 
-Carry approved tables, figures, captions, attribution, and evidence limits into the same delivery blocks. Use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md) and load `working-with-visuals` when an asset requires inspection or preparation. Do not introduce an image, table, or number absent from the approved outline.
+Carry authorized tables, figures, captions, attribution, and evidence limits into the same delivery blocks. Use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md) and load `working-with-visuals` when an asset requires inspection or preparation. When an approved outline applies, do not introduce an image, table, or number absent from it. When that outline is waived or not required, follow the authorized brief and structure; missing facts and asset permissions remain unresolved until supplied or explicitly authorized.
 
 For citations, `citing-sources` is required when a citation is present, requested, or required. Never invent page numbers, publishers, URLs, or reference metadata. Authored deliverables use the resolved language, and chat discussion follows the current user message without interleaved bilingual delivery.
 
@@ -77,7 +86,7 @@ Abstract capabilities are resolved by the host adapter.
 
 ## Completion and fallback
 
-A draft is complete for this turn when it has passed the required content review, is delivered in full at the requested stopping point, includes references when cited, and awaits the user’s section approval. If a required writer or reviewer cannot be loaded, stop the affected stage; do not compose from generic knowledge or claim a review occurred. If file writing is unavailable, deliver reviewed chat text without claiming a file was created.
+Deliver the reviewed section in full at the requested stopping point, with references when cited, and request the user's section decision. A permitted incomplete draft remains `draft_incomplete`; a clean prose review cannot make missing required evidence complete. If a required writer or reviewer cannot be loaded, stop the affected stage; do not compose from generic knowledge or claim a review occurred. If file writing is unavailable, deliver reviewed chat text without claiming a file was created.
 
 ## Common mistakes
 

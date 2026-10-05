@@ -1,23 +1,10 @@
-# Visual assets, citations, and Word fidelity
+# Visual Assets, Citations, and Word Fidelity
 
-This contract is shared by criteria analysis, outline planning, visual work,
-citation work, conversion, layout, and artifact verification. It describes what
-must be recorded and checked; it does not create a new approval stage or install
-an image, Office, or search capability.
-
-Apply only within the requested operation. Completed-assignment read-back and
-later-guide comparison retain their narrow reading/analysis routes; they do not
-start formatting, intake, new visuals or drafting. Preserve exact source identity,
-project/scenario transitions, projected-versus-observed language and evidence limits.
-No universal international standard is established by this contract.
+Use this shared contract when criteria analysis, outline planning, visual/citation work, conversion, layout, or verification touches tables or figures. It defines records and checks, not another approval stage or an installed search, image, or Office capability. Apply only the part relevant to the current operation. A completed-assignment read-back or later-guide comparison remains narrow reading/analysis, not a trigger for new intake, visuals, formatting, or drafting. Preserve source identity and distinguish projected from observed outcomes; this contract does not claim a universal international standard.
 
 ## 1. Conditional visual decisions
 
-For each applicable heading, decide whether a table or figure is **Not needed**,
-required by the actual rubric/brief, or useful for its explanatory value in making
-a comparison, relationship, process, or evidence clearer. A visual is not mandatory just
-because a section exists. The 40–50% outline guidance concerns substantive depth,
-never an asset quota. For a requested illustration, search Google or another public platform, download an existing image, and display that image in the same chat message with the source citation under it. Do not create or code-draw a substitute unless the user asks for that drawing or agrees after you ask. Silence is not agreement. Ask the user for a project screenshot or internal number and wait. Search and cite a published fact. A social post is a lead unless the user asked to use that inspected post. Invent a number only after explicit permission for that gap.
+For each applicable heading, decide whether a table or figure is **Not needed**, required by the actual rubric/brief, or has explanatory value because it clarifies a comparison, relationship, process, or evidence. A heading does not need a decorative visual. The 40–50% outline-depth guidance is not an asset quota. For a requested public illustration, find and inspect an existing image, download it when an authorized artifact workflow needs a local asset, and display it in the same chat message with its source citation. Do not create, generate, or code-draw a substitute unless the user requests or agrees after being asked. Silence is not agreement. Ask the user for project screenshots or internal numbers; inspect and cite public facts. Invent no hypothetical number without explicit permission for that specific gap.
 
 When a visual is used, record a stable `asset_id`, type, purpose, intended
 position, source/data, preparer, status, and any evidence or permission gap. For a
@@ -35,28 +22,19 @@ The asset provenance class must be one of:
 * **Authorized illustrative placeholder** — explicitly permitted hypothetical
   material, labeled at the point of use and never treated as project evidence.
 
-Search discovery does not establish provenance, credibility, permission to reuse,
-or claim support. Record the inspected source and relevant license/reuse condition.
-An unknown license is not permission to copy. For a requested illustration, download an existing public image and display it with its source citation. Do not redraw it unless the user asks for a drawing or agrees after you ask.
-A user-supplied image is shown as supplied. A web image is not the user's project screenshot.
-Redrawing or adapting a protected figure does not automatically resolve its reuse
-conditions. Independently explain supported ideas rather than copy its composition.
+Search discovery alone does not establish provenance, credibility, reuse permission, or support for a claim. Record the inspected source and license/reuse conditions; unknown licensing is not permission to copy. An existing public image is not a user's project screenshot. Label adaptations and drawings accurately, and do not assume redrawing a protected image removes reuse restrictions. Explain supported ideas independently instead of copying a protected composition.
 
 Outline delivery must show the actual available preview and a reviewable
 Markdown table structure with supported content, caption and source. If a preview
-cannot be displayed, attached, or inspected, disclose that limitation and retain
-the asset as `requested`, `blocked`, or `unverified`; do not imply that an unseen
-asset was approved. Missing required project evidence keeps the affected work
-blocked unless the existing evidence contract records a specifically authorized
-alternative.
+is unavailable because it cannot be displayed, attached, or inspected, disclose
+that limitation and retain the asset as `requested`, `blocked`, or `unverified`;
+do not imply that an unseen asset was approved. Missing required project evidence
+keeps the affected work blocked unless the existing evidence contract records a
+specifically authorized alternative.
 
-Do not reduce an available preview to specifications alone or defer it to drafting.
-A named diagram or table that is not rendered in the same message is not a decision. For a requested illustration, embed image markdown with a direct HTTPS image URL that returns the image bytes, such as an upload.wikimedia.org file, with its source citation on the next line. A wiki File page, a bare URL, a source line without the image markdown, a file path, and a long base64 blob are not images. Resolve the final upload URL. Do not invent an upload path. Omit the image when none is required. Do not print Not needed. Do not create, generate, or code-draw a substitute unless the user asks for that drawing or agrees after you ask. Label a permitted drawing as a drawing, not as a found source image or a project screenshot.
-Screenshot and embedded-figure claims follow [visual evidence boundary](visual-evidence-boundary.md). Visible pixels are not runtime, database, device, or criterion proof.
-An unknown table value stays unknown, not zero, an assumed improvement or an
-invented measurement. Follow the existing evidence-before-outline prerequisite;
-a blank table is not a way around required evidence. Do not fabricate values,
-URLs, citations, screenshots or project results to make a preview look complete.
+Do not defer an available preview to drafting or replace it with specifications. Show a needed table or diagram in the same message; where no visual is needed, omit it rather than printing `Not needed` in the deliverable. For a requested public illustration, embed image markdown with a direct HTTPS image URL returning image bytes (for example, an inspected upload.wikimedia.org file), with the source citation underneath. A wiki File page, bare URL, source line without image markdown, local file path, or long base64 blob is not an image preview. Resolve rather than invent the upload URL. Do not create, generate, or code-draw a substitute without the user's request or agreement; identify an authorized drawing as a drawing, not a found image or project screenshot.
+
+Apply the [visual evidence boundary](visual-evidence-boundary.md) before claiming what a screenshot proves. Visible pixels do not establish database state, runtime behavior, device identity, a CSS viewport, or criterion satisfaction. An unknown table value is unknown, not zero or an assumed improvement. Follow the evidence-before-outline prerequisite: blank cells cannot bypass missing mandatory inputs; do not fabricate values, URLs, citations, screenshots, or results.
 
 Use supported ordinary chat or an available question tool for the specific missing
 evidence after inspecting current inputs. Do not use a text-only question tool to
@@ -118,17 +96,7 @@ invalidate only affected approvals/checks, not unrelated work.
 
 ## 4. Word fidelity
 
-When a requested content revision is exported or edited as DOCX, preserve its
-table contents, figures, captions, sources, asset IDs, order and intended
-position relative to explanatory paragraphs. The applicable route uses native Word
-tables and embedded inline images.
-Retain whether the selected revision is working or approved; an authorized export
-of a working revision does not require new content approval or confer approval.
-Asset IDs may live in existing records; do not print internal identifiers in the
-report merely to enable verification. Inspect the latest adopted template/source;
-preserve unrelated content, fields and native Word equations. Existing positioned
-figures stay as required by that template; disclose a material conflict with an
-inline-export requirement instead of silently changing wrapping.
+When revising or exporting DOCX content, preserve selected table text, figures, captions, sources, asset IDs, order, and intended position relative to explanations. Use native Word tables and embedded inline images on routes that require them. Record whether the selected revision is working or approved. Exporting a working revision does not require new content approval and does not confer approval. Keep internal asset IDs in records rather than printing them into the report. Inspect the latest adopted source/template; preserve unrelated fields, formatting, and native Word equations. Where an existing template requires positioned figures, disclose a conflict with an inline-only route instead of silently changing wrapping.
 
 Structural verification must inspect the actual DOCX package for:
 

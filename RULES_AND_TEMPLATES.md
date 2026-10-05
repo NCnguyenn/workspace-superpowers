@@ -1,80 +1,49 @@
-# Hợp đồng Quy tắc Điều hành & Các Mẫu Tệp Chuẩn (Rules, Contracts & Templates)
+# Rules, Contracts, and Templates
 
-Tài liệu này tổng hợp toàn bộ các **Hợp đồng Quy tắc Điều hành (Contracts & Rules)** và các **Mẫu Tệp Chuẩn (Templates)** chi phối hoạt động của dự án **Workspace Superpowers**.
+This is the navigation guide for Workspace Superpowers' **16 rules/contracts** (`AGENTS.md` and 15 files in `references/`) and **six templates** in `templates/`. Follow the applicable contract itself for full requirements. A link here neither loads a Skill nor grants permission to use a host capability. Classify the current operation first; do not activate every reference or create every template for every request.
 
----
+## Start here: routing and continuity
 
-## PHẦN 1: CÁC HỢP ĐỒNG QUY TẮC ĐIỀU HÀNH (16 RULES & CONTRACTS)
+| Rule or contract | When it applies | Principal input, responsibility, or result |
+|---|---|---|
+| [AGENTS.md](AGENTS.md) | Every new request before planning an artifact; reclassify when the operation changes. | Route Coding, Workspace, Simple Q&A, or Mixed work; load applicable skills, protect evidence and approval boundaries, and report only verified results. |
+| [Workflow continuity](references/workflow-continuity.md) | A request changes, pauses, resumes, branches, or receives late files. | Interpret the current message against applicable decisions; preserve unaffected scope, track a temporary return point, and stop only for an actual unresolved prerequisite. |
+| [Persistent work tracking](references/work-tracking.md) | Sustained work has an adopted canonical plan, or a new session must discover one. | Obtain tracking and placement consent where required; maintain one `work-plan.md` checkpoint, item register, sources, revisions, decisions, and checks. No parallel progress file. |
+| [Document continuity](references/document-continuity.md) | Continuing or substantively revising an existing document. | Inspect the target and adjacent material; preserve argument, terminology, citation/format conventions, and the seam between old and new content. |
+| [Session progress](references/session-progress.md) | A host displays an ephemeral checklist for multi-step work. | Map active tasks and state transitions to a session checklist without replacing the durable plan or inventing a second checkpoint. |
+| [Guided questions](references/guided-questions.md) | Missing facts, genuine branch decisions, and review of visible proposals. | Ask only what remains unresolved; display proposed content before requesting its scoped approval, and recover when it was not visible. |
 
-Các hợp đồng quy tắc quy định chuẩn mực ứng xử, ranh giới an toàn và luồng điều phối của AI trong từng tình huống cụ thể, bao gồm **1 quy tắc gốc** tại thư mục dự án và **15 hợp đồng tham chiếu** trong thư mục [`references/`](references/).
+## Writing, evidence, and artifact contracts
 
-### 1. Bảng tổng quan Các Hợp đồng Quy tắc
+| Rule or contract | When it applies | Principal input, responsibility, or result |
+|---|---|---|
+| [Criteria-based writing](references/criteria-writing-contract.md) | Interpreting criteria, outlining, drafting, or substantively revising report/thesis content against explicit requirements. | Inspect command verbs, scope, evidence, and source locators; keep analysis approval, detailed-outline approval, and post-draft review distinct. Does not turn unrelated office tasks into report writing. |
+| [Outline structure](references/outline-structure.md) | Preparing a document/report outline and checking evidence readiness. | Preserve the exact `source_title`; use `1`, `1.x`, `1.x.x` by default and preview actual argument blocks and needed assets without inventing evidence. |
+| [Academic and professional writing style](references/academic-writing-style.md) | Writing or reviewing analytical prose. | Develop supported arguments in natural paragraphs, use lists for genuinely parallel material, and return rule-based prose findings; adds no gate. |
+| [Deliverable language](references/language-policy.md) | Choosing language for chat, authored text, labels, or export. | English is the authored default unless explicitly overridden for that output; chat follows the current user's language, while protected source titles remain exact. |
+| [Citation styles](references/citation-styles.md) | Citations or bibliography are required. | Preserve the established style or use Harvard as fallback; inspect metadata and support, match each actual citation/attribution to its source, and do not invent references. |
+| [Project grounding](references/project-grounding.md) | A report or analysis must describe an accessible project folder or its description. | Survey the relevant slice read-only; record source coverage, conflicts, and one authorized derived context path. No software write or test/build by implication. |
+| [Visual and document evidence boundary](references/visual-evidence-boundary.md) | Describing screenshots, embedded figures, or results stated by a document. | Separate document-stated, visually observed, source-inspected, runtime-observed, and unverified claims; inspect actual locators and avoid inferring unseen runtime or device facts. |
+| [Visual assets, citations, and Word fidelity](references/visual-assets-and-word-fidelity.md) | Figures/tables, source/asset decisions, Word conversion, layout, or verification are relevant. | Identify provenance and permission, show available previews with attribution, preserve asset placement, and check actual DOCX structure/rendering separately. |
+| [Native mathematics in Word](references/math-in-documents.md) | Pasting, authoring, editing, formatting, or exporting mathematical expressions in DOCX. | Preserve editable OMML Equations and source meaning; record native, visual, and edit/save/reopen checks per target revision. |
+| [Mathematical reasoning and checks](references/mathematics-checks.md) | Derivation, calculation, proof, or mathematical review is requested. | Record assumptions, justified steps, per-claim `math_checks`, method limits, and independent review without conflating computation and proof. |
 
-| STT | Tên Hợp đồng / Quy tắc | Đường dẫn tệp | Mục đích chính |
-|:---:|---|---|---|
-| 1 | **Quy tắc Điều phối Gốc** | [`AGENTS.md`](AGENTS.md) | Phân loại yêu cầu lượt chat (JIT router), nguyên tắc trung thực và ngôn ngữ mặc định |
-| 2 | **Duy trì Luồng làm việc** | [`references/workflow-continuity.md`](references/workflow-continuity.md) | Duy trì tiến trình qua nhiều lượt hội thoại, xử lý câu hỏi rẽ nhánh và file gửi muộn |
-| 3 | **Theo dõi Công việc Dài hạn** | [`references/work-tracking.md`](references/work-tracking.md) | Cơ chế ghi nhớ, cập nhật và phục hồi tiến trình qua các phiên bằng `work-plan.md` |
-| 4 | **Viết bám sát Tiêu chí** | [`references/criteria-writing-contract.md`](references/criteria-writing-contract.md) | Quy định 4 chế độ viết (`analyze`, `outline`, `draft`, `revise`) và các chốt phê duyệt |
-| 5 | **Duy trì Tính liên tục Tài liệu** | [`references/document-continuity.md`](references/document-continuity.md) | Đảm bảo tính liền mạch văn phong, thuật ngữ khi viết tiếp vào tài liệu có sẵn |
-| 6 | **Tiến độ Phiên làm việc** | [`references/session-progress.md`](references/session-progress.md) | Quy định hiển thị Session Checklist ngắn hạn trong chat và ánh xạ sang công cụ Todo |
-| 7 | **Quy tắc Đặt câu hỏi** | [`references/guided-questions.md`](references/guided-questions.md) | Chỉ hỏi thông tin cốt lõi còn thiếu, hỏi từng quyết định một, tránh làm phiền |
-| 8 | **Chính sách Ngôn ngữ** | [`references/language-policy.md`](references/language-policy.md) | Thành phẩm mặc định là tiếng Anh; chat theo ngôn ngữ người dùng; cấm chêm song ngữ |
-| 9 | **Cấu trúc Đề cương** | [`references/outline-structure.md`](references/outline-structure.md) | Chuẩn đánh số đề cương (`1`, `1.x`, `1.x.x`), bảo toàn tiêu đề tiêu chí gốc |
-| 10 | **Phong cách Viết Học thuật** | [`references/academic-writing-style.md`](references/academic-writing-style.md) | Bảng mã lỗi (Rule IDs) về đoạn văn PEEL, văn xuôi 65%, tránh sáo rỗng |
-| 11 | **Quy chuẩn Trích dẫn** | [`references/citation-styles.md`](references/citation-styles.md) | Quy tắc định dạng trích dẫn (Harvard mặc định, APA, IEEE) và đối soát 2 chiều |
-| 12 | **Căn cứ Thực tế Dự án** | [`references/project-grounding.md`](references/project-grounding.md) | Căn cứ số liệu vào mã nguồn dự án thực tế; cấm tự ý sửa code ngoài phạm vi |
-| 13 | **Ranh giới Bằng chứng Thị giác** | [`references/visual-evidence-boundary.md`](references/visual-evidence-boundary.md) | Ảnh chụp màn hình không thay thế cho kiểm tra runtime/cơ sở dữ liệu thực tế |
-| 14 | **Độ trung thực Đồ họa trong Word** | [`references/visual-assets-and-word-fidelity.md`](references/visual-assets-and-word-fidelity.md) | Quản lý độ phân giải, tỉ lệ và định dạng hình ảnh trong tệp Microsoft Word |
-| 15 | **Công thức Toán trong Văn bản** | [`references/math-in-documents.md`](references/math-in-documents.md) | Quy chuẩn chèn công thức Word Equation OMML chỉnh sửa được (không chèn ảnh) |
-| 16 | **Kiểm tra Suy luận Toán học** | [`references/mathematics-checks.md`](references/mathematics-checks.md) | Kiểm chứng độc lập các bước suy diễn, giả định và tính toán số học |
+## Templates: use only when the operation needs them
 
----
+Templates are authoring scaffolds, not automatically required files. The executing agent fills applicable fields from inspected evidence and recorded user decisions. Users review content and decisions in chat rather than maintaining internal metadata. Remove template-only instructions and example rows from an instantiated deliverable. If durable tracking has been adopted, reference its canonical decisions rather than maintaining competing status copies.
 
-### 2. Chi tiết các Hợp đồng cốt lõi
+| Template | When to use it | Owner, inputs, and usable output |
+|---|---|---|
+| [Work plan](templates/work-plan.md) | Sustained work after the tracking/placement decision. | Executing agent maintains one authoritative resume checkpoint, item register, source/revision records, decisions, and next authorized action; conditional project/export rows only when needed. |
+| [Outline](templates/outline.md) | A requested or required document/report outline; inline chat form is sufficient for a small criterion. | Planning agent uses approved criterion analysis and ready/authorized evidence to show exact protected headings, argument blocks, sources, visual decisions, version, and scoped outline decision. |
+| [Working brief](templates/brief.md) | Scope and evidence need a shared handoff or durable record. | Executing agent records confirmed requirements, sources, language, preservation rules, assumptions, gaps, and conditional continuity/criteria/math/project fields. |
+| [Review findings](templates/review-findings.md) | Independent review of a specified artifact/revision. | Reviewer returns located, actionable `Critical`, `Important`, `Minor`, or `Suggestion` findings; executing author fixes and retests. Reviewer does not rewrite the artifact. |
+| [Deliverable contract](templates/deliverable-contract.md) | Multiple outputs or explicit source/export acceptance checks need to be declared. | Executing agent identifies authorized files and formats, source-to-export revisions, observable checks, and unresolved acceptance gaps. |
+| [Final report](templates/final-report.md) | A sustained or multi-output task needs a structured completion handoff. | Executing agent names delivered paths/revisions, preserved content, checks actually performed, failed or unavailable checks, remaining limitations, and next owners. |
 
-* **[`AGENTS.md`](AGENTS.md)**: 
-  Điểm chạm đầu tiên trên mọi lượt chat. Phân loại tin nhắn thành **Coding** (dùng workflow code của host), **Simple Q&A** (trả lời trực tiếp, không tạo tệp rườm rà), **Workspace** (gọi router `using-workspace-superpowers`), hoặc **Mixed** (tách riêng 2 luồng). Thiết lập nguyên tắc **Honesty** (tuyệt đối không bịa đặt số liệu hay tự nhận là đã kiểm chứng tệp khi chưa mở lại).
-* **[`workflow-continuity.md`](references/workflow-continuity.md)**: 
-  Đảm bảo AI không bị "mất trí nhớ" hay phản ứng cứng nhắc khi người dùng đặt câu hỏi phụ giữa chừng, gửi bổ sung tệp tài liệu muộn, hoặc yêu cầu hủy/thay đổi hướng đi.
-* **[`work-tracking.md`](references/work-tracking.md)**: 
-  Cơ chế lưu trữ trạng thái công việc bền vững qua tệp `work-plan.md`. Tự động nhận diện hồ sơ công việc cũ khi bắt đầu phiên mới, chỉ đọc phần tài liệu liên quan mà không cần người dùng phải tải lại ngữ cảnh từ đầu.
-* **[`criteria-writing-contract.md`](references/criteria-writing-contract.md)**: 
-  Quy định rõ ràng rằng: Người dùng duyệt đề cương không đồng nghĩa với việc AI được tự ý viết báo cáo; và một khoảng trống dữ liệu thực nghiệm chưa có sẽ chặn việc khẳng định kết luận tương ứng.
-* **[`language-policy.md`](references/language-policy.md)**: 
-  Quy định nghiêm ngặt: Mọi tài liệu bàn giao (report, thesis, plan) mặc định bằng tiếng Anh trừ khi người dùng yêu cầu rõ ràng; trao đổi trong chat đi theo ngôn ngữ của người dùng; nghiêm cấm chêm song ngữ xen kẽ lẫn lộn trong câu trả lời.
+## How the pieces fit
 
----
-
-## PHẦN 2: CÁC MẪU TỆP CHUẨN (6 TEMPLATES TRONG [`templates/`](templates/))
-
-Các mẫu tệp này đóng vai trò là khung cấu trúc chuẩn mực để AI sử dụng khi lập kế hoạch, soạn thảo hoặc phản biện.
-
-| STT | Tên Mẫu (Template) | Đường dẫn tệp | Mục đích sử dụng |
-|:---:|---|---|---|
-| 1 | **`work-plan.md`** | [`templates/work-plan.md`](templates/work-plan.md) | Mẫu kế hoạch làm việc bền vững (Durable Work Plan) lưu trữ tiến độ qua nhiều phiên |
-| 2 | **`outline.md`** | [`templates/outline.md`](templates/outline.md) | Mẫu đề cương chi tiết liên kết tiêu chí, luận điểm, bằng chứng và quyết định hình ảnh |
-| 3 | **`brief.md`** | [`templates/brief.md`](templates/brief.md) | Mẫu tóm tắt yêu cầu dự án/đề tài sau khi phỏng vấn làm rõ phạm vi |
-| 4 | **`review-findings.md`** | [`templates/review-findings.md`](templates/review-findings.md) | Bảng mẫu chuẩn ghi nhận kết quả phản biện (Critical, Important, Minor, Suggestion) |
-| 5 | **`deliverable-contract.md`** | [`templates/deliverable-contract.md`](templates/deliverable-contract.md) | Bản cam kết về định dạng, phạm vi và tiêu chí nghiệm thu của sản phẩm đầu ra |
-| 6 | **`final-report.md`** | [`templates/final-report.md`](templates/final-report.md) | Cấu trúc chuẩn của một báo cáo tổng kết hoàn chỉnh (Bài toán -> Phương pháp -> Kết quả) |
-
----
-
-### Chi tiết các Mẫu quan trọng
-
-1. **`work-plan.md`** ([`templates/work-plan.md`](templates/work-plan.md)):
-   - Chứa định danh công việc (`work_id`), đường dẫn tệp tài liệu đang soạn thảo, tệp bối cảnh dự án (`context_file`).
-   - Danh sách các hạng mục công việc (Work Items), trạng thái hoàn thành (`pending`, `in_progress`, `completed`), các quyết định đã được người dùng phê duyệt và các bước tiếp theo cần làm.
-
-2. **`outline.md`** ([`templates/outline.md`](templates/outline.md)):
-   - Chia theo từng cấp độ Heading (`1`, `1.x`, `1.x.x`).
-   - Mỗi mục đều có bảng ánh xạ: Nghĩa vụ cần đáp ứng, Luận điểm chính, Nguồn cứ liệu/dữ liệu thực nghiệm chứng minh, và Quyết định hình ảnh (có cần biểu đồ/hình vẽ hay không, ai chuẩn bị, trạng thái ra sao).
-
-3. **`review-findings.md`** ([`templates/review-findings.md`](templates/review-findings.md)):
-   - Được tất cả các vai trò Reviewer sử dụng khi trả kết quả phản biện:
-   ```markdown
-   | Severity | Location | Problem | Suggested Fix |
-   |---|---|---|---|
-   | [Critical/Important/Minor/Suggestion] | [Vị trí mục/tiêu chí] | [Mô tả cụ thể lỗi] | [Giải pháp khắc phục đề xuất] |
-   ```
+1. Start with [AGENTS.md](AGENTS.md), then apply [workflow continuity](references/workflow-continuity.md) to the current message. For sustained adopted work, use the [work plan](templates/work-plan.md) under [persistent tracking](references/work-tracking.md); the [session checklist](references/session-progress.md) is transient.
+2. For criteria-based writing, capture the actual requirement and evidence in the [brief](templates/brief.md), follow the [criteria contract](references/criteria-writing-contract.md), and prepare the [outline](templates/outline.md) only after the applicable analysis decision. [Outline structure](references/outline-structure.md) governs form, while [guided questions](references/guided-questions.md) governs visible review. Approval of one revision or section is not approval of another.
+3. When applicable, [project grounding](references/project-grounding.md), [visual evidence](references/visual-evidence-boundary.md), [assets and Word fidelity](references/visual-assets-and-word-fidelity.md), [math reasoning](references/mathematics-checks.md), and [native Word math](references/math-in-documents.md) add their own evidence checks. They do not authorize project writes, supply missing facts, or establish host support merely because they are linked.
+4. Define outputs and checks in the [deliverable contract](templates/deliverable-contract.md) if needed. An independent reviewer uses [review findings](templates/review-findings.md); the executing agent corrects issues, reopens the saved artifacts, runs applicable checks, and reports actual results and limits using the [final report](templates/final-report.md) or a concise chat response.

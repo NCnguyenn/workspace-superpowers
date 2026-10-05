@@ -59,7 +59,7 @@ This catalog helps an agent select the smallest applicable workspace skill. Load
 
 | Name | When to use | Main input | Expected output |
 |---|---|---|---|
-| [`drafting-prose`](skills/drafting-prose/SKILL.md) | Authorized report or thesis prose must be written, continued, or substantively recomposed. | Approved outline, evidence, decisions, continuity excerpts, and target section. | Fully delivered, reviewed section that waits for user approval. |
+| [`drafting-prose`](skills/drafting-prose/SKILL.md) | Authorized report or thesis prose must be written, continued, or substantively recomposed. | Authorized brief, approved outline or explicit waiver, evidence, decisions, continuity excerpts, and target section. | Reviewed section awaiting the user's decision; retain `draft_incomplete` where required evidence is missing. |
 | [`writing-reports`](skills/writing-reports/SKILL.md) | A report section must separate problem, plan, method, observed results, and evaluation. | Approved report block, evidence register, source locators, and report context. | Evidence-aware report prose with clear layer boundaries. |
 | [`writing-academic-prose`](skills/writing-academic-prose/SKILL.md) | A scholarly or thesis section needs claim-evidence reasoning, calibrated certainty, and academic cadence. | Approved argument blocks, evidence, continuity context, and citation needs. | Review-ready scholarly prose with explicit limits. |
 | [`working-with-mathematics`](skills/working-with-mathematics/SKILL.md) | Mathematical notation, derivation, proof, calculation, or correctness checking needs support. | Target claim, notation, domains, assumptions, source locators, and requested depth. | Mathematical handoff with steps, checks, result, and limitations. |

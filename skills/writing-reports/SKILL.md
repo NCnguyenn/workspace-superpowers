@@ -27,22 +27,22 @@ A planned benchmark is not an observed result. A README is not a passing test. A
 
 ## Inputs and output
 
-**Inputs:** approved outline blocks, criterion obligations, evidence register, source locators, project or continuity profile, required visuals, and unresolved gaps.
+**Inputs:** approved outline blocks, or the authorized brief and structure when the outline is explicitly waived or not required; criterion obligations, evidence register, source locators, project or continuity profile, required visuals, and unresolved gaps.
 
-**Output:** a report section that expands the approved blocks with clear report-layer boundaries, evidence-aware prose, source labels, and honest limits for `drafting-prose` to review.
+**Output:** a report section that expands the authorized blocks with clear report-layer boundaries, evidence-aware prose, source labels, and honest limits for `drafting-prose` to review.
 
 ## Procedure
 
-1. **Map the section’s report job.** Identify which layer or layers each approved block serves. Do not impose a generic chapter sequence when the criterion requires a narrower structure.
+1. **Map the section’s report job.** Identify which layer or layers each authorized block serves. Preserve the approved outline where it applies; do not impose a generic chapter sequence when the criterion requires a narrower structure.
 2. **Name the evidence state.** State whether a claim is observed, planned, user-provided, source-inspected, illustrative, or missing. Preserve conditions, units, dates, and source locators.
 3. **Develop paragraphs by default.** Use connected prose for explanation and evaluation. An analytical subsection with one lead sentence followed by a list is not finished reasoning; develop it without padding to a rendered-line quota or line-count quota. Lists remain appropriate for parallel items, parameters, or sequence.
-4. **Integrate visual evidence deliberately.** Place only approved tables and figures where they advance the argument. Explain what they show, their source, scope, and limitation; do not use decorative assets.
+4. **Integrate visual evidence deliberately.** Place only authorized tables and figures where they advance the argument. Explain what they show, their source, scope, and limitation; do not use decorative assets or add blocks outside an applicable approved outline.
 5. **Evaluate without overclaiming.** Link a result to its method and conditions, distinguish correlation from causation, and make uncertainty visible. A conclusion must not reuse hypothetical illustration numbers as operational proof.
 6. **Return a review-ready section.** Hand the candidate to `drafting-prose` for `reviewing-work` before delivering it to the user.
 
 ## Project and evidence boundaries
 
-For folder-based reports, use the inspected `structure_map` under [project grounding](../../references/project-grounding.md). Map paths to the approved headings; do not turn an accessible folder into a report chapter or run unapproved tests, builds, or migrations. A source description, code file, README, or user statement does not by itself establish runtime behavior or measured performance.
+For folder-based reports, use the inspected `structure_map` under [project grounding](../../references/project-grounding.md). Map paths to the authorized headings; do not turn an accessible folder into a report chapter or run unapproved tests, builds, or migrations. A source description, code file, README, or user statement does not by itself establish runtime behavior or measured performance.
 
 Use [visual assets and Word fidelity](../../references/visual-assets-and-word-fidelity.md) for visuals and the [native Equation contract](../../references/math-in-documents.md) when mathematical content enters Word. A required screenshot, metric, or test result that is unavailable remains a gap rather than an invented illustration.
 
@@ -64,7 +64,7 @@ Abstract capabilities are resolved by the host adapter.
 
 ## Completion and fallback
 
-Return a candidate section only within the approved outline and evidence limits. When a required source cannot be opened, preserve the gap and write only what the remaining evidence supports. Do not invent a project name, role, budget, SLA, metric, result, functional prototype, citation, or scope detail; ask before using it.
+Return a candidate section within the applicable authorized structure and evidence limits. When a required source cannot be opened, preserve the gap and write only what the remaining evidence supports. If the caller authorized incomplete drafting under the criteria contract, retain neutral placeholders and `draft_incomplete`; do not upgrade the candidate to complete. Do not invent a project name, role, budget, SLA, metric, result, functional prototype, citation, or scope detail; ask before using it.
 
 ## Common mistakes
 
@@ -72,4 +72,4 @@ Return a candidate section only within the approved outline and evidence limits.
 - Mixing evaluation language into the observed-results layer.
 - Replacing report reasoning with bullet stacks or a table-only section.
 - Treating illustrative figures or user-provided notes as independently verified results.
-- Adding a standard report skeleton, project fact, or operational proof that the approved outline does not support.
+- Adding a standard report skeleton, project fact, or operational proof outside the authorized structure and evidence.

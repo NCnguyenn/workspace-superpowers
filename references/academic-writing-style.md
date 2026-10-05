@@ -1,6 +1,6 @@
-# Academic & Professional Writing Style Guide
+# Academic and Professional Writing Style Guide
 
-Shared style reference for writers and reviewers of academic and analytical content. Authored prose must sound like an authentic, high-performing final-year student or domain specialist writing naturally—not robotic, repetitive, or formulaic AI boilerplate. Cite rule IDs in review findings. This guide governs prose; the [criteria-writing contract](criteria-writing-contract.md) governs scope, approvals, and missing evidence. It does not add workflow gates.
+Use this guide when writing or reviewing academic and analytical prose. Aim for the precision and natural voice of a capable final-year student or domain specialist, not formulaic boilerplate. Review findings may cite the rule IDs below. The [criteria-writing contract](criteria-writing-contract.md) owns scope, approval, and missing-evidence decisions; this guide governs expression and adds no approval gate.
 
 ## Deliverable language
 
@@ -25,9 +25,9 @@ passages before selecting the voice and structure of new text.
 - **D4 — Review across the boundary:** Compare new and adjacent text with source
   locators; assess continuity beyond standalone fluency and disclose missing context.
 
-- **P1 — Develop one point:** Apply PEEL to analytical paragraphs: Point, Explanation, Evidence/Example, and Link to the argument, implication or limit. Integrate these functions naturally, without printing PEEL labels or inventing evidence. Do not leave a heading followed by an undeveloped assertion.
-- **P2 — Judge completeness:** Use 4–5 sentences as the benchmark for a developed analytical paragraph, not rendered lines or a mechanical quota. Inspect 2–3-sentence analytical stubs for missing explanation, support or implication; develop the missing reasoning rather than padding them. A short definition or transition may remain short when complete. Do not force a redundant closing link or split one argument into stubs.
-- **P3 — Connect meaning:** Link sentences through comparison, sequence, qualification, or supported causation. Remove connectors that add no relationship.
+- **P1 — Develop one point:** For analytical paragraphs, cover the functions of PEEL: Point, Explanation, Evidence/Example, and a Link to the argument, implication, or limit. Integrate them naturally; never print PEEL labels or invent support.
+- **P2 — Judge completeness:** Use 4–5 sentences as a development benchmark, not rendered lines or a mechanical quota. Inspect a short analytical paragraph for missing mechanism, support, or implication; add reasoning, not padding. A short definition or transition may remain short when complete; do not force a redundant closing link or split one argument into stubs.
+- **P3 — Connect meaning:** Connect sentences by comparison, sequence, qualification, or supported causation; remove connectors that contribute no relationship.
 
 ## 2. Purposeful list usage
 
@@ -40,19 +40,9 @@ Choose the form that serves the reader; these rules also permit compact guidance
 | L3 | Numbered list | Expressing procedure, chronology, rank, or items needing stable numbered references. Do not imply order for an unordered set. |
 | L4 | Table | Comparing items across shared fields. Keep explanations outside cells when they need sustained argument. |
 
-**L5:** Add interpretation after a list only when needed. Do not append a recap merely to return to prose, or force a checklist into paragraphs.
+**L5:** Interpret a list afterward only when necessary; avoid a recap added solely to return to prose.
 
-**L6 — Report body:** Write report and assignment bodies in developed paragraphs by default.
-For each explanatory or evaluative obligation, connect the point, evidence or
-mechanism, and its implication or limit. An outline expanded into bullet stacks
-or numbered mini-answers is not finished analytical prose. A list of advantages
-and disadvantages alone does not evaluate alternatives; explain their relative
-importance and support the judgment. Apply L2–L4 to genuine parallel items,
-procedures and comparison tables. Objectives, scope justification and constraints
-need cohesive paragraphs explaining why boundaries exist, how constraints interact
-and which tradeoffs follow. Tables summarize comparisons and accompany the
-explanation; they do not replace it. Adjacent subsections must not consist solely
-of tables or lists with token introductory lines.
+**L6 — Report body:** Write report and assignment bodies in developed paragraphs by default. For each explanatory or evaluative obligation, connect the point, evidence or mechanism, and implication or limit. An outline expanded into bullet stacks is not finished prose; a list of advantages and disadvantages does not evaluate their relative importance. Use L2–L4 for parallel items, procedures, and comparison tables. Explain objectives, scope boundaries, interacting constraints, and tradeoffs in cohesive paragraphs. A table can summarize evidence but cannot replace its interpretation. Adjacent subsections must not consist solely of tables or lists with token introductions.
 
 **Lead-and-list defect:** An analytical subsection that is only one lead sentence followed by a bullet or numbered list is still an outline, not finished prose. Develop that reasoning to the P2 benchmark of 4–5 sentences. Count sentences, not rendered lines. A short lead or transition may remain short when it already carries its meaning. Bullets and numbered lists remain allowed for genuinely parallel items, parameters, or sequence. Do not abuse a list, or stack line breaks, to avoid writing a paragraph. Do not convert "4–5 lines" into a mechanical line-count quota; that would contradict P2 and S3.
 
@@ -153,11 +143,11 @@ All input facts below are **hypothetical teaching examples, not repository or pr
 
 **After:** In 18 laboratory trials, queue depth and timeout rate were positively correlated (Pearson r = 0.41). The trials did not isolate queue depth as the sole manipulated factor, so causation is not established. Production logs were not inspected; the findings do not establish an effect on live incidents.
 
-## 9. Vietnamese and multilingual adaptation
+## 9. Adaptation for an explicitly requested non-English deliverable
 
-- **V1:** Apply only when that language is explicitly requested for the deliverable. Retain the same scope, evidence, clarity, and integrity standards; do not transfer English word-count heuristics to another language.
-- **V2:** In Vietnamese, remove empty uses of “bức tranh toàn cảnh”, “đóng vai trò then chốt / vô cùng quan trọng”, “không thể phủ nhận rằng”, and “đi sâu tìm hiểu”. State the supported action, condition, or result directly. Apply F1's contextual exceptions.
-- **V3:** Aim for a capable final-year student's precision: natural human phrasing, authentic analytical tone (never generic AI boilerplate), accurate terminology, and developed reasoning. Avoid slang, ornate language, and ceremonial endings.
+- **V1:** Apply these rules in the requested language while preserving scope, evidence, and integrity. Do not transfer English word-count heuristics mechanically into another language.
+- **V2:** Remove empty ceremonial openings, broad claims of importance, and unsupported praise regardless of language; name the supported action, condition, or result instead. Apply F1's contextual exceptions.
+- **V3:** Use natural, precise terminology and developed reasoning; avoid slang, ornate phrasing, and repetitive conclusions. Preserve exact quotations and protected source titles.
 
 ## 10. Integrity and review handoff
 

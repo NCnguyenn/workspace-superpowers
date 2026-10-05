@@ -1,99 +1,69 @@
-# Danh mục & Vai trò 12 Agent Chuyên trách (Agent Roles)
+# Agent Roles
 
-Tài liệu này tổng hợp toàn bộ **12 vai trò Agent chuyên biệt (Agent Roles)** trong dự án **Workspace Superpowers** (nằm trong thư mục [`agents/`](agents/)).
+This catalog indexes the 12 specialist roles in [`agents/`](agents/). It is a dispatch guide, not a replacement for the detailed role contracts. The roles are divided into **execution and support** and **independent review** so that producing, checking, and accepting work remain separate responsibilities.
 
-Hệ thống được thiết kế theo nguyên tắc **Tách biệt quyền hạn (Separation of Concerns)**: Người thực thi (Executor) và Người phản biện (Reviewer) là các vai trò hoàn toàn độc lập, đảm bảo AI không bao giờ tự phê duyệt nội dung của chính mình, duy trì tính khách quan và tính trung thực học thuật (*Honesty*).
+## Operating model
 
----
+The orchestrator dispatches a role with a bounded assignment, the relevant source excerpts and decisions, and a clear stopping point. A role receives only the context needed for its assignment; it is never supplied with the orchestrator session history. Abstract capability names in the role files describe operations the host may resolve, not guaranteed tools.
 
-## 1. Bảng tổng quan 12 Agent Roles
+When a task uses [persistent work tracking](references/work-tracking.md), pass the existing plan, work-item, revision, decision, and evidence identifiers only where they apply. For a continuation, provide the actual insertion seam and adopted conventions under [document continuity](references/document-continuity.md). A role reports its result and limitations to the orchestrator; it does not independently contact the user, broaden scope, infer approval, or declare the whole lifecycle complete.
 
-| STT | Phân nhóm | Tên vai trò (Role) | Đường dẫn tệp | Trách nhiệm chính |
-|:---:|---|---|---|---|
-| 1 | **Thực thi & Sản xuất** | `drafter` | [`agents/drafter.md`](agents/drafter.md) | Soạn thảo nội dung theo đề cương đã được phê duyệt |
-| 2 | **Thực thi & Sản xuất** | `formatter` | [`agents/formatter.md`](agents/formatter.md) | Căn chỉnh định dạng, bố cục, kiểu dáng văn bản |
-| 3 | **Thực thi & Sản xuất** | `inspector` | [`agents/inspector.md`](agents/inspector.md) | Khảo sát cấu trúc tệp/thư mục dự án thực tế |
-| 4 | **Thực thi & Sản xuất** | `packager` | [`agents/packager.md`](agents/packager.md) | Đóng gói và kiểm đếm danh mục thành phẩm bàn giao |
-| 5 | **Thực thi & Sản xuất** | `researcher` | [`agents/researcher.md`](agents/researcher.md) | Khảo cứu tài liệu, thu thập bằng chứng thực tế |
-| 6 | **Thực thi & Sản xuất** | `verifier` | [`agents/verifier.md`](agents/verifier.md) | Mở lại tệp trên đĩa để xác thực tính toàn vẹn sau khi ghi |
-| 7 | **Phản biện Độc lập** | `reviewer-requirement` | [`agents/reviewer-requirement.md`](agents/reviewer-requirement.md) | Phản biện mức độ đáp ứng tiêu chí (rubric) và phạm vi |
-| 8 | **Phản biện Độc lập** | `reviewer-coherence` | [`agents/reviewer-coherence.md`](agents/reviewer-coherence.md) | Đánh giá tính mạch lạc, chuyển ý và tính nhất quán logic |
-| 9 | **Phản biện Độc lập** | `reviewer-citation` | [`agents/reviewer-citation.md`](agents/reviewer-citation.md) | Thẩm định trích dẫn học thuật và tính có thực của dữ liệu |
-| 10 | **Phản biện Độc lập** | `reviewer-prose` | [`agents/reviewer-prose.md`](agents/reviewer-prose.md) | Soát lỗi hành văn, cấu trúc đoạn văn theo Style Guide |
-| 11 | **Phản biện Độc lập** | `reviewer-mathematics` | [`agents/reviewer-mathematics.md`](agents/reviewer-mathematics.md) | Kiểm tra giả định, ký hiệu, phép biến đổi và tính toán toán học |
-| 12 | **Phản biện Độc lập** | `reviewer-visual` | [`agents/reviewer-visual.md`](agents/reviewer-visual.md) | Đánh giá tính phù hợp và chất lượng của biểu đồ, hình ảnh |
+For criteria-based writing, apply the [criteria-writing contract](references/criteria-writing-contract.md). For file deliverables, content review is followed by artifact verification and then packaging. A saved file, a review finding, and a user decision are different records.
 
----
+## 1. Execution and support roles
 
-## 2. Chi tiết từng Agent Role
+These roles perform bounded production, investigation, or delivery work. They do not replace requirement decisions, independent review, final verification, or user acceptance.
 
-### Nhóm 1: Thực thi & Sản xuất (Execution & Production - 6 agents)
+| Role | File | Dispatch when | Main required input | Responsibility | Expected output | Authority boundary |
+|---|---|---|---|---|---|---|
+| `inspector` | [`agents/inspector.md`](agents/inspector.md) | An existing artifact, source guide, or authorized project slice must be read and described before analysis or editing. | Exact path or attachment, inspection question, claimed source role, revision, target locators, and coverage limit. | Open the actual supported representation and inventory structure, values, excerpts, provenance, and inaccessible regions. | Bounded observations with locators, coverage, conflicts, and handoff excerpts. | Read-only. It does not edit, run project tests/builds, mutate data, create plans/context, approve criteria, or verify a future revision. |
+| `researcher` | [`agents/researcher.md`](agents/researcher.md) | An explicit external source search or bounded source-verification assignment is requested. | Testable question or claim, domain/time range, accepted source types, existing evidence, access limits, and citation/reuse needs. | Discover, open, evaluate, and compare suitable sources; distinguish source existence from claim support. | Evidence cards with checked metadata, exact extracts/locators, limits, reuse state, and verified/partial/unverified status. | It does not draft final prose, manufacture references, decide approval, or turn a search result into verified evidence. |
+| `drafter` | [`agents/drafter.md`](agents/drafter.md) | One authorized section must be composed or substantively revised after applicable decisions are available. | Target and stopping point, brief/criterion, approved outline or explicit waiver with authorized structure, evidence register, gaps, preserve-list, audience, language, and style; continuation seam when relevant. | Expand the authorized blocks into accurate prose, preserve continuity, map claims to evidence, and retain `draft_incomplete` for an authorized incomplete draft. | Full assigned text, decision/evidence mapping, continuity and preservation notes, revision/status, and review handoff. | It cannot create or waive approval, add scope, invent facts/citations, edit unrelated sections, approve its own draft, or verify the saved artifact. |
+| `formatter` | [`agents/formatter.md`](agents/formatter.md) | A presentation-only change is authorized for an identified document, deck, or workbook. | Current path/revision, inspected styles/structure, template or formatting rules, exact target elements, preserve-list, and destination. | Apply the smallest presentation change while preserving text, meaning, equations, data, links, and established conventions. | Changed path/revision, exact formatting actions, preservation comparison, render status, and verification handoff. | It cannot change substance, hide deletion inside layout work, impose an unrelated house style, claim rendered proof from a save, or approve delivery. |
+| `verifier` | [`agents/verifier.md`](agents/verifier.md) | After a write, edit, conversion, or export, or before a file-delivery claim. | Exact paths and revisions, source/export relationships, contract, preserve-list, required checks, known findings, and applicable tracking records. | Reopen the actual current artifacts and record each structural, rendered, native, cross-artifact, and tracking check separately. | Per-artifact PASS/FAIL/UNVERIFIED matrix, evidence and locators, stale-revision detection, limitations, and ready/blocked/limited conclusion. | It does not silently fix files, approve content or user decisions, package unverified revisions, or call unsupported checks passed. |
+| `packager` | [`agents/packager.md`](agents/packager.md) | The requested delivery set and current verification records are available. | Deliverable contract, exact verified paths/revisions, working/approved state, source-to-export mapping, naming/destination rules, and delivery notes. | Assemble only the authorized verified set and describe its revision relationships and status. | Delivery file list, changes/preservation, verification provenance, exclusions/limitations, and final handoff note. | It cannot alter content, promote a working draft, hide failed or stale checks, create unauthorized trackers, or confer user approval. |
 
-#### 1. `drafter` ([`agents/drafter.md`](agents/drafter.md))
-- **Ngữ cảnh được cấp:** Bản tóm tắt yêu cầu (brief), đề cương đã được phê duyệt, dữ liệu/bằng chứng đã khảo sát.
-- **Nhiệm vụ:** Viết các đoạn văn, phát triển nội dung hoàn chỉnh bám sát từng mục trong đề cương.
-- **Giới hạn cứng (Hard Limits):**
-  - Không tự ý viết vượt ngoài phạm vi đề cương đã duyệt.
-  - Tuyệt đối không bịa đặt số liệu đo lường, kết quả thực nghiệm hay trích dẫn giả mạo.
-  - Phải dùng nhãn đánh dấu giữ chỗ (`draft_incomplete`) nếu thiếu bằng chứng thực tế.
+### Execution handoff
 
-#### 2. `formatter` ([`agents/formatter.md`](agents/formatter.md))
-- **Ngữ cảnh được cấp:** Tệp tài liệu nguồn và quy chuẩn định dạng (template, style guide).
-- **Nhiệm vụ:** Điều chỉnh font chữ, căn lề, khoảng cách dòng, Heading 1/2/3, danh mục bảng biểu và mục lục tự động.
-- **Giới hạn cứng:** Chỉ chỉnh sửa lớp trình bày hiển thị, tuyệt đối không được thêm bớt hoặc thay đổi ngữ nghĩa nội dung văn bản.
+A common bounded sequence is:
 
-#### 3. `inspector` ([`agents/inspector.md`](agents/inspector.md))
-- **Ngữ cảnh được cấp:** Thư mục hoặc tệp dự án cần khảo sát để lấy dữ liệu viết báo cáo.
-- **Nhiệm vụ:** Khảo sát nhanh cấu trúc thư mục, tệp mã nguồn, tệp cấu hình để tóm tắt bối cảnh thực tế cho người viết.
-- **Giới hạn cứng:** Chỉ đọc thông tin (Read-only); tuyệt đối không chạy lệnh sửa code, đổi schema cơ sở dữ liệu hay tạo nhánh Git.
+1. `inspector` establishes what the supplied artifact or project slice actually contains; `researcher` supplies external evidence only when the search is authorized.
+2. The applicable planning and criteria contracts establish scope, outline, evidence readiness, and decisions. These records are inputs to `drafter`, not decisions the drafter may invent.
+3. `drafter` produces the authorized content. `formatter` may then change presentation only, if that is separately requested.
+4. Independent reviewers inspect the candidate and return findings. The responsible executor applies corrections; reviewers do not silently edit.
+5. `verifier` reopens the final current revision and checks the actual file or export. Only then may `packager` assemble a verified delivery set.
 
-#### 4. `packager` ([`agents/packager.md`](agents/packager.md))
-- **Ngữ cảnh được cấp:** Danh sách các tệp thành phẩm đã qua kiểm chứng xác thực.
-- **Nhiệm vụ:** Đặt tên chuẩn, gom cụm các tệp kết quả (DOCX, PDF, XLSX, ảnh minh họa) và lập danh mục bàn giao (manifest).
-- **Giới hạn cứng:** Chỉ đóng gói các tệp đã được kiểm chứng thành công qua `verifier`.
+This is a coordination pattern, not a requirement to dispatch every role for every task. A chat-only result may not need file verification or packaging. A role that finds an issue outside its ownership records the locator and routes it to the orchestrator instead of taking over the workflow.
 
-#### 5. `researcher` ([`agents/researcher.md`](agents/researcher.md))
-- **Ngữ cảnh được cấp:** Đề bài, câu hỏi nghiên cứu hoặc chủ đề cần khảo cứu tài liệu.
-- **Nhiệm vụ:** Tìm kiếm các nguồn học thuật, bài báo, tài liệu kỹ thuật đáng tin cậy để làm cơ sở lý thuyết hoặc bằng chứng.
-- **Giới hạn cứng:** Báo cáo trung thực nguồn gốc; phân biệt rõ dữ liệu có thật và giả thuyết.
+## 2. Independent review roles
 
-#### 6. `verifier` ([`agents/verifier.md`](agents/verifier.md))
-- **Ngữ cảnh được cấp:** Đường dẫn tệp vừa được tạo ra hoặc chỉnh sửa trên đĩa.
-- **Nhiệm vụ:** Mở lại tệp thực tế, đọc kiểm tra cấu trúc để chứng minh tệp không bị lỗi font, hỏng cấu trúc (corrupt) hoặc mất dữ liệu.
-- **Giới hạn cứng:** Không được xác nhận "hoàn thành" nếu chưa thực sự mở lại tệp trên hệ thống tệp đĩa.
+Reviewers receive the candidate revision and only the sources, decisions, evidence, and adjacent context needed for their dimension. They use the [review findings template](templates/review-findings.md) and the [shared severity contract](skills/reviewing-work/SKILL.md#severity-contract): `Critical`, `Important`, `Minor`, and `Suggestion`. They return findings and bounded correction suggestions; they do not edit the artifact, approve their own work, or convert a finding into user acceptance.
 
----
+| Role | File | Dispatch when | Main required input | Responsibility | Expected output | Authority boundary |
+|---|---|---|---|---|---|---|
+| `reviewer-requirement` | [`agents/reviewer-requirement.md`](agents/reviewer-requirement.md) | A candidate analysis, outline, draft, or revision must be checked against actual requirements and authorized decisions. | Original criterion and locator, rubric/instructions, candidate revision, scope/outline versions, approval/waiver record, evidence gaps, and item mapping. | Map every obligation and approved block to the candidate; identify omissions, unauthorized additions, missing decisions, and evidence-readiness violations. | Requirement-dimension findings with source and candidate locators, coverage status, decision versions, and unresolved `draft_incomplete` requirements. | It does not invent requirements, evaluate source authenticity as citation review, mutate the plan, or approve coverage. |
+| `reviewer-coherence` | [`agents/reviewer-coherence.md`](agents/reviewer-coherence.md) | A substantial argument, multi-section draft, or inserted passage needs an independent reasoning and continuity check. | Candidate revision, actual preceding/following excerpts, scope/outline, premises/evidence locators, audience, and source profile. | Trace premises, mechanisms, qualifications, transitions, terminology, contradictions, and dependent conclusions across the actual seam. | Coherence findings naming both sides of each mismatch, affected dependencies, unavailable context, and bounded structural suggestions. | It does not copyedit, alter facts, approve a new argument, or transfer argument-flow checks to `reviewer-prose`. |
+| `reviewer-citation` | [`agents/reviewer-citation.md`](agents/reviewer-citation.md) | Factual, empirical, inferred, quoted, or internally logged claims need source-support and provenance review. | Candidate claims/revision, `evidence_register`, source and log locators, conditions/units, `blocking_gaps`, bibliography/style where applicable, and hypothetical permissions. | Trace each claim to an inspected source, test fit and strength, reconcile citations/bibliography, and distinguish documented intent, source inspection, and runtime evidence. | Citation-dimension findings with claim/source pairs, inspected versus inaccessible sources, evidence status, missing support, and `draft_incomplete` consequences. | It does not invent sources, run project tests to fill gaps, rewrite substantive arguments, or treat inaccessible material as verified. |
+| `reviewer-prose` | [`agents/reviewer-prose.md`](agents/reviewer-prose.md) | Substantive prose needs review for register, paragraph development, list use, clarity, cadence, and adopted style rules. | Candidate passages, adjacent source profile, language decision, audience, applicable brief, and meaning-preserving evidence excerpts. | Apply the academic style guide qualitatively, including D1–D4, P1–P3, L1–L6, R1–R4, S1–S3, C1–C3, F1, language, and integrity rules. | Prose-dimension findings with passage locators, rule IDs, bounded wording suggestions, list/prose scope, and review limitations. | It does not rewrite wholesale, judge argument or evidence, enforce AI-detector/burstiness scores, or approve smooth but unsupported content. |
+| `reviewer-mathematics` | [`agents/reviewer-mathematics.md`](agents/reviewer-mathematics.md) | A formula, derivation, proof, mathematical model, or numerical claim needs an independent correctness check. | Numbered steps, source/target revisions, assumptions/domains, units, notation, claims, `math_checks`, computation limits, and dependent conclusions. | Re-derive the mathematics; check equivalence, conditions, dimensions, boundary cases, precision, counterexamples, and the difference between samples, machine checks, reasoning review, and formal proof. | Mathematics-dimension findings with step locators, assumptions, independent method/evidence, check statuses, unverified items, and affected conclusions. | It does not edit proofs, run project operations, claim formal verification without a certificate, or substitute for Word Equation fidelity or source-evidence review. |
+| `reviewer-visual` | [`agents/reviewer-visual.md`](agents/reviewer-visual.md) | A document, deck, workbook, or image needs review of observable layout and visual usability. | Candidate path/revision, rendered representation, inspected ranges, template rules, audience, and rendering limits. | Inspect hierarchy, typography, spacing, alignment, tables, figures, clipping, wrapping, legibility, and page/slide/sheet composition in the actual covered view. | Visual/layout findings with representation, range, provenance label, severity, exact locator, correction owner, and uninspected limits. | It does not edit, assess substantive arguments or source truth, infer runtime state from pixels, or replace `verifier`'s structural/rendered checks. |
 
-### Nhóm 2: Phản biện Độc lập (Independent Reviewers - 6 agents)
+## 3. Choosing the right reviewer
 
-Các Reviewer không sửa trực tiếp vào văn bản mà trả về bảng phát hiện lỗi theo mẫu [`templates/review-findings.md`](templates/review-findings.md) với 4 cấp độ nghiêm trọng:
-- **`Critical`**: Bịa đặt số liệu, vi phạm phạm vi/chưa có sự chấp thuận của người dùng, lỗi toán học nghiêm trọng làm sụp đổ lập luận.
-- **`Important`**: Lập luận đứt gãy, thiếu mục bắt buộc của rubric, giải thích thiếu căn cứ.
-- **`Minor`**: Câu văn diễn đạt vụng, trích dẫn lệch chuẩn nhẹ.
-- **`Suggestion`**: Gợi ý nâng cao phong cách, không bắt buộc.
+- **Requirement or coherence?** Use `reviewer-requirement` for whether the requested obligation and approved scope are covered. Use `reviewer-coherence` for whether the supplied premises and conclusions connect logically across sections.
+- **Citation or researcher?** Use `researcher` to find and evaluate a requested external source before authoring. Use `reviewer-citation` to audit claims already present in a candidate against supplied academic, internal, or project evidence.
+- **Coherence or prose?** Use `reviewer-coherence` for argument flow, contradictions, dependencies, and terminology across sections. Use `reviewer-prose` for sentence, paragraph, register, list, cadence, and style-guide defects. A fluent sentence can still contain a coherence defect.
+- **Citation or mathematics?** Use `reviewer-citation` for whether a number or empirical claim is supported by its source. Use `reviewer-mathematics` for whether an expression, derivation, assumption, or proof is mathematically valid. Refer Word equation structure to `verifier`.
+- **Visual reviewer or verifier?** Use `reviewer-visual` to report visible quality findings and suggested presentation fixes. Use `verifier` to reopen the actual final revision and establish structural, render, native-fidelity, export, and cross-artifact check status.
+- **Inspector or verifier?** Use `inspector` to establish the input context before work. Use `verifier` after a write or export to test the selected final revision. Neither role may infer unsupported runtime or acceptance facts.
 
-#### 7. `reviewer-requirement` ([`agents/reviewer-requirement.md`](agents/reviewer-requirement.md))
-- **Nhiệm vụ:** Đối chiếu từng phần của tài liệu với tiêu chí gốc (rubric) và phạm vi được phê duyệt.
-- **Trọng tâm kiểm tra:** Phát hiện các nghĩa vụ bị bỏ sót, các nội dung bị viết lan man ngoài phạm vi, hoặc đề cương bị bẻ cong so với tiêu chí gốc.
+## 4. Shared handoff rules
 
-#### 8. `reviewer-coherence` ([`agents/reviewer-coherence.md`](agents/reviewer-coherence.md))
-- **Nhiệm vụ:** Đánh giá tính liền mạch của dòng lập luận, tính hợp lý trong chuyển ý giữa các đoạn/phần, và tính nhất quán của thuật ngữ chuyên môn xuyên suốt bài viết.
+Every role should identify the exact artifact or text revision it inspected or produced, the coverage it actually achieved, the evidence or decision locators supporting its result, and the checks that remain unavailable. `PASS`, `complete`, `approved`, and `verified` are not interchangeable:
 
-#### 9. `reviewer-citation` ([`agents/reviewer-citation.md`](agents/reviewer-citation.md))
-- **Nhiệm vụ:** Thẩm định tính có thật và độ chính xác của các trích dẫn học thuật, số liệu thực nghiệm, nhật ký đo lường.
-- **Trọng tâm kiểm tra:** Bắt lỗi "ảo giác" (hallucination) trích dẫn; kiểm tra đối soát 2 chiều giữa trích dẫn trong văn bản và danh mục tham khảo cuối bài.
+- A draft can be `draft_incomplete` when required evidence is missing, even if its independent prose review is clean.
+- A review with no findings covers only the supplied representation and dimension; it is not user approval or file verification.
+- A successful save, file path, screenshot, or render does not by itself prove semantic integrity, runtime behavior, source provenance, or criterion satisfaction.
+- A later edit, conversion, or export makes earlier verification stale for the affected revision.
 
-#### 10. `reviewer-prose` ([`agents/reviewer-prose.md`](agents/reviewer-prose.md))
-- **Nhiệm vụ:** Kiểm tra chất lượng hành văn theo cẩm nang phong cách học thuật [`references/academic-writing-style.md`](references/academic-writing-style.md).
-- **Trọng tâm kiểm tra:** 
-  - Mô hình đoạn văn PEEL (P1-P3).
-  - Tỉ lệ văn xuôi tối thiểu 65% so với danh sách gạch đầu dòng (L1-L6).
-  - Giọng văn học thuật khách quan, không dùng từ sáo rỗng hoặc khẳng định quá đà (R1-R4, F1).
-
-#### 11. `reviewer-mathematics` ([`agents/reviewer-mathematics.md`](agents/reviewer-mathematics.md))
-- **Nhiệm vụ:** Kiểm tra tính đúng đắn của các ký hiệu, giả định ban đầu, các bước biến đổi công thức và kết quả tính toán độc lập.
-- **Trọng tâm kiểm tra:** Bắt lỗi ngộ nhận logic trong chứng minh toán học, công thức tính toán sai lệch so với lý thuyết.
-
-#### 12. `reviewer-visual` ([`agents/reviewer-visual.md`](agents/reviewer-visual.md))
-- **Nhiệm vụ:** Thẩm định chất lượng biểu đồ, hình vẽ minh họa, ảnh chụp giao diện.
-- **Trọng tâm kiểm tra:** Nhãn trục biểu đồ rõ ràng, nguồn dữ liệu minh bạch, hình ảnh không bị méo lệch tỉ lệ, và tuân thủ ranh giới bằng chứng thị giác.
+The orchestrator consolidates findings, sends corrections to the appropriate executor, obtains any required decision, requests final verification, and reports the actual remaining limitations. Detailed procedures, capability handling, and output schemas remain in the linked role files.

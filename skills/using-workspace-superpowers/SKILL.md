@@ -62,6 +62,8 @@ For a completed assignment, use the completed-assignment read-back route through
 
 If several valid document interpretations or organizations remain after evidence is sufficient, load `brainstorming`. It is **not a software-design skill**: present 2–3 comparable approaches, recommend one, and wait for the user’s choice.
 
+The table below governs new criteria-based analysis and authoring. It does not reopen intake for completed-assignment read-back or a narrow comparison; keep those on the read/analysis route described above.
+
 | `task_mode` | Required route and stopping point |
 |---|---|
 | `analyze` | MUST execute `invoke_skill("scoping-the-brief")`, then `analyzing-artifacts` when substantive source interpretation is needed; use `brainstorming` when valid readings remain, present analysis, and Stop. |

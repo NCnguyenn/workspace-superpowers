@@ -1,8 +1,6 @@
-# Reports grounded in a project folder
+# Reports Grounded in a Project Folder
 
-Applies to a folder path, a detailed description already in that folder, or both.
-Use the [workflow continuity contract](workflow-continuity.md) and the existing
-brief/evidence register. This procedure does not authorize implementation work.
+Use this procedure when a report or analysis must reflect an accessible project folder, a detailed project description, or both. [Workflow continuity](workflow-continuity.md) and the existing brief/evidence register retain decisions across turns. This is read-only project acquisition unless the user separately authorizes a specific write; describing a project is not permission to implement it.
 
 ## Canonical context identity and provenance
 
@@ -33,23 +31,9 @@ override one with another. Runtime observations may concern a different deployme
 
 ## Survey authority and software handoff
 
-Survey does not permit changes to code, configuration, schema, Git state or data.
+Survey does not permit changes to code, configuration, schema, Git state, or data. Reading source, read-only queries, and screenshots are permitted when needed; tests, builds for evidence, and migrations require explicit user permission. Installation, generated code, seed data, startup scripts that write, and UI actions that mutate records also require permission. Inspect startup prerequisites before opening an app; if opening requires a prohibited write or mutation, stop that action and request authorization or use existing read-only evidence. Calling a command a “preview,” “smoke check,” or “health check” does not grant authority.
 
-Read-only survey permits necessary reading and looking at an app/database,
-including read-only queries and screenshots. It does **not** permit changes to
-code, configuration, schema, Git state or data. Tests, builds for evidence and
-migrations require explicit user permission. This boundary also excludes package
-installation, generated code, seed data, writes hidden in startup scripts, and
-UI actions that mutate records. Inspect startup prerequisites before opening;
-if opening requires a prohibited mutation or command, stop that action and obtain
-permission or use existing read-only evidence. Merely calling a command a
-"preview", "smoke check" or "health check" does not authorize it.
-
-Route a software investigation to `using-superpowers` with these exact limits
-and the bounded question. Generic coding instructions to install, test, build,
-commit or fix do not override the survey's authorization. A nonsoftware project
-(data, drawings, lab records, course material) stays in Workspace reading and
-analysis. Classify operations, not the word "project".
+For software, hand the bounded question and these exact limits to `using-superpowers`. Generic coding advice to install, test, build, commit, or fix does not override survey authority. Keep nonsoftware projects in Workspace reading and analysis. Classify the requested operation, not the word “project.”
 
 The Coding-to-Workspace handoff returns only:
 
@@ -67,19 +51,7 @@ sections. Do not generate new measurements through prohibited commands.
 
 ## One derived context file
 
-Use at most one designated derived Markdown file for a concrete project, such as
-`project-context.md`. A new context is placed in the approved report workspace or
-other authorized output location by default. An existing adopted context may stay
-inside the source project only when that exact source-project path was explicitly
-authorized and recorded. An explicitly authorized new source-project path is
-also a valid placement override; it grants no other repository writes. Survey
-authority alone must not choose a new path inside the source project. Record the
-exact `context_file` path and placement authority in the existing
-checkpoint and reuse it across continuations. Do not create a new file per
-session, skill, chapter or reviewer. If no authorized location is available,
-return the missing output-location decision rather than selecting an arbitrary
-source-project path. If multiple candidates exist, use the recorded identity or
-resolve the ambiguity before writing.
+For a concrete project, reuse at most one designated `project-context.md`. A new context belongs in the approved report workspace or other authorized output location by default. An existing adopted context may remain inside the source project only when that exact path has explicit recorded authorization; a newly authorized source-project path is also a path-specific exception and authorizes no other writes. Survey authority must not choose a new path inside the source project. Record `context_file` and `placement_authority` in the existing checkpoint. Without an authorized location, ask for that decision rather than writing into the source tree. Resolve multiple candidate contexts by their recorded project identity before writing. Do not create duplicate contexts for sessions, chapters, or reviewers.
 
 Label it derived. Store only inspected paths, source locators/revisions, coverage,
 structure mapping, conflicts, unread areas and check limits; exclude secrets.

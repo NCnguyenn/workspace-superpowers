@@ -1,6 +1,6 @@
-# Visual and document evidence boundary
+# Visual and Document Evidence Boundary
 
-Apply before reporting what an image, screenshot, or embedded DOCX figure shows, and before treating a sentence in a completed document as an observed result.
+Use this boundary before describing an image, screenshot, or embedded DOCX figure, and before reporting a statement in a completed document as if it were an observed result. Record the locator and provenance for each claim. Visual inspection proves only what can be seen; use [visual assets and Word fidelity](visual-assets-and-word-fidelity.md) for asset creation/export and separate structural, rendered, and acceptance checks.
 
 ## Provenance
 
@@ -18,15 +18,9 @@ Implementation names, test results, and measurements copied from a document stay
 
 ## Visible pixels
 
-Visible pixels establish visible pixels. They do not establish data provenance, runtime execution, device identity, a CSS viewport, or that a criterion is satisfied.
+Visible pixels establish visible pixels, not data provenance, runtime execution, device identity, a CSS viewport, or criterion satisfaction. A displayed price, including `$0`, is a visible price; its database source remains `unverified` from the image alone. A layout compatible with a documented rule does not prove that rule ran: say “consistent with” and keep execution `unverified`.
 
-A displayed price, including `$0`, is a visible price. The database or source of that value is `unverified` from the image alone.
-
-A layout that matches a shown rule is compatibility. It does not prove that rule executed. Say "consistent with" and keep execution `unverified`.
-
-Raster dimensions are raster dimensions. A PNG width is not a CSS viewport. Do not say it corresponds to, equals, or would equal a viewport if DPR is 1. Do not infer a device, zoom, crop, or export scale from the width.
-
-When a screenshot shows CSS, list every visible breakpoint. Do not say "only these breakpoints" after reading part of the image.
+Raster dimensions describe the raster; a PNG width is not a CSS viewport. Do not infer DPR, device, zoom, crop, or export scale from it. If the screenshot shows CSS rules, transcribe all visible breakpoints rather than calling a partial view exhaustive.
 
 ## Transcription
 
@@ -38,9 +32,7 @@ Render each caption once. Do not prefix `Figure 95: Figure 95:`.
 
 ## DOCX locator
 
-The primary locator is the `r:embed` ID and its resolved relationship target. A media filename is not a relationship ID. Do not invent an ID from the filename number.
-
-State the counting scope: direct `w:body` child paragraphs, or all descendant `w:p` elements. State whether the index is 0-based or 1-based. Write a count as `1183`, not `1.183`.
+For an embedded image, locate `r:embed` and resolve its relationship target. A media filename is not a relationship ID; never derive one from the filename. State the counting scope for a paragraph index: direct `w:body` child paragraphs or all descendant `w:p` elements. State whether the index is 0-based or 1-based. Write a count as `1183`, not `1.183`.
 
 ## Separate statuses
 

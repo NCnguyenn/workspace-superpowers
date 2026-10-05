@@ -1,129 +1,84 @@
 # Workspace Superpowers
 
-You have Workspace Superpowers via the **workspace-superpowers** skill pack.
-Skills are capabilities, not slash-commands. Do not wait for
-"use workspace-superpowers", `/skill`, or a named skill.
+This repository contains the **workspace-superpowers** instruction pack. Skills are capabilities, not slash commands. The router and the references below define portable behavior; host adapters document how a particular environment exposes that behavior.
 
-## Classification
+## Request classification and first routing decision
 
-Classify every request before planning, modifying artifacts, or loading
-specialist skills — including the first reply of a session:
+Classify every request before planning, modifying an artifact, or loading a specialist. Re-classify when the requested operation changes. Classification is based on the operation, not only on the file extension or the word “project”.
 
-1. **Coding**
-   Software engineering, source code, repositories, debugging, refactoring,
-   builds, databases as application infrastructure, and automated tests.
-   → load `using-superpowers` and follow it.
-   Do not execute the coding slice under Workspace Superpowers.
+| Class | Applies to | First action | Boundary |
+|---|---|---|---|
+| **Coding** | Source code, repositories, debugging, refactoring, builds, databases as application infrastructure, and automated tests | Load `using-superpowers` and use the coding workflow | Do not execute the coding slice under Workspace Superpowers. |
+| **Simple Q&A** | A definition, explanation, or conceptual answer that needs no artifact workflow, structured research, or specialist capability | Answer directly | Do not create tracking or document ceremony for a small answer. |
+| **Workspace** | Documents, PDFs, presentations, spreadsheets, research, citations, visuals, conversion, review, and packaging of knowledge or office work | Load `using-workspace-superpowers` before the artifact operation | Load only the specialists required by the current operation. |
+| **Mixed** | A request with meaningful Coding and Workspace operations | Choose the primary workflow from the requested outcome, then invoke the other router when its slice begins | Keep the two slices separate; do not merge their workflows. |
 
-2. **Simple Q&A**
-   Lightweight definitions, explanations, or conceptual questions requiring
-   no artifact workflow, structured research, or specialist capability.
-   → answer directly.
+An opening question about the parts, criteria, or structure of a newly supplied assignment guide is an intake-map operation, not Simple Q&A and not a narrower operation. On continuation, reuse the intake map. A completed-assignment read-back remains a narrow read/analysis operation; it does not automatically reopen intake or start drafting.
 
-3. **Workspace**
-   Documents, PDFs, presentations, spreadsheets, research, citations,
-   visuals, conversion, review, and packaging of knowledge/office work.
-   → load `using-workspace-superpowers` and follow it.
+### Just-in-time skill loading
 
-4. **Mixed**
-   Tasks containing meaningful Coding and Workspace slices.
-   → determine the primary workflow from the user's main outcome or final
-   deliverable, load that router first, and invoke the other router only when
-   its slice begins. Do not merge their workflows.
+For every Workspace turn, including approvals, corrections, new files, and continuations:
 
-Classification follows the nature of the operation, not merely the file type.
+1. Load `using-workspace-superpowers` with the native `Skill` tool and the actual catalog ID.
+2. Reassess the current message and operation. A saved plan, earlier “next step”, or remembered summary does not replace the current request.
+3. Load only the selected specialist skills before relying on their instructions. A link, filename, or mention is not proof that a skill was loaded.
+4. If a required skill or capability is unavailable, use a supported fallback and state the limitation. Never claim a missing skill or tool ran.
 
-Reading, producing, or modifying a non-code knowledge/office artifact is
-Workspace work even when phrased as a question. Source code, repositories,
-tests, build files, and software artifacts remain Coding.
+Simple Q&A stays direct. Coding stays with `using-superpowers`. Never claim a skill was followed unless its instruction body was actually loaded.
 
-When Simple Q&A and Workspace both plausibly apply and artifact work may be
-required, prefer Workspace.
+## Startup, continuity, and durable tracking
 
-An opening question about the parts, criteria, or structure of a newly supplied assignment guide is not Simple Q&A and is not a narrower operation. The first reply is the intake map. On continuation, reuse the existing intake map.
+On the first Workspace turn of a new chat, after context loss, and when the user asks to continue, discover an existing `work-plan.md` in the current task root or dedicated project directory before asking for progress or reading unrelated substantive files. A file supplied in the current message is not unrelated; read it in full.
 
-Re-classify when the task changes mid-session.
+Follow [persistent work tracking](references/work-tracking.md):
 
-For every Workspace turn, including approvals, corrections and continuations,
-load `using-workspace-superpowers` before its artifact operation and load the
-selected specialists before using them. Select from the current request plus
-retained context; a saved next step does not override a new instruction. Simple
-Q&A stays direct and Coding stays with `using-superpowers`. On PI-Desktop use
-the native `Skill` tool and the actual namespaced catalog IDs.
+- Use a supplied or recorded `plan_file` first, then bounded task-root discovery. Do not search the whole disk, vendor trees, or unrelated projects.
+- Route plan reading through `reading-artifacts`; read the plan identity, `Where We Are / Resume Here`, brief, decisions, and the target item before linked sources.
+- Reuse matching plans and decisions. An existing plan does not authorize resuming an unrelated question, editing, or replacement.
+- Propose agent-managed tracking for sustained work. Do not create a plan for Simple Q&A, an isolated edit, or a one-off export.
+- Keep one canonical `work-plan.md` progress register. Do not create `progress.md`, a private recovery log, or another parallel tracker.
+- Users review and consent in chat; they do not need to create folders or maintain metadata.
 
-On the first Workspace turn in a new chat and on continuation, discover an
-existing `work-plan.md` in the current task root or dedicated project directory before asking for progress or reading unrelated source files. A file the user just supplied is not unrelated: read it in full.
-Follow the [persistent work-tracking contract](references/work-tracking.md):
-use the recorded plan path or bounded task-root discovery, route its read to
-`reading-artifacts`, then load only sources needed by its current item. Reuse
-matching plans and user decisions. Propose agent-managed tracking for sustained
-work; do not create it for simple Q&A, isolated edits or one-off exports. Users
-review and consent in chat; they need not create folders or maintain metadata.
-An existing plan does not turn an unrelated question into permission to resume.
+When creating a canonical tracking file and project deliverables, propose a dedicated common project folder and wait for explicit approval before writing it. Co-locate the work plan and deliverables there. A project context is optional and has a separate placement decision under [project grounding](references/project-grounding.md). This governance does not apply to maintenance of this repository's existing instruction files.
 
-### Project Directory and Work-Tracking Governance
+Apply [workflow continuity](references/workflow-continuity.md) to each new message. Preserve unaffected decisions, scope, evidence limits, and return points. A side question is answered normally and does not force an unrelated approval. An off-topic answer is not approval. For existing documents, apply [document continuity](references/document-continuity.md).
 
-- **Dedicated common project folder created by AI:** When creating the canonical tracking file (`work-plan.md`) and project deliverable files (e.g. `report.md`, `brief.md`), the AI must co-locate them into a dedicated common project directory created by the AI (e.g. `<Project_Name>/` such as `SmartFood_Delivery_Platform/`), rather than scattering files in the workspace root or using arbitrary paths. `progress.md` is not a second tracker; progress belongs in the work plan's single item register.
-- **Mandatory user interview & approval before file creation:** Never create tracking or project files from unconfirmed assumptions. If a brief, rubric, or graded guide was supplied, the intake map comes first. Confirm only identity fields that map does not already settle, propose the folder in chat, and STOP before creating files.
+## Criteria-based writing: separate decisions and stopping points
 
-For ongoing Workspace work, apply the [workflow continuity contract](references/workflow-continuity.md).
-Interpret each new message in context: answer side questions normally, read new
-files before using them, preserve unaffected decisions, and resume at the relevant
-step. A pending question does not block unrelated work, and an off-topic answer
-is not approval. Users do not need to follow the workflow's expected sequence.
-When continuing a report, retain its argument, project context, terminology,
-voice, and presentation under the [document continuity contract](references/document-continuity.md).
+The [criteria-writing contract](references/criteria-writing-contract.md) applies when the requested operation interprets criteria, creates an outline, drafts report/thesis content, or substantively revises such content against explicit requirements. It does not turn typo fixes, layout changes, conversions, spreadsheet operations, presentation operations, or unrelated office work into a report-writing workflow.
 
-Never claim a skill was followed unless it was loaded.
+For every applicable section, chapter, part, or criterion, keep these decisions distinct:
 
-## Two-Stop Gate Discipline
+1. **Requirement analysis:** inspect the source, identify command verbs and cognitive depth, define in-scope and out-of-scope content, identify evidence/visual/citation needs, and surface material gaps. Deliver the complete analysis in chat and wait for the user’s decision before preparing a detailed outline.
+2. **Detailed outline:** after applicable analysis approval or an explicit waiver, prepare the outline from that approved analysis and evidence state. Use the protected source title and the `1`, `1.x`, `1.x.x` hierarchy by default. Deliver the complete outline in chat and wait before drafting.
+3. **Draft and review:** only after the applicable outline decision (or explicit waiver) may drafting proceed. Review before full delivery, then deliver the complete requested section in chat and ask whether it is approved. Do not start the next section in the same turn.
 
-Enforce analysis approval and detailed outline approval as two separate stops
-for EVERY section, chapter, part, or criterion of a deliverable (e.g. “Section 1:
-Project Overview”, “Introduction”, or “P1”) under the [criteria-writing contract](references/criteria-writing-contract.md):
-- **First stop — requirement analysis.** Read requirements and present a deep, rigorous analysis directly in chat:
-  * Keywords, Command Verbs & Cognitive Depth: identify pure theory (descriptive) vs comparison (comparative matrix) vs critique (evaluative/tradeoffs) vs defense (justification).
-  * Scope Boundaries: explicit In-Scope vs Out-of-Scope, and strict separation between general academic theory and project scenario application.
-  * Evidence, Diagrams & Citations: identify required data, measurements, project examples, diagrams, screenshots, comparison tables and citations. Inspect available inputs first. For missing required support, use `scoping-the-brief` to interview the user and wait before outlining; proceed only after sufficient inputs are inspected or the user explicitly authorizes illustrative material for that gap. General approval is not permission to invent evidence.
-  * STOP and await user approval in chat before preparing any detailed outline.
-- **Second stop — detailed outline.** Once analysis is approved, present the detailed outline directly in chat:
-  * Strictly grounded in approved analysis: directly derive all headings, points, and scope from the approved analysis.
-  * Default to Heading 1/2/3 numbered `1`, `1.x`, `1.x.x` unless the user explicitly requests another structure. Heading 1 copies the criterion/requirement title verbatim from the supplied source, without paraphrase, translation or invented wording; 1.x holds main points and 1.x.x supporting subpoints. Preserve explicitly adopted existing numbering. Follow [outline structure and evidence readiness](references/outline-structure.md), including its prerequisite for outline-only requests.
-  * Concrete arguments for each heading: use the same blocks the finished section will use, enough to show about 40–50% of that section. The finished draft adds the remaining 50–60% inside those blocks. If the finished section will have several paragraphs, the outline already has those paragraphs. One paragraph per heading is not an outline of a multi-part heading. A short bullet or numbered list is only for parallel items. Do not print Claim, Reason, Limit, or Not needed. Keep the full heading tree. The finished draft fills those same blocks. It does not add a new paragraph, list, table, figure, or number. Do not reverse these ratios, and do not turn them into a word-count quota. Do not add unstated technology, audience or operating commitments to imitate depth.
-  * Visuals and tables: show an image or a filled table only in the section that needs it, in the same message and in the same place the finished section will keep it. If it needs neither, omit both. Do not write Không cần. For a requested illustration, embed image markdown with a direct HTTPS image URL that returns the image bytes. A wiki File page, a bare URL, a source line without the image markdown, a file path, and a long base64 blob are not images. Ask the user for a project screenshot or internal number and wait. Do not create, generate, or code-draw a substitute unless the user asks for that drawing or agrees after you ask. Silence is not agreement. Skill examples such as P1, BTEC, and a named unit are not this user's assignment. If the user did not write them, do not put them in a question option and do not open a programme card. If several valid organizations remain, present 2–3 options, recommend one, and stop. The user chooses. Do not select one and write the section.
-  * STOP and await user approval in chat before drafting.
-- **Drafting & Full In-Chat Delivery:**
-  * Only after detailed outline approval can paragraph drafting proceed.
-  * Strictly grounded in approved outline: directly expand the approved outline point by point, maintaining strict coherence (Analysis → Outline → Report). Do not add a table, figure, or number absent from the approved outline.
-  * Deliver full drafted text directly in chat for immediate reading and review. Do not hide text behind a file path or merely state "saved to file". Even if saved locally into the project directory for persistence, the complete drafted content must appear in chat.
-  * STOP after delivering the section draft. Ask whether the delivered section is approved. Do not start the next section in the same turn. When citations are required, include in-text citations and a References list. Do not invent page numbers, publishers, or unchecked bibliographic details.
+Evidence readiness is conditional, not a universal interview. Inspect available inputs first. If the current requirement needs missing budget, timeline, scale, measurements, screenshots, logs, or another factual bound, load `scoping-the-brief` and ask whether real data exists or the user authorizes illustrative material for that exact gap. Keep the gap pending and do not present a completed analysis for approval until the prerequisite is resolved. Pure theory can use `not_required` when no project evidence is needed.
 
-Prompts asking to write immediately (e.g. “viết Section 1”, “làm Section 1”, “viết ngay”, “làm dàn ý”) do not waive these stops. Asking for the outline, including `làm dàn ý`, is not analysis approval. An approved master outline is not detailed outline approval.
+The outline and final section use the same blocks in the same order. About 40–50% means the outline previews those blocks with concrete arguments; the final draft adds the remaining 50–60% inside them. These are depth guidance, not word-count quotas. One paragraph per heading is not enough for a multi-part heading. Use bullets only for genuinely parallel items. For a requested illustration, show image markdown with a direct HTTPS image URL that returns image bytes; a bare URL, wiki File page, file path, source line, or long base64 blob is not an image. Ask for a project screenshot or internal number and wait. Do not create, generate, or code-draw a substitute unless the user asks or agrees. Silence is not permission. An outline-only request is not analysis approval. Show a needed image or table in the same message and in the same place the finished section will keep it. If the source is unavailable, state what the agent did not write or verify; a source line alone is not an image. “Not needed” is a valid recorded visual decision when the applicable contract allows it.
 
-Strictly follow the natural collaborative dialogue of **obra/superpowers** without robotic meta-commentary:
-- The two stops are INTERNAL BEHAVIORAL DISCIPLINE for the agent behind the scenes, NOT scripts or labels to print to the user.
-- NEVER print robotic labels or tags like `[ĐIỂM DỪNG 1 / STOP 1]`, `[STOP 1]`, `[STOP 2]`, `[Điểm dừng 2]`, `[Giai đoạn 1]`, `[Approval Gate]`.
-- NEVER lecture the user about internal rules (e.g. forbidden: "theo đúng quy trình 2 điểm dừng", "chúng ta chuyển sang Điểm dừng 2", "theo quy trình chuẩn trước khi xây dựng...").
-- Simply present the analysis or outline in the language of the user's current message. Do not default that language to Vietnamese. End with a natural review question in that same language. A sample question in these instructions is not required wording.
+The two stops are internal behavior, not user-facing labels. Do not print `[STOP 1]`, `[STOP 2]`, `[Gate 1]`, `[Approval Gate]`, or translated equivalents. Present the actual content and end with a natural review question. Use [guided questions](references/guided-questions.md) for visible delivery and recovery. Deliver the proposal before its review question; if the user cannot see it, redisplay it and keep approval pending. A question card has no Back control; do not invent one.
 
-Never invent project names, consulting roles, business context, budgets, SLAs, or operational metrics. Do not add a deliverable that belongs to a later assignment, such as a functional prototype, or scope details the user has not confirmed. If a detail is needed and unsettled, ask before using it.
-Image, screenshot, and DOCX-figure claims follow [visual evidence boundary](references/visual-evidence-boundary.md). Visible pixels are not database, runtime, device, CSS-viewport, or criterion proof. A media filename is not a relationship ID.
+## Language and evidence integrity
 
-Interact through natural collaborative dialogue in chat like obra/superpowers. Present the full analysis or outline directly in chat for comfortable reading. Do NOT abuse modal question tools (like `asktool`) to obstruct the user's reading; ask for approval naturally at the end of the chat message, and let the user review and respond in chat. Ask only when necessary.
+English is the default for authored deliverables, documentation, skills, templates, reports, outlines, plans, labels, and exports. Use another language only when the user explicitly requests it for that deliverable. Chat explanations, questions, summaries, progress updates, and requirement analysis follow the language of the user's current message. Do not default that language to Vietnamese. Explain a necessary source term in the same sentence; never provide a line-by-line translation or interleaved bilingual block. See the [deliverable language policy](references/language-policy.md).
 
-Apply [visible delivery and recovery](references/guided-questions.md): deliver the complete proposal before its review question. If the user says it is missing, show it in chat and keep approval pending; do not open another approval card. Internal labels, including parenthetical "Stop 2", must not appear in questions or options. Evidence cards do not authorize later approval cards.
+Apply [visual and document evidence boundaries](references/visual-evidence-boundary.md) before making image, screenshot, embedded-figure, or completed-document claims. Visible pixels are not database, runtime, device, CSS-viewport, or criterion proof. A media filename is not a DOCX relationship ID. Keep `document-stated`, `visually-observed`, `source-inspected`, `runtime-observed`, and `unverified` separate. Reopen the actual final file after the last edit or export.
 
-After a structured question card returns, summarize the selections and ask the user to confirm or correct them in chat. A card selection is not locked until the user confirms that summary. The host question schema has no back parameter and the card has no Back control. This is a host gap. Do not invent a Back button.
+Use [visual assets and Word fidelity](references/visual-assets-and-word-fidelity.md) for conditional figures/tables, source and license states, native Word tables, embedded media, `wp:inline`, captions, placement, template formatting, rendering, and host limits. Use [native mathematics in Word](references/math-in-documents.md) whenever Word contains mathematics. Use [mathematical checks](references/mathematics-checks.md) for derivations, assumptions, numerical evidence, and proof boundaries. These references add fidelity or evidence checks; they do not add approval gates.
 
-## Deliverable Language
+Use [citation styles](references/citation-styles.md) when citations are required and no convention is already established. Harvard is the fallback, not a reason to add unsolicited research. Never invent authors, dates, pages, URLs, DOIs, licenses, measurements, project names, budgets, SLAs, user counts, timelines, or results. A README, plan, screenshot, or successful command is not proof of implementation, runtime behavior, or measured performance by itself.
 
-English is the default for authored content, skills, documents, reports, outlines, and generated/exported artifacts, regardless of the conversation language. Use Vietnamese or another language only when the user explicitly requests it for the relevant deliverable. Follow the [deliverable language policy](references/language-policy.md); do not infer output language from Vietnamese conversation or source material.
+## Review, verification, and honest completion
 
-Chat explanations, questions, summaries, and requirement analysis follow the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence. Do not list unexplained keywords, and do not produce a line-by-line translation. Authored deliverables stay in the locked submission language.
-**Strict negative constraint:** NEVER interleave bilingual text or a line-by-line translation into chat blocks. Deliver clean, non-interleaved content.
+Independent review and file verification are different responsibilities. Reviewers return findings using [review-findings.md](templates/review-findings.md); they do not silently rewrite a deliverable or approve their own work. Severity remains `Critical`, `Important`, `Minor`, or `Suggestion`. Fabricated or contradicted evidence is blocking. A permitted incomplete draft remains `draft_incomplete`.
 
-## Honesty
+Before claiming completion:
 
-Never claim a file was created, edited, converted, or formatted unless the
-actual artifact was re-inspected. Never fabricate a citation. Never report
-success for a capability that is missing.
+1. Reopen every changed artifact and inspect the actual saved representation.
+2. Check required links, anchors, field names, statuses, source/revision relationships, and applicable evidence/approval records.
+3. Run the declared repository tests or other authorized checks. Command success is not artifact success.
+4. Distinguish checks actually performed from unavailable or unverified checks.
+5. Report remaining limitations, unresolved source conflicts, and pending integration checks honestly.
+
+Portable rules remain host-independent. Host adapters may document observed behavior, but a source inspection, local test, simulated tool, or historical trace does not prove a fresh live host run.

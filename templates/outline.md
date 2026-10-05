@@ -1,22 +1,11 @@
 # Document Outline
 
-For adopted [persistent work tracking](../references/work-tracking.md), this
-outline lives within or is referenced by the active plan. Keep stable item IDs,
-criterion/source locators and selective project references. Retain one owner
-for each approval record instead of copying statuses between files.
+<!-- Authoring instructions: remove this block when producing an outline. -->
+The planning/authoring agent uses this template only when an outline is requested or required for an authorized document/report task. Apply [outline structure and evidence readiness](../references/outline-structure.md); for criteria-based work, prepare a detailed outline only after the applicable analysis decision, and obtain a separate outline decision before drafting. A short criterion can have an inline chat outline rather than a file. An adopted [work plan](../references/work-tracking.md) contains or references this outline; it does not create another approval owner.
 
-Apply [outline structure and evidence readiness](../references/outline-structure.md).
-The following is an authoring template, not content to copy verbatim into the
-deliverable. Replace the bracketed fields with source-grounded content. Unless
-the user explicitly requests a different structure, use Heading 1/2/3 with
-`1`, `1.x`, `1.x.x`. Preserve the level-1 source title exactly; main points and
-subpoints develop that requirement. Do not invent a title, data or evidence.
+Required for an applicable criterion: exact `source_title` and `source_locator`, `evidence_readiness`, approved scope reference, hierarchical headings and developed argument blocks, planned evidence with limits, visual decision, `outline_version`, `outline_status`, and `approval_record`. Audience, word target, project structure mapping, and asset rows are conditional. Use a neutral pending value for unknown evidence; a missing mandatory input blocks the affected outline rather than being hidden by a blank cell. The user reviews the completed visible outline in chat, not a skeleton or metadata fields.
 
-Before filling the outline, record `source_title`, `source_locator`, and
-`evidence_readiness` in the existing brief/conversation. If required evidence is
-pending, ask through `scoping-the-brief` and wait for the inputs or explicit
-permission for illustrative material. Do not deliver this skeleton as a way
-around the missing-evidence prerequisite. Supporting notes do not replace headings.
+Use `1`, `1.x`, `1.x.x` unless the user or existing document specifies another structure. Copy protected level-one source titles exactly. Under each heading show the same paragraphs, parallel lists, and needed table/figure at the positions the final section will retain; develop concrete arguments and evidence rather than delivering labels or bullet stacks. Keep instructions and placeholders out of the delivered outline. Preserve stable item IDs and source locators in adopted tracking; record decisions only once.
 
 * **Target Audience:** [Audience from brief, if relevant]
 * **Scope / Word Target:** [Confirmed scope; length only when specified]

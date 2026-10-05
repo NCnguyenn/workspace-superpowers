@@ -1,10 +1,11 @@
 # Work Plan: <title>
 
-Use under the [persistent work-tracking contract](../references/work-tracking.md).
-This is a template, not an active plan. Replace placeholders on adoption; omit
-inapplicable optional sections. Users supply answers in chat, never schema fields.
-Paths in the adopted record resolve relative to that record. Remove this template
-instruction and its package-relative link from the user's instantiated file.
+<!-- Template instructions: remove this block from an adopted work plan. -->
+Use this template only after the user agrees to durable tracking for sustained work under the [persistent work-tracking contract](../references/work-tracking.md). The executing agent creates and maintains the single canonical `work-plan.md`; the user answers questions in chat, not schema fields. Do not create a plan for a simple answer, isolated edit, or one-off export. Place the adopted plan and deliverables together only after the required placement decision.
+
+Required when adopted: the resume checkpoint, brief, single item register, identity/authority, source coverage, and applicable decision/check references. Project references, assets, exports, completed summaries, and math checks are conditional on actual work; omit unused rows instead of inventing values. Keep unknown facts as `unknown` or pending with an owner and next action. Paths in the adopted record resolve relative to that record. Remove these instructions and package-relative links from the instantiated file.
+
+A usable checkpoint names an authorized next action, its observable completion condition, exact target revision, relevant read-next locators, and any decision blocking it. After a change, update the affected item, artifact/check/decision references, and this checkpoint together; do not maintain a second task or progress register.
 
 ## Where We Are / Resume Here
 
@@ -38,7 +39,7 @@ owns the selected next action; item blocks describe remaining work and dependenc
 ### <Item ID> — <actual heading or milestone>
 
 - Purpose / requirements: <purpose and criterion IDs>
-- Progress: <not started / in progress / review / revision needed / done>
+- Progress: <todo / drafting / review / revision_needed / done>
 - Evidence readiness: <ready / gap / blocked / unknown; exact missing support>
 - Content locator: <artifact ID and heading/table; revision via Artifact Registry,
   or exact chat delivery locator marked unsaved>

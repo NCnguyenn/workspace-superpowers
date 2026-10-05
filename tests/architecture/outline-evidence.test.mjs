@@ -76,12 +76,13 @@ test('outline points use argument slots and a shown asset or Not needed', async 
     'skills/using-workspace-superpowers/SKILL.md',
     'references/criteria-writing-contract.md', 'AGENTS.md']) {
     const text = await readUtf8(file);
-    assert.match(text, /làm dàn ý/, file);
+    assert.match(text, /\boutline(?:-only)?\b[^.!?\n]*\brequest\b|\brequest\b[^.!?\n]*\boutline\b/i, file);
     assert.match(text, /not analysis approval/i, file);
   }
 
   const visual = await readUtf8('references/visual-assets-and-word-fidelity.md');
-  assert.match(visual, /download an existing public image/);
+  assert.match(visual, /requested public illustration/i);
+  assert.match(visual, /\bdownload\b[^.!?\n]*\bauthorized\b/i);
   assert.match(visual, /source citation/);
   assert.match(visual, /Do not create, generate, or code-draw/);
   assert.doesNotMatch(visual, /Do not download a web image/);

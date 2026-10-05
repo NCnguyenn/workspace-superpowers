@@ -1,10 +1,6 @@
-# Default outline structure and evidence readiness
+# Default Outline Structure and Evidence Readiness
 
-Apply to document/report outlines and the corresponding authored sections.
-An explicit user-requested structure or format takes precedence over this
-default. Preserve numbering already explicitly adopted for an existing document;
-do not silently renumber it. Slide storyboards, spreadsheet plans and mechanical
-formatting operations keep their own format-specific structures.
+Use this reference for document/report outlines and the corresponding authored sections. An explicit user-requested structure or format takes precedence. Preserve adopted numbering in an existing document unless the user authorizes a change. Slide storyboards, spreadsheet plans, and mechanical formatting tasks keep their format-specific structures. For criteria-based writing, [the criteria contract](criteria-writing-contract.md) owns analysis and outline approvals; this reference defines the outline's form and evidence prerequisite.
 
 ## Heading hierarchy and protected titles
 
@@ -51,9 +47,7 @@ the evidence prerequisite below still governs missing required material.
 
 The outline and the finished section use the same blocks in the same order. About 40–50% means those blocks are already written, shorter, with the argument, example, and boundary. The finished draft adds the remaining 50–60% inside those same blocks: fuller sentences, transitions, and citations. It does not add or remove a paragraph, list, table, figure, or number. Do not reverse these ratios. Do not turn either ratio into a word-count quota.
 
-Write each section in the form that section needs. A topic label is not an outline point. Do not print Claim:, Reason:, Limit:, Visual:, Table:, Bảng, Hình, or Not needed. Those words are planning notes, not the outline.
-
-One paragraph per heading is not an outline of a multi-part heading. If the heading has two or three arguments, the outline already has two or three short paragraphs. If it has one argument and parallel items, the outline already has that paragraph and a short bullet or numbered list. Bullets are only for parallel items. Do not write one label line per point, and do not turn the whole heading into a list.
+A topic label is not an outline point. Prepare the argument using internal Claim:, Reason:, and Limit: notes, then turn those notes into natural prose. Do not print Claim:, Reason:, Limit:, Visual:, Table:, or Not needed in the delivered outline. One paragraph per heading is not an outline of a multi-part heading. Where a heading has several arguments, show a short paragraph for each in the order the final section will use. Use bullets only for genuinely parallel items, not as substitutes for reasoning.
 
 Bad shape: one finished academic paragraph, then a source line whose URL is a wiki File page. Good shape, when the heading needs two arguments, three parallel limits, and a diagram:
 
@@ -71,22 +65,22 @@ Source: page title, source page URL, external public illustration, not the user'
 
 The finished section keeps that order: two paragraphs, that list, then that image. It fills the paragraphs. It does not merge them into one paragraph per heading, and it does not add a new block.
 
-If a section has no image, omit the image. If it has no table, omit the table. Do not write Không cần.
+If a section has no image, omit the image. If it has no table, omit the table. Record `Not needed` in the planning decision, not as empty content under the heading.
 
-For a requested illustration, embed a direct HTTPS image URL in image markdown in the same message. The URL must return the image bytes, such as an upload.wikimedia.org file, not a wiki page, a Google results page, a file path, or a long base64 blob. A commons File page such as `https://commons.wikimedia.org/wiki/File:Name.png` is a page. Resolve the final upload.wikimedia.org URL before embedding, for example by following `https://commons.wikimedia.org/wiki/Special:FilePath/Name.png` to the upload URL, then use that upload URL in the image markdown. A long base64 blob wrapped in Pi chat and dumped raw text. A source line without the image markdown is not the image. Put the page title and source page URL on the next line. Do not create, generate, or code-draw a substitute. Code drawing is allowed only when the user asks for it or agrees after you ask. Silence is not agreement. Silence is not permission. An external image is not a project screenshot. Do not add an audience, unstated technology, or an operating commitment the user did not state. Those additions are not depth. Skill examples such as BTEC, P1, M1, D1, and a named unit are not this assignment. If the user did not write them, do not put them in a question option and do not open a programme card.
+For a requested illustration, embed image markdown with a direct HTTPS image URL returning image bytes in the same message, with source title and page URL immediately below. A wiki File page, bare URL, Google results page, local file path, or long base64 blob is not an embedded image; a source line without image markdown is not an image. For instance, resolve a public file page to its actual upload.wikimedia.org URL; do not invent an upload path. Do not create, generate, or code-draw a substitute unless the user asks or agrees after being asked. Silence is not permission. An external illustration is not a project screenshot. Do not add an unstated technology, audience, operating commitment, or assignment label for apparent depth. If the user did not write an example label, do not put it into a question option.
 
 ## Asset source decision
 
-Decide the source before showing the outline. Do not invent a stand-in and continue.
+Decide the source before showing the outline; do not invent a stand-in and continue.
 
-| Need | Source | Do not |
+| Need | Required source/action | Boundary |
 |---|---|---|
-| Requested illustration, standard theory, cycle, architecture, or public concept diagram | Embed image markdown with a direct HTTPS image URL that returns the image bytes, such as an upload.wikimedia.org file, in the same chat message. Cite page title and source page URL under the image. | Use a wiki File page, a bare URL, a source line without the image markdown, a file path, or a long base64 blob. Create or code-draw a substitute. |
-| Comparison or criteria table | Full table rendered in the same message. Cells from inspected user data or a cited public source. | Fill an unknown cell with an assumed number. |
-| Project screenshot, internal metric, budget, timeline, or case photo | Ask the user and wait. Show the supplied file. | Use a web image, social post, or generated image as the user's project. |
-| Published public fact | Search and cite. A social post is only a lead unless the user asked to use that inspected post. | Treat an uninspected post as verified evidence. |
-| Code-drawn diagram or generated image | Only when the user asks for that drawing, or agrees after you ask. Label it as a drawing, not as a found source image. | Treat silence, "continue", or analysis approval as agreement. |
-| Hypothetical number | Only after explicit permission for that gap. Label it hypothetical. | Treat silence as permission. |
+| Requested public illustration or theory diagram | Find and inspect an existing public image; embed image markdown with a direct HTTPS image URL returning the bytes in the same message. Provide the source citation. | A wiki File page, bare URL, file path, or long base64 blob does not display the requested image. |
+| Comparison or criteria table | Render a filled, supported table in the same message, with caption and source. | Unknown cells are not assumed numbers. |
+| Project screenshot, internal metric, budget, timeline, or case photo | Ask the user and wait for real project material. | A web image or generated image cannot represent the user's project. |
+| Published public fact | Inspect and cite an appropriate source. | An uninspected social post is a lead, not verified evidence. |
+| Code-drawn diagram or generated image | Use only on explicit request or agreement after asking; identify it as a drawing. | Do not treat silence or analysis approval as permission or present a drawing as a found image. |
+| Hypothetical number | Obtain explicit permission for the specific gap and label it hypothetical. | It cannot stand in for a measured project result. |
 
 Chat framing follows the language of the user's current message. Do not default that language to Vietnamese. Explain each necessary source term in the same sentence, and do not add a line-by-line translation. The outline intended for submission follows the locked submission language.
 

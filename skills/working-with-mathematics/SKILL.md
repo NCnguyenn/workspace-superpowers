@@ -45,14 +45,14 @@ Activation follows intent and available content without the user naming the skil
 |---|---|---|
 | Exact or numerical computation | result for specified inputs, domains, and precision | universal proof or source transcription correctness |
 | Symbolic check | identity or transformation under stated assumptions | unsupported constructs or unstated assumptions |
-| Reasoning review | logical gaps, assumptions, and step validity | machine-checked proof certificate |
+| Reasoning review | completeness and step validity of a reasoning proof under stated assumptions | machine-checked proof certificate |
 | Formal proof check | an exact checked statement with retained checker evidence | a broader claim than the checked theorem |
 
 Model arithmetic is not machine verification. A finite set of examples is not proof for every input.
 
 ## Word and project boundaries
 
-For Word, native editable OMML is required where the document requires an Equation. Images, lookalike Unicode, or raw markup are not a completed Equation requirement without explicit limited-handoff acceptance. Mathematical correctness, Word structure, and project evidence are separate checks.
+For Word, native editable OMML is required where the document requires an Equation. Images, lookalike Unicode, and raw markup do not satisfy that representation. The user may explicitly accept a limited handoff with the exact missing capabilities stated. Acceptance does not satisfy the native Equation requirement or turn failed or unperformed checks into a PASS. Mathematical correctness, Word structure, and project evidence remain separate checks.
 
 For a mixed project report, retain [project grounding](../../references/project-grounding.md) read-only limits. Mathematical work cannot grant permission to run application tests, builds, or migrations.
 

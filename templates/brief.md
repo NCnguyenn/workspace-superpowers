@@ -1,8 +1,7 @@
 # Working Brief
 
-For adopted [persistent work tracking](../references/work-tracking.md), keep
-this brief within or referenced by the active plan, not a second mutable copy.
-Carry `plan_file`, `work_id`, current item and target revision into handoffs.
+<!-- Template guidance: remove this paragraph from a user-facing brief. -->
+The executing agent prepares a working brief from the user's instructions and inspected sources when a substantive task needs shared scope or a handoff. It may live in chat or within/referenced by an adopted [work plan](../references/work-tracking.md); do not create a second mutable brief or ask the user to fill internal fields. Capture confirmed objective, audience when relevant, output, source identity, language, constraints, preservation obligations, and unresolved gaps. Mark an unavailable fact `unknown` with its source or question rather than inventing it. The continuity profile, project/math fields, and criteria-based extension are conditional; omit them for unrelated tasks. Carry `plan_file`, `work_id`, current item, and target revision into adopted handoffs. A usable brief distinguishes confirmed requirements from assumptions and pending decisions, with locators for the evidence each claim uses.
 
 ## 1. Context & Objective
 * **Target Audience:** [Intended readers/stakeholders]
