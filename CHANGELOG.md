@@ -1,7 +1,7 @@
 # Changelog
 
-Changes are listed newest first. The current package version is **0.1.7-beta**
-(corrected build retaining the version label at the user's request).
+Changes are listed newest first. The current package version is **0.1.7-beta-update**
+(instruction clarity update retaining the 0.1.7 base version).
 Historical entries below were reconstructed from retained local package contents,
 the Git history, and the criterion workflow report. They describe implementation
 changes, not proof of publication or successful execution in PI-Desktop.
@@ -12,6 +12,25 @@ releases. The changes after the existing 0.1.1 commit are being published as one
 consolidated source update; this changelog does not imply separate historical
 commits or tags for those builds.
 
+
+## 0.1.7-beta-update — 2026-10-05
+
+- Rewrite the English skill, role, rule and template guidance for clearer
+  dispatch, required inputs, practical steps, completion checks and handoffs.
+  Preserve all 24 skills, 12 roles, 15 references and 6 templates.
+- Align outline approval and explicit waivers across the router, prose
+  coordinator, writing specialists and author/reviewer roles. Preserve authorized
+  incomplete drafts without bypassing evidence prerequisites or claiming success.
+- Separate complete reasoning proofs from formal machine verification, and
+  prevent accepted limited Word handoffs from becoming native Equation passes.
+- Unify review severity, mathematics findings and canonical progress values;
+  remove repeated wording without imposing line-count or word-count reductions.
+- Replace stale Vietnamese literal assertions with English contract checks and
+  add cross-contract regressions. Keep the existing TodoWrite bootstrap, plugin
+  identity, permissions and skill IDs unchanged.
+- Use the distinct `-update` suffix for packaging and installation. Historical
+  package and runtime records retain their original versions and evidence limits.
+  See [release notes](docs/releases/0.1.7-beta-update.md).
 
 ## 0.1.7-beta — 2026-10-04, corrected build retaining the version label
 

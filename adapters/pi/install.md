@@ -1,6 +1,6 @@
 # Install Workspace Superpowers for PI-Desktop
 
-Target: PI-Desktop 0.16.0 or later. The corrected 0.1.7-beta build retains the skill catalog
+Target: PI-Desktop 0.16.0 or later. The 0.1.7-beta-update build retains the skill catalog
 and agent bootstrap extension, and uses PI-Desktop's existing built-in TodoWrite
 checklist in chat. It contributes no checklist tool, panel or custom renderer.
 Package validation alone does not certify live model behavior or rendering.
@@ -9,10 +9,10 @@ Package validation alone does not certify live model behavior or rendering.
 
 ```powershell
 python scripts/test-package-pi.py
-python scripts/package-pi.py --out dist/pi-todowrite-0.1.7-beta-fixed-20261004
+python scripts/package-pi.py --out dist/pi-0.1.7-beta-update
 ```
 
-Select the generated `local.workspace-superpowers-0.1.7-beta.piplug` through
+Select the generated `local.workspace-superpowers-0.1.7-beta-update.piplug` through
 PI-Desktop's Plugins install/update action. The unpacked plugin folder can also
 be installed. Do not choose the source repository root or edit the registry
 version manually. Existing output directories are refused by the builder.
@@ -23,11 +23,12 @@ tool registration, panel and session-read permissions are no longer requested.
 The build does not grant permissions or install/update the plugin. Retain the
 existing project scope and enabled state, reload using the host and begin a
 fresh chat so the old extension hooks and catalog are not retained.
-Verify version 0.1.7-beta and 24 distinct namespaced skills, including
+Verify version 0.1.7-beta-update and 24 distinct namespaced skills, including
 `local.workspace-superpowers/using-workspace-superpowers`.
-The corrected and original panel builds share the version label. Select the
-archive from `pi-todowrite-0.1.7-beta-fixed-20261004`, using its build record and
-checksum to distinguish it; the version label alone does not prove the fix.
+Select the current archive from `pi-0.1.7-beta-update`, and verify its build record
+and checksum. Retain older archives for rollback; the earlier corrected and
+original panel builds share the `0.1.7-beta` label, so their version label alone
+does not identify their behavior.
 
 ## Prompt lifecycle
 
